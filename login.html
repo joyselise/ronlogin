@@ -1287,6 +1287,77 @@
         display: flex;
         align-items: center;
       }
+      .heading {
+        text-align: left;
+      }
+      .intro {
+        display: none !important;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .buttons
+        button {
+        background-image: none;
+        background-color: #000000;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 1em;
+        font-weight: 400;
+        height: inherit;
+        line-height: 1.3333333;
+        margin-top: 1rem;
+        margin-right: 0;
+        margin-bottom: 2.2rem;
+        margin-left: 0;
+        padding: 10px 16px;
+        text-align: center;
+        touch-action: manipulation;
+        user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: inherit;
+        -moz-user-select: none;
+        -ms-touch-action: manipulation;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        color: #fff;
+        width: 100%;
+        box-shadow: 0 0 0px 0 #ffffff;
+      }
+      a {
+        color: #000000 !important;
+      }
+      .options {
+        display: flex;
+        gap: 20px;
+      }
+
+      .unified_container .row .panel-default #api .localAccount .create p {
+        text-align: left;
+        margin-bottom: 0 !important;
+      }
+      .unified_container .row .panel-default #api .accountButton {
+        background-size: 30% 70%;
+        background-position-x: 44%;
+        background-position-y: 50%;
+        background-repeat: no-repeat;
+        display: block;
+        font-size: 16px;
+        margin-left: auto;
+        overflow: hidden;
+        border: 1px solid #605e5c;
+        background-color: #fff;
+        border-radius: 0.5rem;
+        margin-top: 10px;
+        width: 30px;
+        height: 30px;
+      }
     </style>
   </head>
   <body>
@@ -1316,5 +1387,10 @@
         </div>
       </div>
     </section>
+
+    <script>
+      document.getElementById("FacebookExchange").innerText = "";
+      document.getElementById("GoogleExchange").innerText = "";
+    </script>
   </body>
 </html>
