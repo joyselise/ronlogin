@@ -1404,10 +1404,41 @@
           "https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login";
       });
     </script>
+   <script>
+    "use strict";
+    $(document).ready(function () {
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var t = document.createElement("style");
+            t.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}")), t.appendChild(document.createTextNode("@-ms-viewport{height:auto!important}")), document.getElementsByTagName("head")[0].appendChild(t);
+        }
+        if (navigator.userAgent.match(/MSIE 10/i)) {
+            var e = $("#footer_links_container");
+            $(e).css("padding-top", "100px");
+        }
+        var o,
+            i = $("#background_background_image"),
+            n = function () {
+                (document.body.style.overflow = "hidden"),
+                    ($(window).width() - 500) / $(window).height() < o ? (i.height($(window).height()), i.width("auto")) : (i.width($(window).width() - 500), i.height("auto")),
+                    (document.body.style.overflow = "");
+            };
+        $("<img>")
+            .attr("src", i.attr("src"))
+            .on("load", function () {
+                (o = this.width / this.height), n();
+            }),
+            $(window).resize(function () {
+                n();
+            }),
+            "undefined" != typeof $("#MicrosoftAccountExchange") && $("#MicrosoftAccountExchange").text("Microsoft"),
+            $("*").removeAttr("placeholder");
+    });
+</script>
     <script>
       "use strict";
       $(document).ready(function () {
-        console.log('testing')
+        $('#FacebookExchange').empty().append(" ");
+        $('#GoogleExchange').empty().append(" ");
        });
     </script>
   </body>
