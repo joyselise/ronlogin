@@ -1417,9 +1417,18 @@
           newcontent.appendTo(ForgotPa);
       }
     </script>
+    <style>
+      .appendText{
+        position: absolute;
+        bottom: 0;
+        clear: right;
+        cursor: pointer;
+        text-align: right;
+      }
+    </style>
 
 <script>
-  $('<a href="#">hello</a>').appendTo('.password-label');
+  $('<a href="#" class="appendText">hello</a>').appendTo('.password-label');
 </script>
 
     
