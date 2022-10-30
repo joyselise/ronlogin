@@ -1395,6 +1395,7 @@
       document.getElementById("forgotPassword").href =
         "https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login";
 
+        $("#forgotPassword").prop("href", "http://www.jakcms.com")
 
         function changeText() {
           // find the terms of use label element
@@ -1416,6 +1417,28 @@
           var ForgotPa = $('#forgotPassword');
           ForgotPa.HTML('https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login');
           newcontent.appendTo(ForgotPa);
+      }
+    </script>
+    <script>
+
+      function addTermsOfUseLink() {
+          // find the terms of use label element
+          var termsOfUseLabel = document.querySelector('#forgotPassword');
+          if (!termsOfUseLabel) {
+              return;
+          }
+
+          // get the label text
+          var termsLabelText = termsOfUseLabel.innerHTML;
+
+          // create a new <a> element with the same inner text
+          var termsOfUseUrl = 'https://learn.microsoft.com/legal/termsofuse';
+          var termsOfUseLink = document.createElement('a');
+          termsOfUseLink.setAttribute('href', termsOfUseUrl);
+          termsOfUseLink.appendChild(document.createTextNode(termsLabelText));
+
+          // replace the label text with the new element
+          termsOfUseLabel.replaceChild(termsOfUseLink, termsOfUseLabel.firstChild);
       }
     </script>
 
