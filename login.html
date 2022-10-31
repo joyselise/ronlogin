@@ -1398,7 +1398,6 @@
     <script data-container="true" nonce>
       document.getElementById("claimVerificationServerError").innerText = "Your Account Could not be found. Try login with Social Accounts, If you have Signed up with Social account";
       document.getElementById("FacebookExchange").innerText = "";
-      $(".pageLevel p").html("We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up");
       document.getElementById("GoogleExchange").innerText = "";
       document.getElementById("forgotPassword").href =
         "https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login";
@@ -1440,6 +1439,7 @@
 
 <script>
   $('<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch%2F&scope=openid&response_type=id_token&prompt=login" class="appendText" target="_blank">Forgot Your Password?</a>').appendTo('.password-label');
+  $(".pageLevel p").html("We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up");
 </script>
 
     
