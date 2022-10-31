@@ -742,6 +742,16 @@
     <style>
       /* Following are generated styles via gulp. */
       /* inject: css */
+      .appendText {
+        position: absolute;
+        bottom: 0;
+        clear: right;
+        cursor: pointer;
+        text-align: right;
+      }
+      #forgotPassword {
+        display: none !important;
+      }
       button#cancel {
         display: none;
       }
@@ -1396,12 +1406,10 @@
     </section>
 
     <script data-container="true" nonce>
-      document.getElementById("claimVerificationServerError").innerText =
-        "Your Account Could not be found. Try login with Social Accounts, If you have Signed up with Social account";
+      document.getElementById("claimVerificationServerError").innerText="Your Account Could not be found. Try login with Social Accounts, If you have Signed up with Social account";
       document.getElementById("FacebookExchange").innerText = "";
       document.getElementById("GoogleExchange").innerText = "";
-      document.getElementById("forgotPassword").href =
-        "https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login";
+      document.getElementById("forgotPassword").href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login";
 
       function changeText() {
         // find the terms of use label element
@@ -1426,24 +1434,8 @@
         newcontent.appendTo(ForgotPa);
       }
     </script>
-    <style>
-      .appendText {
-        position: absolute;
-        bottom: 0;
-        clear: right;
-        cursor: pointer;
-        text-align: right;
-      }
-      #forgotPassword {
-        display: none !important;
-      }
-    </style>
-
     <script>
-      $(
-        '<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch%2F&scope=openid&response_type=id_token&prompt=login" class="appendText" target="_blank">Forgot Your Password?</a>'
-      ).appendTo(".password-label");
-
+      $('<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch%2F&scope=openid&response_type=id_token&prompt=login" class="appendText" target="_blank">Forgot Your Password?</a>').appendTo(".password-label");
       $(document).ajaxComplete(function () {
         if ($(".error").is(":visible") && $(".error p").text().length > 0) {
           $(".error p").text(
