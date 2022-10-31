@@ -1449,11 +1449,12 @@
       (function ($) {
         $(document).ready(function () {
           if ($(".pageLevel").is(":visible")) {
-            setTimeout(() => {
+            let textLength = $(".pageLevel p").text().length > 0;
+            $.when(textLength).then(function () {
               $(".pageLevel p").text(
                 "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
               );
-            }, 600);
+            });
           }
         });
       })(jQuery);
