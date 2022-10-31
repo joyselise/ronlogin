@@ -1447,9 +1447,11 @@
       //   "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
       // );
       $.when(".error .pageLevel").then(() => {
-        $(".error .pageLevel > p").text(
-          "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
-        );
+        if (".error.pageLevel:visible") {
+          $(".error.pageLevel > p").text(
+            "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
+          );
+        }
       });
     </script>
   </body>
