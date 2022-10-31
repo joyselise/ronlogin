@@ -1446,9 +1446,11 @@
       // $(".pageLevel p").html(
       //   "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
       // );
-      $(".pageLevel > p").text(
-        "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
-      );
+      $(function () {
+        $(".pageLevel p").text(
+          "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
+        );
+      });
     </script>
   </body>
 </html>
