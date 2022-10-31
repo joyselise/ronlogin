@@ -1446,26 +1446,16 @@
       // $(".pageLevel p").html(
       //   "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
       // );
-      (function ($) {
-        $(document).ready(function () {
-          if (
-            $(
-              ".login-section .unified_container .row .panel-default #api .localAccount .error .pageLevel"
-            ).is(":visible")
-          ) {
-            console.log("inside condition");
-            let textLength = $(".pageLevel p").text().length > 0;
-            console.log("textLength", textLength);
-            $.when(textLength).then(function () {
-              $(
-                ".login-section .unified_container .row .panel-default #api .localAccount .error p"
-              ).text(
-                "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
-              );
-            });
-          }
-        });
-      })(jQuery);
+    </script>
+    <script>
+      setInterval(() => {
+        if ($(".error").is(":visible") && $(".error p").length > 0) {
+          $(".error p").text(
+            "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
+          );
+        }
+      }, 1000);
+      // $(document).trigger( "onErrorVisiable" );
     </script>
   </body>
 </html>
