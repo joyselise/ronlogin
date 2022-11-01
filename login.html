@@ -800,7 +800,7 @@
         text-align: left;
       }
       .unified_container .row .panel-default #api .intro h2 {
-        font-size: 20px;
+        font-size: 18px;
       }
       .unified_container .row .panel-default #api .divider {
         display: none;
@@ -1079,13 +1079,17 @@
         -ms-touch-action: manipulation;
         -ms-user-select: none;
         -webkit-user-select: none;
-        width: auto;
+        width: 100%;
         margin-top: -3rem;
         cursor: pointer;
         animation: 0.5s ease-out 0s 1 slideInFromRight;
+        color: #fff !important;
+        background: #000;
+        text-decoration: none;
+        margin: 10px 0;
       }
       .unified_container .row .panel-default #api .social {
-        display: table-footer-group;
+        display: block;
         position: relative;
         top: 1px;
         width: auto;
@@ -1101,7 +1105,7 @@
         width: 100%;
         margin-left: auto;
         overflow: hidden;
-        padding: 0 50px;
+        padding: 0 40px;
         max-width: 380px;
         border: 1px solid #605e5c;
         background-color: #fff;
@@ -1305,10 +1309,11 @@
       }
       .heading {
         text-align: left;
+        display: none;
       }
-      .intro {
+      /* .intro {
         display: none !important;
-      }
+      } */
       .unified_container
         .row
         .panel-default
@@ -1352,7 +1357,6 @@
       .options {
         display: flex;
         gap: 10px;
-        justify-content: center;
       }
 
       .unified_container .row .panel-default #api .localAccount .create p {
@@ -1373,7 +1377,7 @@
         border-radius: 0.5rem;
         margin-top: 10px;
         width: 30px;
-        height: 30px;
+        height: 40px;
       }
     </style>
   </head>
@@ -1418,6 +1422,8 @@
           );
         }
       });
+      $('.social .intro h2').text('Sign in Or Sign up  with your social account'); 
+      $('.create p').text('Sign Up with Email Address?'); 
     </script>
   </body>
 </html>
