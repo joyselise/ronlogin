@@ -742,6 +742,14 @@
     <style>
       /* Following are generated styles via gulp. */
       /* inject: css */
+      .panel {
+          padding-top: 120px;
+          position: relative;
+      }
+      .create {
+          position: absolute;
+          top: 70px;
+      }
       .appendText {
         position: absolute;
         bottom: 0;
@@ -1271,12 +1279,25 @@
           left: 8px;
         }
       }
+      @media screen  and (max-width:375px){
+        #createAccount{
+            width: 95%;
+        }
+      }
+      @media screen  and (max-width:451px){
+        #createAccount{
+            width: 100%;
+        }
+      }
       @media screen and (max-width: 320px) {
         .unified_container .row .panel-default #api .localAccount .rememberMe {
           margin-top: 1.75rem;
           text-align: left;
           margin-left: 0;
           width: 100%;
+        }
+        #createAccount{
+          width: 90%;
         }
         .unified_container
           .row
