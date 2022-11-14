@@ -750,12 +750,24 @@
           position: absolute;
           top: 70px;
       }
+      #rememberMe{
+        accent-color: #000;
+      }
+      .rememberMe label{
+        font-weight: 400;
+      }
       .appendText {
         position: absolute;
-        bottom: 0;
+        bottom: -5px;
+        right: 0;
         clear: right;
         cursor: pointer;
+        text-decoration: unset;
         text-align: right;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        font-size: 14px;
+        line-height: 19px;
       }
       #forgotPassword {
         display: none !important;
@@ -951,30 +963,22 @@
         input:focus {
         border: 2px solid #000;
       }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        input {
+      .unified_container .row .panel-default #api .localAccount .entry .entry-item input {
         outline: 0;
-        background-color: #fff !important;
         background-image: none !important;
-        border-radius: 0.5rem !important;
-        color: #555;
+        background: #f9f9f9;
+        border: 1px solid #EBEBEB;
+        border-radius: 12px;
+        color: #2C2C2C;
         display: inline-block;
         font-size: 1em;
-        height: 50px;
-        line-height: 1.42857143;
-        padding: 6px 20px;
+        height: 48px;
+        line-height: 48px;
+        padding: 13px 16px;
         transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
         width: 100% !important;
-        -o-transition: border-color ease-in-out 0.15s,
-          box-shadow ease-in-out 0.15s !important;
-        -webkit-transition: border-color ease-in-out 0.15s,
-          -webkit-box-shadow ease-in-out 0.15s !important;
+        -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
+        -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s !important;
       }
       .unified_container
         .row
@@ -1035,11 +1039,13 @@
         text-align: right;
       }
       .unified_container .row .panel-default #api .localAccount .rememberMe {
-        margin-top: -2rem;
-        text-align: right;
-        margin-left: 59%;
-        position: relative;
-        width: 15rem;
+        margin-top: 0;
+        text-align: left;
+        margin-left: 0;
+        position: initial;
+        width: 160px;
+        margin-top: -15px;
+        font-size: 14px;
       }
       .unified_container
         .row
@@ -1102,26 +1108,7 @@
         top: 1px;
         width: auto;
       }
-      .unified_container .row .panel-default #api .accountButton {
-        background-size: 10% 70%;
-        background-position-x: 3%;
-        background-position-y: 50%;
-        background-repeat: no-repeat;
-        display: block;
-        font-size: 16px;
-        height: 45px;
-        width: 100%;
-        margin-left: auto;
-        overflow: hidden;
-        padding: 0 40px;
-        max-width: 380px;
-        border: 1px solid #605e5c;
-        background-color: #fff;
-        -moz-border-radius: 0.5rem;
-        -webkit-border-radius: 0.5rem;
-        border-radius: 0.5rem;
-        margin-top: 10px;
-      }
+      
       .unified_container .row .panel-default #api .accountButton:hover {
         color: #fff;
         background-color: #0c0c0c;
@@ -1280,13 +1267,18 @@
         }
       }
       @media screen  and (max-width:375px){
-        #createAccount{
+        .unified_container .row .panel-default #api .localAccount .create #createAccount{
             width: 95%;
         }
       }
-      @media screen  and (max-width:451px){
-        #createAccount{
-            width: 100%;
+      @media screen  and (max-width:425px){
+        .unified_container .row .panel-default #api .localAccount .create #createAccount{
+            width: 112%;
+        }
+      }
+      @media screen  and (max-width:2560px){
+        .unified_container .row .panel-default #api .localAccount .create #createAccount{
+            width: 115%;
         }
       }
       @media screen and (max-width: 320px) {
@@ -1385,21 +1377,23 @@
         margin-bottom: 0 !important;
       }
       .unified_container .row .panel-default #api .accountButton {
-        background-size: 30% 70%;
+        background-size: 50% 50%;
         background-position-x: 44%;
         background-position-y: 50%;
         background-repeat: no-repeat;
         display: block;
-        font-size: 16px;
-        margin-left: auto;
+        /* font-size: 44px; */
+        /* margin-left: auto; */
         overflow: hidden;
         border: 1px solid #605e5c;
         background-color: #fff;
-        border-radius: 0.5rem;
+        border-radius: 50px;
         margin-top: 10px;
-        width: 30px;
-        height: 40px;
+        padding: 18px;
+        width: 35px;
+        height: 35px;
       }
+
     </style>
   </head>
   <body>
@@ -1435,7 +1429,7 @@
       document.getElementById("GoogleExchange").innerText = "";
     </script>
     <script>
-      $('<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fstg-backend-ronreload.slsweb.ch%2Flogin%2Fazure&scope=openid&response_type=id_token&prompt=login" class="appendText" target="_blank">Forgot Your Password?</a>').appendTo(".password-label");
+      $('<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fstg-backend-ronreload.slsweb.ch%2Flogin%2Fazure&scope=openid&response_type=id_token&prompt=login" class="appendText">Forgot Password?</a>').appendTo(".password-label");
       // $('<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch%2F&scope=openid&response_type=id_token&prompt=login" class="appendText" target="_blank">Forgot Your Password?</a>').appendTo(".password-label");
       $(document).ajaxComplete(function () {
         if ($(".error").is(":visible") && $(".error p").text().length > 0) {
@@ -1446,6 +1440,7 @@
       });
       $('.social .intro h2').html('<b>Sign in Or Sign up</b> with your social account'); 
       $('#createAccount').text('Sign up with Email'); 
+      $('.rememberMe label').text('Remember Me'); 
     </script>
   </body>
 </html>
