@@ -31,6 +31,9 @@
       #FacebookExchange {
         background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/facebook.svg);
       }
+      #FacebookExchange:focus-visible {
+        outline: #d5d5d5 auto 1px;
+      }
       #FacebookExchange:hover {
         background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/facebook.svg);
       }
@@ -1361,7 +1364,7 @@
         -ms-user-select: none;
         -webkit-user-select: none;
         color: #fff;
-        width: 42%;
+        width: 100%;
         box-shadow: 0 0 0px 0 #ffffff;
       }
       a {
@@ -1382,10 +1385,8 @@
         background-position-y: 50%;
         background-repeat: no-repeat;
         display: block;
-        /* font-size: 44px; */
-        /* margin-left: auto; */
         overflow: hidden;
-        border: 1px solid #605e5c;
+        border: 1px solid #d5d5d5;
         background-color: #fff;
         border-radius: 50px;
         margin-top: 10px;
