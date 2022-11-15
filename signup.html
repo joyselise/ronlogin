@@ -363,13 +363,12 @@
         -ms-transition: all 0.5s ease-in-out;
         -o-transition: all 0.5s ease-in-out;
         transition: all 0.5s ease-in-out;
-        -webkit-border-radius: 5px 5px 5px 5px;
         width: 100%;
-        border-radius: 100px;
+        border-radius: 12px;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        background: url("img/br_down.png") no-repeat 95% #f9f9f9;
+        background: url("https://joyselise.github.io/ronlogin/img/br_down.png") no-repeat 95% #f9f9f9;
       }
 
       select::-ms-expand {
@@ -801,6 +800,7 @@ box-shadow: 0 10px 30px 0 rgba(13, 13, 13, 0.4); */
         padding: 40px;
         margin-top: 16px;
         background-color: #fff;
+        max-width: 475px;
       }
       .join p{
         font-size: 27px;
@@ -854,10 +854,10 @@ box-shadow: 0 10px 30px 0 rgba(13, 13, 13, 0.4); */
           The Ron Community already has 350,000 members. <strong>Join In!</strong>
         </p>
         <div class="community-img d-flex">
-          <img src="img/pimage.png" alt="community">
-          <img class="community-ml" src="img/pimage4.png" alt="community">
-          <img class="community-ml" src="img/pimage2.png" alt="community">
-          <img class="community-ml" src="img/pimage3.png" alt="community">
+          <img src="https://joyselise.github.io/ronlogin/img/pimage.png" alt="community">
+          <img class="community-ml" src="https://joyselise.github.io/ronlogin/img/pimage4.png" alt="community">
+          <img class="community-ml" src="https://joyselise.github.io/ronlogin/img/pimage2.png" alt="community">
+          <img class="community-ml" src="https://joyselise.github.io/ronlogin/img/pimage3.png" alt="community">
           <div class="communityNumber community-ml bg-dark rounded-circle">
             <p class="text-light">401k</p>
           </div>
@@ -870,7 +870,11 @@ box-shadow: 0 10px 30px 0 rgba(13, 13, 13, 0.4); */
     <script>
       $('.heading h1').text('Welcome to Ron');
       $('.intro p').text('Create an account');
-      $('.city_li').after('<div class="form-check mt-3" id="termnnews"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked" checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>');$('#termnnews').on("change",":checkbox",function(){if(this.checked){$('#continue').show()}else{$('#continue').hide()}});
+      // $('.city_li').after('<div class="form-check mt-3" id="termnnews"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked" checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>');
+      
+      $('.city_li').after('<div class="form-check mt-3 pb-1"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions</b></a>.</label></div><div class="form-check"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked" checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>');$('#termschecked').on('change', function(){if($(this).is(":checked")){$('#continue').show();}else{$('#continue').hide();}});
+
+      // $('#termnnews').on("change",":checkbox",function(){if(this.checked){$('#continue').show()}else{$('#continue').hide()}});
       
       // $('#termschecked').on('change', function(){if($(this).is(":checked")){$('#continue').show();}else{$('#continue').hide();}});
     </script>
