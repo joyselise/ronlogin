@@ -151,8 +151,6 @@
 
       /* Nav bar  */
       .navbar {
-        background-color: #fff;
-        height: 120px;
         font-family: "Source Sans Pro", sans-serif;
       }
       .nav-link {
@@ -800,6 +798,7 @@ box-shadow: 0 10px 30px 0 rgba(13, 13, 13, 0.4); */
         background-color: #fff;
         max-width: 475px;
         border: 1px solid #EBEBEB;
+        width: 90%;
       }
       .join p{
         font-size: 27px;
@@ -822,26 +821,28 @@ box-shadow: 0 10px 30px 0 rgba(13, 13, 13, 0.4); */
         font-size: 16px;
         padding: 4px 0;
       }
+      @media screen  and (max-width:375px){
+        .wrapper {
+          padding: 0px;
+        }
+      }
+      .error.itemLevel.show {
+          color: red;
+      }
+      #requiredFieldMissing {
+          color: red;
+      }
+      #passwordEntryMismatch {
+        color: red;
+        margin-top: 5px;
+      }
     </style>
   </head>
   <body>
     <!-- nav -->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand fs-1 fw-semibold" href="#"
-          >RON <span class="fst-italic">ORP</span></a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand fs-1 fw-semibold pt-3" href="https://stg-ronreload.slsweb.ch/">RON <span class="fst-italic">ORP</span></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
         </div>
@@ -875,11 +876,12 @@ box-shadow: 0 10px 30px 0 rgba(13, 13, 13, 0.4); */
       $('.intro p').text('Create an account');
       // $('.city_li').after('<div class="form-check mt-3" id="termnnews"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked" checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>');
       
-      $('.city_li').after('<div class="form-check mt-3 pb-1"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions</b></a>.</label></div><div class="form-check"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>');$('#newssignupchecked').on('change',function(){conditionalContinueBtn()});$('#termschecked').on('change',function(){conditionalContinueBtn()});function conditionalContinueBtn(){if($('#termschecked').is(":checked")&&$('#newssignupchecked').is(":checked")){$('#continue').show()}else{$('#continue').hide()}}
+      $('.city_li').after('<div class="form-check mt-3 pb-1"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label></div><div class="form-check"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>');$('#newssignupchecked').on('change',function(){conditionalContinueBtn()});$('#termschecked').on('change',function(){conditionalContinueBtn()});function conditionalContinueBtn(){if($('#termschecked').is(":checked")&&$('#newssignupchecked').is(":checked")){$('#continue').show()}else{$('#continue').hide()}}
       // $('#termnnews').on("change",":checkbox",function(){if(this.checked){$('#continue').show()}else{$('#continue').hide()}});
       
       // $('#termschecked').on('change', function(){if($(this).is(":checked")){$('#continue').show();}else{$('#continue').hide();}});
-      
+      $('#continue').text('Sign Up');
+      $('#passwordEntryMismatch').insertAfter('#reenterPassword');
     </script>
   </body>
 </html>
