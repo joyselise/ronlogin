@@ -440,15 +440,16 @@
         padding: 0 20px;
         border: 0;
         font-size: 1em;
-        height: 50px;
+        height: 48px;
         right: 0;
         bottom: -38px;
         background-color: #0c0c0c;
         color: #fff;
-        border-radius: 0.5rem;
+        border-radius: 50px;
       }
       .verificationSuccessText{
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+        text-align: left !important;
       }
       #attributeList ul li .attrEntry .verificationControlContent .sendNewCode {
         width: 48.5%;
@@ -460,7 +461,10 @@
         bottom: -38px;
         background-color: #0c0c0c;
         color: #fff;
-        border-radius: px;
+        border-radius: 50px;
+      }
+      #requiredFieldMissing{
+        color: red;
       }
       #attributeList
         ul
@@ -486,18 +490,13 @@
         height: 50px;
         border-radius: 0.5rem;
       }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verificationControlContent
-        .changeClaims {
+      #attributeList ul li .attrEntry .verificationControlContent .changeClaims {
         border: none;
         color: #fff;
         background-color: #0c0c0c;
-        width: 60%;
-        height: 50px;
-        border-radius: 0.5rem;
+        width: 100%;
+        height: 48px;
+        border-radius: 50px;
       }
       #attributeList ul li .attrEntry .verify .editButton:hover {
         background-color: #0c0c0c;
@@ -876,7 +875,7 @@
         position: relative;
         width: 100%;
         padding-top: 6px;
-        padding-bottom: 6px;
+        margin-bottom: 10px;
         display: block;
       }
       .unified_container
@@ -1388,7 +1387,7 @@
     <script>
       $('#continue').text('Set New Password'); 
       $('.heading h1').text('Forgot Password ?'); 
-      $('<p class="headingp">No worries, you can reset it from here</p>').insertAfter('.heading h1'); 
+      $('<p class="headingp">No worries, verify your email and set new password</p>').insertAfter('.heading h1'); 
       $('#passwordEntryMismatch').insertAfter('#reenterPassword');
     </script>
   </body>
