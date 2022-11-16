@@ -158,7 +158,7 @@
         margin: 0 auto;
       }
       .heading h1 {
-        margin-bottom: 20px;
+        margin-bottom: 12px;
       }
       .col-lg-6 {
         max-width: 470px;
@@ -246,10 +246,10 @@
       }
       .buttons button {
         margin: 0 auto;
-        width: 60%;
-        height: 50px;
+        width: 100%;
+        height: 48px;
         background-color: #0c0c0c;
-        border-radius: 0.5rem;
+        border-radius: 50px;
         border: none;
         color: #fff;
         font-size: 1em;
@@ -257,7 +257,6 @@
       }
       .buttons button:hover {
         background-color: #0c0c0c;
-        border-color: #204d74;
       }
       .buttons button[aria-disabled="true"] {
         opacity: 0.3;
@@ -341,9 +340,11 @@
         margin-bottom: 0.5rem;
       }
       #attributeList ul li input {
-        height: 50px;
-        width: 70%;
-        border-radius: 0.5rem;
+        height: 48px;
+        width: 100%;
+        background: #F9F9F9;
+        border: 1px solid #DBD9D9;
+        border-radius: 12px;
         text-indent: 20px;
       }
       #attributeList ul li input:focus-visible {
@@ -596,20 +597,6 @@
           font-size: 1.5em;
           margin-top: 15px;
         }
-        #attributeVerification #attributeList ul li input {
-          width: 60%;
-          height: 40px;
-          border-radius: 0.5rem;
-          border: 1px solid #605e5c;
-          text-indent: 10px;
-        }
-        #attributeVerification
-          #attributeList
-          ul
-          li
-          input::-webkit-input-placeholder {
-          text-indent: 10px;
-        }
         #attributeVerification #attributeList ul li #email {
           width: 65%;
           float: left;
@@ -731,10 +718,10 @@
       }
       .unified_container .row .panel-default {
         padding: 40px 30px;
-        box-shadow: 0 10px 30px 0 rgb(0 0 0 / 10%);
         margin-top: auto;
         margin-bottom: auto;
         height: 100%;
+        border: 1px solid #EBEBEB;
         background-color: #fff;
       }
       .unified_container .row .panel-default .panel-body {
@@ -1368,6 +1355,12 @@
         color: red;
         margin-top: 5px;
       }
+      #fieldIncorrect{
+        color: red;
+      }
+      .headingp{
+        margin-bottom: 20px;
+      }
     </style>
   </head>
   <body>
@@ -1376,7 +1369,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="logo-wrapper">
-              <a class="navbar-brand fs-1 fw-semibold" href=""
+              <a class="navbar-brand fs-1 fw-semibold" href="https://stg-ronreload.slsweb.ch/"
                 >RON <span class="fst-italic">ORP</span></a>
             </div>
           </div>
@@ -1399,7 +1392,7 @@
     <script>
       $('#continue').text('Reset Password'); 
       $('.heading h1').text('Set new password'); 
-      $('<p class="">Please create a new password that you haven’t used previously.</p>').insertAfter('.heading h1'); 
+      $('<p class="headingp">Please create a new password that you haven’t used previously.</p>').insertAfter('.heading h1'); 
       $('#passwordEntryMismatch').insertAfter('#reenterPassword');
     </script>
   </body>
