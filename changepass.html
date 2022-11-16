@@ -1392,8 +1392,9 @@
     <script>
       $('#continue').text('Reset Password'); 
       $('.heading h1').text('Set new password'); 
-      $('<p class="headingp">The password must have at least 3 of the following: - a lowercase letter - an uppercase letter - a digit - a symbol</p>').insertAfter('.heading h1'); 
+      $('<p class="headingp">The password must have a lower and upper case letter, a digit and a symbol</p>').insertAfter('.heading h1'); 
       $('#passwordEntryMismatch').insertAfter('#reenterPassword');
+      $('#claimVerificationServerError').text('An account could not be found for the provided user ID. Try loging with your Social Accounts');
     </script>
   </body>
 </html>
