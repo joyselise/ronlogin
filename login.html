@@ -1433,7 +1433,6 @@
     </script>
     <script>
       $('<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fstg-backend-ronreload.slsweb.ch%2Flogin%2Fazure&scope=openid&response_type=id_token&prompt=login" class="appendText">Forgot Password?</a>').appendTo(".password-label");
-      // $('<a href="https://joyronreload.b2clogin.com/joyronreload.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=d54d9752-4f76-48d5-b0b4-f4314229a32e&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fdev-ronreload.slsweb.ch%2F&scope=openid&response_type=id_token&prompt=login" class="appendText" target="_blank">Forgot Your Password?</a>').appendTo(".password-label");
       $(document).ajaxComplete(function () {
         if ($(".error").is(":visible") && $(".error p").text().length > 0) {
           $(".error p").text(
@@ -1444,6 +1443,46 @@
       $('.social .intro h2').html('<b>Sign in Or Sign up</b> with your social account'); 
       $('#createAccount').text('Sign up with Email'); 
       $('.rememberMe label').text('Remember Me'); 
+      
+      function makePwdToggler(pwd){
+        // Create show-password checkbox
+        var checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        var id = pwd.id + 'toggler';
+        checkbox.setAttribute('id', id);
+
+        var label = document.createElement('label');
+        label.setAttribute('for', id);
+        label.appendChild(document.createTextNode('show password'));
+
+        var div = document.createElement('div');
+        div.appendChild(checkbox);
+        div.appendChild(label);
+
+        // Add show-password checkbox under password input
+        pwd.insertAdjacentElement('afterend', div);
+
+        // Add toggle password callback
+        function toggle(){
+          if(pwd.type === 'password'){
+            pwd.type = 'text';
+          } else {
+            pwd.type = 'password';
+          }
+        }
+        checkbox.onclick = toggle;
+        // For non-mouse usage
+        checkbox.onkeydown = toggle;
+      }
+
+      function setupPwdTogglers(){
+        var pwdInputs = document.querySelectorAll('input[type=password]');
+        for (var i = 0; i < pwdInputs.length; i++) {
+          makePwdToggler(pwdInputs[i]);
+        }
+      }
+      setupPwdTogglers();
+
     </script>
   </body>
 </html>
