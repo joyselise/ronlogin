@@ -1449,26 +1449,30 @@
       $('.social .intro h2').html('<b>Sign in Or Sign up</b> with your social account'); 
       $('#createAccount').text('Sign up with Email'); 
       $('.rememberMe label').text('Remember Me'); 
-      $('#password').addClass('testpass');
-      $('#password').closest('div').addClass('showpassword');
+      
       
       function makePwdToggler(pwd){
         // Create show-password checkbox
-        var checkbox = document.createElement('input');
-        checkbox.setAttribute('type', 'checkbox');
-        var id = pwd.id + 'toggler';
-        checkbox.setAttribute('id', id);
+        // var checkbox = document.createElement('input');
+        // checkbox.setAttribute('type', 'checkbox');
+        // var id = pwd.id + 'toggler';
+        // checkbox.setAttribute('id', id);
 
-        var label = document.createElement('label');
-        label.setAttribute('for', id);
-        label.appendChild(document.createTextNode('show password'));
+        // var label = document.createElement('label');
+        // label.setAttribute('for', id);
+        // label.appendChild(document.createTextNode('show password'));
 
-        var div = document.createElement('div');
-        div.appendChild(checkbox);
-        div.appendChild(label);
+        // var div = document.createElement('div');
+        // div.appendChild(checkbox);
+        // div.appendChild(label);
 
         // Add show-password checkbox under password input
         pwd.insertAdjacentElement('afterend', div);
+
+        var showpassImage =  document.createElement('img');
+        showpassImage.setAttribute ('src', 'https://joyselise.github.io/ronlogin/img/hidenpass.png');
+        showpassImage.setAttribute ('class', 'hidenpass');
+        pwd.insertAdjacentElement('afterend', showpassImage);
 
         // Add toggle password callback
         function toggle(){
@@ -1478,9 +1482,9 @@
             pwd.type = 'password';
           }
         }
-        checkbox.onclick = toggle;
+        checkbox.showpassImage = toggle;
         // For non-mouse usage
-        checkbox.onkeydown = toggle;
+        showpassImage.onkeydown = toggle;
       }
 
       function setupPwdTogglers(){
