@@ -1486,8 +1486,10 @@
         function toggle(){
           if(pwd.type === 'password'){
             pwd.type = 'text';
+            showpassImage.src = 'https://joyselise.github.io/ronlogin/img/openpass.png';
           } else {
             pwd.type = 'password';
+            showpassImage.src = 'https://joyselise.github.io/ronlogin/img/hidenpass.png';
           }
         }
         showpassImage.onclick = toggle;
