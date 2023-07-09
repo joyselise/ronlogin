@@ -1456,7 +1456,7 @@
       document.getElementById("GoogleExchange").innerText = "";
     </script>
     <script>
-      $('<a href="https://ronorpstg.b2clogin.com/ronorpstg.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_ron_pass_reset&client_id=dc1f58c8-b8ed-4008-b7b6-acb738201ec4&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fstg-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login">Forgot Password?</a>').appendTo(".password-label");
+      $('<a href="https://ronorpstg.b2clogin.com/ronorpstg.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_ron_pass_reset&client_id=dc1f58c8-b8ed-4008-b7b6-acb738201ec4&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fstg-ronreload.slsweb.ch&scope=openid&response_type=id_token&prompt=login" class="appendText">Forgot Password?</a>').appendTo(".password-label");
       $(document).ajaxComplete(function () {
         if ($(".error").is(":visible") && $(".error p").text().length > 0) {
           $(".error p").text(
