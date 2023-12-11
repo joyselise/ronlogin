@@ -101,7 +101,7 @@
       setupPwdTogglers();
       $('.sendNewCode').after('<p class="newcodeText" style="display:none;">Have not received any code yet?</p>');
 
-      // Select the elements
+      // for resend code
         var button = document.getElementById('emailVerificationControl_but_send_new_code');
         var paragraph = document.querySelector('.newcodeText');
 
@@ -131,6 +131,35 @@
 
         // Start observing the button
         observer.observe(button, { attributes: true });
+
+        // for verificatrions
+        var successMessageDiv = document.getElementById('emailVerificationControl_success_message');
+        var elementsToUpdate = document.querySelectorAll('.newPassword_li, .reenterPassword_li, .city_li, .termschecked, .newssignupchecked');
+
+        // Function to update display of elements
+        function updateElementDisplay() {
+            var displayStyle = successMessageDiv.style.display === 'inline' ? 'inline' : 'none';
+
+            elementsToUpdate.forEach(function(element) {
+                element.style.display = displayStyle;
+            });
+        }
+
+        // MutationObserver for style changes
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'style') {
+                    updateElementDisplay();
+                }
+            });
+        });
+
+        // Start observing the div
+        observer.observe(successMessageDiv, { attributes: true });
+
+        // Initial update in case the div already has the desired style
+        updateElementDisplay();
+
     </script>
   </body>
 </html>
