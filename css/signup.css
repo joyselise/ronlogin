@@ -882,7 +882,7 @@ letter-spacing: 0.07px;
      display: flex;
      flex-direction: row-reverse;
  }
-.sendNewCode {
+#emailVerificationControl_but_send_new_code {
      background-color: transparent;
      color: #000;
      position: absolute;
@@ -894,7 +894,7 @@ letter-spacing: 0.07px;
      font-size: 14px;
      font-weight: 600;
  }
-.sendNewCode:hover {
+#emailVerificationControl_but_send_new_code:hover {
      background-color: transparent;
      color: #000;
      position: absolute;
