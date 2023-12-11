@@ -144,7 +144,7 @@
                                   successMessageDiv.getAttribute('aria-label') === "E-mail address verified. You can now continue.";
 
             // Update display and styles for selected elements
-            var displayStyle = isEmailVerified ? 'inline' : 'none';
+            var displayStyle = isEmailVerified ? 'block' : 'none';
             elementsToUpdate.forEach(element => element.style.display = displayStyle);
 
             // Additional styles for email verification success
