@@ -100,7 +100,8 @@
 
       setupPwdTogglers();
       // Have not received any code yet?
-      $('.sendNewCode').after('<p class="newcodeText">Have not received any code yet?</p>');
+      $('.sendNewCode').after('<p class="newcodeText" style="display:none;">Have not received any code yet?</p>');
+      $('.sendCode').onclick(function(){$('.newcodeText').show();}
     </script>
   </body>
 </html>

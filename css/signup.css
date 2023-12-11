@@ -882,25 +882,31 @@ letter-spacing: 0.07px;
      display: flex;
      flex-direction: row-reverse;
  }
-#emailVerificationControl_but_send_new_code {
-     background-color: #f0ebeb;
+.sendNewCode {
+     background-color: transparent;
      color: #000;
      position: absolute;
-     right: 35px;
-     width: 35%;
-     text-transform: capitalize;
- }
-#emailVerificationControl_but_send_new_code:hover {
-     background-color: #f0ebeb;
-     color: #000;
-     position: absolute;
-     right: 35px;
-     width: 35%;
+     height: 25px;
+     right: 75px;
+     width: 30%;
+     top: 0px;
      text-transform: capitalize;
      font-size: 14px;
      font-weight: 600;
  }
- .newcodeText{
+.sendNewCode:hover {
+     background-color: transparent;
+     color: #000;
+     position: absolute;
+     height: 25px;
+     right: 75px;
+     width: 30%;
+     top: 0px;
+     text-transform: capitalize;
+     font-size: 14px;
+     font-weight: 600;
+ }
+ .newcodeText {
      color: #9E9E9E;
      font-family: Source Sans Pro;
      font-size: 14px;
@@ -908,4 +914,10 @@ letter-spacing: 0.07px;
      font-weight: 400;
      line-height: 22.4px;
      letter-spacing: 0.07px;
+     position: absolute;
+     left: 25px;
+     top: 16px;
+ }
+ .verifyCode{
+     margin: 55px 0 0 0;
  }
