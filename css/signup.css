@@ -861,8 +861,11 @@ display: none;
 display: none;
 }
 .newssignupchecked{
-display: none;
+     display: none;
 } */
+#emailVerificationControl_but_change_claims{
+display: none !important;
+}
 .loginPromptBtn{
 font-weight: 700;
 }

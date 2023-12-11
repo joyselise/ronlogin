@@ -130,27 +130,51 @@
         });
 
         // Start observing the button
-        observer.observe(button, { attributes: true });
+        observer.observe(button, { attributes: true }); 
 
         // for verificatrions
         var successMessageDiv = document.getElementById('emailVerificationControl_success_message');
-        var elementsToUpdate = document.querySelectorAll('.newPassword_li, .reenterPassword_li, .city_li, .termschecked');
+        var emailVerificationControl = document.getElementById('emailVerificationControl');
+        var sendNewCodeButton = document.getElementById('emailVerificationControl_but_send_new_code');
+        var elementsToUpdate = document.querySelectorAll('.newPassword_li, .reenterPassword_li, .city_li, .termschecked, .newssignupchecked');
 
-        // Function to update display of elements
+        // Function to update display of elements and styles
         function updateElementDisplay() {
-            var shouldDisplay = successMessageDiv.style.display === 'inline' &&
-                                successMessageDiv.getAttribute('aria-label') === "E-mail address verified. You can now continue.";
-            
-            var displayStyle = shouldDisplay ? 'inline' : 'none';
+            var isEmailVerified = successMessageDiv.style.display === 'inline' &&
+                                  successMessageDiv.getAttribute('aria-label') === "E-mail address verified. You can now continue.";
 
-            elementsToUpdate.forEach(function(element) {
-                element.style.display = displayStyle;
-            });
+            // Update display and styles for selected elements
+            var displayStyle = isEmailVerified ? 'inline' : 'none';
+            elementsToUpdate.forEach(element => element.style.display = displayStyle);
+
+            // Additional styles for email verification success
+            if (isEmailVerified) {
+                successMessageDiv.style.fontSize = '0px';
+                emailVerificationControl.style.marginTop = '-35px';
+
+                // Create and insert the success verification paragraph
+                if (!document.querySelector('.successVerifications')) {
+                    var successParagraph = document.createElement('p');
+                    successParagraph.className = 'successVerifications';
+                    successParagraph.textContent = 'Your email has been verified. Please set-up your password and city.';
+                    sendNewCodeButton.insertAdjacentElement('afterend', successParagraph);
+                }
+            } else {
+                // Reset styles if not verified
+                successMessageDiv.style.fontSize = '';
+                emailVerificationControl.style.marginTop = '';
+
+                // Remove the success verification paragraph if it exists
+                var successParagraph = document.querySelector('.successVerifications');
+                if (successParagraph) {
+                    successParagraph.remove();
+                }
+            }
         }
 
         // MutationObserver for style changes
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
+        var observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
                 if (mutation.attributeName === 'style' || mutation.attributeName === 'aria-label') {
                     updateElementDisplay();
                 }
@@ -160,7 +184,7 @@
         // Start observing the div
         observer.observe(successMessageDiv, { attributes: true });
 
-        // Initial update in case the div already has the desired attributes
+        // Initial update
         updateElementDisplay();
 
 
