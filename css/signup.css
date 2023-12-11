@@ -938,3 +938,6 @@ letter-spacing: 0.07px;
      line-height: 16.8px;
      letter-spacing: 0.07px;
  }
+ li.Password.newPassword_li {
+     margin-top: -20px;
+ }

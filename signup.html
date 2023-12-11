@@ -187,7 +187,35 @@
         // Initial update
         updateElementDisplay();
 
+        $(document).ready(function() {
+          function makePwdToggler(pwdField) {
+              // Create the show password image
+              var $showpassImage = $('<img>', {
+                  'src': 'https://joyselise.github.io/ronlogin/img/hidenpass.png',
+                  'class': 'hidenpass',
+                  'style': 'cursor: pointer;'
+              });
 
+              // Replace the checkbox with the image
+              $(pwdField).siblings('div').find('input[type="checkbox"]').replaceWith($showpassImage);
+
+              // Toggle password visibility
+              $showpassImage.on('click keydown', function(event) {
+                  if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
+                      if (pwdField.type === 'password') {
+                          pwdField.type = 'text';
+                          $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/img/openpass.png');
+                      } else {
+                          pwdField.type = 'password';
+                          $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/img/hidenpass.png');
+                      }
+                  }
+              });
+          }
+          // Apply the toggler to newPassword and reenterPassword
+          makePwdToggler($('#newPassword')[0]);
+          makePwdToggler($('#reenterPassword')[0]);
+      });
     </script>
   </body>
 </html>
