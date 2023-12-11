@@ -99,9 +99,31 @@
       }
 
       setupPwdTogglers();
-      // Have not received any code yet?
       $('.sendNewCode').after('<p class="newcodeText" style="display:none;">Have not received any code yet?</p>');
-      $(document).on('click', '.sendCode', function(){$('.newcodeText').show();});
+      $('.sendCode').click(function(){
+        $('.newcodeText').show();
+      });
+
+      // New code to hide or show the message based on the AJAX response
+      $('.sendCode').click(function(){
+        $.ajax({
+          url: "https://ronorpstg.b2clogin.com/ronorpstg.onmicrosoft.com/B2C_1_ron_signup_singin/SelfAsserted/DisplayControlAction/vbeta/emailVerificationControl/VerifyCode?tx=StateProperties=eyJUSUQiOiIxZjRiNGY0MS04MzAyLTRiZDgtYmQ0MS0xZmRiMTVlNTViOWYifQ&p=B2C_1_ron_signup_singin",
+          type: 'GET',
+          success: function(response) {
+            // Check if the response has status 200
+            if (response.status === "200") {
+              $('.newcodeText').hide();
+            } else {
+              $('.newcodeText').show();
+            }
+          },
+          error: function(xhr) {
+            // Handle any error that occurred in any of the requests
+            $('.newcodeText').show();
+          }
+        });
+      });
+
     </script>
   </body>
 </html>

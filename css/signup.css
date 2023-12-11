@@ -922,3 +922,7 @@ letter-spacing: 0.07px;
  #emailVerificationControl_but_verify_code{
      margin: 55px 0 0 0;
  }
+ #emailVerificationControl_error_message{
+     padding: 10px 0 0 0;
+     color: red;
+ }
