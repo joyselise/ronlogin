@@ -134,11 +134,14 @@
 
         // for verificatrions
         var successMessageDiv = document.getElementById('emailVerificationControl_success_message');
-        var elementsToUpdate = document.querySelectorAll('.newPassword_li, .reenterPassword_li, .city_li, .termschecked, .newssignupchecked');
+        var elementsToUpdate = document.querySelectorAll('.newPassword_li, .reenterPassword_li, .city_li, .termschecked');
 
         // Function to update display of elements
         function updateElementDisplay() {
-            var displayStyle = successMessageDiv.style.display === 'inline' ? 'inline' : 'none';
+            var shouldDisplay = successMessageDiv.style.display === 'inline' &&
+                                successMessageDiv.getAttribute('aria-label') === "E-mail address verified. You can now continue.";
+            
+            var displayStyle = shouldDisplay ? 'inline' : 'none';
 
             elementsToUpdate.forEach(function(element) {
                 element.style.display = displayStyle;
@@ -148,7 +151,7 @@
         // MutationObserver for style changes
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
-                if (mutation.attributeName === 'style') {
+                if (mutation.attributeName === 'style' || mutation.attributeName === 'aria-label') {
                     updateElementDisplay();
                 }
             });
@@ -157,8 +160,9 @@
         // Start observing the div
         observer.observe(successMessageDiv, { attributes: true });
 
-        // Initial update in case the div already has the desired style
+        // Initial update in case the div already has the desired attributes
         updateElementDisplay();
+
 
     </script>
   </body>
