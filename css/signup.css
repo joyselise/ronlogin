@@ -109,7 +109,7 @@ a.helpLink.tiny {
   font-size: 1em;
   border: none;
   margin-left: auto;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 /* global css */
@@ -881,6 +881,7 @@ letter-spacing: 0.07px;
 .buttons {
      display: flex;
      flex-direction: row-reverse;
+     position: relative;
  }
 #emailVerificationControl_but_send_new_code {
      background-color: transparent;
@@ -918,6 +919,6 @@ letter-spacing: 0.07px;
      left: 25px;
      top: 16px;
  }
- .verifyCode{
+ #emailVerificationControl_but_verify_code{
      margin: 55px 0 0 0;
  }
