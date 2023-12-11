@@ -848,7 +848,7 @@ transition: all 0.5s ease-in-out;
 width: 100%;
 border-radius: 12px;
 }
-.newPassword_li{
+/* .newPassword_li{
 display: none;
 }
 .reenterPassword_li{
@@ -862,7 +862,7 @@ display: none;
 }
 .newssignupchecked{
 display: none;
-}
+} */
 .loginPromptBtn{
 font-weight: 700;
 }
