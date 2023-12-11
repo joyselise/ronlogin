@@ -823,11 +823,11 @@ button#cancel {
   color: red;
   margin-top: 5px;
 }
-label[for="newPasswordtoggler"]{
-  margin: 5px 0 0 8px !important;
-}
+label[for="newPasswordtoggler"] {
+     display: none;
+ }
 label[for="reenterPasswordtoggler"]{
-  margin: 5px 0 0 8px !important;
+     display: none;
 }
 input[type="text"] {
 background-color: #f9f9f9;
@@ -940,4 +940,22 @@ letter-spacing: 0.07px;
  }
  li.Password.newPassword_li {
      margin-top: -20px;
+     position: relative;
+ }
+ li.Password.reenterPassword_li {
+     position: relative;
+ }
+ img.hidenpass {
+     width: 40px;
+     position: absolute;
+     right: 0px;
+     top: 17px;
+     padding: 16px 10px;
+ }
+ img.hidenpass2 {
+     width: 40px;
+     position: absolute;
+     right: 0px;
+     top: 64px;
+     padding: 16px 10px;
  }
