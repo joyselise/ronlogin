@@ -95,9 +95,6 @@ li.VerificationControl.emailVerificationControl_li {
   letter-spacing: 0.07px;
   padding: 14px 0 0;
 }
-.verificationErrorText.error {
-  padding: 0 0 10px 0;
-}
 #newPassword_label {
   display: none;
 }
@@ -402,7 +399,7 @@ input[type="email"] {
   -webkit-border-radius: 5px 5px 5px 5px;
   width: 100%;
   border-radius: 4px;
-  margin-bottom: 7px;
+  margin-bottom: 20px;
 }
 
 input[type="email"]:focus {
