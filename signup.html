@@ -138,8 +138,6 @@
         var emailVerificationControl = document.getElementById('emailVerificationControl');
         var sendNewCodeButton = document.getElementById('emailVerificationControl_but_send_new_code');
         var elementsToUpdate = document.querySelectorAll('.newPassword_li, .reenterPassword_li, .city_li, .termschecked, .newssignupchecked');
-        var emailLabel = document.getElementById('email_label');
-        var buttonFlex = document.querySelector('.buttons');
 
         // Function to update display of elements and styles
         function updateElementDisplay() {
@@ -154,8 +152,6 @@
             if (isEmailVerified) {
                 successMessageDiv.style.fontSize = '0px';
                 emailVerificationControl.style.marginTop = '-35px';
-                emailLabel.css('display', 'none');
-                buttonFlex.css('flexDirection', 'row'); 
 
                 // Create and insert the success verification paragraph
                 if (!document.querySelector('.successVerifications')) {
