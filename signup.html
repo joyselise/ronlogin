@@ -185,64 +185,99 @@
         // Start observing the div
         observer.observe(successMessageDiv, { attributes: true });
 
-        // Initial update
-        updateElementDisplay();
+          // Initial update
+          updateElementDisplay();
+
+          $(document).ready(function() {
+              function makePwdToggler(pwdField) {
+                  // Create the show password image
+                  var $showpassImage = $('<img>', {
+                      'src': 'https://joyselise.github.io/ronlogin/img/hidenpass.png',
+                      'class': 'hidenpass',
+                      'style': 'cursor: pointer;'
+                  });
+
+                  // Replace the checkbox with the image
+                  $(pwdField).siblings('div').find('input[type="checkbox"]').replaceWith($showpassImage);
+
+                  // Toggle password visibility
+                  $showpassImage.on('click keydown', function(event) {
+                      if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
+                          if (pwdField.type === 'password') {
+                              pwdField.type = 'text';
+                              $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/img/openpass.png');
+                          } else {
+                              pwdField.type = 'password';
+                              $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/img/hidenpass.png');
+                          }
+                      }
+                  });
+              }
+              // Apply the toggler to newPassword and reenterPassword
+              makePwdToggler($('#newPassword')[0]);
+              makePwdToggler($('#reenterPassword')[0]);
+          });
+          $(document).ready(function() {
+            function checkVerificationCodeDisplay() {
+                var verificationCodeLi = $('.emailVerificationCode_li');
+                var emailLabel = $('#email_label');
+
+                // Check if the verification code li is displayed inline
+                if (verificationCodeLi.css('display') === 'inline') {
+                    // Hide the email label
+                    emailLabel.css('display', 'none');
+                } else {
+                    // Show the email label
+                    emailLabel.css('display', '');
+                }
+            }
+
+            // Call the function initially
+            checkVerificationCodeDisplay();
+
+            // Set up a MutationObserver to watch for changes to the verification code li element
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                        checkVerificationCodeDisplay();
+                    }
+                });
+            });
+
+            // Start observing the verification code li element
+            var targetNode = document.querySelector('.emailVerificationCode_li');
+            observer.observe(targetNode, { attributes: true });
+        });
 
         $(document).ready(function() {
-          function makePwdToggler(pwdField) {
-              // Create the show password image
-              var $showpassImage = $('<img>', {
-                  'src': 'https://joyselise.github.io/ronlogin/img/hidenpass.png',
-                  'class': 'hidenpass',
-                  'style': 'cursor: pointer;'
-              });
+          function checkVerificationErrorMessageDisplay() {
+              var verificationErrorMessage = $('#emailVerificationControl_error_message');
+              var verificationErrorTextDiv = $('.verificationErrorText.error');
 
-              // Replace the checkbox with the image
-              $(pwdField).siblings('div').find('input[type="checkbox"]').replaceWith($showpassImage);
-
-              // Toggle password visibility
-              $showpassImage.on('click keydown', function(event) {
-                  if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
-                      if (pwdField.type === 'password') {
-                          pwdField.type = 'text';
-                          $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/img/openpass.png');
-                      } else {
-                          pwdField.type = 'password';
-                          $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/img/hidenpass.png');
-                      }
-                  }
-              });
-          }
-          // Apply the toggler to newPassword and reenterPassword
-          makePwdToggler($('#newPassword')[0]);
-          makePwdToggler($('#reenterPassword')[0]);
-
-          // email label hide based on verification_li
-          function checkVerificationCodeDisplay() {
-              var verificationCodeLi = $('.emailVerificationCode_li');
-              var emailLabel = $('#email_label');
-
-              // Check if the verification code li is displayed inline
-              if (verificationCodeLi.css('display') === 'inline') {
-                  // Hide the email label
-                  emailLabel.css('display', 'none');
+              // Check if the verification error message is displayed inline
+              if (verificationErrorMessage.css('display') === 'inline') {
+                  // Add padding to the verificationErrorTextDiv
+                  verificationErrorTextDiv.css('padding-bottom', '10px');
               } else {
-                  // Show the email label
-                  emailLabel.css('display', '');
+                  // Remove the added padding from verificationErrorTextDiv
+                  verificationErrorTextDiv.css('padding-bottom', '');
               }
           }
+
           // Call the function initially
-          checkVerificationCodeDisplay();
-          // Set up a MutationObserver to watch for changes to the verification code li element
+          checkVerificationErrorMessageDisplay();
+
+          // Set up a MutationObserver to watch for changes to the verification error message div element
           var observer = new MutationObserver(function(mutations) {
               mutations.forEach(function(mutation) {
                   if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                      checkVerificationCodeDisplay();
+                      checkVerificationErrorMessageDisplay();
                   }
               });
           });
-          // Start observing the verification code li element
-          var targetNode = document.querySelector('.emailVerificationCode_li');
+
+          // Start observing the verification error message div element
+          var targetNode = document.querySelector('#emailVerificationControl_error_message');
           observer.observe(targetNode, { attributes: true });
       });
     </script>
