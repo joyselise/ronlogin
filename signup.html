@@ -151,7 +151,8 @@
             // Additional styles for email verification success
             if (isEmailVerified) {
                 successMessageDiv.style.fontSize = '0px';
-                emailVerificationControl.style.marginTop = '-35px';
+                emailVerificationControl.style.marginTop = '';
+                // emailVerificationControl.style.marginTop = '-35px';
 
                 // Create and insert the success verification paragraph
                 if (!document.querySelector('.successVerifications')) {
@@ -280,6 +281,41 @@
           var targetNode = document.querySelector('#emailVerificationControl_error_message');
           observer.observe(targetNode, { attributes: true });
       });
+      $(document).ready(function() {
+          function adjustStylesBasedOnNewPasswordDisplay() {
+              var newPasswordLi = $('.newPassword_li');
+              var emailLabel = $('#email_label');
+              var buttonsDiv = $('.buttons');
+
+              // Check if the new password li is displayed as block
+              if (newPasswordLi.css('display') === 'block') {
+                  // Hide the email label and change flex-direction of buttons
+                  emailLabel.css('display', 'none');
+                  buttonsDiv.css('flex-direction', 'row');
+              } else {
+                  // Reset the styles if the condition does not match
+                  emailLabel.css('display', '');
+                  buttonsDiv.css('flex-direction', 'row-reverse');
+              }
+          }
+
+          // Call the function initially
+          adjustStylesBasedOnNewPasswordDisplay();
+
+          // Set up a MutationObserver to watch for changes to the new password li element
+          var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                      adjustStylesBasedOnNewPasswordDisplay();
+                  }
+              });
+          });
+
+          // Start observing the new password li element
+          var targetNode = document.querySelector('.newPassword_li');
+          observer.observe(targetNode, { attributes: true });
+      });
+
     </script>
   </body>
 </html>
