@@ -73,7 +73,30 @@ ul {
   padding-left: 0;
 }
 #email_label {
-  display: none;
+  color: #666;
+  font-family: "Source Sans Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0.07px;
+  padding-bottom: 17px;
+}
+li.VerificationControl.emailVerificationControl_li {
+  margin-top: -5px;
+}
+#emailVerificationCode_label {
+  color: #212121;
+  font-family: "Source Sans Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0.07px;
+  padding: 14px 0 0;
+}
+.verificationErrorText.error {
+  padding: 0 0 10px 0;
 }
 #newPassword_label {
   display: none;
@@ -335,11 +358,11 @@ input[type="text"] {
 }
 
 select {
-  color: #0d0d0d;
-  padding: 10px 16px;
+  color: #212121;
+  padding: 12px 13px;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   height: 48px;
   border: 1px solid #dbd9d9;
   -webkit-transition: all 0.5s ease-in-out;
@@ -348,11 +371,11 @@ select {
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 4px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url("https://joyselise.github.io/ronlogin/img/br_down.png") no-repeat 95% #f9f9f9;
+  background: url("https://joyselise.github.io/ronlogin/img/br_down.svg") no-repeat 95% #f9f9f9;
 }
 
 select::-ms-expand {
@@ -380,13 +403,16 @@ input[type="text"]:focus {
 #next:hover {
   background-color: #131313;
 }
+#emailVerificationControl_success_message {
+  display: none !important;
+}
 input[type="email"] {
   background-color: #F9F9F9;
   color: #0d0d0d;
-  padding: 17px 16px;
+  padding: 12px 13px;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   height: 48px;
   border: 1px solid #dbd9d9;
   -webkit-transition: all 0.5s ease-in-out;
@@ -396,7 +422,7 @@ input[type="email"] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 4px;
   margin-bottom: 7px;
 }
 
@@ -408,10 +434,10 @@ input[type="email"]:focus {
 input[type="password"] {
   background-color: #f9f9f9;
   color: #0d0d0d;
-  padding: 17px 16px;
+  padding: 12px 13px;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 16px 0 0 0;
   height: 48px;
   border: 1px solid #dbd9d9;
@@ -422,7 +448,7 @@ input[type="password"] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 input[type="password"]:focus {
@@ -763,20 +789,27 @@ animation-delay: 0.8s;
 
 button#continue {
     display: none;
+    margin-bottom: 24px;
 }
 button#cancel {
     display: none;
 }
 .heading h1{
+  color: #212121;
+  font-family: "Source Sans Pro";
   font-size: 28px;
-  line-height: 120%;
+  font-style: normal;
   font-weight: 700;
-  letter-spacing: 0.005em;
-  color: #2C2C2C;
+  line-height: 120%;
+  letter-spacing: 0.14px;
 }
 .intro p {
+  color: #212121;
+  font-family: "Source Sans Pro";
   font-size: 20px;
+  font-style: normal;
   font-weight: 400;
+  line-height: 120%;
   margin-bottom: 0;
 }
 .join{
@@ -937,6 +970,7 @@ letter-spacing: 0.07px;
      font-weight: 400;
      line-height: 16.8px;
      letter-spacing: 0.07px;
+     padding: 14px 0;
  }
  li.Password.newPassword_li {
      margin-top: -20px;

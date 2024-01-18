@@ -54,7 +54,8 @@
     <script>
       $('.heading h1').text('Welcome to Ron');
       $('.intro p').text('Create an account');
-      $('#emailVerificationCode_label').text('Enter the verification code');
+      $('#email_label').text('Enter your email to verify your profile');
+      $('#emailVerificationCode_label').text('Please enter the verification code that has been sent to your inbox.');
       $('#emailVerificationControl_but_send_new_code').text('Resend Code');
       $('.city_li').after('<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>');$('#newssignupchecked').on('change',function(){conditionalContinueBtn()});$('#termschecked').on('change',function(){conditionalContinueBtn()});function conditionalContinueBtn(){if($('#termschecked').is(":checked")&&$('#newssignupchecked').is(":checked")){$('#continue').show()}else{$('#continue').hide()}}
       $('#continue').text('Sign Up');
@@ -156,7 +157,7 @@
                 if (!document.querySelector('.successVerifications')) {
                     var successParagraph = document.createElement('p');
                     successParagraph.className = 'successVerifications';
-                    successParagraph.textContent = 'Your email has been verified. Please set-up your password and city.';
+                    successParagraph.textContent = 'You email has been verified. Please set-up your Password and City';
                     sendNewCodeButton.insertAdjacentElement('afterend', successParagraph);
                 }
             } else {
@@ -215,6 +216,34 @@
           // Apply the toggler to newPassword and reenterPassword
           makePwdToggler($('#newPassword')[0]);
           makePwdToggler($('#reenterPassword')[0]);
+
+          // email label hide based on verification_li
+          function checkVerificationCodeDisplay() {
+              var verificationCodeLi = $('.emailVerificationCode_li');
+              var emailLabel = $('#email_label');
+
+              // Check if the verification code li is displayed inline
+              if (verificationCodeLi.css('display') === 'inline') {
+                  // Hide the email label
+                  emailLabel.css('display', 'none');
+              } else {
+                  // Show the email label
+                  emailLabel.css('display', '');
+              }
+          }
+          // Call the function initially
+          checkVerificationCodeDisplay();
+          // Set up a MutationObserver to watch for changes to the verification code li element
+          var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                      checkVerificationCodeDisplay();
+                  }
+              });
+          });
+          // Start observing the verification code li element
+          var targetNode = document.querySelector('.emailVerificationCode_li');
+          observer.observe(targetNode, { attributes: true });
       });
     </script>
   </body>
