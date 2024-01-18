@@ -152,6 +152,7 @@
             if (isEmailVerified) {
                 successMessageDiv.style.fontSize = '0px';
                 emailVerificationControl.style.marginTop = '-35px';
+                emailLabel.css('display', 'none'); // Hide the email label
 
                 // Create and insert the success verification paragraph
                 if (!document.querySelector('.successVerifications')) {
