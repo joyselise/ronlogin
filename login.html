@@ -11,7 +11,19 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link rel="icon" type="image/x-icon" href="https://joyselise.github.io/ronlogin/img/favicon.ico">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://joyselise.github.io/ronlogin/img/favicon.ico"
+    />
+    <!--============ Source sans 3 fonts start ============-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <!--============ Source sans 3 fonts end ============-->
     <style id="common">
       @font-face {
         font-family: "SegoeUI";
@@ -747,17 +759,17 @@
       /* Following are generated styles via gulp. */
       /* inject: css */
       .panel {
-          padding-top: 100px !important;
-          position: relative;
+        padding-top: 100px !important;
+        position: relative;
       }
       .create {
-          position: absolute;
-          top: 70px;
+        position: absolute;
+        top: 70px;
       }
-      #rememberMe{
+      #rememberMe {
         accent-color: #000;
       }
-      .rememberMe label{
+      .rememberMe label {
         font-weight: 400;
       }
       .appendText {
@@ -782,20 +794,20 @@
       div#claimVerificationServerError {
         color: red;
       }
-      .unified_container .row .panel-default {
+      /* .unified_container .row .panel-default {
         padding: 0px 30px;
         box-shadow: 0 10px 30px 0 rgb(0 0 0 / 10%);
         margin-top: auto;
         margin-bottom: auto;
         height: 100%;
         background-color: #fff;
-      }
-      .unified_container .row .panel-default .panel-body {
+      } */
+      /* .unified_container .row .panel-default .panel-body {
         max-width: 380px;
         width: auto;
         margin: 0 auto;
         padding: 0;
-      }
+      } */
       .unified_container .row .panel-default .panel-body .companyName {
         font-size: 1.5em;
         margin-bottom: 45px;
@@ -833,9 +845,6 @@
       .unified_container .row .panel-default #api .localAccount {
         top: 10px;
         width: 100%;
-      }
-      .unified_container .row .panel-default #api .localAccount .intro h2 {
-        font-size: 20px;
       }
       .unified_container .row .panel-default #api .localAccount .error {
         color: #b00;
@@ -947,10 +956,17 @@
         margin-bottom: 10px;
         display: block;
       }
-      .unified_container .row .panel-default #api .localAccount .entry .entry-item label[for="email"]{
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        label[for="email"] {
         display: none !important;
       }
-      
+
       .unified_container
         .row
         .panel-default
@@ -961,13 +977,20 @@
         input:focus {
         border: 1px solid #9f9f9f;
       }
-      .unified_container .row .panel-default #api .localAccount .entry .entry-item input {
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input {
         outline: 0;
         background-image: none !important;
         background: #f9f9f9;
-        border: 1px solid #EBEBEB;
+        border: 1px solid #ebebeb;
         border-radius: 12px;
-        color: #2C2C2C;
+        color: #2c2c2c;
         display: inline-block;
         font-size: 1em;
         height: 48px;
@@ -975,8 +998,10 @@
         padding: 13px 16px;
         transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
         width: 100% !important;
-        -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
-        -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s !important;
+        -o-transition: border-color ease-in-out 0.15s,
+          box-shadow ease-in-out 0.15s !important;
+        -webkit-transition: border-color ease-in-out 0.15s,
+          -webkit-box-shadow ease-in-out 0.15s !important;
       }
       .unified_container
         .row
@@ -1106,7 +1131,7 @@
         top: 1px;
         width: auto;
       }
-      
+
       .unified_container .row .panel-default #api .accountButton:hover {
         color: #fff;
         background-color: #0c0c0c;
@@ -1265,28 +1290,52 @@
         }
       }
       @media screen and (max-width: 320) {
-        #createAccount{
+        #createAccount {
           width: 90%;
         }
       }
-      @media only screen and (min-width: 320px) and (max-width: 375px){
-        .unified_container .row .panel-default #api .localAccount .create #createAccount{
-            width: 95%;
+      @media only screen and (min-width: 320px) and (max-width: 375px) {
+        .unified_container
+          .row
+          .panel-default
+          #api
+          .localAccount
+          .create
+          #createAccount {
+          width: 95%;
         }
       }
-      @media only screen and (min-width: 376px) and (max-width: 400px){
-        .unified_container .row .panel-default #api .localAccount .create #createAccount{
-            width: 100%;
+      @media only screen and (min-width: 376px) and (max-width: 400px) {
+        .unified_container
+          .row
+          .panel-default
+          #api
+          .localAccount
+          .create
+          #createAccount {
+          width: 100%;
         }
       }
-      @media only screen and (min-width: 401px) and (max-width: 425px){
-        .unified_container .row .panel-default #api .localAccount .create #createAccount{
-            width: 111%;
+      @media only screen and (min-width: 401px) and (max-width: 425px) {
+        .unified_container
+          .row
+          .panel-default
+          #api
+          .localAccount
+          .create
+          #createAccount {
+          width: 111%;
         }
       }
-      @media only screen and (min-width: 426px) and (max-width: 2560px){
-        .unified_container .row .panel-default #api .localAccount .create #createAccount{
-            width: 115%;
+      @media only screen and (min-width: 426px) and (max-width: 2560px) {
+        .unified_container
+          .row
+          .panel-default
+          #api
+          .localAccount
+          .create
+          #createAccount {
+          width: 115%;
         }
       }
       @media screen and (max-width: 320px) {
@@ -1296,7 +1345,7 @@
           margin-left: 0;
           width: 100%;
         }
-        #createAccount{
+        #createAccount {
           width: 90%;
         }
         .unified_container
@@ -1400,12 +1449,12 @@
         height: 35px;
       }
       input#passwordtoggler {
-          position: absolute;
-          left: -184px;
-          height: 13px !important;
-          top: 72px;
+        position: absolute;
+        left: -184px;
+        height: 13px !important;
+        top: 72px;
       }
-      label[for="passwordtoggler"]{
+      label[for="passwordtoggler"] {
         position: absolute !important;
         top: 66px !important;
         left: 22px !important;
@@ -1421,6 +1470,181 @@
         padding: 15px 12px;
       }
     </style>
+
+    <!--============== Tanim's style for login card start ===============-->
+    <style>
+      .unified_container .row .panel-default {
+        padding: 40px;
+        max-width: 456px;
+        width: 100%;
+        background-color: #ffffff;
+        border: 1px solid #ebebeb;
+      }
+      .unified_container .row .panel-default #api .localAccount .intro h2 {
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 35px;
+        color: #212121;
+      }
+      .unified_container .row .panel-default #api .localAccount .entry {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input,
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input:hover,
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input:focus {
+        padding: 13px 16px;
+        background-color: #f9f9f9;
+        border: 1px solid #dbd9d9;
+        border-radius: 2px;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input::placeholder {
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: #212121;
+        letter-spacing: 0.08px;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        #password,
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        #password:hover,
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        #password:focus {
+        padding: 13px 16px;
+        background-color: #f9f9f9;
+        border: 1px solid #dbd9d9;
+        border-radius: 2px;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        #password::placeholder {
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: #212121;
+        letter-spacing: 0.08px;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .buttons {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 8px 0 0 0;
+      }
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .buttons
+        button,
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .buttons
+        button:hover,
+      .unified_container
+        .row
+        .panel-default
+        #api
+        .localAccount
+        .entry
+        .buttons
+        button:focus {
+        display: block;
+        width: 100%;
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 22px;
+        color: #ffffff;
+        letter-spacing: 0.07px;
+        padding: 11px 15px;
+        text-transform: capitalize;
+        border: 1px solid #1a171b;
+        background-color: #1a171b;
+        border-radius: 100px;
+      }
+    </style>
+    <!--============== Tanim's style for login card end ===============-->
   </head>
   <body>
     <header>
@@ -1428,10 +1652,16 @@
         <div class="row">
           <div class="col-md-12">
             <div class="logo-wrapper">
-              <a class="navbar-brand fs-1 fw-semibold" href="https://ronreload.selisestage.com/">
-                <img src="https://joyselise.github.io/ronlogin/img/ron_logo.svg" alt="ron-logo" style="width:140px;">
-              </a
+              <a
+                class="navbar-brand fs-1 fw-semibold"
+                href="https://ronreload.selisestage.com/"
               >
+                <img
+                  src="https://joyselise.github.io/ronlogin/img/ron_logo.svg"
+                  alt="ron-logo"
+                  style="width: 140px"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -1456,7 +1686,9 @@
       document.getElementById("GoogleExchange").innerText = "";
     </script>
     <script>
-      $('<a href="https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=6c8924a1-d842-49eb-b1d2-e8857b26dfbc&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fron-backend.selisestage.com%2Flogin%2Fazureadb2c%2Fcallback&scope=openid&response_type=code&prompt=login" class="appendText">Forgot Password?</a>').appendTo(".password-label");
+      $(
+        '<a href="https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=6c8924a1-d842-49eb-b1d2-e8857b26dfbc&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fron-backend.selisestage.com%2Flogin%2Fazureadb2c%2Fcallback&scope=openid&response_type=code&prompt=login" class="appendText">Forgot Password?</a>'
+      ).appendTo(".password-label");
       $(document).ajaxComplete(function () {
         if ($(".error").is(":visible") && $(".error p").text().length > 0) {
           $(".error p").text(
@@ -1464,12 +1696,13 @@
           );
         }
       });
-      $('.social .intro h2').html('<b>Sign in Or Sign up</b> with your social account'); 
-      $('#createAccount').text('Sign up with Email'); 
-      $('.rememberMe label').text('Remember Me'); 
-      
-      
-      function makePwdToggler(pwd){
+      $(".social .intro h2").html(
+        "<b>Sign in Or Sign up</b> with your social account"
+      );
+      $("#createAccount").text("Sign up with Email");
+      $(".rememberMe label").text("Remember Me");
+
+      function makePwdToggler(pwd) {
         // Create show-password checkbox
         // var checkbox = document.createElement('input');
         // checkbox.setAttribute('type', 'checkbox');
@@ -1487,19 +1720,24 @@
         // Add show-password checkbox under password input
         // pwd.insertAdjacentElement('afterend', div);
 
-        var showpassImage =  document.createElement('img');
-        showpassImage.setAttribute ('src', 'https://joyselise.github.io/ronlogin/img/hidenpass.png');
-        showpassImage.setAttribute ('class', 'hidenpass');
-        pwd.insertAdjacentElement('afterend', showpassImage);
+        var showpassImage = document.createElement("img");
+        showpassImage.setAttribute(
+          "src",
+          "https://joyselise.github.io/ronlogin/img/hidenpass.png"
+        );
+        showpassImage.setAttribute("class", "hidenpass");
+        pwd.insertAdjacentElement("afterend", showpassImage);
 
         // Add toggle password callback
-        function toggle(){
-          if(pwd.type === 'password'){
-            pwd.type = 'text';
-            showpassImage.src = 'https://joyselise.github.io/ronlogin/img/openpass.png';
+        function toggle() {
+          if (pwd.type === "password") {
+            pwd.type = "text";
+            showpassImage.src =
+              "https://joyselise.github.io/ronlogin/img/openpass.png";
           } else {
-            pwd.type = 'password';
-            showpassImage.src = 'https://joyselise.github.io/ronlogin/img/hidenpass.png';
+            pwd.type = "password";
+            showpassImage.src =
+              "https://joyselise.github.io/ronlogin/img/hidenpass.png";
           }
         }
         showpassImage.onclick = toggle;
@@ -1507,14 +1745,21 @@
         showpassImage.onkeydown = toggle;
       }
 
-      function setupPwdTogglers(){
-        var pwdInputs = document.querySelectorAll('input[type=password]');
+      function setupPwdTogglers() {
+        var pwdInputs = document.querySelectorAll("input[type=password]");
         for (var i = 0; i < pwdInputs.length; i++) {
           makePwdToggler(pwdInputs[i]);
         }
       }
       setupPwdTogglers();
-
     </script>
+
+    <!--=============== Tanim's written scripts start ==============-->
+    <script>
+      $(document).ready(function () {
+        $("h2[aria-level='1']").text("Log in");
+      });
+    </script>
+    <!--=============== Tanim's written scripts end ==============-->
   </body>
 </html>
