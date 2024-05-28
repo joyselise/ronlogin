@@ -20,7 +20,7 @@
     <style>
       @font-face {
         font-family: "Source Sans Pro", sans-serif;
-        src: url("https://github.com/kowsertanim/common-images/blob/main/SourceSansPro-Regular.otf")
+        src: url("https://joyselise.github.io/ronlogin/fonts/SourceSansPro-Regular.otf")
           format("truetype");
       }
       body {
@@ -40,7 +40,7 @@
         align-items: center;
       }
       .btn-box {
-        display: flex;
+        display: none;
         justify-content: flex-end;
         align-items: center;
         gap: 15px;
@@ -365,7 +365,7 @@
             <a href="#">
               <figure class="mb-0">
                 <img
-                  src="https://raw.githubusercontent.com/kowsertanim/common-images/main/logo.svg"
+                  src="https://joyselise.github.io/ronlogin/img/logo.svg"
                   class="img-fluid mobile-logo"
                   alt="logo"
                 />
@@ -424,7 +424,7 @@
         var showpassImage = document.createElement("img");
         showpassImage.setAttribute(
           "src",
-          "https://raw.githubusercontent.com/kowsertanim/common-images/main/hidden-passcode.svg"
+          "https://joyselise.github.io/ronlogin/img/hidden-passcode.svg"
         );
         showpassImage.setAttribute("class", "passcode");
         pwd.insertAdjacentElement("afterend", showpassImage);
@@ -434,11 +434,11 @@
           if (pwd.type === "password") {
             pwd.type = "text";
             showpassImage.src =
-              "https://raw.githubusercontent.com/kowsertanim/common-images/main/hidden-passcode.svg";
+              "https://joyselise.github.io/ronlogin/img/openpass.png";
           } else {
             pwd.type = "password";
             showpassImage.src =
-              "https://raw.githubusercontent.com/kowsertanim/common-images/main/hidden-passcode.svg";
+              "https://joyselise.github.io/ronlogin/img/hidden-passcode.svg";
           }
         }
         showpassImage.onclick = toggle;
@@ -475,17 +475,11 @@
         $(".social .options div #GoogleExchange")
           .html("<img />")
           .find("img")
-          .attr(
-            "src",
-            "https://raw.githubusercontent.com/kowsertanim/common-images/main/google.svg"
-          );
+          .attr("src", "https://joyselise.github.io/ronlogin/img/google.svg");
         $(".social .options div #FacebookExchange")
           .html("<img />")
           .find("img")
-          .attr(
-            "src",
-            "https://raw.githubusercontent.com/kowsertanim/common-images/main/facebook.svg"
-          );
+          .attr("src", "https://joyselise.github.io/ronlogin/img/facebook.svg");
       });
     </script>
     <!--=============== Tanim's written scripts end ==============-->
