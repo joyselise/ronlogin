@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ron ORP Login</title>
+    <title>Ron ORP Password Reset</title>
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -417,9 +417,9 @@
       //     );
       //   }
       // });
-      // $(".error p").text(
-      //   "We can't seem to find your account. Try logging in with your social account or sign up."
-      // );
+      $(".error p").text(
+        "We can't seem to find your account. Try logging in with your social account or sign up."
+      );
       $("#createAccount").text("Create an account");
       $(".rememberMe label").text("Remember Me");
 
@@ -471,7 +471,7 @@
         $("#api .create").insertAfter("#api .social");
         $("#api .localAccount .entry .buttons #next").text("Login");
         $(".social .intro h2")
-          .html("<p>Or log in / sign up with</p>")
+          .html("<p>Or log in with</p>")
           .find("p")
           .addClass("with-text");
         $(".social .options div #GoogleExchange")
