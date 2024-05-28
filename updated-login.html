@@ -16,6 +16,10 @@
       type="image/x-icon"
       href="https://joyselise.github.io/ronlogin/img/favicon.ico"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
     <!--============= Common CSS start ============-->
     <style>
       @font-face {
@@ -95,7 +99,7 @@
           padding: 11px 25px;
         }
         .whole-box {
-          padding: 0 15px;
+          padding: 15px;
           min-height: 70vh;
         }
       }
@@ -159,7 +163,13 @@
         .entry-item
         .password-label
         a.appendText {
-        display: block;
+        display: none;
+      }
+      .visibility-off.material-symbols-outlined {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 13px;
       }
       .whole-box .box-center #api .localAccount .entry .entry-item input,
       .whole-box .box-center #api .localAccount .entry .entry-item input:hover,
@@ -193,8 +203,8 @@
       }
       .passcode {
         position: absolute;
-        right: -3px;
-        top: 6px;
+        right: 15px;
+        top: 10px;
         width: 20px;
         height: 20px;
         padding: 14px;
@@ -404,47 +414,67 @@
       $("#createAccount").text("Create an account");
       $(".rememberMe label").text("Remember Me");
 
+      // function makePwdToggler(pwd) {
+      //   $(".password-label")
+      //     .insertAfter()
+      //     .html("<span>visibility_off</span>")
+      //     .addClass("material-symbols-outlined");
+      //   var showpassImage = document.createElement("img");
+      //   showpassImage.setAttribute(
+      //     "src",
+      //     "https://joyselise.github.io/ronlogin/img/hidden-passcode.png"
+      //   );
+      //   showpassImage.setAttribute("class", "passcode");
+      //   pwd.insertAdjacentElement("afterend", showpassImage);
+
+      //   // Add toggle password callback
+      //   function toggle() {
+      //     if (pwd.type === "password") {
+      //       pwd.type = "text";
+      //       showpassImage.src =
+      //         "https://joyselise.github.io/ronlogin/img/openpass.png";
+      //     } else {
+      //       pwd.type = "password";
+      //       showpassImage.src =
+      //         "https://joyselise.github.io/ronlogin/img/hidden-passcode.png";
+      //     }
+      //   }
+      //   showpassImage.onclick = toggle;
+      //   // For non-mouse usage
+      //   showpassImage.onkeydown = toggle;
+      // }
+
+      // function setupPwdTogglers() {
+      //   var pwdInputs = document.querySelectorAll("input[type=password]");
+      //   for (var i = 0; i < pwdInputs.length; i++) {
+      //     makePwdToggler(pwdInputs[i]);
+      //   }
+      // }
+      // setupPwdTogglers();
+
       function makePwdToggler(pwd) {
-        // Create show-password checkbox
-        // var checkbox = document.createElement('input');
-        // checkbox.setAttribute('type', 'checkbox');
-        // var id = pwd.id + 'toggler';
-        // checkbox.setAttribute('id', id);
-
-        // var label = document.createElement('label');
-        // label.setAttribute('for', id);
-        // label.appendChild(document.createTextNode('show password'));
-
-        // var div = document.createElement('div');
-        // div.appendChild(checkbox);
-        // div.appendChild(label);
-
-        // Add show-password checkbox under password input
-        // pwd.insertAdjacentElement('afterend', div);
-
-        var showpassImage = document.createElement("img");
-        showpassImage.setAttribute(
-          "src",
-          "https://joyselise.github.io/ronlogin/img/hidden-passcode.png"
-        );
-        showpassImage.setAttribute("class", "passcode");
-        pwd.insertAdjacentElement("afterend", showpassImage);
+        // Create the password visibility toggle
+        var visibility = $("<div>")
+          .addClass("visibility-off")
+          .html("<span>visibility_off</span>")
+          .addClass("material-symbols-outlined");
+        visibility.insertAfter(pwd);
 
         // Add toggle password callback
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
-            showpassImage.src =
-              "https://joyselise.github.io/ronlogin/img/openpass.png";
+            visibility
+              .html("<span>visibility</span>")
+              .addClass("material-symbols-outlined");
           } else {
             pwd.type = "password";
-            showpassImage.src =
-              "https://joyselise.github.io/ronlogin/img/hidden-passcode.png";
+            visibility
+              .html("<span>visibility_off</span>")
+              .addClass("material-symbols-outlined");
           }
         }
-        showpassImage.onclick = toggle;
-        // For non-mouse usage
-        showpassImage.onkeydown = toggle;
+        $(visibility).on("click keydown", toggle);
       }
 
       function setupPwdTogglers() {
