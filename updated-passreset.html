@@ -268,16 +268,15 @@
         .verificationControlContent
         .verificationSuccessText
         #emailVerificationControl_success_message {
-        background-color: #d1e7dd;
-        border: 1px solid #badbcc;
-        border-radius: 4px;
-        padding: 20px;
-        text-align: left;
-        color: #0f5132;
+        display: inline-block;
+        color: #212121;
         font-size: 14px;
-        font-weight: 600;
-        line-height: 24px;
-        margin-bottom: 16px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.07px;
+        text-align: left;
+        padding: 16px 0 18px 0;
+        width: 100%;
       }
       /* .whole-box .box-center #api .localAccount .entry {
         display: flex;
@@ -508,6 +507,32 @@
         box-shadow: none;
         margin-top: 33px;
       }
+      #passcode-reset-box
+        .box-center
+        #api
+        #emailVerificationControl_but_send_new_code,
+      #passcode-reset-box
+        .box-center
+        #api
+        #emailVerificationControl_but_send_new_code:hover,
+      #passcode-reset-box
+        .box-center
+        #api
+        #emailVerificationControl_but_send_new_code:focus {
+        display: inline-block;
+        color: #1a171b;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        text-decoration: underline;
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        box-shadow: none;
+        text-transform: capitalize;
+        padding: 0;
+        text-align: left;
+      }
       .whole-box
         .box-center
         #api
@@ -655,6 +680,23 @@
         letter-spacing: 0.07px;
         margin-top: 11px;
       }
+      .resend-code-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 0 24px 0;
+      }
+      .resend-code-wrapper p {
+        color: #9e9e9e;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        margin-bottom: 0;
+        white-space: nowrap;
+      }
     </style>
     <!--============== Tanim's style for login card CSS end ===============-->
   </head>
@@ -770,6 +812,41 @@
           "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry .verificationControlContent .buttons"
         ).append(backBtn);
         // ================== Adding back button to go login end ================
+
+        // ============= Success area injection ================
+        $(
+          "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
+        ).insertBefore(
+          "#passcode-reset-box #api .attrEntry #emailVerificationCode"
+        );
+
+        // ============= Success text injection email ================
+        $(
+          "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
+        ).text(
+          "Please enter the verification code that has been sent to your inbox."
+        );
+
+        // ============= Resend code ================
+        $(
+          "#passcode-reset-box #api #emailVerificationControl_but_verify_code"
+        ).before(
+          $(
+            "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
+          )
+        );
+        // ================ Wrap the resend code button ==================
+        $(
+          "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
+        ).wrap('<div class="resend-code-wrapper"></div>');
+        $(".resend-code-wrapper").append(
+          "<p>Have not received any code yet?</p>"
+        );
+
+        // ============= Resend code text change ================
+        $(
+          "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
+        ).text("Resend Code");
 
         $(".localAccount .entry .entry-item .password-label").insertAfter(
           "#password"
