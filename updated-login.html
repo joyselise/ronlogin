@@ -143,6 +143,7 @@
         width: 100%;
         padding: 0;
         margin: 0;
+        position: relative;
       }
       input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset !important;
@@ -158,7 +159,7 @@
         .entry-item
         .password-label
         a.appendText {
-        display: none;
+        display: block;
       }
       .whole-box .box-center #api .localAccount .entry .entry-item input,
       .whole-box .box-center #api .localAccount .entry .entry-item input:hover,
@@ -424,7 +425,7 @@
         var showpassImage = document.createElement("img");
         showpassImage.setAttribute(
           "src",
-          "https://joyselise.github.io/ronlogin/img/hidden-passcode.svg"
+          "https://joyselise.github.io/ronlogin/img/hidden-passcode.png"
         );
         showpassImage.setAttribute("class", "passcode");
         pwd.insertAdjacentElement("afterend", showpassImage);
@@ -438,7 +439,7 @@
           } else {
             pwd.type = "password";
             showpassImage.src =
-              "https://joyselise.github.io/ronlogin/img/hidden-passcode.svg";
+              "https://joyselise.github.io/ronlogin/img/hidden-passcode.png";
           }
         }
         showpassImage.onclick = toggle;
