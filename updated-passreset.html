@@ -30,7 +30,7 @@
       body {
         font-family: "Source Sans Pro", sans-serif;
         background-color: #f5f7f6;
-        overflow: hidden;
+        overflow-x: hidden;
       }
       .header-container {
         max-width: 1440px;
@@ -77,11 +77,11 @@
         letter-spacing: 0.07px;
         text-transform: capitalize;
       }
-      .whole-box {
+      .whole-box.passcode-reset-box {
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 90vh;
+        min-height: 80vh;
         height: 100%;
       }
       .box-center {
@@ -103,9 +103,9 @@
         .signup-btn {
           padding: 11px 25px;
         }
-        .whole-box {
+        .whole-box.passcode-reset-box {
           padding: 15px;
-          min-height: 70vh;
+          min-height: 50vh;
         }
       }
     </style>
@@ -113,34 +113,173 @@
 
     <!--========== Tanim's style for login card CSS start ===========-->
     <style>
-      .whole-box .box-center #api .heading {
+      #passcode-reset-box .box-center #api .intro {
         display: none;
       }
-      .whole-box .box-center #api .divider {
-        display: none;
+      #passcode-reset-box .box-center #api .heading.heading-text-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 0;
       }
-      .whole-box .box-center #api .localAccount .intro h2 {
+      #passcode-reset-box .box-center #api .heading.heading-text-box h1 {
         font-size: 28px;
-        font-weight: 600;
-        line-height: 35px;
+        font-weight: 700;
+        line-height: 33px;
+        letter-spacing: 0.14px;
         color: #212121;
-        margin-bottom: 20px;
+        text-transform: capitalize;
+        margin-bottom: 0;
       }
-      .whole-box .box-center #api .localAccount .error {
+      #passcode-reset-box .box-center #api .heading.heading-text-box p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        color: #212121;
+        margin-bottom: 0;
+      }
+      #passcode-reset-box .box-center #api #attributeVerification .buttons {
+        margin-top: 24px;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        .buttons
+        button,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        .buttons
+        button:hover,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        .buttons
+        button:focus {
+        display: block;
+        width: 100%;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 22px;
+        color: #ffffff;
+        letter-spacing: 0.07px;
+        padding: 11px 15px;
+        text-transform: capitalize;
+        border: 1px solid #1a171b;
+        background-color: #1a171b;
+        border-radius: 100px;
+        outline: 0;
+        box-shadow: none;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        .buttons
+        #continue {
+        display: none;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        .buttons
+        #cancel {
+        display: none;
+      }
+      #passcode-reset-box .box-center #api #attributeVerification .error {
+        display: none;
         background-color: #f8d7da;
         border: 1px solid #f5c2c7;
         border-radius: 4px;
         padding: 20px;
+        text-align: left;
+        color: #d06a6a;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 24px;
         margin-bottom: 16px;
       }
-      .whole-box .box-center #api .localAccount .error p {
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        .verificationErrorText.error
+        #emailVerificationControl_error_message {
+        background-color: #f8d7da;
+        border: 0;
         color: #d06a6a;
         font-size: 14px;
         font-weight: 600;
         line-height: 24px;
         margin-bottom: 0;
       }
-      .whole-box .box-center #api .localAccount .entry {
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        .verificationInfoText
+        #emailVerificationControl_info_message {
+        background-color: #cff4fc;
+        border: 1px solid #b6effb;
+        border-radius: 4px;
+        padding: 20px;
+        text-align: left;
+        color: #055160;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 24px;
+        margin-bottom: 16px;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        .verificationSuccessText
+        #emailVerificationControl_success_message {
+        background-color: #d1e7dd;
+        border: 1px solid #badbcc;
+        border-radius: 4px;
+        padding: 20px;
+        text-align: left;
+        color: #0f5132;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 24px;
+        margin-bottom: 16px;
+      }
+      /* .whole-box .box-center #api .localAccount .entry {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -153,14 +292,58 @@
         padding: 0;
         margin: 0;
         position: relative;
+      } */
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+        list-style: none;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        ul
+        li {
+        display: block;
+        width: 100%;
+        margin: 0;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        ul
+        li
+        .attrEntry
+        label {
+        display: none;
       }
       input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset !important;
       }
-      .whole-box .box-center #api .localAccount .entry .entry-item label {
-        display: none;
-      }
-      .whole-box
+      /* .whole-box
         .box-center
         #api
         .localAccount
@@ -169,7 +352,7 @@
         .password-label
         a.appendText {
         display: none;
-      }
+      } */
       .visibility-off.material-symbols-outlined {
         position: absolute;
         right: 0px;
@@ -177,9 +360,45 @@
         padding: 13px;
         cursor: pointer;
       }
-      .whole-box .box-center #api .localAccount .entry .entry-item input,
-      .whole-box .box-center #api .localAccount .entry .entry-item input:hover,
-      .whole-box .box-center #api .localAccount .entry .entry-item input:focus {
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        ul
+        li
+        .attrEntry
+        input,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        ul
+        li
+        .attrEntry
+        input:hover,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        ul
+        li
+        .attrEntry
+        input:focus {
         display: block;
         width: 100%;
         padding: 13px 16px;
@@ -194,12 +413,21 @@
         outline: 0;
         box-shadow: none;
       }
-      .whole-box
+      #passcode-reset-box .helpLink.tiny {
+        display: none;
+      }
+      #passcode-reset-box
         .box-center
         #api
-        .localAccount
-        .entry
-        .entry-item
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        ul
+        li
+        .attrEntry
         input::placeholder {
         font-size: 14px;
         font-weight: 400;
@@ -216,15 +444,54 @@
         padding: 14px;
         background-color: transparent;
       }
-      .whole-box .box-center #api .localAccount .entry .buttons {
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        .buttons {
         display: block;
         width: 100%;
         text-align: center;
-        margin: 8px 0 0 0;
+        margin: 0;
       }
-      .whole-box .box-center #api .localAccount .entry .buttons button,
-      .whole-box .box-center #api .localAccount .entry .buttons button:hover,
-      .whole-box .box-center #api .localAccount .entry .buttons button:focus {
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        .buttons
+        button,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        .buttons
+        button:hover,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        .verificationControlContent
+        .buttons
+        button:focus {
         display: block;
         width: 100%;
         font-size: 14px;
@@ -239,6 +506,7 @@
         border-radius: 100px;
         outline: 0;
         box-shadow: none;
+        margin-top: 33px;
       }
       .whole-box
         .box-center
@@ -371,6 +639,22 @@
         text-decoration: underline;
         margin-left: 5px;
       }
+      .back-btn,
+      .back-btn:hover,
+      .back-btn:focus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        text-decoration: none;
+        color: #666666;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        margin-top: 11px;
+      }
     </style>
     <!--============== Tanim's style for login card CSS end ===============-->
   </head>
@@ -396,7 +680,7 @@
         </div>
       </div>
     </header>
-    <section class="whole-box" id="login-box">
+    <section class="whole-box passcode-reset-box" id="passcode-reset-box">
       <div class="box-center" role="presentation">
         <div id="api" class="bg-white" role="main"></div>
       </div>
@@ -417,9 +701,9 @@
       //     );
       //   }
       // });
-      $(".error p").text(
-        "We can't seem to find your account. Try logging in with your social account or sign up."
-      );
+      // $(".error p").text(
+      //   "We can't seem to find your account. Try logging in with your social account or sign up."
+      // );
       $("#createAccount").text("Create an account");
       $(".rememberMe label").text("Remember Me");
 
@@ -460,7 +744,33 @@
     <!--=============== Tanim's written scripts start ==============-->
     <script>
       $(document).ready(function () {
-        $(".localAccount .intro").find("h2[aria-level='1']").text("Log in");
+        // ================== Heading text change =====================
+        $("#passcode-reset-box .box-center #api .heading")
+          .html(
+            "<h1 role='heading'>Forgot Password?</h1><p>No worries, we’ll send you reset instructions.</p>"
+          )
+          .addClass("heading-text-box");
+
+        // ================== Placeholder text change for email box =====================
+        $(
+          "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry #email"
+        ).attr("placeholder", "Enter your email");
+
+        // ================== Adding back button to go login start ================
+        var backBtn = $("<a>")
+          .attr(
+            "href",
+            "https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/b2c_1_ronsigning/oauth2/v2.0/authorize?client_id=6c8924a1-d842-49eb-b1d2-e8857b26dfbc&redirect_uri=https%3A%2F%2Fron-backend.seliselocal.com%2Flogin%2Fazureadb2c%2Fcallback&scope=openid&response_type=code&state=1wMJ9Kl7TyRGpMrEb6pClZFAdcgR2mnCM59qwK7l"
+          )
+          .addClass("back-btn")
+          .append(
+            '<span class="material-symbols-outlined">arrow_back</span><span>Back to Log in</span>'
+          );
+        $(
+          "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry .verificationControlContent .buttons"
+        ).append(backBtn);
+        // ================== Adding back button to go login end ================
+
         $(".localAccount .entry .entry-item .password-label").insertAfter(
           "#password"
         );
@@ -471,7 +781,7 @@
         $("#api .create").insertAfter("#api .social");
         $("#api .localAccount .entry .buttons #next").text("Login");
         $(".social .intro h2")
-          .html("<p>Or log in with</p>")
+          .html("<p>Or log in / sign up with</p>")
           .find("p")
           .addClass("with-text");
         $(".social .options div #GoogleExchange")
