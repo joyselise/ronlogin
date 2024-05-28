@@ -391,7 +391,7 @@
         </div>
       </div>
     </header>
-    <section class="whole-box">
+    <section class="whole-box" id="login-box">
       <div class="box-center" role="presentation">
         <div id="api" class="bg-white" role="main"></div>
       </div>
@@ -405,53 +405,18 @@
       referrerpolicy="no-referrer"
     ></script>
     <script>
-      $(document).ajaxComplete(function () {
-        if ($(".error").is(":visible") && $(".error p").text().length > 0) {
-          $(".error p").text(
-            "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
-          );
-        }
-      });
+      // $(document).ajaxComplete(function () {
+      //   if ($(".error").is(":visible") && $(".error p").text().length > 0) {
+      //     $(".error p").text(
+      //       "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
+      //     );
+      //   }
+      // });
+      $(".error p").text(
+        "We can't seem to find your account. Try logging in with your social account or sign up."
+      );
       $("#createAccount").text("Create an account");
       $(".rememberMe label").text("Remember Me");
-
-      // function makePwdToggler(pwd) {
-      //   $(".password-label")
-      //     .insertAfter()
-      //     .html("<span>visibility_off</span>")
-      //     .addClass("material-symbols-outlined");
-      //   var showpassImage = document.createElement("img");
-      //   showpassImage.setAttribute(
-      //     "src",
-      //     "https://joyselise.github.io/ronlogin/img/hidden-passcode.png"
-      //   );
-      //   showpassImage.setAttribute("class", "passcode");
-      //   pwd.insertAdjacentElement("afterend", showpassImage);
-
-      //   // Add toggle password callback
-      //   function toggle() {
-      //     if (pwd.type === "password") {
-      //       pwd.type = "text";
-      //       showpassImage.src =
-      //         "https://joyselise.github.io/ronlogin/img/openpass.png";
-      //     } else {
-      //       pwd.type = "password";
-      //       showpassImage.src =
-      //         "https://joyselise.github.io/ronlogin/img/hidden-passcode.png";
-      //     }
-      //   }
-      //   showpassImage.onclick = toggle;
-      //   // For non-mouse usage
-      //   showpassImage.onkeydown = toggle;
-      // }
-
-      // function setupPwdTogglers() {
-      //   var pwdInputs = document.querySelectorAll("input[type=password]");
-      //   for (var i = 0; i < pwdInputs.length; i++) {
-      //     makePwdToggler(pwdInputs[i]);
-      //   }
-      // }
-      // setupPwdTogglers();
 
       function makePwdToggler(pwd) {
         // Create the password visibility toggle
