@@ -278,6 +278,17 @@
         padding: 16px 0 18px 0;
         width: 100%;
       }
+      .attrEntry #emailVerificationControl_success_message {
+        display: inline-block;
+        color: #212121;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.07px;
+        text-align: left;
+        padding: 16px 0 18px 0;
+        width: 100%;
+      }
       /* .whole-box .box-center #api .localAccount .entry {
         display: flex;
         flex-direction: column;
@@ -412,6 +423,77 @@
         outline: 0;
         box-shadow: none;
       }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList.attr
+        ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList.attr
+        ul
+        li {
+        width: 100%;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        .attrEntry
+        label {
+        display: none;
+      }
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        input,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        input:hover,
+      #passcode-reset-box
+        .box-center
+        #api
+        #attributeVerification
+        #attributeList
+        ul
+        li
+        .attrEntry
+        input:focus {
+        display: block;
+        width: 100%;
+        padding: 13px 16px;
+        background-color: #f9f9f9;
+        border: 1px solid #dbd9d9;
+        border-radius: 2px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: #212121;
+        letter-spacing: 0.08px;
+        outline: 0;
+        box-shadow: none;
+      }
       #passcode-reset-box .helpLink.tiny {
         display: none;
       }
@@ -505,33 +587,10 @@
         border-radius: 100px;
         outline: 0;
         box-shadow: none;
-        margin-top: 33px;
+        margin-top: 0;
       }
-      #passcode-reset-box
-        .box-center
-        #api
-        #emailVerificationControl_but_send_new_code,
-      #passcode-reset-box
-        .box-center
-        #api
-        #emailVerificationControl_but_send_new_code:hover,
-      #passcode-reset-box
-        .box-center
-        #api
-        #emailVerificationControl_but_send_new_code:focus {
-        display: inline-block;
-        color: #1a171b;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 21px;
-        text-decoration: underline;
-        background-color: transparent;
-        border: 0;
-        outline: 0;
-        box-shadow: none;
-        text-transform: capitalize;
-        padding: 0;
-        text-align: left;
+      button.emailVerificationControl_but_verify_code {
+        margin: 16px 0 !important;
       }
       .whole-box
         .box-center
@@ -673,7 +732,7 @@
         gap: 8px;
         width: 100%;
         text-decoration: none;
-        color: #666666;
+        color: #666666 !important;
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
@@ -696,6 +755,36 @@
         letter-spacing: 0.07px;
         margin-bottom: 0;
         white-space: nowrap;
+      }
+      .resend-code-wrapper #emailVerificationControl_but_send_new_code,
+      .resend-code-wrapper #emailVerificationControl_but_send_new_code:hover,
+      .resend-code-wrapper #emailVerificationControl_but_send_new_code:focus {
+        display: inline-block;
+        color: #1a171b !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        line-height: 21px !important;
+        text-decoration: underline !important;
+        background-color: transparent !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+        text-transform: capitalize !important;
+        padding: 0 !important;
+        text-align: left !important;
+        margin-top: 0 !important;
+      }
+      #newpasscodeTextInfo {
+        margin-bottom: 20px !important;
+      }
+      .character-text {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0.08px;
+        color: #212121;
+        margin-top: 4px;
+        margin-bottom: 0;
       }
     </style>
     <!--============== Tanim's style for login card CSS end ===============-->
@@ -822,14 +911,17 @@
         ).insertBefore(
           "#passcode-reset-box #api .attrEntry #emailVerificationCode"
         );
-
         // ============= Success text injection email ================
         $(
           "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
         ).text(
           "Please enter the verification code that has been sent to your inbox."
         );
-
+        //============ success text style change when aria hidden false staying =============
+        var $successTextDisplay = $(
+          'div[aria-hidden="false"][role="alert"][aria-label="Verification code has been sent to your inbox. Please copy it to the input box below."]'
+        );
+        $successTextDisplay.css("display", "inline-block");
         // ============= Resend code ================
         $(
           "#passcode-reset-box #api #emailVerificationControl_but_verify_code"
@@ -845,7 +937,6 @@
         $(".resend-code-wrapper").append(
           "<p>Have not received any code yet?</p>"
         );
-
         // ============= Resend code text change ================
         $(
           "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
@@ -859,7 +950,11 @@
           "setNewpasscode"
         );
         $("#setNewpasscode").text("Set New Password?");
-        $("#setNewpasscode p").text(
+        $("#passcode-reset-box .box-center #api .heading p").attr(
+          "id",
+          "newpasscodeTextInfo"
+        );
+        $("#newpasscodeTextInfo").text(
           "Please create a new password that you haven’t used previously."
         );
         // ================ Skipping next state after verify code ==================
@@ -870,7 +965,14 @@
         ) {
           $("#continue").trigger("click");
         }
+        //================ Character limitations text insertion after passcode field =========
+        // Create the <p> tag with class and text
+        var $characterText = $("<p>")
+          .addClass("character-text")
+          .text("Must be at least 8 characters.");
 
+        // Insert the <p> tag after the element with id #newPassword
+        $characterText.insertAfter("#newPassword");
         // =============== Set new passcode text change on submit state ================
         $("#continue")
           .attr({
@@ -881,28 +983,6 @@
           })
           .text("Reset Password");
         // ============== Passcode fourth state end ===============
-
-        $(".localAccount .entry .entry-item .password-label").insertAfter(
-          "#password"
-        );
-        $(".localAccount .entry .entry-item .password-label")
-          .find("#forgotPassword")
-          .text("Forgot Password?");
-        $("#api .social").insertAfter("#localAccountForm");
-        $("#api .create").insertAfter("#api .social");
-        $("#api .localAccount .entry .buttons #next").text("Login");
-        $(".social .intro h2")
-          .html("<p>Or log in / sign up with</p>")
-          .find("p")
-          .addClass("with-text");
-        $(".social .options div #GoogleExchange")
-          .html("<img />")
-          .find("img")
-          .attr("src", "https://joyselise.github.io/ronlogin/img/google.svg");
-        $(".social .options div #FacebookExchange")
-          .html("<img />")
-          .find("img")
-          .attr("src", "https://joyselise.github.io/ronlogin/img/facebook.svg");
       });
     </script>
     <!--=============== Tanim's written scripts end ==============-->
