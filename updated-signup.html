@@ -30,7 +30,7 @@
       body {
         font-family: "Source Sans Pro", sans-serif;
         background-color: #f5f7f6;
-        overflow: hidden;
+        overflow-x: hidden;
       }
       .header-container {
         max-width: 1440px;
@@ -122,6 +122,8 @@
       rel="stylesheet"
       href="https://joyselise.github.io/ronlogin/css/signup.css"
     />
+    <!--================= Signup CSS start ================-->
+    <!--================= Signup CSS end ================-->
   </head>
   <body>
     <header class="bg-white">
@@ -146,7 +148,7 @@
       </div>
     </header>
 
-    <div class="wrapper">
+    <div class="signup-wrapper" id="signup-box">
       <div id="formContent">
         <div id="api" role="main"></div>
         <div id="loginPrompt">
@@ -567,6 +569,11 @@
     </script>
 
     <!--============ Tanim's signup JS code start =========-->
+    <script>
+      $("#signup-box #api .intro p").before(
+        "<h2 class='signup-heading-text'>Welcome to Ron</h2>"
+      );
+    </script>
     <!--============ Tanim's signup JS code end =========-->
   </body>
 </html>
