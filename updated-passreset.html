@@ -177,12 +177,15 @@
         outline: 0;
         box-shadow: none;
       }
-      #passcode-reset-box
+      /* #passcode-reset-box
         .box-center
         #api
         #attributeVerification
         .buttons
         #continue {
+        display: none;
+      } */
+      .continue-hidden {
         display: none;
       }
       #passcode-reset-box
@@ -876,6 +879,10 @@
     <script>
       $(document).ready(function () {
         // ============== Passcode first state start ===============
+        // ========== Continue button hidden when aria disabled is true =======
+        $(
+          "button#continue[type='submit'][form='attributeVerification'][aria-disabled='true'][aria-label='Continue'][tabindex='-1']"
+        ).addClass("continue-hidden");
         // ================== Heading text change =====================
         $("#passcode-reset-box .box-center #api .heading")
           .html(
