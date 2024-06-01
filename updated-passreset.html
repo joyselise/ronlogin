@@ -786,6 +786,7 @@
     <!--=============== Tanim's written scripts start ==============-->
     <script>
       $(document).ready(function () {
+        // ============== Passcode first state start ===============
         // ================== Heading text change =====================
         $("#passcode-reset-box .box-center #api .heading")
           .html(
@@ -812,7 +813,9 @@
           "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry .verificationControlContent .buttons"
         ).append(backBtn);
         // ================== Adding back button to go login end ================
+        // ============== Passcode first state end ===============
 
+        // ============== Passcode second state start ===============
         // ============= Success area injection ================
         $(
           "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
@@ -847,6 +850,37 @@
         $(
           "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
         ).text("Resend Code");
+        // ============== Passcode second state end ===============
+
+        // ============== Passcode fourth state start ===============
+        // ================== Heading text change for New Passcode =====================
+        $("#passcode-reset-box .box-center #api .heading h1").attr(
+          "id",
+          "setNewpasscode"
+        );
+        $("#setNewpasscode").text("Set New Password?");
+        $("#setNewpasscode p").text(
+          "Please create a new password that you haven’t used previously."
+        );
+        // ================ Skipping next state after verify code ==================
+        if (
+          $(
+            '#emailVerificationControl_but_verify_code[aria-hidden="true"][aria-label="Verify Code"]'
+          ).length > 0
+        ) {
+          $("#continue").trigger("click");
+        }
+
+        // =============== Set new passcode text change on submit state ================
+        $("#continue")
+          .attr({
+            form: "attributeVerification",
+            type: "submit",
+            "aria-label": "Continue",
+            "aria-disabled": "false",
+          })
+          .text("Reset Password");
+        // ============== Passcode fourth state end ===============
 
         $(".localAccount .entry .entry-item .password-label").insertAfter(
           "#password"
