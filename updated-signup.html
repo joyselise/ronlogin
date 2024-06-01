@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RON ORP - Sign up</title>
+    <!-- CSS-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://joyselise.github.io/ronlogin/img/favicon.ico"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <!--============= Common CSS start ============-->
+    <style>
+      @font-face {
+        font-family: "Source Sans Pro", sans-serif;
+        src: url("https://joyselise.github.io/ronlogin/fonts/SourceSansPro-Regular.otf")
+          format("truetype");
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+      body {
+        font-family: "Source Sans Pro", sans-serif;
+        background-color: #f5f7f6;
+        overflow: hidden;
+      }
+      .header-container {
+        max-width: 1440px;
+        width: 100%;
+        padding: 32px 15px;
+        margin: 0 auto;
+      }
+      .logo-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .btn-box {
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
+      }
+      .login-btn,
+      .login-btn:hover,
+      .login-btn:focus {
+        display: inline-block;
+        text-decoration: none;
+        color: #1a171b;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        text-transform: capitalize;
+      }
+      .signup-btn,
+      .signup-btn:hover,
+      .signup-btn:focus {
+        display: inline-block;
+        text-decoration: none;
+        padding: 11px 45px;
+        background-color: #1a171b;
+        color: #ffffff;
+        border: 1px solid #1a171b;
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        text-transform: capitalize;
+      }
+      .whole-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+        height: 100%;
+      }
+      .box-center {
+        max-width: 456px;
+        width: 100%;
+        padding: 40px;
+        background-color: #ffffff;
+        border: 1px solid #ebebeb;
+      }
+      #signUpEye.visibility-off.material-symbols-outlined {
+        position: absolute;
+        font-size: 20px;
+        right: 0px;
+        top: 16px;
+        padding: 13px;
+        cursor: pointer;
+      }
+      @media only screen and (max-width: 1366px) {
+        .whole-box {
+          min-height: 87vh;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        .mobile-logo {
+          width: 100px;
+        }
+        .signup-btn {
+          padding: 11px 25px;
+        }
+        .whole-box {
+          padding: 15px;
+          min-height: 70vh;
+        }
+      }
+    </style>
+    <!--============= Common CSS end ============-->
+    <link
+      rel="stylesheet"
+      href="https://joyselise.github.io/ronlogin/css/signup.css"
+    />
+  </head>
+  <body>
+    <header class="bg-white">
+      <div class="cotaniner header-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="logo-box">
+            <a href="#">
+              <figure class="mb-0">
+                <img
+                  src="https://joyselise.github.io/ronlogin/img/logo.svg"
+                  class="img-fluid mobile-logo"
+                  alt="logo"
+                />
+              </figure>
+            </a>
+          </div>
+          <div class="btn-box">
+            <a href="#" class="login-btn">Log in</a>
+            <a href="#" class="signup-btn">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div id="formContent">
+        <div id="api" role="main"></div>
+        <div id="loginPrompt">
+          Already have an account?
+          <a
+            class="loginPromptBtn"
+            href="javascript:void(0);"
+            onclick="history.back()"
+            >Log in</a
+          >
+        </div>
+      </div>
+      <div class="join">
+        <p>
+          The Ron Community already has 350,000 members.
+          <strong>Join In!</strong>
+        </p>
+        <div class="community-img d-flex">
+          <img
+            src="https://joyselise.github.io/ronlogin/img/pimage.png"
+            alt="community"
+          />
+          <img
+            class="community-ml"
+            src="https://joyselise.github.io/ronlogin/img/pimage4.png"
+            alt="community"
+          />
+          <img
+            class="community-ml"
+            src="https://joyselise.github.io/ronlogin/img/pimage2.png"
+            alt="community"
+          />
+          <img
+            class="community-ml"
+            src="https://joyselise.github.io/ronlogin/img/pimage3.png"
+            alt="community"
+          />
+          <div class="communityNumber community-ml bg-dark rounded-circle">
+            <p class="text-light">401k</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(".heading h1").text("Welcome to Ron");
+      $(".intro p").text("Create an account");
+      $("#email_label").text("Enter your email to verify your profile");
+      $("#emailVerificationCode_label").text(
+        "Please enter the verification code that has been sent to your inbox."
+      );
+      $("#emailVerificationControl_but_send_new_code").text("Resend Code");
+      $(".city_li").after(
+        '<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
+      );
+      $("#newssignupchecked").on("change", function () {
+        conditionalContinueBtn();
+      });
+      $("#termschecked").on("change", function () {
+        conditionalContinueBtn();
+      });
+      function conditionalContinueBtn() {
+        if (
+          $("#termschecked").is(":checked") &&
+          $("#newssignupchecked").is(":checked")
+        ) {
+          $("#continue").show();
+        } else {
+          $("#continue").hide();
+        }
+      }
+      $("#continue").text("Sign Up");
+      $("#passwordEntryMismatch").insertAfter("#reenterPassword");
+
+      function makePwdToggler(pwd) {
+        // Create show-password checkbox
+        var checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        var id = pwd.id + "toggler";
+        checkbox.setAttribute("id", id);
+
+        var label = document.createElement("label");
+        label.setAttribute("for", id);
+        label.appendChild(document.createTextNode("show password"));
+
+        var div = document.createElement("div");
+        div.appendChild(checkbox);
+        div.appendChild(label);
+
+        // Add show-password checkbox under password input
+        pwd.insertAdjacentElement("afterend", div);
+
+        // Add toggle password callback
+        function toggle() {
+          if (pwd.type === "password") {
+            pwd.type = "text";
+          } else {
+            pwd.type = "password";
+          }
+        }
+        checkbox.onclick = toggle;
+        // For non-mouse usage
+        checkbox.onkeydown = toggle;
+      }
+
+      function setupPwdTogglers() {
+        var pwdInputs = document.querySelectorAll("input[type=password]");
+        for (var i = 0; i < pwdInputs.length; i++) {
+          makePwdToggler(pwdInputs[i]);
+        }
+      }
+
+      setupPwdTogglers();
+      $(".sendNewCode").after(
+        '<p class="newcodeText" style="display:none;">Have not received any code yet?</p>'
+      );
+
+      // for resend code
+      var button = document.getElementById(
+        "emailVerificationControl_but_send_new_code"
+      );
+      var paragraph = document.querySelector(".newcodeText");
+
+      // Function to check button style and update paragraph
+      function updateParagraphStyle() {
+        if (button.style.display === "inline") {
+          paragraph.style.display = "inline";
+        } else {
+          paragraph.style.display = "none";
+        }
+      }
+
+      // Event listener for button (if the style changes on click)
+      button.addEventListener("click", function () {
+        // Update paragraph style after a short delay
+        setTimeout(updateParagraphStyle, 100); //delay
+      });
+
+      // MutationObserver to watch for style changes
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName === "style") {
+            updateParagraphStyle();
+          }
+        });
+      });
+
+      // Start observing the button
+      observer.observe(button, { attributes: true });
+
+      // for verificatrions
+      var successMessageDiv = document.getElementById(
+        "emailVerificationControl_success_message"
+      );
+      var emailVerificationControl = document.getElementById(
+        "emailVerificationControl"
+      );
+      var sendNewCodeButton = document.getElementById(
+        "emailVerificationControl_but_send_new_code"
+      );
+      var elementsToUpdate = document.querySelectorAll(
+        ".newPassword_li, .reenterPassword_li, .city_li, .termschecked, .newssignupchecked"
+      );
+
+      // Function to update display of elements and styles
+      function updateElementDisplay() {
+        var isEmailVerified =
+          successMessageDiv.style.display === "inline" &&
+          successMessageDiv.getAttribute("aria-label") ===
+            "E-mail address verified. You can now continue.";
+
+        // Update display and styles for selected elements
+        var displayStyle = isEmailVerified ? "block" : "none";
+        elementsToUpdate.forEach(
+          (element) => (element.style.display = displayStyle)
+        );
+
+        // Additional styles for email verification success
+        if (isEmailVerified) {
+          successMessageDiv.style.fontSize = "0px";
+          emailVerificationControl.style.marginTop = "";
+          // emailVerificationControl.style.marginTop = '-35px';
+
+          // Create and insert the success verification paragraph
+          if (!document.querySelector(".successVerifications")) {
+            var successParagraph = document.createElement("p");
+            successParagraph.className = "successVerifications";
+            successParagraph.textContent =
+              "You email has been verified. Please set-up your Password and City";
+            sendNewCodeButton.insertAdjacentElement(
+              "afterend",
+              successParagraph
+            );
+          }
+        } else {
+          // Reset styles if not verified
+          successMessageDiv.style.fontSize = "";
+          emailVerificationControl.style.marginTop = "";
+
+          // Remove the success verification paragraph if it exists
+          var successParagraph = document.querySelector(
+            ".successVerifications"
+          );
+          if (successParagraph) {
+            successParagraph.remove();
+          }
+        }
+      }
+
+      // MutationObserver for style changes
+      var observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.attributeName === "style" ||
+            mutation.attributeName === "aria-label"
+          ) {
+            updateElementDisplay();
+          }
+        });
+      });
+
+      // Start observing the div
+      observer.observe(successMessageDiv, { attributes: true });
+
+      // Initial update
+      updateElementDisplay();
+
+      $(document).ready(function () {
+        function makePwdToggler(pwdField) {
+          // Create the show password image
+          var $showpassImage = $("<img>", {
+            src: "https://joyselise.github.io/ronlogin/img/hidenpass.png",
+            class: "hidenpass",
+            style: "cursor: pointer;",
+          });
+
+          // Replace the checkbox with the image
+          $(pwdField)
+            .siblings("div")
+            .find('input[type="checkbox"]')
+            .replaceWith($showpassImage);
+
+          // Toggle password visibility
+          $showpassImage.on("click keydown", function (event) {
+            if (
+              event.type === "click" ||
+              (event.type === "keydown" && event.key === "Enter")
+            ) {
+              if (pwdField.type === "password") {
+                pwdField.type = "text";
+                $showpassImage.attr(
+                  "src",
+                  "https://joyselise.github.io/ronlogin/img/openpass.png"
+                );
+              } else {
+                pwdField.type = "password";
+                $showpassImage.attr(
+                  "src",
+                  "https://joyselise.github.io/ronlogin/img/hidenpass.png"
+                );
+              }
+            }
+          });
+        }
+        // Apply the toggler to newPassword and reenterPassword
+        makePwdToggler($("#newPassword")[0]);
+        makePwdToggler($("#reenterPassword")[0]);
+      });
+      $(document).ready(function () {
+        function checkVerificationCodeDisplay() {
+          var verificationCodeLi = $(".emailVerificationCode_li");
+          var emailLabel = $("#email_label");
+
+          // Check if the verification code li is displayed inline
+          if (verificationCodeLi.css("display") === "inline") {
+            // Hide the email label
+            emailLabel.css("display", "none");
+          } else {
+            // Show the email label
+            emailLabel.css("display", "");
+          }
+        }
+
+        // Call the function initially
+        checkVerificationCodeDisplay();
+
+        // Set up a MutationObserver to watch for changes to the verification code li element
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (
+              mutation.type === "attributes" &&
+              mutation.attributeName === "style"
+            ) {
+              checkVerificationCodeDisplay();
+            }
+          });
+        });
+
+        // Start observing the verification code li element
+        var targetNode = document.querySelector(".emailVerificationCode_li");
+        observer.observe(targetNode, { attributes: true });
+      });
+
+      $(document).ready(function () {
+        function checkVerificationErrorMessageDisplay() {
+          var verificationErrorMessage = $(
+            "#emailVerificationControl_error_message"
+          );
+          var verificationErrorTextDiv = $(".verificationErrorText.error");
+
+          // Check if the verification error message is displayed inline
+          if (verificationErrorMessage.css("display") === "inline") {
+            // Add padding to the verificationErrorTextDiv
+            verificationErrorTextDiv.css("padding-bottom", "10px");
+          } else {
+            // Remove the added padding from verificationErrorTextDiv
+            verificationErrorTextDiv.css("padding-bottom", "");
+          }
+        }
+
+        // Call the function initially
+        checkVerificationErrorMessageDisplay();
+
+        // Set up a MutationObserver to watch for changes to the verification error message div element
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (
+              mutation.type === "attributes" &&
+              mutation.attributeName === "style"
+            ) {
+              checkVerificationErrorMessageDisplay();
+            }
+          });
+        });
+
+        // Start observing the verification error message div element
+        var targetNode = document.querySelector(
+          "#emailVerificationControl_error_message"
+        );
+        observer.observe(targetNode, { attributes: true });
+      });
+      $(document).ready(function () {
+        function adjustStylesBasedOnNewPasswordDisplay() {
+          var newPasswordLi = $(".newPassword_li");
+          var emailLabel = $("#email_label");
+          var buttonsDiv = $(".buttons");
+
+          // Check if the new password li is displayed as block
+          if (newPasswordLi.css("display") === "block") {
+            // Hide the email label and change flex-direction of buttons
+            emailLabel.css("display", "none");
+            buttonsDiv.css("flex-direction", "row");
+          } else {
+            // Reset the styles if the condition does not match
+            emailLabel.css("display", "");
+            buttonsDiv.css("flex-direction", "row-reverse");
+          }
+        }
+
+        // Call the function initially
+        adjustStylesBasedOnNewPasswordDisplay();
+
+        // Set up a MutationObserver to watch for changes to the new password li element
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (
+              mutation.type === "attributes" &&
+              mutation.attributeName === "style"
+            ) {
+              adjustStylesBasedOnNewPasswordDisplay();
+            }
+          });
+        });
+
+        // Start observing the new password li element
+        var targetNode = document.querySelector(".newPassword_li");
+        observer.observe(targetNode, { attributes: true });
+      });
+    </script>
+
+    <!--=========== Passcode toggling for show and hide by clicking eye icon ===========-->
+    <script>
+      function makePwdToggler(pwd) {
+        // Create the password visibility toggle
+        var visibility = $("<div>")
+          .addClass("visibility-off")
+          .attr("id", "signUpEye")
+          .html("<span>visibility_off</span>")
+          .addClass("material-symbols-outlined");
+        visibility.insertAfter(pwd);
+
+        // Add toggle password callback
+        function toggle() {
+          if (pwd.type === "password") {
+            pwd.type = "text";
+            visibility
+              .html("<span>visibility</span>")
+              .addClass("material-symbols-outlined");
+          } else {
+            pwd.type = "password";
+            visibility
+              .html("<span>visibility_off</span>")
+              .addClass("material-symbols-outlined");
+          }
+        }
+        $(visibility).on("click keydown", toggle);
+      }
+
+      function setupPwdTogglers() {
+        var pwdInputs = document.querySelectorAll("input[type=password]");
+        for (var i = 0; i < pwdInputs.length; i++) {
+          makePwdToggler(pwdInputs[i]);
+        }
+      }
+      setupPwdTogglers();
+    </script>
+
+    <!--============ Tanim's signup JS code start =========-->
+    <!--============ Tanim's signup JS code end =========-->
+  </body>
+</html>
