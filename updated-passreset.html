@@ -78,7 +78,7 @@
         letter-spacing: 0.07px;
         text-transform: capitalize;
       }
-      .whole-box.passcode-reset-box {
+      #passcode-reset-box.whole-box.passcode-reset-box {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -92,6 +92,28 @@
         background-color: #ffffff;
         border: 1px solid #ebebeb;
       }
+
+      /*=============== Dropdown scrollbar CSS start ==============*/
+      /*======= width =======*/
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      /*===== Track =====*/
+      ::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+      /*====== Handle =======*/
+      ::-webkit-scrollbar-thumb {
+        background: #e5e5e5;
+        border-radius: 10px;
+      }
+      /*======= Handle on hover =======*/
+      ::-webkit-scrollbar-thumb:hover {
+        background: #dddddd;
+      }
+      /*=============== Dropdown scrollbar CSS end ==============*/
+
       @media only screen and (max-width: 1366px) {
         .whole-box {
           min-height: 87vh;
@@ -199,12 +221,12 @@
       }
       #passcode-reset-box .box-center #api #attributeVerification .error {
         display: none;
-        background-color: #f8d7da;
-        border: 1px solid #f5c2c7;
+        background-color: #fae5e5;
+        border: 1px solid #fae5e5;
         border-radius: 4px;
         padding: 20px;
         text-align: left;
-        color: #d06a6a;
+        color: #cc0000;
         font-size: 14px;
         font-weight: 600;
         line-height: 24px;
@@ -221,9 +243,9 @@
         .verificationControlContent
         .verificationErrorText.error
         #emailVerificationControl_error_message {
-        background-color: #f8d7da;
+        background-color: #fae5e5;
         border: 0;
-        color: #d06a6a;
+        color: #cc0000;
         font-size: 14px;
         font-weight: 600;
         line-height: 24px;

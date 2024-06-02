@@ -92,6 +92,28 @@
         background-color: #ffffff;
         border: 1px solid #ebebeb;
       }
+
+      /*=============== Dropdown scrollbar CSS start ==============*/
+      /*======= width =======*/
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      /*===== Track =====*/
+      ::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+      /*====== Handle =======*/
+      ::-webkit-scrollbar-thumb {
+        background: #e5e5e5;
+        border-radius: 10px;
+      }
+      /*======= Handle on hover =======*/
+      ::-webkit-scrollbar-thumb:hover {
+        background: #dddddd;
+      }
+      /*=============== Dropdown scrollbar CSS end ==============*/
+
       @media only screen and (max-width: 1366px) {
         #login-box.whole-box {
           min-height: 87vh;
@@ -128,14 +150,14 @@
         margin-bottom: 20px;
       }
       #login-box.whole-box .box-center #api .localAccount .error {
-        background-color: #f8d7da;
-        border: 1px solid #f5c2c7;
+        background-color: #fae5e5;
+        border: 1px solid #fae5e5;
         border-radius: 4px;
         padding: 20px;
         margin-bottom: 16px;
       }
       #login-box.whole-box .box-center #api .localAccount .error p {
-        color: #d06a6a;
+        color: #cc0000;
         font-size: 14px;
         font-weight: 600;
         line-height: 24px;
