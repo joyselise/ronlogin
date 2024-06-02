@@ -78,7 +78,7 @@
         letter-spacing: 0.07px;
         text-transform: capitalize;
       }
-      .whole-box {
+      #login-box.whole-box {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -93,7 +93,7 @@
         border: 1px solid #ebebeb;
       }
       @media only screen and (max-width: 1366px) {
-        .whole-box {
+        #login-box.whole-box {
           min-height: 87vh;
         }
       }
@@ -104,7 +104,7 @@
         .signup-btn {
           padding: 11px 25px;
         }
-        .whole-box {
+        #login-box.whole-box {
           padding: 15px;
           min-height: 70vh;
         }
@@ -114,41 +114,41 @@
 
     <!--========== Tanim's style for login card CSS start ===========-->
     <style>
-      .whole-box .box-center #api .heading {
+      #login-box.whole-box .box-center #api .heading {
         display: none;
       }
-      .whole-box .box-center #api .divider {
+      #login-box.whole-box .box-center #api .divider {
         display: none;
       }
-      .whole-box .box-center #api .localAccount .intro h2 {
+      #login-box.whole-box .box-center #api .localAccount .intro h2 {
         font-size: 28px;
         font-weight: 600;
         line-height: 35px;
         color: #212121;
         margin-bottom: 20px;
       }
-      .whole-box .box-center #api .localAccount .error {
+      #login-box.whole-box .box-center #api .localAccount .error {
         background-color: #f8d7da;
         border: 1px solid #f5c2c7;
         border-radius: 4px;
         padding: 20px;
         margin-bottom: 16px;
       }
-      .whole-box .box-center #api .localAccount .error p {
+      #login-box.whole-box .box-center #api .localAccount .error p {
         color: #d06a6a;
         font-size: 14px;
         font-weight: 600;
         line-height: 24px;
         margin-bottom: 0;
       }
-      .whole-box .box-center #api .localAccount .entry {
+      #login-box.whole-box .box-center #api .localAccount .entry {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 16px;
       }
-      .whole-box .box-center #api .localAccount .entry .entry-item {
+      #login-box.whole-box .box-center #api .localAccount .entry .entry-item {
         display: block;
         width: 100%;
         padding: 0;
@@ -158,10 +158,16 @@
       input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset !important;
       }
-      .whole-box .box-center #api .localAccount .entry .entry-item label {
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        label {
         display: none;
       }
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .localAccount
@@ -178,9 +184,27 @@
         padding: 13px;
         cursor: pointer;
       }
-      .whole-box .box-center #api .localAccount .entry .entry-item input,
-      .whole-box .box-center #api .localAccount .entry .entry-item input:hover,
-      .whole-box .box-center #api .localAccount .entry .entry-item input:focus {
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input,
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input:hover,
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        input:focus {
         display: block;
         width: 100%;
         padding: 13px 16px;
@@ -195,7 +219,7 @@
         outline: 0;
         box-shadow: none;
       }
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .localAccount
@@ -217,15 +241,33 @@
         padding: 14px;
         background-color: transparent;
       }
-      .whole-box .box-center #api .localAccount .entry .buttons {
+      #login-box.whole-box .box-center #api .localAccount .entry .buttons {
         display: block;
         width: 100%;
         text-align: center;
         margin: 8px 0 0 0;
       }
-      .whole-box .box-center #api .localAccount .entry .buttons button,
-      .whole-box .box-center #api .localAccount .entry .buttons button:hover,
-      .whole-box .box-center #api .localAccount .entry .buttons button:focus {
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .buttons
+        button,
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .buttons
+        button:hover,
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .buttons
+        button:focus {
         display: block;
         width: 100%;
         font-size: 14px;
@@ -241,7 +283,7 @@
         outline: 0;
         box-shadow: none;
       }
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .localAccount
@@ -249,7 +291,7 @@
         .entry-item
         .password-label
         #forgotPassword,
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .localAccount
@@ -257,7 +299,7 @@
         .entry-item
         .password-label
         #forgotPassword:hover,
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .localAccount
@@ -277,7 +319,10 @@
         margin-top: 16px;
         display: none;
       }
-      .whole-box .box-center #api .claims-provider-list-buttons.social {
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -285,7 +330,7 @@
         gap: 16px;
         padding: 32px 0 24px 0;
       }
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .claims-provider-list-buttons.social
@@ -293,7 +338,7 @@
         h2 {
         margin-bottom: 0;
       }
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .claims-provider-list-buttons.social
@@ -311,19 +356,19 @@
         letter-spacing: 0.07px;
         margin-bottom: 0;
       }
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .claims-provider-list-buttons.social
         .options
         .accountButton,
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .claims-provider-list-buttons.social
         .options
         .accountButton:hover,
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .claims-provider-list-buttons.social
@@ -335,7 +380,7 @@
         box-shadow: none;
         padding: 0;
       }
-      .whole-box
+      #login-box.whole-box
         .box-center
         #api
         .claims-provider-list-buttons.social
@@ -345,7 +390,7 @@
         width: 32px;
         height: 32px;
       }
-      .whole-box .box-center #api .create {
+      #login-box.whole-box .box-center #api .create {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -354,7 +399,7 @@
         padding-top: 24px;
         border-top: 2px solid #f9f9f9;
       }
-      .whole-box .box-center #api .create p {
+      #login-box.whole-box .box-center #api .create p {
         color: #212121;
         font-size: 16px;
         font-weight: 400;
@@ -362,9 +407,9 @@
         letter-spacing: 0.08px;
         margin-bottom: 0;
       }
-      .whole-box .box-center #api .create p a,
-      .whole-box .box-center #api .create p a:hover,
-      .whole-box .box-center #api .create p a:focus {
+      #login-box.whole-box .box-center #api .create p a,
+      #login-box.whole-box .box-center #api .create p a:hover,
+      #login-box.whole-box .box-center #api .create p a:focus {
         color: #212121;
         font-size: 14px;
         font-weight: 700;
