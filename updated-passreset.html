@@ -900,120 +900,118 @@
 
     <!--=============== Tanim's written scripts start ==============-->
     <script>
-      $(document).ready(function () {
-        // ============== Passcode first state start ===============
-        // ========== Continue button hidden when aria disabled is true =======
-        //$(
-        //"button#continue[type='submit'][form='attributeVerification'][aria-disabled='true'][aria-label='Continue'][tabindex='-1']"
-        //).addClass("continue-hidden");
-        // ================== Heading text change =====================
-        $("#passcode-reset-box .box-center #api .heading")
-          .html(
-            "<h1 role='heading'>Forgot Password?</h1><p>No worries, we’ll send you reset instructions.</p>"
-          )
-          .addClass("heading-text-box");
+      // ============== Passcode first state start ===============
+      // ========== Continue button hidden when aria disabled is true =======
+      //$(
+      //"button#continue[type='submit'][form='attributeVerification'][aria-disabled='true'][aria-label='Continue'][tabindex='-1']"
+      //).addClass("continue-hidden");
+      // ================== Heading text change =====================
+      $("#passcode-reset-box .box-center #api .heading")
+        .html(
+          "<h1 role='heading'>Forgot Password?</h1><p>No worries, we’ll send you reset instructions.</p>"
+        )
+        .addClass("heading-text-box");
 
-        // ================== Placeholder text change for email box =====================
-        $(
-          "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry #email"
-        ).attr("placeholder", "Enter your email");
+      // ================== Placeholder text change for email box =====================
+      $(
+        "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry #email"
+      ).attr("placeholder", "Enter your email");
 
-        // ================== Adding back button to go login start ================
-        var backBtn = $("<a>")
-          .attr(
-            "href",
-            "https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/b2c_1_ronsigning/oauth2/v2.0/authorize?client_id=6c8924a1-d842-49eb-b1d2-e8857b26dfbc&redirect_uri=https%3A%2F%2Fron-backend.seliselocal.com%2Flogin%2Fazureadb2c%2Fcallback&scope=openid&response_type=code&state=1wMJ9Kl7TyRGpMrEb6pClZFAdcgR2mnCM59qwK7l"
-          )
-          .addClass("back-btn")
-          .append(
-            '<span class="material-symbols-outlined">arrow_back</span><span>Back to Log in</span>'
-          );
-        $(
-          "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry .verificationControlContent .buttons"
-        ).append(backBtn);
-        // ================== Adding back button to go login end ================
-        // ============== Passcode first state end ===============
+      // ================== Adding back button to go login start ================
+      var backBtn = $("<a>")
+        .attr(
+          "href",
+          "https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/b2c_1_ronsigning/oauth2/v2.0/authorize?client_id=6c8924a1-d842-49eb-b1d2-e8857b26dfbc&redirect_uri=https%3A%2F%2Fron-backend.seliselocal.com%2Flogin%2Fazureadb2c%2Fcallback&scope=openid&response_type=code&state=1wMJ9Kl7TyRGpMrEb6pClZFAdcgR2mnCM59qwK7l"
+        )
+        .addClass("back-btn")
+        .append(
+          '<span class="material-symbols-outlined">arrow_back</span><span>Back to Log in</span>'
+        );
+      $(
+        "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry .verificationControlContent .buttons"
+      ).append(backBtn);
+      // ================== Adding back button to go login end ================
+      // ============== Passcode first state end ===============
 
-        // ============== Passcode second state start ===============
-        // ============= Success area injection ================
-        $(
-          "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
-        ).insertBefore(
-          "#passcode-reset-box #api .attrEntry #emailVerificationCode"
-        );
-        // ============= Success text injection email ================
-        $(
-          "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
-        ).text(
-          "Please enter the verification code that has been sent to your inbox."
-        );
-        //============ success text style change when aria hidden false staying =============
-        var $successTextDisplay = $(
-          'div[aria-hidden="false"][role="alert"][aria-label="Verification code has been sent to your inbox. Please copy it to the input box below."]'
-        );
-        $successTextDisplay.css("display", "inline-block");
-        // ============= Resend code ================
-        $(
-          "#passcode-reset-box #api #emailVerificationControl_but_verify_code"
-        ).before(
-          $(
-            "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
-          )
-        );
-        // ================ Wrap the resend code button ==================
+      // ============== Passcode second state start ===============
+      // ============= Success area injection ================
+      $(
+        "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
+      ).insertBefore(
+        "#passcode-reset-box #api .attrEntry #emailVerificationCode"
+      );
+      // ============= Success text injection email ================
+      $(
+        "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
+      ).text(
+        "Please enter the verification code that has been sent to your inbox."
+      );
+      //============ success text style change when aria hidden false staying =============
+      var $successTextDisplay = $(
+        'div[aria-hidden="false"][role="alert"][aria-label="Verification code has been sent to your inbox. Please copy it to the input box below."]'
+      );
+      $successTextDisplay.css("display", "inline-block");
+      // ============= Resend code ================
+      $(
+        "#passcode-reset-box #api #emailVerificationControl_but_verify_code"
+      ).before(
         $(
           "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
-        ).wrap('<div class="resend-code-wrapper"></div>');
-        $(".resend-code-wrapper").append(
-          "<p>Have not received any code yet?</p>"
-        );
-        // ============= Resend code text change ================
+        )
+      );
+      // ================ Wrap the resend code button ==================
+      $(
+        "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
+      ).wrap('<div class="resend-code-wrapper"></div>');
+      $(".resend-code-wrapper").append(
+        "<p>Have not received any code yet?</p>"
+      );
+      // ============= Resend code text change ================
+      $(
+        "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
+      ).text("Resend Code");
+      // ============== Passcode second state end ===============
+
+      // ============== Passcode fourth state start ===============
+      // ================== Heading text change for New Passcode =====================
+      $("#passcode-reset-box .box-center #api .heading h1").attr(
+        "id",
+        "setNewpasscode"
+      );
+      $("#setNewpasscode").text("Set New Password?");
+      $("#passcode-reset-box .box-center #api .heading p").attr(
+        "id",
+        "newpasscodeTextInfo"
+      );
+      $("#newpasscodeTextInfo").text(
+        "Please create a new password that you haven’t used previously."
+      );
+      // ================ Skipping next state after verify code ==================
+      if (
         $(
-          "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
-        ).text("Resend Code");
-        // ============== Passcode second state end ===============
+          '#emailVerificationControl_but_verify_code[aria-hidden="true"][aria-label="Verify Code"]'
+        ).length > 0
+      ) {
+        $("#continue").trigger("click");
+      }
+      //================ Character limitations text insertion after passcode field =========
+      // Create the <p> tag with class and text
+      var $characterText = $("<p>")
+        .addClass("character-text")
+        .text("Must be at least 8 characters.");
 
-        // ============== Passcode fourth state start ===============
-        // ================== Heading text change for New Passcode =====================
-        $("#passcode-reset-box .box-center #api .heading h1").attr(
-          "id",
-          "setNewpasscode"
-        );
-        $("#setNewpasscode").text("Set New Password?");
-        $("#passcode-reset-box .box-center #api .heading p").attr(
-          "id",
-          "newpasscodeTextInfo"
-        );
-        $("#newpasscodeTextInfo").text(
-          "Please create a new password that you haven’t used previously."
-        );
-        // ================ Skipping next state after verify code ==================
-        if (
-          $(
-            '#emailVerificationControl_but_verify_code[aria-hidden="true"][aria-label="Verify Code"]'
-          ).length > 0
-        ) {
-          $("#continue").trigger("click");
-        }
-        //================ Character limitations text insertion after passcode field =========
-        // Create the <p> tag with class and text
-        var $characterText = $("<p>")
-          .addClass("character-text")
-          .text("Must be at least 8 characters.");
-
-        // Insert the <p> tag after the element with id #newPassword
-        $characterText.insertAfter("#newPassword");
-        // =============== Set new passcode text change on submit state ================
-        $("#continue")
-          .attr({
-            form: "attributeVerification",
-            type: "submit",
-            "aria-label": "Continue",
-            "aria-disabled": "false",
-          })
-          .text("Reset Password");
-        // ============== Passcode fourth state end ===============
-      });
+      // Insert the <p> tag after the element with id #newPassword
+      $characterText.insertAfter("#newPassword");
+      // =============== Set new passcode text change on submit state ================
+      $("#continue")
+        .attr({
+          form: "attributeVerification",
+          type: "submit",
+          "aria-label": "Continue",
+          "aria-disabled": "false",
+        })
+        .text("Reset Password");
+      // ============== Passcode fourth state end ===============
     </script>
     <!--=============== Tanim's written scripts end ==============-->
   </body>
