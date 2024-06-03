@@ -79,6 +79,7 @@
       }
       #signup-box.whole-box {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         min-height: 90vh;
@@ -103,7 +104,7 @@
         position: absolute;
         font-size: 20px;
         right: 0px;
-        top: 16px;
+        top: 2px;
         padding: 13px;
         cursor: pointer;
       }
@@ -148,10 +149,6 @@
       }
     </style>
     <!--============= Common CSS end ============-->
-    <link
-      rel="stylesheet"
-      href="https://joyselise.github.io/ronlogin/css/signup.css"
-    />
     <!--================= Signup CSS start ================-->
     <style>
       #signup-box .signup-heading-text {
@@ -173,6 +170,9 @@
         list-style: none;
         padding-left: 0;
       }
+      #signup-box ul li {
+        width: 100%;
+      }
       #signup-box #email_label {
         color: #666666;
         font-size: 14px;
@@ -184,6 +184,17 @@
       }
       #signup-box .attrEntry label {
         display: none;
+      }
+      #signup-box #attributeList ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        gap: 16px;
+      }
+      #signup-box .attrEntry {
+        position: relative;
       }
       #signup-box input,
       #signup-box input:hover,
@@ -243,7 +254,7 @@
       .loginPromptBtn:hover,
       .loginPromptBtn:focus {
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 700;
         line-height: 22px;
         color: #212121;
         letter-spacing: 0.08px;
@@ -371,21 +382,58 @@
         background: url("https://joyselise.github.io/ronlogin/img/br_down.svg")
           no-repeat 97.5% #f9f9f9;
       }
+      #signup-box .termschecked {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+        margin: 0 !important;
+        padding: 0;
+      }
+      #signup-box .newssignupchecked {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+        margin: 0 !important;
+        padding: 0;
+      }
+      #signup-box input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin: 0;
+        padding: 0;
+      }
       #signup-box .form-check-input:checked {
         background-color: #323232;
         border-color: #323232;
+      }
+      #signup-box .form-check-input:checked[type="checkbox"] {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
       }
       #signup-box .form-check-input:focus {
         border-color: #323232;
         outline: 0;
         box-shadow: 0 0 0 0;
       }
-      .form-check-label {
+      #signup-box .form-check-label {
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
         color: #000000;
         letter-spacing: 0.08px;
+      }
+      #signup-box .form-check-label a,
+      #signup-box .form-check-label a:hover,
+      #signup-box .form-check-label a:focus {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        color: #000000;
+        letter-spacing: 0.08px;
+        text-decoration: none;
       }
       #signup-box .error.itemLevel.show {
         color: #cc0000;
@@ -394,6 +442,9 @@
         border-radius: 4px;
         padding: 20px;
         margin-top: 5px;
+      }
+      #signup-box .helpLink.tiny {
+        display: none;
       }
     </style>
     <!--================= Signup CSS end ================-->
@@ -437,49 +488,48 @@
           >
         </div>
       </div>
-    </section>
-    <!--=========== Main section end ============-->
-
-    <!--========= Join section start =========-->
-    <section class="join">
-      <p>
-        The Ron Community already has 350,000 members.
-        <strong>Join In!</strong>
-      </p>
-      <div class="community-img d-flex">
-        <img
-          src="https://joyselise.github.io/ronlogin/img/pimage.png"
-          alt="community"
-        />
-        <img
-          class="community-ml"
-          src="https://joyselise.github.io/ronlogin/img/pimage4.png"
-          alt="community"
-        />
-        <img
-          class="community-ml"
-          src="https://joyselise.github.io/ronlogin/img/pimage2.png"
-          alt="community"
-        />
-        <img
-          class="community-ml"
-          src="https://joyselise.github.io/ronlogin/img/pimage3.png"
-          alt="community"
-        />
-        <div class="communityNumber community-ml bg-dark rounded-circle">
-          <p class="text-light">401k</p>
+      <!--========= Join section start =========-->
+      <div class="join">
+        <p>
+          The Ron Community already has 350,000 members.
+          <strong>Join In!</strong>
+        </p>
+        <div class="community-img d-flex">
+          <img
+            src="https://joyselise.github.io/ronlogin/img/pimage.png"
+            alt="community"
+          />
+          <img
+            class="community-ml"
+            src="https://joyselise.github.io/ronlogin/img/pimage4.png"
+            alt="community"
+          />
+          <img
+            class="community-ml"
+            src="https://joyselise.github.io/ronlogin/img/pimage2.png"
+            alt="community"
+          />
+          <img
+            class="community-ml"
+            src="https://joyselise.github.io/ronlogin/img/pimage3.png"
+            alt="community"
+          />
+          <div class="communityNumber community-ml bg-dark rounded-circle">
+            <p class="text-light">401k</p>
+          </div>
         </div>
       </div>
+      <!--========= Join section end =========-->
     </section>
-    <!--========= Join section end =========-->
+    <!--=========== Main section end ============-->
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Old JS -->
     <script>
-      $(".heading h1").text("Welcome to Ron");
-      $(".intro p").text("Create an account");
+      //$(".heading h1").text("Welcome to Ron");
+      //$(".intro p").text("Create an account");
       $("#email_label").text("Enter your email to verify your profile");
       $("#emailVerificationCode_label").text(
         "Please enter the verification code that has been sent to your inbox."
@@ -824,6 +874,10 @@
       $(".resend-code-wrapper").append(
         "<p>Have not received any code yet?</p>"
       );
+      // ============= Resend code text change ================
+      $(
+        "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
+      ).text("Resend Code");
       // ============= Resend code ================
       $("#signup-box #api #emailVerificationControl_but_verify_code").before(
         $("#signup-box #api #emailVerificationControl_but_send_new_code")
