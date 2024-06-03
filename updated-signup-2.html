@@ -335,20 +335,26 @@
         gap: 8px;
         padding: 16px 0 24px 0;
       } */
+      .resend-code-box {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
       .newcodeText {
         color: #9e9e9e;
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
         letter-spacing: 0.07px;
-        padding: 16px 0 24px 0;
+        padding: 0;
         margin-bottom: 0;
         white-space: nowrap;
       }
       #emailVerificationControl_but_send_new_code,
       #emailVerificationControl_but_send_new_code:hover,
       #emailVerificationControl_but_send_new_code:focus {
-        display: inline-block;
         color: #1a171b !important;
         font-size: 14px !important;
         font-weight: 600 !important;
@@ -451,6 +457,15 @@
       #signup-box .helpLink.tiny {
         display: none;
       }
+      #emailVerificationControl_success_message {
+        color: #212121;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.07px;
+        padding-bottom: 18px;
+      }
     </style>
     <!--================= Signup CSS end ================-->
   </head>
@@ -536,6 +551,12 @@
         "Please enter the verification code that has been sent to your inbox."
       );
       $("#emailVerificationControl_but_send_new_code").text("Resend Code");
+      $("#emailVerificationControl_success_message").insertBefore(
+        "#emailVerificationCode"
+      );
+      $(
+        "button#emailVerificationControl_but_send_new_code, p.newcodeText"
+      ).wrapAll("<div class='resend-code-box'></div>");
       $(".city_li").after(
         '<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
       );
