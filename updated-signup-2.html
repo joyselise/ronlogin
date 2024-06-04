@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RON ORP - Sign up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- CSS-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -21,14 +27,8 @@
     />
     <!--============= Common CSS start ============-->
     <style>
-      @font-face {
-        font-family: "Source Sans Pro", sans-serif;
-        src: url("https://joyselise.github.io/ronlogin/fonts/SourceSansPro-Regular.otf")
-          format("truetype");
-      }
-      @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
       body {
-        font-family: "Source Sans Pro", sans-serif;
+        font-family: "Source Sans 3", sans-serif;
         background-color: #f5f7f6;
         overflow-x: hidden;
       }
@@ -82,7 +82,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        min-height: 90vh;
+        min-height: 80vh;
         height: 100%;
         padding: 50px 0;
       }
@@ -165,7 +165,7 @@
         font-size: 20px;
         font-weight: 400;
         line-height: 24px;
-        margin-bottom: 24px;
+        margin-bottom: 0;
       }
       #signup-box ul {
         list-style: none;
@@ -180,8 +180,10 @@
         font-weight: 400;
         line-height: 16px;
         letter-spacing: 0.08px;
-        margin-bottom: 20px;
+        margin-top: 24px;
+        margin-bottom: 18px;
         width: 100%;
+        display: block;
       }
       #signup-box .attrEntry label {
         display: none;
@@ -192,7 +194,8 @@
         justify-content: flex-start;
         align-items: flex-start;
         width: 100%;
-        gap: 16px;
+        /* gap: 16px; */
+        margin-bottom: 0;
       }
       #signup-box .attrEntry {
         position: relative;
@@ -213,6 +216,7 @@
         letter-spacing: 0.08px;
         outline: 0;
         box-shadow: none;
+        margin-top: 16px;
       }
       input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset !important;
@@ -402,7 +406,7 @@
         justify-content: flex-start;
         align-items: center;
         gap: 5px;
-        margin: 0 !important;
+        margin: 20px 0 0 0;
         padding: 0;
       }
       #signup-box .newssignupchecked {
@@ -416,7 +420,7 @@
       #signup-box input[type="checkbox"] {
         width: 15px;
         height: 15px;
-        margin: 0;
+        margin: 5px 5px 0 0;
         padding: 0;
       }
       #signup-box .form-check-input:checked {
@@ -471,6 +475,12 @@
       }
       #emailVerificationControl_but_change_claims {
         display: none !important;
+      }
+      #signup-box #attributeVerification .buttons {
+        display: none;
+      }
+      #signup-box #attributeVerification .buttons #cancel {
+        display: none;
       }
     </style>
     <!--================= Signup CSS end ================-->
@@ -550,6 +560,8 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+      var heading = $("<h1>Welcome to Ron</h1>");
+      $(".intro").find("p").before(heading);
       $("#signup-box .heading h1").text("Welcome to Ron");
       $("#signup-box .intro p").text("Create an account");
       $("#email_label").text("Enter your email to verify your profile");
@@ -560,9 +572,15 @@
       $("#emailVerificationControl_success_message").insertBefore(
         "#emailVerificationCode"
       );
+      $("#signup-box #emailVerificationControl_success_message").text(
+        "Please enter the verification code that has been sent to your inbox."
+      );
       $(
         "button#emailVerificationControl_but_send_new_code, p.newcodeText"
       ).wrapAll("<div class='resend-code-box'></div>");
+      $("#signup-box #emailVerificationControl_but_verify_code").text(
+        "Verify Email"
+      );
       $(".city_li").after(
         '<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
       );
@@ -637,7 +655,7 @@
       // Function to check button style and update paragraph
       function updateParagraphStyle() {
         if (button.style.display === "inline") {
-          paragraph.style.display = "inline";
+          paragraph.style.display = "block";
         } else {
           paragraph.style.display = "none";
         }
@@ -678,7 +696,7 @@
       // Function to update display of elements and styles
       function updateElementDisplay() {
         var isEmailVerified =
-          successMessageDiv.style.display === "inline" &&
+          successMessageDiv.style.display === "block" &&
           successMessageDiv.getAttribute("aria-label") ===
             "E-mail address verified. You can now continue.";
 
@@ -790,7 +808,7 @@
           var emailLabel = $("#email_label");
 
           // Check if the verification code li is displayed inline
-          if (verificationCodeLi.css("display") === "inline") {
+          if (verificationCodeLi.css("display") === "block") {
             // Hide the email label
             emailLabel.css("display", "none");
           } else {
@@ -827,7 +845,7 @@
           var verificationErrorTextDiv = $(".verificationErrorText.error");
 
           // Check if the verification error message is displayed inline
-          if (verificationErrorMessage.css("display") === "inline") {
+          if (verificationErrorMessage.css("display") === "block") {
             // Add padding to the verificationErrorTextDiv
             verificationErrorTextDiv.css("padding-bottom", "10px");
           } else {
@@ -862,16 +880,20 @@
           var newPasswordLi = $(".newPassword_li");
           var emailLabel = $("#email_label");
           var buttonsDiv = $(".buttons");
+          var verificationButtonsDiv = $("#emailVerificationControl .buttons");
 
           // Check if the new password li is displayed as block
           if (newPasswordLi.css("display") === "block") {
             // Hide the email label and change flex-direction of buttons
             emailLabel.css("display", "none");
-            buttonsDiv.css("flex-direction", "row");
+            buttonsDiv.css("display", "block");
+            verificationButtonsDiv.css("display", "none");
           } else {
             // Reset the styles if the condition does not match
             emailLabel.css("display", "");
-            buttonsDiv.css("flex-direction", "row-reverse");
+            // buttonsDiv.css("flex-direction", "row-reverse");
+            buttonsDiv.css("display", "none");
+            verificationButtonsDiv.css("display", "block");
           }
         }
 
