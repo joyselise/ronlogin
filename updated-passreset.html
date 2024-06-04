@@ -858,34 +858,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <!--================ All scripts ===============-->
     <script>
-      // $(document).ajaxComplete(function () {
-      //   if ($(".error").is(":visible") && $(".error p").text().length > 0) {
-      //     $(".error p").text(
-      //       "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
-      //     );
-      //   }
-      // });
-      // $(".error p").text(
-      //   "We can't seem to find your account. Try logging in with your social account or sign up."
-      // );
-      // =============== Tanim's written scripts start ==============
-      // ============== Passcode first state start ===============
-      // ========== Continue button hidden when aria disabled is true =======
-      //$(
-      //"button#continue[type='submit'][form='attributeVerification'][aria-disabled='true'][aria-label='Continue'][tabindex='-1']"
-      //).addClass("continue-hidden");
-      // ================== Heading text change =====================
+      // Passcode first state start
       $("#passcode-reset-box .box-center #api .heading")
         .html(
           "<h1 role='heading'>Forgot Password?</h1><p>No worries, we’ll send you reset instructions.</p>"
         )
         .addClass("heading-text-box");
-      // ================== Placeholder text change for email box =====================
+
       $(
         "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry #email"
       ).attr("placeholder", "Enter your email");
 
-      // ================== Adding back button to go login start ================
       var backBtn = $("<a>")
         .attr(
           "href",
@@ -898,28 +881,24 @@
       $(
         "#passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry .verificationControlContent .buttons"
       ).append(backBtn);
-      // ================== Adding back button to go login end ================
-      // ============== Passcode first state end ===============
+      // Passcode first state end
 
-      // ============== Passcode second state start ===============
-      // ============= Success area injection ================
+      // Passcode second state start
       $(
         "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
-      ).insertBefore(
-        "#passcode-reset-box #api .attrEntry #emailVerificationCode"
-      );
-      // ============= Success text injection email ================
-      $(
-        "#passcode-reset-box #api .attrEntry #emailVerificationControl_success_message"
-      ).text(
-        "Please enter the verification code that has been sent to your inbox."
-      );
-      //============ success text style change when aria hidden false staying =============
+      )
+        .insertBefore(
+          "#passcode-reset-box #api .attrEntry #emailVerificationCode"
+        )
+        .text(
+          "Please enter the verification code that has been sent to your inbox."
+        );
+
       var $successTextDisplay = $(
         'div[aria-hidden="false"][role="alert"][aria-label="Verification code has been sent to your inbox. Please copy it to the input box below."]'
       );
       $successTextDisplay.css("display", "inline-block");
-      // ============= Resend code ================
+
       $(
         "#passcode-reset-box #api #emailVerificationControl_but_verify_code"
       ).before(
@@ -927,34 +906,21 @@
           "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
         )
       );
-      // ================ Wrap the resend code button ==================
-      $(
-        "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
-      ).wrap('<div class="resend-code-wrapper"></div>');
-      $(".resend-code-wrapper").append(
-        "<p>Have not received any code yet?</p>"
-      );
-      // ============= Resend code text change ================
-      $(
-        "#passcode-reset-box #api #emailVerificationControl_but_send_new_code"
-      ).text("Resend Code");
-      // ============== Passcode second state end ===============
 
-      // ============== Passcode fourth state start ===============
-      // ================== Heading text change for New Passcode =====================
-      $("#passcode-reset-box .box-center #api .heading h1").attr(
-        "id",
-        "setNewpasscode"
-      );
-      $("#setNewpasscode").text("Set New Password?");
-      $("#passcode-reset-box .box-center #api .heading p").attr(
-        "id",
-        "newpasscodeTextInfo"
-      );
-      $("#newpasscodeTextInfo").text(
-        "Please create a new password that you haven’t used previously."
-      );
-      // ================ Skipping next state after verify code ==================
+      $("#passcode-reset-box #api #emailVerificationControl_but_send_new_code")
+        .wrap('<div class="resend-code-wrapper"></div>')
+        .append("<p>Have not received any code yet?</p>")
+        .text("Resend Code");
+      // Passcode second state end
+
+      // Passcode fourth state start
+      $("#passcode-reset-box .box-center #api .heading h1")
+        .attr("id", "setNewpasscode")
+        .text("Set New Password?");
+      $("#passcode-reset-box .box-center #api .heading p")
+        .attr("id", "newpasscodeTextInfo")
+        .text("Please create a new password that you haven’t used previously.");
+
       if (
         $(
           '#emailVerificationControl_but_verify_code[aria-hidden="true"][aria-label="Verify Code"]'
@@ -962,15 +928,12 @@
       ) {
         $("#continue").trigger("click");
       }
-      //================ Character limitations text insertion after passcode field =========
-      // Create the <p> tag with class and text
+
       var $characterText = $("<p>")
         .addClass("character-text")
         .text("Must be at least 8 characters.");
-
-      // Insert the <p> tag after the element with id #newPassword
       $characterText.insertAfter("#newPassword");
-      // =============== Set new passcode text change on submit state ================
+
       $("#continue")
         .attr({
           form: "attributeVerification",
@@ -979,10 +942,8 @@
           "aria-disabled": "false",
         })
         .text("Reset Password");
-      // ============== Passcode fourth state end ===============
-      // =============== Tanim's written scripts end ==============
-      // $("#createAccount").text("Create an account");
-      // $(".rememberMe label").text("Remember Me");
+      // Passcode fourth state end
+
       $("#continue").text("Set New Password");
       $(".heading h1").text("Forgot Password ?");
       $(
@@ -990,10 +951,10 @@
       ).insertAfter(".heading h1");
       $("#passwordEntryMismatch").insertAfter("#reenterPassword");
       $("#claimVerificationServerError").text(
-        "An account could not be found for the provided user ID. Try loging with your Social Accounts"
+        "An account could not be found for the provided user ID. Try logging in with your Social Accounts"
       );
+
       function makePwdToggler(pwd) {
-        // Create show-password checkbox
         var checkbox = document.createElement("input");
         checkbox.setAttribute("type", "checkbox");
         var id = pwd.id + "toggler";
@@ -1007,7 +968,6 @@
         div.appendChild(checkbox);
         div.appendChild(label);
 
-        // Add show-password checkbox under password input
         pwd.insertAdjacentElement("afterend", div);
 
         var visibility = $("<div>")
@@ -1016,7 +976,6 @@
           .addClass("material-symbols-outlined");
         visibility.insertAfter(pwd);
 
-        // Add toggle password callback
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
@@ -1032,6 +991,7 @@
         }
         $(visibility).on("click keydown", toggle);
       }
+
       function setupPwdTogglers() {
         var pwdInputs = document.querySelectorAll("input[type=password]");
         for (var i = 0; i < pwdInputs.length; i++) {
@@ -1039,38 +999,7 @@
         }
       }
 
-      // function makePwdToggler(pwd) {
-      //   // Create the password visibility toggle
-      //   var visibility = $("<div>")
-      //     .addClass("visibility-off")
-      //     .html("<span>visibility_off</span>")
-      //     .addClass("material-symbols-outlined");
-      //   visibility.insertAfter(pwd);
-
-      //   // Add toggle password callback
-      //   function toggle() {
-      //     if (pwd.type === "password") {
-      //       pwd.type = "text";
-      //       visibility
-      //         .html("<span>visibility</span>")
-      //         .addClass("material-symbols-outlined");
-      //     } else {
-      //       pwd.type = "password";
-      //       visibility
-      //         .html("<span>visibility_off</span>")
-      //         .addClass("material-symbols-outlined");
-      //     }
-      //   }
-      //   $(visibility).on("click keydown", toggle);
-      // }
-
-      // function setupPwdTogglers() {
-      //   var pwdInputs = document.querySelectorAll("input[type=password]");
-      //   for (var i = 0; i < pwdInputs.length; i++) {
-      //     makePwdToggler(pwdInputs[i]);
-      //   }
-      // }
-      // setupPwdTogglers();
+      setupPwdTogglers();
     </script>
   </body>
 </html>
