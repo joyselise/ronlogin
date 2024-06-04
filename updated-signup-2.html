@@ -462,6 +462,14 @@
         border-radius: 4px;
         padding: 20px;
         margin-top: 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 4px;
+      }
+      .error-icon {
+        font-size: 14px;
+        margin-top: -2px;
       }
       #signup-box .helpLink.tiny {
         display: none;
@@ -586,6 +594,11 @@
       $("#signup-box .resend-code-box").insertBefore(
         "#emailVerificationControl_but_verify_code"
       );
+      var errorIconSpan = $("<span>", {
+        class: "material-symbols-outlined error-icon",
+        text: "error",
+      });
+      $(".error.itemLevel.show").prepend(errorIconSpan);
       $(".city_li").after(
         '<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
       );
