@@ -857,42 +857,6 @@
       // $(".error p").text(
       //   "We can't seem to find your account. Try logging in with your social account or sign up."
       // );
-      $("#createAccount").text("Create an account");
-      $(".rememberMe label").text("Remember Me");
-
-      function makePwdToggler(pwd) {
-        // Create the password visibility toggle
-        var visibility = $("<div>")
-          .addClass("visibility-off")
-          .html("<span>visibility_off</span>")
-          .addClass("material-symbols-outlined");
-        visibility.insertAfter(pwd);
-
-        // Add toggle password callback
-        function toggle() {
-          if (pwd.type === "password") {
-            pwd.type = "text";
-            visibility
-              .html("<span>visibility</span>")
-              .addClass("material-symbols-outlined");
-          } else {
-            pwd.type = "password";
-            visibility
-              .html("<span>visibility_off</span>")
-              .addClass("material-symbols-outlined");
-          }
-        }
-        $(visibility).on("click keydown", toggle);
-      }
-
-      function setupPwdTogglers() {
-        var pwdInputs = document.querySelectorAll("input[type=password]");
-        for (var i = 0; i < pwdInputs.length; i++) {
-          makePwdToggler(pwdInputs[i]);
-        }
-      }
-      setupPwdTogglers();
-
       // =============== Tanim's written scripts start ==============
       // ============== Passcode first state start ===============
       // ========== Continue button hidden when aria disabled is true =======
@@ -1007,6 +971,41 @@
         .text("Reset Password");
       // ============== Passcode fourth state end ===============
       // =============== Tanim's written scripts end ==============
+      // $("#createAccount").text("Create an account");
+      // $(".rememberMe label").text("Remember Me");
+
+      function makePwdToggler(pwd) {
+        // Create the password visibility toggle
+        var visibility = $("<div>")
+          .addClass("visibility-off")
+          .html("<span>visibility_off</span>")
+          .addClass("material-symbols-outlined");
+        visibility.insertAfter(pwd);
+
+        // Add toggle password callback
+        function toggle() {
+          if (pwd.type === "password") {
+            pwd.type = "text";
+            visibility
+              .html("<span>visibility</span>")
+              .addClass("material-symbols-outlined");
+          } else {
+            pwd.type = "password";
+            visibility
+              .html("<span>visibility_off</span>")
+              .addClass("material-symbols-outlined");
+          }
+        }
+        $(visibility).on("click keydown", toggle);
+      }
+
+      function setupPwdTogglers() {
+        var pwdInputs = document.querySelectorAll("input[type=password]");
+        for (var i = 0; i < pwdInputs.length; i++) {
+          makePwdToggler(pwdInputs[i]);
+        }
+      }
+      setupPwdTogglers();
     </script>
   </body>
 </html>
