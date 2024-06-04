@@ -199,6 +199,9 @@
         outline: 0;
         box-shadow: none;
       }
+      #passcode-reset-box #emailVerificationControl_but_send_code {
+        margin-top: 33px;
+      }
       /* #passcode-reset-box
         .box-center
         #api
@@ -843,12 +846,6 @@
     </section>
 
     <!--================ All scripts ===============-->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
     <script>
       // $(document).ajaxComplete(function () {
       //   if ($(".error").is(":visible") && $(".error p").text().length > 0) {
@@ -895,10 +892,8 @@
         }
       }
       setupPwdTogglers();
-    </script>
 
-    <!--=============== Tanim's written scripts start ==============-->
-    <script>
+      // =============== Tanim's written scripts start ==============
       // ============== Passcode first state start ===============
       // ========== Continue button hidden when aria disabled is true =======
       //$(
@@ -1011,7 +1006,7 @@
         })
         .text("Reset Password");
       // ============== Passcode fourth state end ===============
+      // =============== Tanim's written scripts end ==============
     </script>
-    <!--=============== Tanim's written scripts end ==============-->
   </body>
 </html>
