@@ -880,16 +880,20 @@
           var newPasswordLi = $(".newPassword_li");
           var emailLabel = $("#email_label");
           var buttonsDiv = $(".buttons");
+          var verificationButtonsDiv = $("#emailVerificationControl .buttons");
 
           // Check if the new password li is displayed as block
           if (newPasswordLi.css("display") === "block") {
             // Hide the email label and change flex-direction of buttons
             emailLabel.css("display", "none");
-            buttonsDiv.css("flex-direction", "row");
+            buttonsDiv.css("display", "block");
+            verificationButtonsDiv.css("display", "none");
           } else {
             // Reset the styles if the condition does not match
             emailLabel.css("display", "");
-            buttonsDiv.css("flex-direction", "row-reverse");
+            // buttonsDiv.css("flex-direction", "row-reverse");
+            buttonsDiv.css("display", "none");
+            verificationButtonsDiv.css("display", "block");
           }
         }
 
