@@ -200,7 +200,7 @@
         box-shadow: none;
       }
       #passcode-reset-box #emailVerificationControl_but_send_code {
-        margin-top: 33px;
+        margin-top: 33px !important;
       }
       /* #passcode-reset-box
         .box-center
@@ -973,30 +973,44 @@
       // =============== Tanim's written scripts end ==============
       // $("#createAccount").text("Create an account");
       // $(".rememberMe label").text("Remember Me");
-
+      $("#continue").text("Set New Password");
+      $(".heading h1").text("Forgot Password ?");
+      $(
+        '<p class="headingp">No worries, verify your email and set new password</p>'
+      ).insertAfter(".heading h1");
+      $("#passwordEntryMismatch").insertAfter("#reenterPassword");
+      $("#claimVerificationServerError").text(
+        "An account could not be found for the provided user ID. Try loging with your Social Accounts"
+      );
       function makePwdToggler(pwd) {
-        // Create the password visibility toggle
-        var visibility = $("<div>")
-          .addClass("visibility-off")
-          .html("<span>visibility_off</span>")
-          .addClass("material-symbols-outlined");
-        visibility.insertAfter(pwd);
+        // Create show-password checkbox
+        var checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        var id = pwd.id + "toggler";
+        checkbox.setAttribute("id", id);
+
+        var label = document.createElement("label");
+        label.setAttribute("for", id);
+        label.appendChild(document.createTextNode("show password"));
+
+        var div = document.createElement("div");
+        div.appendChild(checkbox);
+        div.appendChild(label);
+
+        // Add show-password checkbox under password input
+        pwd.insertAdjacentElement("afterend", div);
 
         // Add toggle password callback
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
-            visibility
-              .html("<span>visibility</span>")
-              .addClass("material-symbols-outlined");
           } else {
             pwd.type = "password";
-            visibility
-              .html("<span>visibility_off</span>")
-              .addClass("material-symbols-outlined");
           }
         }
-        $(visibility).on("click keydown", toggle);
+        checkbox.onclick = toggle;
+        // For non-mouse usage
+        checkbox.onkeydown = toggle;
       }
 
       function setupPwdTogglers() {
@@ -1005,7 +1019,39 @@
           makePwdToggler(pwdInputs[i]);
         }
       }
-      setupPwdTogglers();
+
+      // function makePwdToggler(pwd) {
+      //   // Create the password visibility toggle
+      //   var visibility = $("<div>")
+      //     .addClass("visibility-off")
+      //     .html("<span>visibility_off</span>")
+      //     .addClass("material-symbols-outlined");
+      //   visibility.insertAfter(pwd);
+
+      //   // Add toggle password callback
+      //   function toggle() {
+      //     if (pwd.type === "password") {
+      //       pwd.type = "text";
+      //       visibility
+      //         .html("<span>visibility</span>")
+      //         .addClass("material-symbols-outlined");
+      //     } else {
+      //       pwd.type = "password";
+      //       visibility
+      //         .html("<span>visibility_off</span>")
+      //         .addClass("material-symbols-outlined");
+      //     }
+      //   }
+      //   $(visibility).on("click keydown", toggle);
+      // }
+
+      // function setupPwdTogglers() {
+      //   var pwdInputs = document.querySelectorAll("input[type=password]");
+      //   for (var i = 0; i < pwdInputs.length; i++) {
+      //     makePwdToggler(pwdInputs[i]);
+      //   }
+      // }
+      // setupPwdTogglers();
     </script>
   </body>
 </html>
