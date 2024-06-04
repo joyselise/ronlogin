@@ -472,6 +472,7 @@
         font-weight: 400;
         line-height: 16px;
         letter-spacing: 0.07px;
+        padding: 20px 0 2px 0;
       }
       #emailVerificationControl_but_change_claims {
         display: none !important;
@@ -580,6 +581,9 @@
       ).wrapAll("<div class='resend-code-box'></div>");
       $("#signup-box #emailVerificationControl_but_verify_code").text(
         "Verify Email"
+      );
+      $("#signup-box .resend-code-box").insertBefore(
+        "#emailVerificationControl_but_verify_code"
       );
       $(".city_li").after(
         '<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href=""><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
