@@ -478,9 +478,12 @@
       #emailVerificationControl_but_change_claims {
         display: none !important;
       }
-      #signup-box #attributeVerification .buttons {
+      #continue{
         display: none;
       }
+      /* #signup-box #attributeVerification .buttons {
+        display: none;
+      } */
       #signup-box #attributeVerification .buttons #cancel {
         display: none;
       }
@@ -924,7 +927,8 @@
     </script> -->
 
     <script>
-      $('.heading h1').text('Welcome to Ron');
+      var heading = $("<h1>Welcome to Ron</h1>");
+      $(".intro").find("p").before(heading);
       $('.intro p').text('Create an account');
       $('#email_label').text('Enter your email to verify your profile');
       $('#emailVerificationCode_label').text('Please enter the verification code that has been sent to your inbox.');
@@ -1060,7 +1064,7 @@
 
           // Initial update
           updateElementDisplay();
-          
+        
           $(document).ready(function () {
             function makePwdToggler(pwdField) {
               // Create the password visibility toggle
@@ -1169,16 +1173,19 @@
               var newPasswordLi = $('.newPassword_li');
               var emailLabel = $('#email_label');
               var buttonsDiv = $('.buttons');
+              var submitBtn = $('#continue');
 
               // Check if the new password li is displayed as block
               if (newPasswordLi.css('display') === 'block') {
                   // Hide the email label and change flex-direction of buttons
                   emailLabel.css('display', 'none');
+                  submitBtn.css('display', 'block');
                   buttonsDiv.css('flex-direction', 'row');
               } else {
                   // Reset the styles if the condition does not match
                   emailLabel.css('display', '');
                   buttonsDiv.css('flex-direction', 'row-reverse');
+                  submitBtn.css('display', 'none');
               }
           }
 
