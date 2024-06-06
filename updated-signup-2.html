@@ -101,11 +101,14 @@
         border: 1px solid #ebebeb;
         margin-top: 16px;
       }
+      .passcode-input-box input {
+        position: relative;
+      }
       #signUpEye.visibility-off.material-symbols-outlined {
         position: absolute;
         font-size: 20px;
-        right: 0px;
-        top: 2px;
+        right: 0;
+        bottom: 0;
         padding: 13px;
         cursor: pointer;
       }
@@ -413,7 +416,7 @@
       #signup-box input[type="checkbox"] {
         width: 15px;
         height: 15px;
-        margin: -1px 5px 0 0;
+        margin: 5px 5px 0 0;
         padding: 0;
       }
       #signup-box .form-check-input:checked {
@@ -447,7 +450,8 @@
         letter-spacing: 0.08px;
         text-decoration: none;
       }
-      #signup-box .error.itemLevel.show {
+      #signup-box .error.itemLevel.show,
+      #passwordEntryMismatch {
         color: #cc0000;
         background-color: #fae5e5;
         border: 1px solid #fae5e5;
@@ -461,7 +465,6 @@
       #signup-box .helpLink.tiny {
         display: none;
       }
-      p.successVerifications,
       #emailVerificationControl_success_message {
         color: #212121;
         font-size: 14px;
@@ -469,6 +472,14 @@
         line-height: 16px;
         letter-spacing: 0.07px;
         padding: 20px 0 2px 0;
+      }
+      p.successVerifications {
+        color: #212121;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.07px;
+        padding: 0;
       }
       #emailVerificationControl_but_change_claims {
         display: none !important;
@@ -592,6 +603,12 @@
       $(
         "button#emailVerificationControl_but_send_new_code, p.newcodeText"
       ).wrapAll("<div class='resend-code-box'></div>");
+      $("input#newPassword, div.visibility-off").wrapAll(
+        "<div class='passcode-input-box'></div>"
+      );
+      $("input#reenterPassword, div.visibility-off").wrapAll(
+        "<div class='passcode-input-box'></div>"
+      );
       $("#signup-box .resend-code-box").insertBefore(
         "#emailVerificationControl_but_verify_code"
       );
