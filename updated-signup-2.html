@@ -104,6 +104,10 @@
       .passcode-input-box input {
         position: relative;
       }
+      .visibility-box {
+        position: absolute;
+        right: 0;
+      }
       #signUpEye.visibility-off.material-symbols-outlined {
         position: absolute;
         font-size: 20px;
@@ -609,6 +613,7 @@
       $("input#reenterPassword, div.visibility-off").wrapAll(
         "<div class='passcode-input-box'></div>"
       );
+      $(".passcode-input-box").children("div").addClass("visibility-box");
       $("#signup-box .resend-code-box").insertBefore(
         "#emailVerificationControl_but_verify_code"
       );
