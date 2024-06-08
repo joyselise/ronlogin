@@ -567,7 +567,11 @@
         .attrEntry
         .verificationControlContent
         .buttons {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
         width: 100%;
         text-align: center;
         margin: 0;
@@ -821,6 +825,19 @@
       #passcode-reset-box button#emailVerificationControl_but_verify_code {
         margin-top: 24px !important;
       }
+      #emailVerificationControl_but_change_claims {
+        margin-top: 24px;
+      }
+      #email {
+        margin-top: 16px;
+      }
+      .visibility-off.material-symbols-outlined {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 13px;
+        cursor: pointer;
+      }
     </style>
     <!--============== Tanim's style for login card CSS end ===============-->
   </head>
@@ -853,35 +870,51 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      $('#continue').text('Set New Password'); 
-      $('.heading h1').text('Forgot Password ?'); 
-      $('<p class="headingp">No worries, verify your email and set new password</p>').insertAfter('.heading h1'); 
-      $('#passwordEntryMismatch').insertAfter('#reenterPassword');
-      $('#claimVerificationServerError').text('An account could not be found for the provided user ID. Try loging with your Social Accounts');
-      function makePwdToggler(pwd){
+      $("#continue").text("Set New Password");
+      $(".heading h1").text("Forgot Password ?");
+      $(
+        '<p class="headingp">No worries, verify your email and set new password</p>'
+      ).insertAfter(".heading h1");
+      $("#passwordEntryMismatch").insertAfter("#reenterPassword");
+      $("#claimVerificationServerError").text(
+        "An account could not be found for the provided user ID. Try loging with your Social Accounts"
+      );
+      function makePwdToggler(pwd) {
         // Create show-password checkbox
-        var checkbox = document.createElement('input');
-        checkbox.setAttribute('type', 'checkbox');
-        var id = pwd.id + 'toggler';
-        checkbox.setAttribute('id', id);
+        var checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        var id = pwd.id + "toggler";
+        checkbox.setAttribute("id", id);
 
-        var label = document.createElement('label');
-        label.setAttribute('for', id);
-        label.appendChild(document.createTextNode('show password'));
+        var label = document.createElement("label");
+        label.setAttribute("for", id);
+        label.appendChild(document.createTextNode("show password"));
 
-        var div = document.createElement('div');
+        var div = document.createElement("div");
         div.appendChild(checkbox);
         div.appendChild(label);
 
         // Add show-password checkbox under password input
-        pwd.insertAdjacentElement('afterend', div);
+        pwd.insertAdjacentElement("afterend", div);
+
+        var visibility = $("<div>")
+          .addClass("visibility-off")
+          .html("<span>visibility_off</span>")
+          .addClass("material-symbols-outlined");
+        visibility.insertAfter(pwd);
 
         // Add toggle password callback
-        function toggle(){
-          if(pwd.type === 'password'){
-            pwd.type = 'text';
+        function toggle() {
+          if (pwd.type === "password") {
+            pwd.type = "text";
+            visibility
+              .html("<span>visibility</span>")
+              .addClass("material-symbols-outlined");
           } else {
-            pwd.type = 'password';
+            pwd.type = "password";
+            visibility
+              .html("<span>visibility_off</span>")
+              .addClass("material-symbols-outlined");
           }
         }
         checkbox.onclick = toggle;
@@ -889,8 +922,8 @@
         checkbox.onkeydown = toggle;
       }
 
-      function setupPwdTogglers(){
-        var pwdInputs = document.querySelectorAll('input[type=password]');
+      function setupPwdTogglers() {
+        var pwdInputs = document.querySelectorAll("input[type=password]");
         for (var i = 0; i < pwdInputs.length; i++) {
           makePwdToggler(pwdInputs[i]);
         }
