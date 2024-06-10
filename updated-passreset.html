@@ -817,7 +817,7 @@
       }
       .resend-code-box {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 5px;
@@ -888,7 +888,7 @@
       //========== Resend code start ===========
       $("#emailVerificationControl_but_send_new_code").text("Resend Code");
       $("#emailVerificationControl_but_verify_code").after(
-        '<p class="newcodeText">Have not received any code yet?</p>'
+        '<p class="newcodeText" style="display: none;">Have not received any code yet?</p>'
       );
       $(
         "button#emailVerificationControl_but_send_new_code, p.newcodeText"
@@ -947,6 +947,34 @@
           makePwdToggler(pwdInputs[i]);
         }
       }
+
+      // Function to check button style and update paragraph
+      var paragraph = document.querySelector(".newcodeText");
+      function updateParagraphStyle() {
+        if (button.style.display === "inline") {
+          paragraph.style.display = "inline";
+        } else {
+          paragraph.style.display = "none";
+        }
+      }
+
+      // Event listener for button (if the style changes on click)
+      button.addEventListener("click", function () {
+        // Update paragraph style after a short delay
+        setTimeout(updateParagraphStyle, 100); //delay
+      });
+
+      // MutationObserver to watch for style changes
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName === "style") {
+            updateParagraphStyle();
+          }
+        });
+      });
+
+      // Start observing the button
+      observer.observe(button, { attributes: true });
     </script>
   </body>
 </html>
