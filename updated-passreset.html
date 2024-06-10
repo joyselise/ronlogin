@@ -139,9 +139,6 @@
 
     <!--========== Tanim's style for login card CSS start ===========-->
     <style>
-      /* #passcode-reset-box .box-center #api .intro {
-        display: none;
-      } */
       #passcode-reset-box .intro h1 {
         color: #212121;
         font-size: 28px;
@@ -157,6 +154,7 @@
         font-weight: 400;
         line-height: 22px;
         letter-spacing: 0.07px;
+        margin-bottom: 0;
       }
       #passcode-reset-box .box-center #api .heading.heading-text-box {
         display: flex;
@@ -775,22 +773,6 @@
         text-decoration: underline;
         margin-left: 5px;
       }
-      .back-btn,
-      .back-btn:hover,
-      .back-btn:focus {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-        width: 100%;
-        text-decoration: none;
-        color: #666666 !important;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 22px;
-        letter-spacing: 0.07px;
-        margin-top: 11px;
-      }
       .resend-code-wrapper {
         display: flex;
         flex-direction: row-reverse;
@@ -854,6 +836,25 @@
         padding: 13px;
         cursor: pointer;
       }
+      #passcode-reset-box .back-btn-wrapper,
+      #passcode-reset-box .back-btn-wrapper:hover,
+      #passcode-reset-box .back-btn-wrapper:focus {
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22px;
+        color: #666666;
+        gap: 8px;
+        letter-spacing: 0.07px;
+        margin-top: 11px;
+      }
+      #passcode-reset-box .back-btn-wrapper .back-btn {
+        margin-bottom: 0;
+      }
     </style>
     <!--============== Tanim's style for login card CSS end ===============-->
   </head>
@@ -893,6 +894,22 @@
       // $(
       //   '<p class="headingp">No worries, verify your email and set new password</p>'
       // ).insertAfter(".heading h1");
+      // ================ Submit button display on condition start ===========
+      if ($("#continue").attr("aria-disabled") === "false") {
+        $("#continue").hide();
+      } else {
+        $("#continue").show();
+      }
+      // ================ Submit button display on condition end ===========
+      // ================ Back button start ===========
+      var backBtnDiv = $(
+        '<a href="https://ron-backend.selisestage.com/login/azure" class="back-btn-wrapper"></a>'
+      ).append(
+        $('<span class="material-symbols-outlined">arrow_back</span>'),
+        $('<p href="#" class="back-btn">Back to Log in</p>')
+      );
+      backBtnDiv.insertBefore("#continue");
+      // ================ Back button end ===========
       $("#passwordEntryMismatch").insertAfter("#reenterPassword");
       $("#claimVerificationServerError").text(
         "An account could not be found for the provided user ID. Try loging with your Social Accounts"
