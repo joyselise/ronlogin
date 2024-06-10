@@ -139,8 +139,24 @@
 
     <!--========== Tanim's style for login card CSS start ===========-->
     <style>
-      #passcode-reset-box .box-center #api .intro {
+      /* #passcode-reset-box .box-center #api .intro {
         display: none;
+      } */
+      #passcode-reset-box .intro h1 {
+        color: #212121;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 33px;
+        letter-spacing: 0.14px;
+        text-transform: capitalize;
+        margin-bottom: 8px;
+      }
+      #passcode-reset-box .intro p {
+        color: #212121;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.07px;
       }
       #passcode-reset-box .box-center #api .heading.heading-text-box {
         display: flex;
@@ -871,10 +887,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       $("#continue").text("Set New Password");
-      $(".heading h1").text("Forgot Password ?");
-      $(
-        '<p class="headingp">No worries, verify your email and set new password</p>'
-      ).insertAfter(".heading h1");
+      $(".intro").prepend("<h1>Forgot Password ?</h1>");
+      $(".intro p").text("No worries, we’ll send you reset instructions.");
+      // $(".heading h1").text("Forgot Password ?");
+      // $(
+      //   '<p class="headingp">No worries, verify your email and set new password</p>'
+      // ).insertAfter(".heading h1");
       $("#passwordEntryMismatch").insertAfter("#reenterPassword");
       $("#claimVerificationServerError").text(
         "An account could not be found for the provided user ID. Try loging with your Social Accounts"
