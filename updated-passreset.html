@@ -816,7 +816,7 @@
         margin-top: 0 !important;
       }
       .resend-code-box {
-        display: flex;
+        display: flex !important;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
@@ -894,6 +894,9 @@
       $(
         "button#emailVerificationControl_but_send_new_code, p.newcodeText"
       ).wrapAll("<div class='resend-code-box' style='display: none;'></div>");
+      $(".resend-code-box").insertBefore(
+        "#emailVerificationControl_but_verify_code"
+      );
       //========== Resend code end ===========
       $("#passwordEntryMismatch").insertAfter("#reenterPassword");
       $("#claimVerificationServerError").text(
