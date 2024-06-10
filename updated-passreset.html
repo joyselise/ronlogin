@@ -949,6 +949,9 @@
       }
 
       // Function to check button style and update paragraph
+      var button = document.getElementById(
+        "emailVerificationControl_but_send_new_code"
+      );
       var paragraph = document.querySelector(".newcodeText");
       function updateParagraphStyle() {
         if (button.style.display === "inline") {
