@@ -818,10 +818,11 @@
       .resend-code-box {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         gap: 5px;
         padding: 16px 0 4px 0;
+        width: 100%;
       }
       .newcodeText {
         color: #9e9e9e;
@@ -888,11 +889,11 @@
       //========== Resend code start ===========
       $("#emailVerificationControl_but_send_new_code").text("Resend Code");
       $("#emailVerificationControl_but_verify_code").after(
-        '<p class="newcodeText" style="display: none;">Have not received any code yet?</p>'
+        '<p class="newcodeText">Have not received any code yet?</p>'
       );
       $(
         "button#emailVerificationControl_but_send_new_code, p.newcodeText"
-      ).wrapAll("<div class='resend-code-box'></div>");
+      ).wrapAll("<div class='resend-code-box' style='display: none;'></div>");
       //========== Resend code end ===========
       $("#passwordEntryMismatch").insertAfter("#reenterPassword");
       $("#claimVerificationServerError").text(
@@ -952,26 +953,26 @@
       var button = document.getElementById(
         "emailVerificationControl_but_send_new_code"
       );
-      var paragraph = document.querySelector(".newcodeText");
-      function updateParagraphStyle() {
+      var resendBox = document.querySelector(".resend-code-box");
+      function updateDivStyle() {
         if (button.style.display === "inline") {
-          paragraph.style.display = "inline";
+          resendBox.style.display = "block";
         } else {
-          paragraph.style.display = "none";
+          resendBox.style.display = "none";
         }
       }
 
       // Event listener for button (if the style changes on click)
       button.addEventListener("click", function () {
         // Update paragraph style after a short delay
-        setTimeout(updateParagraphStyle, 100); //delay
+        setTimeout(updateDivStyle, 100); //delay
       });
 
       // MutationObserver to watch for style changes
       var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
           if (mutation.attributeName === "style") {
-            updateParagraphStyle();
+            updateDivStyle();
           }
         });
       });
