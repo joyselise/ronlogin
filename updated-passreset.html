@@ -985,10 +985,12 @@
           "emailVerificationControl_success_message"
         );
 
+        // Check if the email verification message exists
         if (!emailVerificationMessageNode) {
           return;
         }
 
+        // mutations are observed here
         var handleAttributeChange = function (mutationsList, observer) {
           for (var mutation of mutationsList) {
             if (
@@ -1011,12 +1013,15 @@
             }
           }
         };
+
         var emailVerificationObserver = new MutationObserver(
           handleAttributeGlyphsChange
         );
+
+        // Start observing the email verification message for configured mutations
         emailVerificationObserver.observe(emailVerificationMessageNode, {
-          attributes: true,
-          attributeFilter: ["aria-label", "style"],
+          attributes: true, // configure it to listen to attribute changes
+          attributeFilter: ["aria-label", "style"], // monitoring both aria-label and style changes
         });
       });
       // ================ Submit button display on condition end ===========
