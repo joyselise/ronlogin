@@ -793,7 +793,7 @@
 
       // Only set up a mutation observer if the node exists
       if (emailVerificationMessageNode) {
-        var observer = new MutationObserver(function (mutationsList, obs) {
+        var observer = new MutationObserver(function (mutationsList) {
           for (var mutation of mutationsList) {
             if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
               updateUI();
