@@ -778,7 +778,7 @@
       var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
 
       function updateUI() {
-        var newAriaLabel = emailVerificationMessageItem ? $(emailVerificationMessageNode).attr("aria-label") : null;
+        var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
         var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
         var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
 
