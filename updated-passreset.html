@@ -873,21 +873,6 @@
       $(".intro p").text(
         "No worries, we’ll send you a verification code to reset your password."
       );
-      // ================ Submit button display on condition start ===========
-      $(document).ready(function () {
-        if (
-          $("#emailVerificationControl_success_message").attr("aria-label") ===
-          "E-mail address verified. You can now continue."
-        ) {
-          $("#continue").show();
-          $("#emailVerificationControl_but_change_claims").hide();
-          $(".intro p").hide();
-        } else {
-          $("#continue").hide();
-        }
-      });
-
-      // ================ Submit button display on condition end ===========
       // ================ Back button start ===========
       var backBtnDiv = $(
         '<a href="https://ron-backend.selisestage.com/login/azure" class="back-btn-wrapper"></a>'
@@ -993,6 +978,21 @@
 
       // Start observing the button
       observer.observe(button, { attributes: true });
+
+      // ================ Submit button display on condition start ===========
+      $(document).ready(function () {
+        if (
+          $("#emailVerificationControl_success_message").attr("aria-label") ===
+          "E-mail address verified. You can now continue."
+        ) {
+          $("#continue").show();
+          $("#emailVerificationControl_but_change_claims").hide();
+          $(".intro p").hide();
+        } else {
+          $("#continue").hide();
+        }
+      });
+      // ================ Submit button display on condition end ===========
     </script>
   </body>
 </html>
