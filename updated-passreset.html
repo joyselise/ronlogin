@@ -251,11 +251,10 @@
         .verificationControlContent
         .verificationErrorText.error
         #emailVerificationControl_error_message {
-        /* background-color: #fae5e5; */
         border: 0;
         color: #cc0000;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
         line-height: 24px;
         margin-bottom: 0;
       }
@@ -309,7 +308,8 @@
         line-height: 16px;
         letter-spacing: 0.07px;
         text-align: left;
-        padding: 16px 0 18px 0;
+        /* padding: 16px 0 18px 0; */
+        padding: 10px 0;
         width: 100%;
       }
       .attrEntry #emailVerificationControl_success_message {
@@ -320,7 +320,8 @@
         line-height: 16px;
         letter-spacing: 0.07px;
         text-align: left;
-        padding: 16px 0 18px 0;
+        /* padding: 16px 0 18px 0; */
+        padding: 10px 0;
         width: 100%;
       }
       /* .whole-box .box-center #api .localAccount .entry {
@@ -869,13 +870,32 @@
       // ============ Common things ==========
       $("#continue").text("Set New Password");
       $(".intro").prepend("<h1>Forgot Password ?</h1>");
-      $(".intro p").text("No worries, we’ll send you reset instructions.");
+      $(".intro p").text(
+        "No worries, we’ll send you a verification code to reset your password."
+      );
       // ================ Submit button display on condition start ===========
-      if ($("#continue").attr("aria-disabled") === "false") {
-        $("#continue").hide();
+      if (
+        $("#emailVerificationControl_success_message").attr("aria-label") ===
+        "E-mail address verified. You can now continue."
+      ) {
+        var styleDisplayCondition = $(
+          "#emailVerificationControl_success_message"
+        ).css("display");
+        if (styleDisplayCondition === "inline") {
+          $("#emailVerificationControl_success_message").css(
+            "display",
+            "block"
+          );
+          $("#continue").show();
+          $("#emailVerificationControl_but_change_claims").hide();
+          $(".intro p").hide();
+        } else {
+          $("#continue").hide();
+        }
       } else {
-        $("#continue").show();
+        $("#continue").hide();
       }
+
       // ================ Submit button display on condition end ===========
       // ================ Back button start ===========
       var backBtnDiv = $(
@@ -884,7 +904,7 @@
         $('<span class="material-symbols-outlined">arrow_back</span>'),
         $('<p href="#" class="back-btn">Back to Log in</p>')
       );
-      backBtnDiv.insertBefore("#continue");
+      backBtnDiv.insertAfter("#continue");
       // ================ Back button end ===========
       //========== Resend code start ===========
       $("#emailVerificationControl_but_send_new_code").text("Resend Code");
