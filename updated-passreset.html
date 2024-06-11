@@ -981,16 +981,48 @@
 
       // ================ Submit button display on condition start ===========
       $(document).ready(function () {
-        if (
-          $("#emailVerificationControl_success_message").attr("aria-label") ===
-          "E-mail address verified. You can now continue."
-        ) {
-          $("#continue").show();
-          $("#emailVerificationControl_but_change_claims").hide();
-          $(".intro p").hide();
-        } else {
-          $("#continue").hide();
+        var emailVerificationMessageNode = document.getElementById(
+          "emailVerificationControl_success_message"
+        );
+
+        // Check if the email verification message exists
+        if (!emailVerificationMessageNode) {
+          return;
         }
+
+        // mutations are observed here
+        var handleAttributeChange = function (mutationsList, observer) {
+          for (var mutation of mutationsList) {
+            if (
+              mutation.type === "attributes" &&
+              mutation.attributeName === "aria-label"
+            ) {
+              var newAriaLabel = $(mutation.target).attr("aria-label");
+              var isDisplayed = $(mutation.target).css("display") === "inline";
+              if (
+                newAriaLabel ===
+                  "E-mail address verified. You can now continue." &&
+                isDisplayed
+              ) {
+                $("#continue").show();
+                $("#emailVerificationControl_but_change_claims").hide();
+                $(".intro p").hide();
+              } else {
+                $("#continue").hide();
+              }
+            }
+          }
+        };
+
+        var emailVerificationObserver = new MutationObserver(
+          handleAttributeGlyphsChange
+        );
+
+        // Start observing the email verification message for configured mutations
+        emailVerificationObserver.observe(emailVerificationMessageNode, {
+          attributes: true, // configure it to listen to attribute changes
+          attributeFilter: ["aria-label", "style"], // monitoring both aria-label and style changes
+        });
       });
       // ================ Submit button display on condition end ===========
     </script>
