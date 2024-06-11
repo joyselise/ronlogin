@@ -981,16 +981,43 @@
 
       // ================ Submit button display on condition start ===========
       $(document).ready(function () {
-        if (
-          $("#emailVerificationControl_success_message").attr("aria-label") ===
-          "E-mail address verified. You can now continue."
-        ) {
-          $("#continue").show();
-          $("#emailVerificationControl_but_change_claims").hide();
-          $(".intro p").hide();
-        } else {
-          $("#continue").hide();
+        var emailVerificationMessageNode = document.getElementById(
+          "emailVerificationControl_success_message"
+        );
+
+        if (!emailVerificationMessageNode) {
+          return;
         }
+
+        var handleAttributeChange = function (mutationsList, observer) {
+          for (var mutation of mutationsList) {
+            if (
+              mutation.type === "attributes" &&
+              mutation.attributeName === "aria-label"
+            ) {
+              var newAriaLabel = $(mutation.target).attr("aria-label");
+              var isDisplayed = $(mutation.target).css("display") === "inline";
+              if (
+                newAriaLabel ===
+                  "E-mail address verified. You can now continue." &&
+                isDisplayed
+              ) {
+                $("#continue").show();
+                $("#emailVerificationControl_but_change_claims").hide();
+                $(".intro p").hide();
+              } else {
+                $("#continue").hide();
+              }
+            }
+          }
+        };
+        var emailVerificationObserver = new MutationObserver(
+          handleAttributeGlyphsChange
+        );
+        emailVerificationObserver.observe(emailVerificationMessageNode, {
+          attributes: true,
+          attributeFilter: ["aria-label", "style"],
+        });
       });
       // ================ Submit button display on condition end ===========
     </script>
