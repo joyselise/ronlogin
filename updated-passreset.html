@@ -777,11 +777,10 @@
     $(document).ready(function () {
       var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
 
-      // Function to check the conditions and update the UI accordingly
       function updateUI() {
-        var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
+        var newAriaLabel = emailVerificationMessageItem ? $(emailVerificationMessageNode).attr("aria-label") : null;
         var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
-        var passwordFieldsExist = $(".readderPassword_li").length > 0 || $(".newPassword_li").length > 0;
+        var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
 
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
           $("#continue").show();
@@ -792,9 +791,9 @@
         }
       }
 
-      // Set up a mutation observer to respond to changes in attributes if the node exists
+      // Only set up a mutation observer if the node exists
       if (emailVerificationMessageNode) {
-        var observer = new MutationObserver(function (mutationsList) {
+        var observer = new MutationObserver(function (mutationsList, obs) {
           for (var mutation of mutationsList) {
             if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
               updateUI();
@@ -808,7 +807,6 @@
         });
       }
 
-      // Also check for password fields regardless of the observer
       updateUI();
     });
 
