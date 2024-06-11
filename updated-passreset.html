@@ -878,20 +878,9 @@
         $("#emailVerificationControl_success_message").attr("aria-label") ===
         "E-mail address verified. You can now continue."
       ) {
-        var styleDisplayCondition = $(
-          "#emailVerificationControl_success_message"
-        ).css("display");
-        if (styleDisplayCondition === "inline") {
-          $("#emailVerificationControl_success_message").css(
-            "display",
-            "block"
-          );
-          $("#continue").show();
-          $("#emailVerificationControl_but_change_claims").hide();
-          $(".intro p").hide();
-        } else {
-          $("#continue").hide();
-        }
+        $("#continue").show();
+        $("#emailVerificationControl_but_change_claims").hide();
+        $(".intro p").hide();
       } else {
         $("#continue").hide();
       }
