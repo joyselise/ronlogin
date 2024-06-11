@@ -777,9 +777,9 @@
 
       // Function to check the conditions and update the UI accordingly
       function updateUI() {
-        var newAriaLabel = $(emailVerificationMessageNode).attr("aria-label");
-        var isDisplayed = $(emailVerificationMessageNode).css("display") === "inline";
-        var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
+        var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
+        var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
+        var passwordFieldsExist = $(".readderPassword_li").length > 0 || $(".newPassword_li").length > 0;
 
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
           $("#continue").show();
