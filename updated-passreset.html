@@ -236,7 +236,7 @@
         text-align: left;
         color: #cc0000;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
         line-height: 24px;
         margin-bottom: 16px;
       }
@@ -988,48 +988,55 @@
           "emailVerificationControl_success_message"
         );
 
-        // Check if the email verification message exists
-        // if (!emailVerificationMessageNode) {
-        //   return;
-        // }
+        // check the conditions
+        function updateUI() {
+          var newAriaLabel = $(emailVerificationMessageNode).attr("aria-label");
+          var isDisplayed =
+            $(emailVerificationMessageNode).css("display") === "inline";
+          var passwordFieldsExist =
+            $(".reenterPassword_li").length > 0 ||
+            $(".newPassword_li").length > 0;
 
-        // mutations are observed here
-        var handleAttributeChange = function (mutationsList, observer) {
-          for (var mutation of mutationsList) {
-            if (
-              mutation.type === "attributes" &&
-              mutation.attributeName === "aria-label"
-            ) {
-              var newAriaLabel = $(mutation.target).attr("aria-label");
-              var isDisplayed = $(mutation.target).css("display") === "inline";
-              var passwordFieldsExist =
-                $(".reenterPassword_li").length > 0 ||
-                $(".newPassword_li").length > 0;
+          if (
+            (emailVerificationMessageNode &&
+              newAriaLabel ===
+                "E-mail address verified. You can now continue." &&
+              isDisplayed) ||
+            passwordFieldsExist
+          ) {
+            $("#continue").show();
+            $("#emailVerificationControl_but_change_claims").hide();
+            $(".intro p").hide();
+          } else {
+            $("#continue").hide();
+          }
+        }
+
+        // observer for attribute changes if emailVerificationMessageNode exists
+        if (emailVerificationMessageNode) {
+          var handleAttributeChange = function (mutationsList, observer) {
+            for (var mutation of mutationsList) {
               if (
-                (newAriaLabel ===
-                  "E-mail address verified. You can now continue." &&
-                  isDisplayed) ||
-                passwordFieldsExist
+                mutation.type === "attributes" &&
+                (mutation.attributeName === "aria-label" ||
+                  mutation.attributeName === "style")
               ) {
-                $("#continue").show();
-                $("#emailVerificationControl_but_change_claims").hide();
-                $(".intro p").hide();
-              } else {
-                $("#continue").hide();
+                updateUI();
               }
             }
-          }
-        };
+          };
 
-        var emailVerificationObserver = new MutationObserver(
-          handleAttributeChange
-        );
+          var emailVerificationObserver = new MutationArrayObserver(
+            handleAttribStatusChange
+          );
+          emailVerificationObserver.observe(emailVerificationBesideNode, {
+            attributes: true,
+            attributeFilter: ["aria-label", "style"],
+          });
+        }
 
-        // Start observing the email verification message for configured mutations
-        emailVerificationObserver.observe(emailVerificationMessageNode, {
-          attributes: true, // configure it to listen to attribute changes
-          attributeFilter: ["aria-label", "style"], // monitoring both aria-label and style changes
-        });
+        // Also check for password fields regardless of the observer
+        updateUI();
       });
       // ================ Submit button display on condition end ===========
     </script>
