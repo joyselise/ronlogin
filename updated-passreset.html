@@ -835,9 +835,6 @@
         margin-bottom: 0;
         white-space: nowrap;
       }
-      #passcode-reset-box #continue {
-        display: none;
-      }
     </style>
     <!--============== Tanim's style for login card CSS end ===============-->
   </head>
@@ -989,9 +986,9 @@
         );
 
         // Check if the email verification message exists
-        if (!emailVerificationMessageNode) {
-          return;
-        }
+        // if (!emailVerificationMessageNode) {
+        //   return;
+        // }
 
         // mutations are observed here
         var handleAttributeChange = function (mutationsList, observer) {
@@ -1002,10 +999,14 @@
             ) {
               var newAriaLabel = $(mutation.target).attr("aria-label");
               var isDisplayed = $(mutation.target).css("display") === "inline";
+              var passwordFieldsExist =
+                $(".reenterPassword_li").length > 0 ||
+                $(".newPassword_li").length > 0;
               if (
-                newAriaLabel ===
+                (newAriaLabel ===
                   "E-mail address verified. You can now continue." &&
-                isDisplayed
+                  isDisplayed) ||
+                passwordFieldsExist
               ) {
                 $("#continue").show();
                 $("#emailVerificationControl_but_change_claims").hide();
