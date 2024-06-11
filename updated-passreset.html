@@ -753,11 +753,13 @@
       }
     }
 
+    // If the button exists, add the event listener
     // Event listener for button (if the style changes on click)
-    button.addEventListener("click", function () {
-      // Update paragraph style after a short delay
-      setTimeout(updateDivStyle, 100); //delay
-    });
+    if (button) {
+      button.addEventListener("click", function () {
+        setTimeout(updateDivStyle, 100); // Apply styles after a short delay
+      });
+    }
 
     // MutationObserver to watch for style changes
     var observer = new MutationObserver(function (mutations) {
