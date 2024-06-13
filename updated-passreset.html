@@ -793,7 +793,7 @@
       var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
 
       // Check if the node exists, set up observer if it does
-      if (emailVerificationMessageNode) {
+      if (emailVerificationMessageNode && emailVerificationMessageNode !== 'undefined') {
         var observer = new MutationObserver(function (mutationsList) {
           for (var mutation of mutationsList) {
             if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
