@@ -774,7 +774,7 @@
     observer.observe(button, { attributes: true });
 
     // ================ Submit button display on condition start ===========
-    // $(document).ready(function () {
+    document.addEventListener("DOMContentLoaded", function () {
       var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
 
       function updateUI() {
@@ -808,7 +808,7 @@
       }
 
       updateUI();
-    // });
+    });
 
     // ================ Submit button display on condition end ===========
   </script>
