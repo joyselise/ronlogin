@@ -490,7 +490,7 @@
       #emailVerificationControl_but_change_claims {
         display: none !important;
       }
-      #signup-box #attributeVerification .buttons #continue {
+      #continue {
         display: none;
       }
       /* #signup-box #attributeVerification .buttons {
@@ -605,11 +605,6 @@
         }
       }
       $("#continue").text("Sign Up");
-            //for social
-      var successMessageLabel = $("#emailVerificationControl_success_message"); 
-      if (successMessageLabel.attr("aria-label") === "The code has been verified. You can now continue.") {
-        successMessageLabel.attr("aria-label", "E-mail address verified. You can now continue.");
-      }
       $("#passwordEntryMismatch").insertAfter("#reenterPassword");
       $(
         "button#emailVerificationControl_but_send_new_code, p.newcodeText"
@@ -732,19 +727,14 @@
         if (isEmailVerified) {
           successMessageDiv.style.fontSize = "0px";
           emailVerificationControl.style.marginTop = "";
-          $('.verificationSuccessText').hide();
-          $('.resend-code-box').hide();
           // emailVerificationControl.style.marginTop = '-35px';
 
           // Create and insert the success verification paragraph
           if (!document.querySelector(".successVerifications")) {
             var successParagraph = document.createElement("p");
             successParagraph.className = "successVerifications";
-            // if(successMessageDiv.textContent === "The code has been verified. You can now continue."){
-            //   successParagraph.textContent === "You email has been verified. Please set-up your City";
-            // }else{
-              successParagraph.textContent = "You email has been verified. Please set-up your Password and City";
-            // }
+            successParagraph.textContent =
+              "You email has been verified. Please set-up your Password and City";
             sendNewCodeButton.insertAdjacentElement(
               "afterend",
               successParagraph
@@ -754,8 +744,6 @@
           // Reset styles if not verified
           successMessageDiv.style.fontSize = "";
           emailVerificationControl.style.marginTop = "";
-          $('.verificationSuccessText').show();
-          $('.resend-code-box').show();
 
           // Remove the success verification paragraph if it exists
           var successParagraph = document.querySelector(
@@ -780,7 +768,7 @@
       });
 
       // Start observing the div
-        observer.observe(successMessageDiv, { attributes: true });
+      observer.observe(successMessageDiv, { attributes: true });
 
       // Initial update
       updateElementDisplay();
