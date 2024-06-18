@@ -490,7 +490,7 @@
       #emailVerificationControl_but_change_claims {
         display: none !important;
       }
-      #continue {
+      #signup-box #attributeVerification .buttons #continue {
         display: none;
       }
       /* #signup-box #attributeVerification .buttons {
@@ -733,6 +733,7 @@
           successMessageDiv.style.fontSize = "0px";
           emailVerificationControl.style.marginTop = "";
           $('.verificationSuccessText').hide();
+          $('.resend-code-box').hide();
           // emailVerificationControl.style.marginTop = '-35px';
 
           // Create and insert the success verification paragraph
@@ -754,6 +755,7 @@
           successMessageDiv.style.fontSize = "";
           emailVerificationControl.style.marginTop = "";
           $('.verificationSuccessText').show();
+          $('.resend-code-box').show();
 
           // Remove the success verification paragraph if it exists
           var successParagraph = document.querySelector(
@@ -778,7 +780,9 @@
       });
 
       // Start observing the div
-      observer.observe(successMessageDiv, { attributes: true });
+      if(successMessageDiv.attr("aria-label", "E-mail address verified. You can now continue.") && successMessageDiv.style.display ==="inline"){
+        observer.observe(successMessageDiv, { attributes: true });
+      }
 
       // Initial update
       updateElementDisplay();
