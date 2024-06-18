@@ -780,9 +780,7 @@
       });
 
       // Start observing the div
-      if (successMessageLabel.attr("aria-label") === "E-mail address verified. You can now continue."){
         observer.observe(successMessageDiv, { attributes: true });
-      }
 
       // Initial update
       updateElementDisplay();
