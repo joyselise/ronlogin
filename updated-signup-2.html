@@ -780,7 +780,7 @@
       });
 
       // Start observing the div
-      if (successMessageDiv.attr("aria-label") === "E-mail address verified. You can now continue." && successMessageDiv.style.display ==="inline"){
+      if (successMessageLabel.attr("aria-label") === "E-mail address verified. You can now continue."){
         observer.observe(successMessageDiv, { attributes: true });
       }
 
