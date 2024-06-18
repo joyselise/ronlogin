@@ -740,11 +740,11 @@
           if (!document.querySelector(".successVerifications")) {
             var successParagraph = document.createElement("p");
             successParagraph.className = "successVerifications";
-            // if(successMessageDiv.textContent === "The code has been verified. You can now continue."){
-            //   successParagraph.textContent === "You email has been verified. Please set-up your City";
-            // }else{
+            if(successMessageDiv.textContent === "The code has been verified. You can now continue."){
+              successParagraph.textContent === "You email has been verified. Please set-up your City";
+            }else{
               successParagraph.textContent = "You email has been verified. Please set-up your Password and City";
-            // }
+            }
             sendNewCodeButton.insertAdjacentElement(
               "afterend",
               successParagraph
