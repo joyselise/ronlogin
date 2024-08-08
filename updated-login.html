@@ -527,7 +527,7 @@
 
       function makePwdToggler(pwd) {
         var showpassImage = document.createElement("img");
-        showpassImage.setAttribute("src", "https://joyselise.github.io/ronlogin/imges/visibility-off.svg");
+        showpassImage.setAttribute("src", "https://joyselise.github.io/ronlogin/images/visibility-off.svg");
         showpassImage.setAttribute("class", "hidenpass");
         pwd.insertAdjacentElement("afterend", showpassImage);
  
@@ -535,10 +535,10 @@
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
-            showpassImage.src = "https://joyselise.github.io/ronlogin/imges/visibility-on.svg";
+            showpassImage.src = "https://joyselise.github.io/ronlogin/images/visibility-on.svg";
           } else {
             pwd.type = "password";
-            showpassImage.src = "https://joyselise.github.io/ronlogin/imges/visibility-off.svg";
+            showpassImage.src = "https://joyselise.github.io/ronlogin/images/visibility-off.svg";
           }
         }
         showpassImage.onclick = toggle;
