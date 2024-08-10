@@ -644,14 +644,6 @@
       right: 0;
     }
 
-    #signUpEye.visibility-off.material-symbols-outlined {
-      position: absolute;
-      font-size: 20px;
-      right: 0;
-      bottom: 0;
-      padding: 13px;
-      cursor: pointer;
-    }
     .hidenpass {
       position: absolute;
       right: 10px;
@@ -720,18 +712,6 @@
       "An account could not be found for the provided user ID. Try loging with your Social Accounts"
     );
 
-    //=============== Visibility icon adding ===============
-    $("input#newPassword, div.visibility-off").wrapAll(
-      "<div class='passcode-input-box'></div>"
-    );
-    $("input#reenterPassword, div.visibility-off").wrapAll(
-      "<div class='passcode-input-box'></div>"
-    );
-    $(".passcode-input-box").children("div").addClass("visibility-box");
-    $("#signup-box .resend-code-box").insertBefore(
-      "#emailVerificationControl_but_verify_code"
-    );
-
     function makePwdToggler(pwdField) {
       // Create the show password image
       var $showpassImage = $('<img>', {
@@ -765,89 +745,6 @@
     makePwdToggler($('#newPassword')[0]);
     makePwdToggler($('#reenterPassword')[0]);
 
-    // function makePwdToggler(pwd) {
-    //   // Create show-password checkbox
-    //   var checkbox = document.createElement("input");
-    //   checkbox.setAttribute("type", "checkbox");
-    //   var id = pwd.id + "toggler";
-    //   checkbox.setAttribute("id", id);
-
-    //   var label = document.createElement("label");
-    //   label.setAttribute("for", id);
-    //   label.appendChild(document.createTextNode("show password"));
-
-    //   var div = document.createElement("div");
-    //   div.appendChild(checkbox);
-    //   div.appendChild(label);
-
-    //   // Add show-password checkbox under password input
-    //   pwd.insertAdjacentElement("afterend", div);
-
-    //   var visibility = $("<div>")
-    //     .addClass("visibility-off")
-    //     .html("<span>visibility_off</span>")
-    //     .addClass("material-symbols-outlined");
-    //   visibility.insertAfter(pwd);
-
-    //   // Add toggle password callback
-    //   function toggle() {
-    //     if (pwd.type === "password") {
-    //       pwd.type = "text";
-    //       visibility
-    //         .html("<span>visibility</span>")
-    //         .addClass("material-symbols-outlined");
-    //     } else {
-    //       pwd.type = "password";
-    //       visibility
-    //         .html("<span>visibility_off</span>")
-    //         .addClass("material-symbols-outlined");
-    //     }
-    //   }
-    //   checkbox.onclick = toggle;
-    //   // For non-mouse usage
-    //   checkbox.onkeydown = toggle;
-    // }
-
-    // $(document).ready(function () {
-    //   function makePwdToggler(pwdField) {
-    //     // Create the password visibility toggle
-    //     var visibility = $("<div>")
-    //       .addClass("visibility-off")
-    //       .attr("id", "signUpEye")
-    //       .html("<span>visibility_off</span>")
-    //       .addClass("material-symbols-outlined");
-    //     visibility.insertAfter(pwdField);
-
-    //     //Replace the checkbox with the image
-    //     $(pwdField)
-    //       .siblings("div")
-    //       .find('input[type="checkbox"]')
-    //       .replaceWith(visibility);
-
-    //     // Toggle password visibility
-    //     visibility.on("click keydown", function (event) {
-    //       if (
-    //         event.type === "click" ||
-    //         (event.type === "keydown" && event.key === "Enter")
-    //       ) {
-    //         if (pwdField.type === "password") {
-    //           pwdField.type = "text";
-    //           visibility
-    //             .html("<span>visibility</span>")
-    //             .addClass("material-symbols-outlined");
-    //         } else {
-    //           pwdField.type = "password";
-    //           visibility
-    //             .html("<span>visibility_off</span>")
-    //             .addClass("material-symbols-outlined");
-    //         }
-    //       }
-    //     });
-    //   }
-    //   // Apply the toggler to newPassword and reenterPassword
-    //   makePwdToggler($("#newPassword")[0]);
-    //   makePwdToggler($("#reenterPassword")[0]);
-    // });
 
     function setupPwdTogglers() {
       var pwdInputs = document.querySelectorAll("input[type=password]");
