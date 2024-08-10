@@ -645,6 +645,34 @@
       "#emailVerificationControl_but_verify_code"
     );
 
+    function makePwdToggler(pwdField) {
+        // Create the show password image
+        var $showpassImage = $('<img>', {
+            'src': 'https://joyselise.github.io/ronlogin/images/visibility-off.svg',
+            'class': 'hidenpass',
+            'style': 'cursor: pointer;'
+        });
+
+        // Replace the checkbox with the image
+        $(pwdField).siblings('div').find('input[type="checkbox"]').replaceWith($showpassImage);
+
+        // Toggle password visibility
+        $showpassImage.on('click keydown', function(event) {
+            if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
+                if (pwdField.type === 'password') {
+                    pwdField.type = 'text';
+                    $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-on.svg');
+                } else {
+                    pwdField.type = 'password';
+                    $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-off.svg');
+                }
+            }
+        });
+      }
+      // Apply the toggler to newPassword and reenterPassword
+      makePwdToggler($('#newPassword')[0]);
+      makePwdToggler($('#reenterPassword')[0]);
+
     // function makePwdToggler(pwd) {
     //   // Create show-password checkbox
     //   var checkbox = document.createElement("input");
@@ -798,36 +826,7 @@
     // Initial update
     updateElementDisplay();
 
-    $(document).ready(function () {
-      function makePwdToggler(pwdField) {
-        // Create the show password image
-        var $showpassImage = $('<img>', {
-            'src': 'https://joyselise.github.io/ronlogin/images/visibility-off.svg',
-            'class': 'hidenpass',
-            'style': 'cursor: pointer;'
-        });
 
-        // Replace the checkbox with the image
-        $(pwdField).siblings('div').find('input[type="checkbox"]').replaceWith($showpassImage);
-
-        // Toggle password visibility
-        $showpassImage.on('click keydown', function(event) {
-            if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
-                if (pwdField.type === 'password') {
-                    pwdField.type = 'text';
-                    $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-on.svg');
-                } else {
-                    pwdField.type = 'password';
-                    $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-off.svg');
-                }
-            }
-        });
-      }
-      // Apply the toggler to newPassword and reenterPassword
-      makePwdToggler($('#newPassword')[0]);
-      makePwdToggler($('#reenterPassword')[0]);
-    });
-    
     $(document).ready(function () {
       function checkVerificationCodeDisplay() {
         var verificationCodeLi = $(".emailVerificationCode_li");
