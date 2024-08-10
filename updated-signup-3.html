@@ -552,6 +552,14 @@
     #signup-box #attributeVerification .buttons #cancel {
       display: none;
     }
+
+    .hidenpass {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
   </style>
   <!--================= Signup CSS end ================-->
 </head>
@@ -564,7 +572,8 @@
         <div class="logo-box">
           <a href="#">
             <figure class="mb-0">
-              <img src="https://joyselise.github.io/ronlogin/images/logo.svg" class="img-fluid mobile-logo" alt="logo" />
+              <img src="https://joyselise.github.io/ronlogin/images/logo.svg" class="img-fluid mobile-logo"
+                alt="logo" />
             </figure>
           </a>
         </div>
@@ -646,32 +655,37 @@
     );
 
     function makePwdToggler(pwdField) {
-        // Create the show password image
-        var $showpassImage = $('<img>', {
-            'src': 'https://joyselise.github.io/ronlogin/images/visibility-off.svg',
-            'class': 'hidenpass',
-            'style': 'cursor: pointer;'
-        });
+      // Create the show password image
+      var $showpassImage = $('<img>', {
+        'src': 'https://joyselise.github.io/ronlogin/images/visibility-off.svg',
+        'class': 'hidenpass'
+      });
 
-        // Replace the checkbox with the image
-        $(pwdField).siblings('div').find('input[type="checkbox"]').replaceWith($showpassImage);
+      // Append the image directly after the input field
+      $(pwdField).after($showpassImage);
 
-        // Toggle password visibility
-        $showpassImage.on('click keydown', function(event) {
-            if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
-                if (pwdField.type === 'password') {
-                    pwdField.type = 'text';
-                    $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-on.svg');
-                } else {
-                    pwdField.type = 'password';
-                    $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-off.svg');
-                }
-            }
-        });
-      }
-      // Apply the toggler to newPassword and reenterPassword
-      makePwdToggler($('#newPassword')[0]);
-      makePwdToggler($('#reenterPassword')[0]);
+      // Toggle password visibility
+      $showpassImage.on('click keydown', function (event) {
+        if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
+          if (pwdField.type === 'password') {
+            pwdField.type = 'text';
+            $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-on.svg');
+          } else {
+            pwdField.type = 'password';
+            $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-off.svg');
+          }
+        }
+      });
+
+      // Recalculate position if error messages appear
+      $(pwdField).closest('.attrEntry').find('.error').on('DOMSubtreeModified', function () {
+        $showpassImage.css('top', ($(pwdField).position().top + ($(pwdField).outerHeight() / 2)) + 'px');
+      });
+    }
+
+    // Apply the toggler to newPassword and reenterPassword
+    makePwdToggler($('#newPassword')[0]);
+    makePwdToggler($('#reenterPassword')[0]);
 
     // function makePwdToggler(pwd) {
     //   // Create show-password checkbox
@@ -942,4 +956,5 @@
     });
   </script>
 </body>
+
 </html>
