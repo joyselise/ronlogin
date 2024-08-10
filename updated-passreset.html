@@ -808,46 +808,46 @@
     //   checkbox.onkeydown = toggle;
     // }
 
-    $(document).ready(function () {
-      function makePwdToggler(pwdField) {
-        // Create the password visibility toggle
-        var visibility = $("<div>")
-          .addClass("visibility-off")
-          .attr("id", "signUpEye")
-          .html("<span>visibility_off</span>")
-          .addClass("material-symbols-outlined");
-        visibility.insertAfter(pwdField);
+    // $(document).ready(function () {
+    //   function makePwdToggler(pwdField) {
+    //     // Create the password visibility toggle
+    //     var visibility = $("<div>")
+    //       .addClass("visibility-off")
+    //       .attr("id", "signUpEye")
+    //       .html("<span>visibility_off</span>")
+    //       .addClass("material-symbols-outlined");
+    //     visibility.insertAfter(pwdField);
 
-        //Replace the checkbox with the image
-        $(pwdField)
-          .siblings("div")
-          .find('input[type="checkbox"]')
-          .replaceWith(visibility);
+    //     //Replace the checkbox with the image
+    //     $(pwdField)
+    //       .siblings("div")
+    //       .find('input[type="checkbox"]')
+    //       .replaceWith(visibility);
 
-        // Toggle password visibility
-        visibility.on("click keydown", function (event) {
-          if (
-            event.type === "click" ||
-            (event.type === "keydown" && event.key === "Enter")
-          ) {
-            if (pwdField.type === "password") {
-              pwdField.type = "text";
-              visibility
-                .html("<span>visibility</span>")
-                .addClass("material-symbols-outlined");
-            } else {
-              pwdField.type = "password";
-              visibility
-                .html("<span>visibility_off</span>")
-                .addClass("material-symbols-outlined");
-            }
-          }
-        });
-      }
-      // Apply the toggler to newPassword and reenterPassword
-      makePwdToggler($("#newPassword")[0]);
-      makePwdToggler($("#reenterPassword")[0]);
-    });
+    //     // Toggle password visibility
+    //     visibility.on("click keydown", function (event) {
+    //       if (
+    //         event.type === "click" ||
+    //         (event.type === "keydown" && event.key === "Enter")
+    //       ) {
+    //         if (pwdField.type === "password") {
+    //           pwdField.type = "text";
+    //           visibility
+    //             .html("<span>visibility</span>")
+    //             .addClass("material-symbols-outlined");
+    //         } else {
+    //           pwdField.type = "password";
+    //           visibility
+    //             .html("<span>visibility_off</span>")
+    //             .addClass("material-symbols-outlined");
+    //         }
+    //       }
+    //     });
+    //   }
+    //   // Apply the toggler to newPassword and reenterPassword
+    //   makePwdToggler($("#newPassword")[0]);
+    //   makePwdToggler($("#reenterPassword")[0]);
+    // });
 
     function setupPwdTogglers() {
       var pwdInputs = document.querySelectorAll("input[type=password]");
