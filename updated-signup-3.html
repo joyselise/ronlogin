@@ -687,37 +687,6 @@
     makePwdToggler($('#newPassword')[0]);
     makePwdToggler($('#reenterPassword')[0]);
 
-    // function makePwdToggler(pwd) {
-    //   // Create show-password checkbox
-    //   var checkbox = document.createElement("input");
-    //   checkbox.setAttribute("type", "checkbox");
-    //   var id = pwd.id + "toggler";
-    //   checkbox.setAttribute("id", id);
-
-    //   var label = document.createElement("label");
-    //   label.setAttribute("for", id);
-    //   label.appendChild(document.createTextNode("show password"));
-
-    //   var div = document.createElement("div");
-    //   div.appendChild(checkbox);
-    //   div.appendChild(label);
-
-    //   // Add show-password checkbox under password input
-    //   pwd.insertAdjacentElement("afterend", div);
-
-    //   // Add toggle password callback
-    //   function toggle() {
-    //     if (pwd.type === "password") {
-    //       pwd.type = "text";
-    //     } else {
-    //       pwd.type = "password";
-    //     }
-    //   }
-    //   checkbox.onclick = toggle;
-    //   // For non-mouse usage
-    //   checkbox.onkeydown = toggle;
-    // }
-
     function setupPwdTogglers() {
       var pwdInputs = document.querySelectorAll("input[type=password]");
       for (var i = 0; i < pwdInputs.length; i++) {
@@ -913,25 +882,38 @@
         "#emailVerificationControl_error_message"
       );
       observer.observe(targetNode, { attributes: true });
+
+      // Handle Enter key press to send verification code
+      $(document).keydown(function (event) {
+          if (event.key === 'Enter') {
+              event.preventDefault(); // Prevent default Enter key behavior
+
+              var verificationCodeLi = $(".emailVerificationCode_li");
+              var sendCodeButton = $("#emailVerificationControl_but_send_code");
+
+              // Check if the verification code li is displayed
+              if (verificationCodeLi.css("display") === "none") {
+                  // Trigger the send code button click
+                  sendCodeButton.click();
+              }
+          }
+      });
     });
     $(document).ready(function () {
       function adjustStylesBasedOnNewPasswordDisplay() {
         var newPasswordLi = $(".newPassword_li");
         var emailLabel = $("#email_label");
         var buttonsDiv = $(".buttons");
-        var submitBtn = $("#continue");
 
         // Check if the new password li is displayed as block
         if (newPasswordLi.css("display") === "block") {
           // Hide the email label and change flex-direction of buttons
           emailLabel.css("display", "none");
-          submitBtn.css("display", "block");
           buttonsDiv.css("flex-direction", "row");
         } else {
           // Reset the styles if the condition does not match
           emailLabel.css("display", "");
           buttonsDiv.css("flex-direction", "row-reverse");
-          submitBtn.css("display", "none");
         }
       }
 
