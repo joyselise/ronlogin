@@ -656,35 +656,29 @@
     );
 
     function makePwdToggler(pwdField) {
-      // Create the show password image
-      var $showpassImage = $('<img>', {
-        'src': 'https://joyselise.github.io/ronlogin/images/visibility-off.svg',
-        'class': 'hidenpass'
-      });
-
-      // Append the image directly after the input field
-      $(pwdField).after($showpassImage);
-
-      // Toggle password visibility
-      $showpassImage.on('click keydown', function (event) {
-        if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
-          if (pwdField.type === 'password') {
-            pwdField.type = 'text';
-            $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-on.svg');
-          } else {
-            pwdField.type = 'password';
-            $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-off.svg');
+      if ($(pwdField).next('.hidenpass').length === 0) {
+        var $showpassImage = $('<img>', {
+          'src': 'https://joyselise.github.io/ronlogin/images/visibility-off.svg',
+          'class': 'hidenpass'
+        });
+        $(pwdField).after($showpassImage);
+        $showpassImage.on('click keydown', function (event) {
+          if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
+            if (pwdField.type === 'password') {
+              pwdField.type = 'text';
+              $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-on.svg');
+            } else {
+              pwdField.type = 'password';
+              $showpassImage.attr('src', 'https://joyselise.github.io/ronlogin/images/visibility-off.svg');
+            }
           }
-        }
-      });
-
-      // Recalculate position if error messages appear
-      $(pwdField).closest('.attrEntry').find('.error').on('DOMSubtreeModified', function () {
-        $showpassImage.css('top', ($(pwdField).position().top + ($(pwdField).outerHeight() / 2)) + 'px');
-      });
+        });
+        $(pwdField).closest('.attrEntry').find('.error').on('DOMSubtreeModified', function () {
+          $showpassImage.css('top', ($(pwdField).position().top + ($(pwdField).outerHeight() / 2)) + 'px');
+        });
+      }
     }
 
-    // Apply the toggler to newPassword and reenterPassword
     makePwdToggler($('#newPassword')[0]);
     makePwdToggler($('#reenterPassword')[0]);
 
@@ -888,18 +882,18 @@
 
       // Handle Enter key press to send verification code
       $(document).keydown(function (event) {
-          if (event.key === 'Enter') {
-              event.preventDefault(); // Prevent default Enter key behavior
+        if (event.key === 'Enter') {
+          event.preventDefault(); // Prevent default Enter key behavior
 
-              var verificationCodeLi = $(".emailVerificationCode_li");
-              var sendCodeButton = $("#emailVerificationControl_but_send_code");
+          var verificationCodeLi = $(".emailVerificationCode_li");
+          var sendCodeButton = $("#emailVerificationControl_but_send_code");
 
-              // Check if the verification code li is displayed
-              if (verificationCodeLi.css("display") === "none") {
-                  // Trigger the send code button click
-                  sendCodeButton.click();
-              }
+          // Check if the verification code li is displayed
+          if (verificationCodeLi.css("display") === "none") {
+            // Trigger the send code button click
+            sendCodeButton.click();
           }
+        }
       });
     });
     $(document).ready(function () {
