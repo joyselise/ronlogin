@@ -541,14 +541,14 @@
         var showpassImage = document.createElement("img");
         showpassImage.setAttribute("src", "https://joyselise.github.io/ronlogin/images/visibility-off.svg");
         showpassImage.setAttribute("class", "hidenpass");
-        // pwd.insertAdjacentElement("afterend", showpassImage);
+        pwd.insertAdjacentElement("afterend", showpassImage);
 
-        var forgotPasswordElement = document.getElementById("forgotPassword");
-        if (forgotPasswordElement) {
-            forgotPasswordElement.insertAdjacentElement("afterend", showpassImage);
-        } else {
-            pwd.insertAdjacentElement("afterend", showpassImage);
-        }
+        // var forgotPasswordElement = document.getElementById("forgotPassword");
+        // if (forgotPasswordElement) {
+        //     forgotPasswordElement.insertAdjacentElement("afterend", showpassImage);
+        // } else {
+        //     pwd.insertAdjacentElement("afterend", showpassImage);
+        // }
  
         // Add toggle password callback
         function toggle() {
