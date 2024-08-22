@@ -564,21 +564,28 @@
         // For non-mouse usage
         showpassImage.onkeydown = toggle;
 
-        const observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            var errorElement = document.querySelector(".error.itemLevel");
-            if (errorElement && errorElement.style.display === "block") {
-                showpassImage.style.top = "40.5px";
-            } else {
-                showpassImage.style.top = "2.5px";
-            }
-          });
-        });
+        function updateTopPosition() {
+          var emailError = document.querySelector(".error.itemLevel[aria-hidden='false'] p:contains('Please enter your Email Address')");
+          var passwordError = document.querySelector(".error.itemLevel[aria-hidden='true'] p:contains('Please enter your password')");
 
-        // Start observing the parent of the error element or the password field container
+          if (emailError && emailError.parentElement.style.display === 'block' && passwordError && passwordError.parentElement.style.display === 'block') {
+            showpassImage.style.top = "40.5px";
+          } else if (emailError && emailError.parentElement.style.display === 'block') {
+            showpassImage.style.top = "2.5px";
+          } else if (passwordError && passwordError.parentElement.style.display === 'block') {
+            showpassImage.style.top = "40.5px";
+          } else {
+            showpassImage.style.top = "2.5px"; // Default position
+          }
+        }
+
+        const observer = new MutationObserver(updateTopPosition);
+
         const config = { childList: true, subtree: true, attributes: true };
         var targetNode = document.querySelector(".localAccount .entry .entry-item") || pwd.parentNode;
         observer.observe(targetNode, config);
+
+        updateTopPosition();
       }
  
       function setupPwdTogglers() {
