@@ -549,13 +549,6 @@
         } else {
             pwd.insertAdjacentElement("afterend", showpassImage);
         }
-
-        var errorElement = document.querySelector(".error.itemLevel");
-        if (errorElement && errorElement.style.display === "block") {
-            showpassImage.style.top = "40.5px";
-        } else {
-            showpassImage.style.top = "2.5px";
-        }
  
         // Add toggle password callback
         function toggle() {
@@ -570,6 +563,22 @@
         showpassImage.onclick = toggle;
         // For non-mouse usage
         showpassImage.onkeydown = toggle;
+
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            var errorElement = document.querySelector(".error.itemLevel");
+            if (errorElement && errorElement.style.display === "block") {
+                showpassImage.style.top = "40.5px";
+            } else {
+                showpassImage.style.top = "2.5px";
+            }
+          });
+        });
+
+        // Start observing the parent of the error element or the password field container
+        const config = { childList: true, subtree: true, attributes: true };
+        var targetNode = document.querySelector(".localAccount .entry .entry-item") || pwd.parentNode;
+        observer.observe(targetNode, config);
       }
  
       function setupPwdTogglers() {
