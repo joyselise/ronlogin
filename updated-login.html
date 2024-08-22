@@ -541,8 +541,16 @@
         var showpassImage = document.createElement("img");
         showpassImage.setAttribute("src", "https://joyselise.github.io/ronlogin/images/visibility-off.svg");
         showpassImage.setAttribute("class", "hidenpass");
-        pwd.insertAdjacentElement("afterend", showpassImage);
+        // pwd.insertAdjacentElement("afterend", showpassImage);
 
+        var forgotPasswordElement = document.getElementById("forgotPassword");
+        if (forgotPasswordElement) {
+            forgotPasswordElement.insertAdjacentElement("afterend", showpassImage);
+        } else {
+            pwd.insertAdjacentElement("afterend", showpassImage);
+        }
+ 
+        // Add toggle password callback
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
@@ -553,35 +561,26 @@
           }
         }
         showpassImage.onclick = toggle;
+        // For non-mouse usage
         showpassImage.onkeydown = toggle;
 
-        function updateTopPosition() {
-          var emailError = document.querySelector(".error.itemLevel[aria-hidden='false']");
-          var passwordError = document.querySelector(".error.itemLevel[aria-hidden='true']");
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            var errorElement = document.querySelector(".error.itemLevel");
+            if (errorElement && errorElement.style.display === "block") {
+                showpassImage.style.top = "40.5px";
+            } else {
+                showpassImage.style.top = "2.5px";
+            }
+          });
+        });
 
-          var emailErrorText = emailError && emailError.style.display === 'block' && emailError.querySelector("p").textContent.includes("Please enter your Email Address");
-          var passwordErrorText = passwordError && passwordError.style.display === 'block' && passwordError.querySelector("p").textContent.includes("Please enter your password");
-
-          if (emailErrorText && passwordErrorText) {
-            showpassImage.style.top = "40.5px";
-          } else if (emailErrorText) {
-            showpassImage.style.top = "2.5px";
-          } else if (passwordErrorText) {
-            showpassImage.style.top = "40.5px";
-          } else {
-            showpassImage.style.top = "2.5px"; // Default position
-          }
-        }
-
-        const observer = new MutationObserver(updateTopPosition);
-
+        // Start observing the parent of the error element or the password field container
         const config = { childList: true, subtree: true, attributes: true };
         var targetNode = document.querySelector(".localAccount .entry .entry-item") || pwd.parentNode;
         observer.observe(targetNode, config);
-
-        updateTopPosition(); 
       }
-
+ 
       function setupPwdTogglers() {
         var pwdInputs = document.querySelectorAll("input[type=password]");
         for (var i = 0; i < pwdInputs.length; i++) {
