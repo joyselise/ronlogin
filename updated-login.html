@@ -453,7 +453,7 @@
       img.hidenpass {
         position: absolute;
         right: -3px;
-        top: 2.5px;
+        top: -64.5px;
         width: 47px !important;
         height: 47px !important;
         padding: 15px 12px;
@@ -541,7 +541,14 @@
         var showpassImage = document.createElement("img");
         showpassImage.setAttribute("src", "https://joyselise.github.io/ronlogin/images/visibility-off.svg");
         showpassImage.setAttribute("class", "hidenpass");
-        pwd.insertAdjacentElement("afterend", showpassImage);
+        // pwd.insertAdjacentElement("afterend", showpassImage);
+
+        var forgotPasswordElement = document.getElementById("forgotPassword");
+        if (forgotPasswordElement) {
+            forgotPasswordElement.insertAdjacentElement("afterend", showpassImage);
+        } else {
+            pwd.insertAdjacentElement("afterend", showpassImage);
+        }
  
         // Add toggle password callback
         function toggle() {
