@@ -543,14 +543,6 @@
         showpassImage.setAttribute("class", "hidenpass");
         pwd.insertAdjacentElement("afterend", showpassImage);
 
-        // var forgotPasswordElement = document.getElementById("forgotPassword");
-        // if (forgotPasswordElement) {
-        //     forgotPasswordElement.insertAdjacentElement("afterend", showpassImage);
-        // } else {
-        //     pwd.insertAdjacentElement("afterend", showpassImage);
-        // }
- 
-        // Add toggle password callback
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
@@ -561,18 +553,20 @@
           }
         }
         showpassImage.onclick = toggle;
-        // For non-mouse usage
         showpassImage.onkeydown = toggle;
 
         function updateTopPosition() {
-          var emailError = document.querySelector(".error.itemLevel[aria-hidden='false'] p:contains('Please enter your Email Address')");
-          var passwordError = document.querySelector(".error.itemLevel[aria-hidden='true'] p:contains('Please enter your password')");
+          var emailError = document.querySelector(".error.itemLevel[aria-hidden='false']");
+          var passwordError = document.querySelector(".error.itemLevel[aria-hidden='true']");
 
-          if (emailError && emailError.parentElement.style.display === 'block' && passwordError && passwordError.parentElement.style.display === 'block') {
+          var emailErrorText = emailError && emailError.style.display === 'block' && emailError.querySelector("p").textContent.includes("Please enter your Email Address");
+          var passwordErrorText = passwordError && passwordError.style.display === 'block' && passwordError.querySelector("p").textContent.includes("Please enter your password");
+
+          if (emailErrorText && passwordErrorText) {
             showpassImage.style.top = "40.5px";
-          } else if (emailError && emailError.parentElement.style.display === 'block') {
+          } else if (emailErrorText) {
             showpassImage.style.top = "2.5px";
-          } else if (passwordError && passwordError.parentElement.style.display === 'block') {
+          } else if (passwordErrorText) {
             showpassImage.style.top = "40.5px";
           } else {
             showpassImage.style.top = "2.5px"; // Default position
@@ -585,9 +579,9 @@
         var targetNode = document.querySelector(".localAccount .entry .entry-item") || pwd.parentNode;
         observer.observe(targetNode, config);
 
-        updateTopPosition();
+        updateTopPosition(); 
       }
- 
+
       function setupPwdTogglers() {
         var pwdInputs = document.querySelectorAll("input[type=password]");
         for (var i = 0; i < pwdInputs.length; i++) {
