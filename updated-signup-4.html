@@ -631,7 +631,7 @@
     );
     $("#emailVerificationControl_but_send_new_code").text("Resend Code");
     $(".city_li").after(
-      '<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href="https://ronreload.selisestage.com/gtc"><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
+      '<div class="form-check mt-3 pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href="https://ronreload.selisestage.com/gtc" target="_blank"><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
     );
     $("#newssignupchecked").on("change", function () {
       conditionalContinueBtn();
@@ -713,13 +713,10 @@
       }
     }
 
-    // Event listener for button (if the style changes on click)
     button.addEventListener("click", function () {
-      // Update paragraph style after a short delay
       setTimeout(updateParagraphStyle, 100); //delay
     });
 
-    // MutationObserver to watch for style changes
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         if (mutation.attributeName === "style") {
@@ -728,7 +725,7 @@
       });
     });
 
-    // Start observing the button
+
     observer.observe(button, { attributes: true });
 
     // for verificatrions
@@ -891,9 +888,9 @@
 
           var verificationCodeLi = $(".emailVerificationCode_li");
           var sendCodeButton = $("#emailVerificationControl_but_send_code");
-
+          var verificationSuccessMessage = $("#emailVerificationControl_success_message");
           // Check if the verification code li is displayed
-          if (verificationCodeLi.css("display") === "none") {
+          if (verificationCodeLi.css("display") === "none" && verificationSuccessMessage.css("display") === "none") {
             // Trigger the send code button click
             sendCodeButton.click();
           }
