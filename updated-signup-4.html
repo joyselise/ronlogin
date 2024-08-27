@@ -899,7 +899,7 @@
             verifyButton.click();
           }
 
-          if (verificationCodeLi.css("display") === "inline" && verificationSuccessMessage.css("display") === "none") {
+          if (verificationCodeLi.css("display") === "none" && verificationSuccessMessage.css("display") === "inline") {
             if ($("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
                 $(".error.itemLevel.show").remove();
                 $("#continue").click();
