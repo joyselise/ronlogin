@@ -895,6 +895,7 @@
           if (verificationCodeLi.css("display") === "none" && verificationSuccessMessage.css("display") === "none") {
             sendCodeButton.click();
           }
+          console.log(verificationCodeLi.css("display"), verificationSuccessMessage.css("display"));
           if (verificationCodeLi.css("display") === "inline" && verificationSuccessMessage.css("display") === "inline") {
             verifyButton.click();
           }
