@@ -898,18 +898,32 @@
             verifyButton.click();
           }
           if ($("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
-            $("#continue").click();
+              $(".error.itemLevel.show").remove();
+              $("#continue").click();
           }
-          if($("#termschecked").is(":checked") && !$("#newssignupchecked").is(":checked")) {
-            $(".termschecked").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>')
+          if ($("#termschecked").is(":checked") && !$("#newssignupchecked").is(":checked")) {
+              if ($(".termschecked").next(".error.itemLevel.show").length === 0) {
+                  $(".termschecked").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+              }
           }
-          if(!$("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
-            $(".city_li").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>')
+          if (!$("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
+              if ($(".city_li").next(".error.itemLevel.show").length === 0) {
+                  $(".city_li").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+              }
           }
-          if(!$("#termschecked").is(":checked") && !$("#newssignupchecked").is(":checked")) {
-            $(".city_li").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>')
-            $(".termschecked").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>')
+          if (!$("#termschecked").is(":checked") && !$("#newssignupchecked").is(":checked")) {
+              if ($(".city_li").next(".error.itemLevel.show").length === 0) {
+                  $(".city_li").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+              }
+              if ($(".termschecked").next(".error.itemLevel.show").length === 0) {
+                  $(".termschecked").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+              }
           }
+          $("#termschecked, #newssignupchecked").on("change", function () {
+              if ($("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
+                  $(".error.itemLevel.show").remove();
+              }
+          });
         }
       });
     });
