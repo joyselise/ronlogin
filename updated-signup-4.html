@@ -989,22 +989,24 @@
 
     function updateSocialLoginElements() {
       var successMessage = document.getElementById("emailVerificationControl_success_message");
-      var emailLabel = document.getElementById("email_label");
-      var cityLi = document.querySelector(".DropdownSingleSelect.city_li");
-      var resendBox = document.querySelector(".resend-code-box");
-      var termsChecked = document.querySelector(".termschecked");
-      var newsletterSignupChecked = document.querySelector(".newssignupchecked");
+      if (successMessage) {
+        var emailLabel = document.getElementById("email_label");
+        var cityLi = document.querySelector(".DropdownSingleSelect.city_li");
+        var resendBox = document.querySelector(".resend-code-box");
+        var termsChecked = document.querySelector(".termschecked");
+        var newsletterSignupChecked = document.querySelector(".newssignupchecked");
 
-      if (successMessage && successMessage.style.display === "inline" && successMessage.innerText === "The code has been verified. You can now continue.") {
-        emailLabel.style.display = "none";
-        resendBox.style.display = "none";
-        cityLi.style.display = "block";
-        termsChecked.style.display = "flex";
-        newsletterSignupChecked.style.display = "flex";
-      } else {
-        cityLi.style.display = "none";
-        termsChecked.style.display = "none";
-        newsletterSignupChecked.style.display = "none";
+        if (successMessage && successMessage.style.display === "inline" && successMessage.innerText === "The code has been verified. You can now continue.") {
+          emailLabel.style.display = "none";
+          resendBox.style.display = "none";
+          cityLi.style.display = "block";
+          termsChecked.style.display = "flex";
+          newsletterSignupChecked.style.display = "flex";
+        } else {
+          cityLi.style.display = "none";
+          termsChecked.style.display = "none";
+          newsletterSignupChecked.style.display = "none";
+        }
       }
     }
 
