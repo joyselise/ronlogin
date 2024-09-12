@@ -570,6 +570,15 @@
     li.Password.reenterPassword_li .error.itemLevel.show {
       display: none;
     }
+    .checkbox-error{
+      color: #cc0000;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0.07px;
+    }
   </style>
   <style>
     input::-ms-reveal,
@@ -907,33 +916,33 @@
 
           if (verificationCodeLi.css("display") === "none" && verificationSuccessMessage.css("display") === "inline") {
             if ($("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
-                $(".error.itemLevel.show").remove();
+                $(".checkbox-error").remove();
                 $("#continue").click();
             }
             if ($("#termschecked").is(":checked") && !$("#newssignupchecked").is(":checked")) {
-                if ($(".termschecked").next(".error.itemLevel.show").length === 0) {
-                    $(".termschecked").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+                if ($(".termschecked").next(".checkbox-error").length === 0) {
+                    $(".termschecked").after('<div class="checkbox-error" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
                 }
             }
   
             if (!$("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
-                if ($(".city_li").next(".error.itemLevel.show").length === 0) {
-                    $(".city_li").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+                if ($(".city_li").next(".checkbox-error").length === 0) {
+                    $(".city_li").after('<div class="checkbox-error" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
                 }
             }
   
             if (!$("#termschecked").is(":checked") && !$("#newssignupchecked").is(":checked")) {
-                if ($(".city_li").next(".error.itemLevel.show").length === 0) {
-                    $(".city_li").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+                if ($(".city_li").next(".checkbox-error").length === 0) {
+                    $(".city_li").after('<div class="checkbox-error" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
                 }
-                if ($(".termschecked").next(".error.itemLevel.show").length === 0) {
-                    $(".termschecked").after('<div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
+                if ($(".termschecked").next(".checkbox-error").length === 0) {
+                    $(".termschecked").after('<div class="checkbox-error" role="alert" aria-hidden="false" aria-label="">This information is required.</div>');
                 }
             }
 
             $("#termschecked, #newssignupchecked").on("change", function () {
                 if ($("#termschecked").is(":checked") && $("#newssignupchecked").is(":checked")) {
-                    $(".error.itemLevel.show").remove();
+                    $(".checkbox-error").remove();
                 }
             });
           }
