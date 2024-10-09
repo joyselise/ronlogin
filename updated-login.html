@@ -586,7 +586,12 @@
     <!--=============== Tanim's written scripts start ==============-->
     <script>
       $(document).ready(function () {
-        $(".localAccount .intro").find("h2[aria-level='1']").text("Log in");
+        var lang = document.documentElement.lang;
+        if(lang == "de"){
+        $(".localAccount .intro").find("h2[aria-level='1']").text("Einloggen");
+        }else{
+          $(".localAccount .intro").find("h2[aria-level='1']").text("Log In");
+        }
         $(".localAccount .entry .entry-item .password-label").insertAfter("#password");
         $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text("Forgot Password?");
         $("#api .social").insertAfter("#localAccountForm");
@@ -599,12 +604,8 @@
     </script>
     <!--=============== Tanim's written scripts end ==============-->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        var lang = document.documentElement.lang;
-        console.log(lang);
-      });
       var lang = document.documentElement.lang;
-        console.log(lang);
+      console.log(lang);
     </script>
   </body>
 </html>
