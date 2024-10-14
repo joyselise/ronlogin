@@ -637,49 +637,29 @@
         };
 
         var texts = textMap[lang] || textMap["default"];
-
-        // Extract the href from the existing link
         var createAccountLink = $("#createAccount").attr("href");
 
-        // function updateErrorMessages() {
-        //   $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
-        //   $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts.validEmailError);
-        //   $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
-        //   $(".error.pageLevel p:contains('We can\'t seem to find your account')").text(texts.accountNotFound);
-        //   $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
-        // }
-
         function updateErrorMessages() {
-          console.log("Updating error messages...");
-          $(".entry-item .error p").each(function() {
-            var currentText = $(this).text();
-            console.log("Current error text:", currentText);
-
-            if (currentText.includes("Please enter your Email Address")) {
-              $(this).text(texts.emailError);
-              console.log("Updated email error text to:", texts.emailError);
-            } else if (currentText.includes("Please enter a valid email address")) {
-              $(this).text(texts.validEmailError);
-              console.log("Updated valid email error text to:", texts.validEmailError);
-            } else if (currentText.includes("Please enter your password")) {
-              $(this).text(texts.passwordError);
-              console.log("Updated password error text to:", texts.passwordError);
-            } else if (currentText.includes("We can't seem to find your account")) {
-              $(this).text(texts.accountNotFound);
-              console.log("Updated account not found text to:", texts.accountNotFound);
-            } else if (currentText.includes("Your password is incorrect")) {
-              $(this).text(texts.incorrectPassword);
-              console.log("Updated incorrect password text to:", texts.incorrectPassword);
-            }
-          });
+          $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
+          $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts.validEmailError);
+          $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
+          $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts.accountNotFound);
+          $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
         }
 
-        // Call updateErrorMessages initially
-        updateErrorMessages();
+        // MutationObserver to watch for changes
+        var targetNode = document.getElementById('api');
+        var config = { childList: true, subtree: true };
 
-        $(document).ajaxComplete(function () {
-          updateErrorMessages();
+        var observer = new MutationObserver(function(mutationsList, observer) {
+            // when the DOM changes
+            updateErrorMessages();
         });
+
+        // observe
+        observer.observe(targetNode, config);
+
+        updateErrorMessages();
         
         $(".localAccount .intro").find("h2[aria-level='1']").text(texts.loginHeading);
         $(".localAccount .entry .entry-item label[for='email']").text(texts.emailLabel);
