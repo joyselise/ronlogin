@@ -638,7 +638,8 @@
           };
 
           var texts = textMap[lang] || textMap["default"];
-          var createAccountLink = $("#createAccount").attr("href");
+          var createAccountMainLink = $("#createAccount").attr("href");
+          var createAccountLink = createAccountMainLink + '&ui_locales=' + lang;
           
           $(".localAccount .intro").find("h2[aria-level='1']").text(texts.loginHeading);
           $(".localAccount .entry .entry-item label[for='email']").text(texts.emailLabel);
@@ -681,7 +682,15 @@
           $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text("Forgot Password?");
           $("#api .localAccount .entry .buttons #next").text("Login");
           $(".social .intro h2").html("<p>" + "Or log in / sign up with" + "</p>").find("p").addClass("with-text");
+
+          var createAccountMainLink = $("#createAccount").attr("href");
+          var createAccountLink = createAccountMainLink + '&ui_locales=' + lang;
+          $("#createAccount").attr("href", createAccountLink);
         }
+
+        var forgotPasswordMainLink = $("#forgotPassword").attr("href"); 
+        var forgotPasswordLink = forgotPasswordMainLink + '&ui_locales=' + lang;
+        $("#forgotPassword").attr("href", forgotPasswordLink);
 
         $(".localAccount .entry .entry-item .password-label").insertAfter("#password");
         $("#api .social").insertAfter("#localAccountForm");
