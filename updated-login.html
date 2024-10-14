@@ -152,7 +152,7 @@
         font-weight: 600;
         line-height: 35px;
         color: #212121;
-        margin-bottom: 20px;
+        margin-bottom: 4px;
       }
       #login-box.whole-box .box-center #api .localAccount .error {
         /* background-color: #fae5e5;
@@ -582,30 +582,43 @@
       }
       setupPwdTogglers();
     </script>
-
-    <!--=============== Tanim's written scripts start ==============-->
     <script>
       $(document).ready(function () {
         var lang = document.documentElement.lang;
-        if(lang == "de"){
-        $(".localAccount .intro").find("h2[aria-level='1']").text("Einloggen");
-        }else{
-          $(".localAccount .intro").find("h2[aria-level='1']").text("Log In");
-        }
+        var textMap = {
+          "de": {
+            "loginHeading": "Einloggen",
+            "forgotPassword": "Passwort vergessen?",
+            "loginButton": "Anmelden",
+            "socialIntro": "Oder einloggen / anmelden mit"
+          },
+          "fr": {
+            "loginHeading": "Se connecter",
+            "forgotPassword": "Mot de passe oublié?",
+            "loginButton": "Connexion",
+            "socialIntro": "Ou connectez-vous / inscrivez-vous avec"
+          },
+          "default": {
+            "loginHeading": "Log In",
+            "forgotPassword": "Forgot Password?",
+            "loginButton": "Login",
+            "socialIntro": "Or log in / sign up with"
+          }
+        };
+
+        var texts = textMap[lang] || textMap["default"];
+
+        $(".localAccount .intro").find("h2[aria-level='1']").text(texts.loginHeading);
+        $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts.forgotPassword);
+        $("#api .localAccount .entry .buttons #next").text(texts.loginButton);
+        $(".social .intro h2").html("<p>" + texts.socialIntro + "</p>").find("p").addClass("with-text");
+
         $(".localAccount .entry .entry-item .password-label").insertAfter("#password");
-        $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text("Forgot Password?");
         $("#api .social").insertAfter("#localAccountForm");
         $("#api .create").insertAfter("#api .social");
-        $("#api .localAccount .entry .buttons #next").text("Login");
-        $(".social .intro h2").html("<p>Or log in / sign up with</p>").find("p").addClass("with-text");
         $(".social .options div #GoogleExchange").html("<img />").find("img").attr("src", "https://joyselise.github.io/ronlogin/images/google.svg");
         // $(".social .options div #FacebookExchange").html("<img />").find("img").attr("src", "https://joyselise.github.io/ronlogin/images/facebook.svg");
       });
-    </script>
-    <!--=============== Tanim's written scripts end ==============-->
-    <script>
-      var lang = document.documentElement.lang;
-      console.log(lang);
     </script>
   </body>
 </html>
