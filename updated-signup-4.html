@@ -336,7 +336,7 @@
       font-weight: 400;
       line-height: 16px;
       letter-spacing: 0.08px;
-      padding: 20px 0;
+      padding: 20px 0 4px;
       display: block;
     }
 
@@ -530,7 +530,7 @@
       font-weight: 400;
       line-height: 16px;
       letter-spacing: 0.07px;
-      padding: 20px 0 2px 0;
+      /* padding: 20px 0 2px 0; */
     }
 
     p.successVerifications {
@@ -848,17 +848,17 @@
       function checkVerificationCodeDisplay() {
         var verificationCodeLi = $(".emailVerificationCode_li");
         var emailLabel = $("#email_label");
-        var emailVerificationControlSuccessMessage = $("#emailVerificationControl_success_message");
+        var verificationSuccessText = $(".verificationSuccessText");
 
         // Check if the verification code li is displayed inline
         if (verificationCodeLi.css("display") === "inline" || verificationCodeLi.css("display") === "block") {
           // Hide the email label
           emailLabel.css("display", "none");
-          emailVerificationControlSuccessMessage.css("display", "none");
+          verificationSuccessText.css("display", "none");
         } else {
           // Show the email label
           emailLabel.css("display", "");
-          emailVerificationControlSuccessMessage.css("display", "");
+          verificationSuccessText.css("display", "");
         }
       }
 
