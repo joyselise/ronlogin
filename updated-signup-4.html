@@ -337,6 +337,7 @@
       line-height: 16px;
       letter-spacing: 0.08px;
       padding: 20px 0;
+      display: block;
     }
 
     #signup-box #claimVerificationServerError {
@@ -642,6 +643,24 @@
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    var lang = document.documentElement.lang;
+    if (lang === "de" || lang === "fr") {
+      var texts = {
+        "de": {
+          "welcomeHeading": "Willkommen bei Ron",
+        },
+        "fr": {
+          "welcomeHeading": "Bienvenue chez Ron",
+        }
+      };
+      var heading = $("<h1>" + texts[lang].welcomeHeading + "</h1>");
+    }
+
+
+
+
+    // if (lang === "en") {
+
     var heading = $("<h1>Welcome to Ron</h1>");
     $(".intro").find("p").before(heading);
     $(".intro p").text("Create an account");
@@ -829,14 +848,17 @@
       function checkVerificationCodeDisplay() {
         var verificationCodeLi = $(".emailVerificationCode_li");
         var emailLabel = $("#email_label");
+        var emailVerificationControlSuccessMessage = $("#emailVerificationControl_success_message");
 
         // Check if the verification code li is displayed inline
-        if (verificationCodeLi.css("display") === "inline") {
+        if (verificationCodeLi.css("display") === "inline" || verificationCodeLi.css("display") === "block") {
           // Hide the email label
           emailLabel.css("display", "none");
+          emailVerificationControlSuccessMessage.css("display", "none");
         } else {
           // Show the email label
           emailLabel.css("display", "");
+          emailVerificationControlSuccessMessage.css("display", "");
         }
       }
 
