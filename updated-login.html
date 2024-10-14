@@ -638,12 +638,22 @@
         // Extract the href from the existing link
         var createAccountLink = $("#createAccount").attr("href");
 
+        function updateErrorMessages() {
+          $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
+          $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
+          $(".error.pageLevel p:contains('We can\'t seem to find your account')").text(texts.accountNotFound);
+          $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
+        }
+
+        // Call updateErrorMessages initially
+        updateErrorMessages();
+
+        $(document).ajaxComplete(function () {
+          updateErrorMessages();
+        });
+        
         $(".localAccount .intro").find("h2[aria-level='1']").text(texts.loginHeading);
         $(".localAccount .entry .entry-item label[for='email']").text(texts.emailLabel);
-        $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
-        $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
-        $(".error.pageLevel p:contains('We can\'t seem to find your account')").text(texts.accountNotFound);
-        $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
         $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLink + "'>" + texts.createAccount + "</a>");
 
         // Update placeholders
