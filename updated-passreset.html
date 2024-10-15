@@ -793,34 +793,6 @@
           attributeFilter: ["aria-label", "style"]
         });
       }
-      // update new password ui
-      var newPasswordField = $(".newPassword_li");
-      var reenterPasswordField = $(".reenterPassword_li");
-
-      function updateNewPasswordUI() {
-        var intro = $(".intro");
-        if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
-          intro.find("p").text("Update your account with new password");
-          intro.find("p").show();
-        }
-      }
-
-      updateNewPasswordUI();
-
-      var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          if (mutation.attributeName === "style") {
-            updateNewPasswordUI();
-          }
-        });
-      });
-
-      if (newPasswordField) {
-        observer.observe(newPasswordField, { attributes: true });
-      }
-      if (reenterPasswordField) {
-        observer.observe(reenterPasswordField, { attributes: true });
-      }
 
     });
 
@@ -945,7 +917,7 @@
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
           $("#continue").show();
           $("#emailVerificationControl_but_change_claims").hide();
-          $(".intro p").hide();
+          $(".intro p").text("Update your account with new password");
         } else {
           $("#continue").hide();
         }
@@ -954,7 +926,7 @@
       var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
 
       // Check if the node exists, set up observer if it does
-      if (emailVerificationMessageNode && emailVerificationMessageNode !== 'undefined') {
+      if (emailVerificationMessageNode) {
         var observer = new MutationObserver(function (mutationsList) {
           for (var mutation of mutationsList) {
             if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
