@@ -750,7 +750,7 @@
       function updateFirstStepUI() {
         var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
         var firstStepDisplayed = firstStepAriaLabel ? $(firstStepAriaLabel).css("display") === "inline" : false;
-        if (firstStepSuccessMessage && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below." && firstStepDisplayed) {
+        if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
           $(".intro p").hide();
           $(".verificationSuccessText").hide();
           $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
