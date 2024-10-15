@@ -214,7 +214,7 @@
     }
 
     #passcode-reset-box #emailVerificationControl_but_send_code {
-      margin-top: 33px !important;
+      margin-top: 24px !important;
     }
 
     #passcode-reset-box .box-center #api #attributeVerification .buttons #cancel {
@@ -231,8 +231,8 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 22px;
-      margin-top: 8px;
-      margin-bottom: 16px;
+      /* margin-top: 8px;
+      margin-bottom: 16px; */
     }
 
     #passcode-reset-box .box-center #api #attributeVerification #attributeList ul li .attrEntry .verificationControlContent .verificationErrorText.error #emailVerificationControl_error_message {
@@ -350,6 +350,7 @@
       letter-spacing: 0.08px;
       outline: 0;
       box-shadow: none;
+      margin: 8px 0;
     }
 
     #passcode-reset-box .box-center #api #attributeVerification #attributeList.attr ul {
@@ -591,6 +592,11 @@
 
     #passcode-reset-box .back-btn-wrapper .back-btn {
       margin-bottom: 0;
+      color: #212121;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 160%;
+      letter-spacing: 0.07px;
     }
 
     #emailVerificationControl_but_send_new_code,
@@ -805,6 +811,10 @@
       observer.observe(button, { attributes: true });
     }
 
+    //first step verification button oberserver
+    $(document).ready(function () {
+      
+    });
     // ================ Submit button display on condition start ===========
     $(document).ready(function () {
       // Function to update UI based on conditions
