@@ -676,6 +676,12 @@
       letter-spacing: 0.07px;
       padding: 15px 0 0px;
     }
+    .newPassword_li{
+      padding: 16px 0;
+    }
+    #passwordEntryMismatch{
+      padding-top: 15px;
+    }
   </style>
   <style>
     input::-ms-reveal,
@@ -757,6 +763,9 @@
             $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
           }
         }
+        if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
+          $(".verificationCodeText").hide();
+        }
       }
       updateFirstStepUI();
 
@@ -786,6 +795,7 @@
         let verificationSuccessDisplayed = verificationSuccessAriaLabel ? $(verificationSuccessAriaLabel).css("display") === "inline" : false;
         let sendCodeButton = $("#emailVerificationControl_but_send_code");
         let verifyCodeButton = $("#emailVerificationControl_but_verify_code");
+        let continueButton = $("#continue");
 
         if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "inline" && sendCodeButton.css("display") === "inline") {
           sendCodeButton.click();
@@ -793,6 +803,10 @@
 
         if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below." ) {
           verifyCodeButton.click();
+        }
+
+        if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue." ) {
+          continueButton.click();
         }
       }
     });
