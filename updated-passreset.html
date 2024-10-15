@@ -757,10 +757,15 @@
         var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
         var firstStepDisplayed = firstStepAriaLabel ? $(firstStepSuccessMessage).css("display") === "inline" : false;
         var emailVerificationCodeDisplayed = $(".emailVerificationCode_li").css("display") === "inline";
+        var emailVerificationCodeBlockDisplayed = $(".emailVerificationCode_li").css("display") === "block";
+        var verificationCodeTextDisplayed = false;
+        if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
+          verificationCodeTextDisplayed = true;
+        }
         if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
           $(".intro p").hide();
           $(".verificationSuccessText").hide();
-          if ($(".verificationCodeText").length === 0 && !emailVerificationCodeDisplayed) {
+          if (verificationCodeTextDisplayed && $(".verificationCodeText").length === 0 ) {
             $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
           }
         }
