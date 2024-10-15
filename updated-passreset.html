@@ -718,6 +718,7 @@
   </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    var lang = document.documentElement.lang;
     // ============ Common things ==========
     $("#continue").text("Set New Password");
     $(".intro").prepend("<h1>Forgot Password ?</h1>");
@@ -726,7 +727,7 @@
     );
     // ================ Back button start ===========
     var backBtnDiv = $(
-      '<a href="https://ron-backend.selisestage.com/login/azure" class="back-btn-wrapper"></a>'
+      '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'
     ).append(
       $('<span class="material-symbols-outlined">arrow_back</span>'),
       $('<p href="#" class="back-btn">Back to Log in</p>')
@@ -792,6 +793,32 @@
           attributeFilter: ["aria-label", "style"]
         });
       }
+      // update new password ui
+      function updateNewPasswordUI() {
+        var newPasswordField = document.getElementById("newPassword_li");
+        var reenterPasswordField = document.getElementById("reenterPassword_li");
+        var intro = $(".intro");
+
+        if (newPasswordField && reenterPasswordField) {
+          intro.find("p").text("Update your account with new password");
+        }
+      }
+      updateNewPasswordUI();
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName === "style") {
+            updateNewPasswordUI();
+          }
+        });
+      });
+
+      if (newPasswordField) {
+        observer.observe(newPasswordField, { attributes: true });
+      }
+      if (reenterPasswordField) {
+        observer.observe(reenterPasswordField, { attributes: true });
+      }
+      
     });
 
     // Handle Enter key press
