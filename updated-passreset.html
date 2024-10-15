@@ -746,8 +746,8 @@
 
     //first step verification button oberserver
     $(document).ready(function () {
+      var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
       function updateFirstStepUI() {
-        var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
         var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
         var firstStepDisplayed = firstStepAriaLabel ? $(firstStepAriaLabel).css("display") === "inline" : false;
         if (firstStepSuccessMessage && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below." && firstStepDisplayed) {
@@ -773,6 +773,28 @@
         });
       }
     });
+
+    // Handle Enter key press
+    $(document).keydown(function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent default Enter key behavior
+
+        let verificationSuccessMessage = $("#emailVerificationControl_success_message");
+        let verificationSuccessAriaLabel = verificationSuccessMessage ? $(verificationSuccessMessage).attr("aria-label") : null;
+        let verificationSuccessDisplayed = verificationSuccessAriaLabel ? $(verificationSuccessAriaLabel).css("display") === "inline" : false;
+        let sendCodeButton = $("#emailVerificationControl_but_send_code");
+        let verifyCodeButton = $("#emailVerificationControl_but_verify_code");
+
+        if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "inline" && sendCodeButton.css("display") === "inline") {
+          sendCodeButton.click();
+        }
+
+        if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below." ) {
+          verifyCodeButton.click();
+        }
+      }
+    });
+    
 
     function makePwdToggler(pwdField) {
       // Create the show password image
