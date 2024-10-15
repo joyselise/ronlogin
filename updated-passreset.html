@@ -159,6 +159,7 @@
       font-weight: 400;
       line-height: 22px;
       letter-spacing: 0.07px;
+      padding: 5px 0 8px;
       margin-bottom: 0;
     }
 
@@ -667,6 +668,14 @@
     li.Password.reenterPassword_li .error.itemLevel.show {
       display: none;
     }
+    .verificationCodeText{
+      color: #212121;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 120%;
+      letter-spacing: 0.07px;
+      padding: 15px 0 0px;
+    }
   </style>
   <style>
     input::-ms-reveal,
@@ -734,6 +743,36 @@
     $("#claimVerificationServerError").text(
       "An account could not be found for the provided user ID. Try loging with your Social Accounts"
     );
+
+    //first step verification button oberserver
+    $(document).ready(function () {
+      function updateFirstStepUI() {
+        var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
+        var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
+        var firstStepDisplayed = firstStepAriaLabel ? $(firstStepAriaLabel).css("display") === "inline" : false;
+        if (firstStepSuccessMessage && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below." && firstStepDisplayed) {
+          $(".intro p").hide();
+          $(".verificationSuccessText").hide();
+          $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
+        }
+      }
+      updateFirstStepUI();
+
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName === "aria-label" || mutation.attributeName === "style") {
+            updateFirstStepUI();
+          }
+        });
+      });
+
+      if (firstStepSuccessMessage) {
+        observer.observe(firstStepSuccessMessage, {
+          attributes: true,
+          attributeFilter: ["aria-label", "style"]
+        });
+      }
+    });
 
     function makePwdToggler(pwdField) {
       // Create the show password image
@@ -811,10 +850,6 @@
       observer.observe(button, { attributes: true });
     }
 
-    //first step verification button oberserver
-    $(document).ready(function () {
-      
-    });
     // ================ Submit button display on condition start ===========
     $(document).ready(function () {
       // Function to update UI based on conditions
