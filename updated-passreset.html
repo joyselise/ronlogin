@@ -799,7 +799,7 @@
 
       function updateNewPasswordUI() {
         var intro = $(".intro");
-        if (newPasswordField && reenterPasswordField) {
+        if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
           intro.find("p").text("Update your account with new password");
           intro.find("p").show();
         }
@@ -851,7 +851,7 @@
           continueButton.click();
         }
 
-        if (newPasswordField && reenterPasswordField) {
+        if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
           continueButton.click();
         }
       }
