@@ -794,13 +794,14 @@
         });
       }
       // update new password ui
-      var newPasswordField = document.getElementById("newPassword_li");
-      var reenterPasswordField = document.getElementById("reenterPassword_li");
+      var newPasswordField = $(".newPassword_li");
+      var reenterPasswordField = $(".reenterPassword_li");
 
       function updateNewPasswordUI() {
         var intro = $(".intro");
         if (newPasswordField && reenterPasswordField) {
           intro.find("p").text("Update your account with new password");
+          intro.find("p").show();
         }
       }
 
@@ -834,6 +835,8 @@
         let sendCodeButton = $("#emailVerificationControl_but_send_code");
         let sendCodeButtonDisplayed = sendCodeButton ? sendCodeButton.css("display") === "inline" || sendCodeButton.css("display") === "block" : false;
         let verifyCodeButton = $("#emailVerificationControl_but_verify_code");
+        let newPasswordField = $("#newPassword");
+        let reenterPasswordField = $("#reenterPassword");
         let continueButton = $("#continue");
 
         if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButton.css("display") === "inline") {
@@ -845,6 +848,10 @@
         }
 
         if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue." ) {
+          continueButton.click();
+        }
+
+        if (newPasswordField && reenterPasswordField) {
           continueButton.click();
         }
       }
