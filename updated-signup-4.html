@@ -656,7 +656,9 @@
       var heading = $("<h1>" + texts[lang].welcomeHeading + "</h1>");
     }
 
-
+    var loginPromptBtn = $(".loginPromptBtn");
+    var loginPromptBtnLink = loginPromptBtn.attr("href") + '?ui_locales=' + lang;
+    loginPromptBtn.attr("href", loginPromptBtnLink);
 
 
     // if (lang === "en") {
