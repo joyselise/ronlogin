@@ -794,16 +794,18 @@
         });
       }
       // update new password ui
-      function updateNewPasswordUI() {
-        var newPasswordField = document.getElementById("newPassword_li");
-        var reenterPasswordField = document.getElementById("reenterPassword_li");
-        var intro = $(".intro");
+      var newPasswordField = document.getElementById("newPassword_li");
+      var reenterPasswordField = document.getElementById("reenterPassword_li");
 
+      function updateNewPasswordUI() {
+        var intro = $(".intro");
         if (newPasswordField && reenterPasswordField) {
           intro.find("p").text("Update your account with new password");
         }
       }
+
       updateNewPasswordUI();
+
       var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
           if (mutation.attributeName === "style") {
@@ -830,10 +832,11 @@
         let verificationSuccessAriaLabel = verificationSuccessMessage ? $(verificationSuccessMessage).attr("aria-label") : null;
         let verificationSuccessDisplayed = verificationSuccessAriaLabel ? $(verificationSuccessMessage).css("display") === "inline" : false;
         let sendCodeButton = $("#emailVerificationControl_but_send_code");
+        let sendCodeButtonDisplayed = sendCodeButton ? sendCodeButton.css("display") === "inline" || sendCodeButton.css("display") === "block" : false;
         let verifyCodeButton = $("#emailVerificationControl_but_verify_code");
         let continueButton = $("#continue");
 
-        if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "inline" && sendCodeButton.css("display") === "inline") {
+        if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButton.css("display") === "inline") {
           sendCodeButton.click();
         }
 
