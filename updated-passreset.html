@@ -759,6 +759,7 @@
         var emailVerificationCodeDisplayed = $(".emailVerificationCode_li").css("display") === "inline";
         var emailVerificationCodeBlockDisplayed = $(".emailVerificationCode_li").css("display") === "block";
         var verificationCodeTextDisplayed = false;
+        var continueButton = $("#continue");
         if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
           verificationCodeTextDisplayed = true;
         }
@@ -771,6 +772,8 @@
         }
         if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
           $(".verificationCodeText").hide();
+          continueButton.click();
+          $(".verificationSuccessText").show();
         }
       }
       updateFirstStepUI();
