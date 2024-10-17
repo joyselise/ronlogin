@@ -730,7 +730,10 @@
           "newCodeText": "Haben Sie noch keinen Code erhalten?",
           "claimVerificationServerError": "Es konnte keine Konto für die angegebene Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
           'verificationCodeText': "Bitte geben Sie den Bestätigungscode ein, der an Ihre E-Mail-Adresse gesendet wurde.",
-          'updateAccountHeading': "Aktualisieren Sie Ihr Konto mit einem neuen Passwort"
+          'updateAccountHeading': "Aktualisieren Sie Ihr Konto mit einem neuen Passwort",
+          'accountLocked': "Ihr Konto ist gesperrt. Wenden Sie sich an Ihre Support-Person, um es zu entsperren, und versuchen Sie es dann erneut.",
+          'informationRequired': "Diese Information ist erforderlich.",
+          'updateAccountHeader': "Neues Passwort festlegen"
         },
         "fr": {
           "continueButton": "Réinitialiser votre mot de passe",
@@ -739,11 +742,40 @@
           "backButton": "Retour à l'inscription",
           "resendCode": "Code erneut senden",
           "newCodeText": "Haben Sie noch keinen Code erhalten?",
-          "claimVerificationServerError": "Es konnte keine Konto für die angegebene Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
-          "verificationCodeText": "Bitte geben Sie den Bestätigungscode ein, der an Ihre E-Mail-Adresse gesendet wurde.",
-          "updateAccountHeading": "Aktualisieren Sie Ihr Konto mit einem neuen Passwort"
+          "claimVerificationServerError": "Vous avez un compte pour les différents Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
+          "verificationCodeText": "Veuillez noter que le meilleur code vous a été envoyé à l'adresse e-mail suivante.",
+          "updateAccountHeading": "Actualisez votre compte avec un nouveau mot de passe",
+          "accountLocked": "Votre compte est utilisé. Lorsque vous êtes avec votre personne de soutien, pour vous aider, et pour que vous puissiez l'utiliser",
+          "informationRequired": "Cette information est requise.",
+          "updateAccountHeader": "Définir un nouveau mot de passe"
         }
       };
+      // error messages
+      function updateErrorMessages() {
+        $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
+        $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts.validEmailError);
+        $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
+        $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts.accountNotFound);
+        $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
+        $(".error.pageLevel p:contains('This information is required.')").text(texts.informationRequired);
+        // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
+
+      }
+
+      // MutationObserver to watch for changes
+      var targetNode = document.getElementById('api');
+      var config = { childList: true, subtree: true };
+
+      var observer = new MutationObserver(function(mutationsList, observer) {
+          // when the DOM changes
+          updateErrorMessages();
+      });
+
+      // observe
+      observer.observe(targetNode, config);
+
+      updateErrorMessages();
+        
       $("#continue").text(texts[lang].continueButton);
       $(".intro").prepend("<h1>"+texts[lang].introHeading+"</h1>");
       $(".intro p").text(texts[lang].introParagraph);
@@ -819,6 +851,7 @@
             $("#continue").show();
             $("#emailVerificationControl_but_change_claims").hide();
             $(".intro p").text(texts[lang].updateAccountHeading);
+            $(".intro h1").text(texts[lang].updateAccountHeader);
           } else {
             $("#continue").hide();
           }
@@ -927,6 +960,7 @@
             $("#continue").show();
             $("#emailVerificationControl_but_change_claims").hide();
             $(".intro p").text("Update your account with new password");
+            $(".intro h1").text("Set new password");
           } else {
             $("#continue").hide();
           }
@@ -956,6 +990,8 @@
       // ================ Submit button display on condition end ===========
     }
 
+    // end of english
+
     $("button#emailVerificationControl_but_send_new_code, p.newcodeText"
     ).wrapAll("<div class='resend-code-box' style='display: none;'></div>");
     $(".resend-code-box").insertBefore(
@@ -981,7 +1017,7 @@
         let reenterPasswordField = $("#reenterPassword");
         let continueButton = $("#continue");
 
-        if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButton.css("display") === "inline") {
+        if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
           sendCodeButton.click();
         }
 
