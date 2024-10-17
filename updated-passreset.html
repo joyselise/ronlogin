@@ -744,23 +744,23 @@
           "updateAccountHeading": "Aktualisieren Sie Ihr Konto mit einem neuen Passwort"
         }
       };
-      $("#continue").text(texts.continueButton);
-      $(".intro").prepend("<h1>"+texts.introHeading+"</h1>");
-      $(".intro p").text(texts.introParagraph);
+      $("#continue").text(texts[lang].continueButton);
+      $(".intro").prepend("<h1>"+texts[lang].introHeading+"</h1>");
+      $(".intro p").text(texts[lang].introParagraph);
 
       var backBtnDiv = $(
         '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'
       ).append(
         $('<span class="material-symbols-outlined">arrow_back</span>'),
-        $('<p href="#" class="back-btn">'+texts.backButton+'</p>')
+        $('<p href="#" class="back-btn">'+texts[lang].backButton+'</p>')
       );
       backBtnDiv.insertAfter("#continue");
-      $("#emailVerificationControl_but_send_new_code").text(texts.resendCode);
+      $("#emailVerificationControl_but_send_new_code").text(texts[lang].resendCode);
 
       $("#emailVerificationControl_but_verify_code").after(
-        '<p class="newcodeText">'+texts.newCodeText+'</p>'
+        '<p class="newcodeText">'+texts[lang].newCodeText+'</p>'
       );
-      $("#claimVerificationServerError").text(texts.claimVerificationServerError);
+      $("#claimVerificationServerError").text(texts[lang].claimVerificationServerError);
 
       //first step verification button oberserver
       $(document).ready(function () {
@@ -779,7 +779,7 @@
             $(".intro p").hide();
             $(".verificationSuccessText").hide();
             if (verificationCodeTextDisplayed && $(".verificationCodeText").length === 0 ) {
-              $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>"+texts.verificationCodeText+"</p>");
+              $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>"+texts[lang].verificationCodeText+"</p>");
             }
           }
           if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
@@ -818,7 +818,7 @@
           if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
             $("#continue").show();
             $("#emailVerificationControl_but_change_claims").hide();
-            $(".intro p").text(texts.updateAccountHeading);
+            $(".intro p").text(texts[lang].updateAccountHeading);
           } else {
             $("#continue").hide();
           }
