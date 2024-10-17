@@ -648,12 +648,25 @@
       var texts = {
         "de": {
           "welcomeHeading": "Willkommen bei Ron",
+          "createAccountHeading": "Erstellen Sie ein Konto",
+          'emailLabel': 'E-Mail-Adresse eingeben, um Ihre Profile zu verifizieren',
+          'emailVerificationCodeLabel': 'Bitte geben Sie den Bestätigungscode ein, der an Ihre E-Mail-Adresse gesendet wurde.',
+          'resendCodeButton': 'Code erneut senden'
         },
         "fr": {
           "welcomeHeading": "Bienvenue chez Ron",
+          "createAccountHeading": "Créer un compte",
+          'emailLabel': 'Entrez votre e-mail pour vérifier votre profil',
+          'emailVerificationCodeLabel': 'Veuillez entrer le code de vérification envoyé à votre boîte de réception.',
+          'resendCodeButton': 'Renvoyer le code'
         }
       };
       var heading = $("<h1>" + texts[lang].welcomeHeading + "</h1>");
+      $(".intro").find("p").before(heading);
+      $(".intro p").text(texts[lang].createAccountHeading);
+      $("#email_label").text(texts[lang].emailLabel);
+      $("#emailVerificationCode_label").text(texts[lang].emailVerificationCodeLabel);
+      $("#emailVerificationControl_but_send_new_code").text(texts[lang].resendCodeButton);
     }
 
     var loginPromptBtn = $(".loginPromptBtn");
@@ -661,16 +674,20 @@
     loginPromptBtn.attr("href", loginPromptBtnLink);
 
 
-    // if (lang === "en") {
+    if (lang === "en") {
+      var heading = $("<h1>Welcome to Ron</h1>");
+      $(".intro").find("p").before(heading);
+      $(".intro p").text("Create an account");
+      $("#email_label").text("Enter your email to verify your profile");
+      $("#emailVerificationCode_label").text(
+        "Please enter the verification code that has been sent to your inbox."
+      );
+      $("#emailVerificationControl_but_send_new_code").text("Resend Code");
+    }
 
-    var heading = $("<h1>Welcome to Ron</h1>");
-    $(".intro").find("p").before(heading);
-    $(".intro p").text("Create an account");
-    $("#email_label").text("Enter your email to verify your profile");
-    $("#emailVerificationCode_label").text(
-      "Please enter the verification code that has been sent to your inbox."
-    );
-    $("#emailVerificationControl_but_send_new_code").text("Resend Code");
+    
+    
+    
     $(".city_li").after(
       '<div class="form-check pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href="https://ronreload.selisestage.com/gtc" target="_blank"><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
     );
