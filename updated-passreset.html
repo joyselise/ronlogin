@@ -719,82 +719,252 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     var lang = document.documentElement.lang;
-    // ============ Common things ==========
-    $("#continue").text("Set New Password");
-    $(".intro").prepend("<h1>Forgot Password ?</h1>");
-    $(".intro p").text(
-      "No worries, we’ll send you a verification code to reset your password."
-    );
-    // ================ Back button start ===========
-    var backBtnDiv = $(
-      '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'
-    ).append(
-      $('<span class="material-symbols-outlined">arrow_back</span>'),
-      $('<p href="#" class="back-btn">Back to Log in</p>')
-    );
-    backBtnDiv.insertAfter("#continue");
-    // ================ Back button end ===========
-    //========== Resend code start ===========
-    $("#emailVerificationControl_but_send_new_code").text("Resend Code");
-    $("#emailVerificationControl_but_verify_code").after(
-      '<p class="newcodeText">Have not received any code yet?</p>'
-    );
-    $(
-      "button#emailVerificationControl_but_send_new_code, p.newcodeText"
+    if (lang === "de" || lang === "fr") {
+      var translationTexts = {
+        "de": {
+          "continueButton": "Setzen Sie das neue Passwort",
+          "introHeading": "Passwort vergessen?",
+          "introParagraph": "Keine Sorge, wir senden Ihnen einen Bestätigungscode, um Ihr Passwort zurückzusetzen.",
+          "backButton": "Zurück zur Anmeldung",
+          "resendCode": "Code erneut senden",
+          "newCodeText": "Haben Sie noch keinen Code erhalten?",
+          "claimVerificationServerError": "Es konnte keine Konto für die angegebene Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
+          'verificationCodeText': "Bitte geben Sie den Bestätigungscode ein, der an Ihre E-Mail-Adresse gesendet wurde.",
+          'updateAccountHeading': "Aktualisieren Sie Ihr Konto mit einem neuen Passwort"
+        },
+        "fr": {
+          "continueButton": "Réinitialiser votre mot de passe",
+          "introHeading": "Mot de passe oublié ?",
+          "introParagraph": "Pas de soucis, nous vous enverrons un code de vérification pour réinitialiser votre mot de passe.",
+          "backButton": "Retour à l'inscription",
+          "resendCode": "Code erneut senden",
+          "newCodeText": "Haben Sie noch keinen Code erhalten?",
+          "claimVerificationServerError": "Es konnte keine Konto für die angegebene Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
+          "verificationCodeText": "Bitte geben Sie den Bestätigungscode ein, der an Ihre E-Mail-Adresse gesendet wurde.",
+          "updateAccountHeading": "Aktualisieren Sie Ihr Konto mit einem neuen Passwort"
+        }
+      };
+      $("#continue").text(texts.continueButton);
+      $(".intro").prepend("<h1>"+texts.introHeading+"</h1>");
+      $(".intro p").text(texts.introParagraph);
+
+      var backBtnDiv = $(
+        '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'
+      ).append(
+        $('<span class="material-symbols-outlined">arrow_back</span>'),
+        $('<p href="#" class="back-btn">'+texts.backButton+'</p>')
+      );
+      backBtnDiv.insertAfter("#continue");
+      $("#emailVerificationControl_but_send_new_code").text(texts.resendCode);
+
+      $("#emailVerificationControl_but_verify_code").after(
+        '<p class="newcodeText">'+texts.newCodeText+'</p>'
+      );
+      $("#claimVerificationServerError").text(texts.claimVerificationServerError);
+
+      //first step verification button oberserver
+      $(document).ready(function () {
+        var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
+        function updateFirstStepUI() {
+          var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
+          var firstStepDisplayed = firstStepAriaLabel ? $(firstStepSuccessMessage).css("display") === "inline" : false;
+          var emailVerificationCodeDisplayed = $(".emailVerificationCode_li").css("display") === "inline";
+          var emailVerificationCodeBlockDisplayed = $(".emailVerificationCode_li").css("display") === "block";
+          var verificationCodeTextDisplayed = false;
+          var continueButton = $("#continue");
+          if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
+            verificationCodeTextDisplayed = true;
+          }
+          if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+            $(".intro p").hide();
+            $(".verificationSuccessText").hide();
+            if (verificationCodeTextDisplayed && $(".verificationCodeText").length === 0 ) {
+              $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>"+texts.verificationCodeText+"</p>");
+            }
+          }
+          if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
+            $(".verificationCodeText").hide();
+            continueButton.click();
+            $(".verificationSuccessText").show();
+          }
+        }
+        updateFirstStepUI();
+
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (mutation.attributeName === "aria-label" || mutation.attributeName === "style") {
+              updateFirstStepUI();
+            }
+          });
+        });
+
+        if (firstStepSuccessMessage) {
+          observer.observe(firstStepSuccessMessage, {
+            attributes: true,
+            attributeFilter: ["aria-label", "style"]
+          });
+        }
+
+      });
+
+      // ================ Submit button display on condition start ===========
+      $(document).ready(function () {
+        // Function to update UI based on conditions
+        function updateUI() {
+          var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
+          var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
+          var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
+
+          if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
+            $("#continue").show();
+            $("#emailVerificationControl_but_change_claims").hide();
+            $(".intro p").text(texts.updateAccountHeading);
+          } else {
+            $("#continue").hide();
+          }
+        }
+
+        var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
+
+        // Check if the node exists, set up observer if it does
+        if (emailVerificationMessageNode) {
+          var observer = new MutationObserver(function (mutationsList) {
+            for (var mutation of mutationsList) {
+              if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
+                updateUI();
+              }
+            }
+          });
+
+          observer.observe(emailVerificationMessageNode, {
+            attributes: true,
+            attributeFilter: ["aria-label", "style"]
+          });
+        }
+
+        // Call updateUI either way
+        updateUI();
+      });
+
+      // ================ Submit button display on condition end ===========
+    }
+ // ENGLISH
+    if(lang === 'en'){
+      $("#continue").text("Set New Password");
+      $(".intro").prepend("<h1>Forgot Password?</h1>");
+      $(".intro p").text(
+        "No worries, we’ll send you a verification code to reset your password."
+      );
+      // ================ Back button start ===========
+      var backBtnDiv = $(
+        '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'
+      ).append(
+        $('<span class="material-symbols-outlined">arrow_back</span>'),
+        $('<p href="#" class="back-btn">Back to Log in</p>')
+      );
+      backBtnDiv.insertAfter("#continue");
+       //========== Resend code start ===========
+      $("#emailVerificationControl_but_send_new_code").text("Resend Code");
+      $("#emailVerificationControl_but_verify_code").after(
+        '<p class="newcodeText">Have not received any code yet?</p>'
+      );
+      $("#claimVerificationServerError").text(
+        "An account could not be found for the provided user ID. Try loging with your Social Accounts"
+      );
+
+      $(document).ready(function () {
+        var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
+        function updateFirstStepUI() {
+          var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
+          var firstStepDisplayed = firstStepAriaLabel ? $(firstStepSuccessMessage).css("display") === "inline" : false;
+          var emailVerificationCodeDisplayed = $(".emailVerificationCode_li").css("display") === "inline";
+          var emailVerificationCodeBlockDisplayed = $(".emailVerificationCode_li").css("display") === "block";
+          var verificationCodeTextDisplayed = false;
+          var continueButton = $("#continue");
+          if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
+            verificationCodeTextDisplayed = true;
+          }
+          if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+            $(".intro p").hide();
+            $(".verificationSuccessText").hide();
+            if (verificationCodeTextDisplayed && $(".verificationCodeText").length === 0 ) {
+              $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
+            }
+          }
+          if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
+            $(".verificationCodeText").hide();
+            continueButton.click();
+            $(".verificationSuccessText").show();
+          }
+        }
+        updateFirstStepUI();
+
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (mutation.attributeName === "aria-label" || mutation.attributeName === "style") {
+              updateFirstStepUI();
+            }
+          });
+        });
+
+        if (firstStepSuccessMessage) {
+          observer.observe(firstStepSuccessMessage, {
+            attributes: true,
+            attributeFilter: ["aria-label", "style"]
+          });
+        }
+      });
+
+      // ================ Submit button display on condition start ===========
+      $(document).ready(function () {
+        // Function to update UI based on conditions
+        function updateUI() {
+          var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
+          var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
+          var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
+
+          if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
+            $("#continue").show();
+            $("#emailVerificationControl_but_change_claims").hide();
+            $(".intro p").text("Update your account with new password");
+          } else {
+            $("#continue").hide();
+          }
+        }
+
+        var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
+
+        // Check if the node exists, set up observer if it does
+        if (emailVerificationMessageNode) {
+          var observer = new MutationObserver(function (mutationsList) {
+            for (var mutation of mutationsList) {
+              if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
+                updateUI();
+              }
+            }
+          });
+
+          observer.observe(emailVerificationMessageNode, {
+            attributes: true,
+            attributeFilter: ["aria-label", "style"]
+          });
+        }
+        // Call updateUI either way
+        updateUI();
+      });
+
+      // ================ Submit button display on condition end ===========
+    }
+
+    $("button#emailVerificationControl_but_send_new_code, p.newcodeText"
     ).wrapAll("<div class='resend-code-box' style='display: none;'></div>");
     $(".resend-code-box").insertBefore(
       "#emailVerificationControl_but_verify_code"
     );
     //========== Resend code end ===========
     $("#passwordEntryMismatch").insertAfter("#reenterPassword");
-    $("#claimVerificationServerError").text(
-      "An account could not be found for the provided user ID. Try loging with your Social Accounts"
-    );
-
-    //first step verification button oberserver
-    $(document).ready(function () {
-      var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
-      function updateFirstStepUI() {
-        var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
-        var firstStepDisplayed = firstStepAriaLabel ? $(firstStepSuccessMessage).css("display") === "inline" : false;
-        var emailVerificationCodeDisplayed = $(".emailVerificationCode_li").css("display") === "inline";
-        var emailVerificationCodeBlockDisplayed = $(".emailVerificationCode_li").css("display") === "block";
-        var verificationCodeTextDisplayed = false;
-        var continueButton = $("#continue");
-        if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
-          verificationCodeTextDisplayed = true;
-        }
-        if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
-          $(".intro p").hide();
-          $(".verificationSuccessText").hide();
-          if (verificationCodeTextDisplayed && $(".verificationCodeText").length === 0 ) {
-            $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
-          }
-        }
-        if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
-          $(".verificationCodeText").hide();
-          continueButton.click();
-          $(".verificationSuccessText").show();
-        }
-      }
-      updateFirstStepUI();
-
-      var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          if (mutation.attributeName === "aria-label" || mutation.attributeName === "style") {
-            updateFirstStepUI();
-          }
-        });
-      });
-
-      if (firstStepSuccessMessage) {
-        observer.observe(firstStepSuccessMessage, {
-          attributes: true,
-          attributeFilter: ["aria-label", "style"]
-        });
-      }
-
-    });
+    
+    
 
     // Handle Enter key press
     $(document).keydown(function (event) {
@@ -906,46 +1076,7 @@
       observer.observe(button, { attributes: true });
     }
 
-    // ================ Submit button display on condition start ===========
-    $(document).ready(function () {
-      // Function to update UI based on conditions
-      function updateUI() {
-        var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
-        var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
-        var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
-
-        if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
-          $("#continue").show();
-          $("#emailVerificationControl_but_change_claims").hide();
-          $(".intro p").text("Update your account with new password");
-        } else {
-          $("#continue").hide();
-        }
-      }
-
-      var emailVerificationMessageNode = document.getElementById("emailVerificationControl_success_message");
-
-      // Check if the node exists, set up observer if it does
-      if (emailVerificationMessageNode) {
-        var observer = new MutationObserver(function (mutationsList) {
-          for (var mutation of mutationsList) {
-            if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
-              updateUI();
-            }
-          }
-        });
-
-        observer.observe(emailVerificationMessageNode, {
-          attributes: true,
-          attributeFilter: ["aria-label", "style"]
-        });
-      }
-
-      // Call updateUI either way
-      updateUI();
-    });
-
-    // ================ Submit button display on condition end ===========
+    
   </script>
 </body>
 
