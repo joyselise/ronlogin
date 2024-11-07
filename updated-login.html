@@ -585,6 +585,7 @@
     <script>
       $(document).ready(function () {
         var lang = document.documentElement.lang ?? 'de';
+        console.log('lang',lang)
         if (lang === "de" || lang === "fr") {
           var textMap = {
             "de": {
@@ -638,6 +639,8 @@
           };
 
           var texts = textMap[lang] || textMap["default"];
+          console.log('texts',texts)
+          console.log('loginHeading',texts.loginHeading)
           var createAccountMainLinkNew = $("#createAccount").attr("href");
           var createAccountLinkNew = createAccountMainLinkNew + '&ui_locales=' + lang;
           
