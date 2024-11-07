@@ -638,12 +638,12 @@
           };
 
           var texts = textMap[lang] || textMap["default"];
-          var createAccountMainLink = $("#createAccount").attr("href");
-          var createAccountLink = createAccountMainLink + '&ui_locales=' + lang;
+          var createAccountMainLinkNew = $("#createAccount").attr("href");
+          var createAccountLinkNew = createAccountMainLinkNew + '&ui_locales=' + lang;
           
           $(".localAccount .intro").find("h2[aria-level='1']").text(texts[lang].loginHeading);
           $(".localAccount .entry .entry-item label[for='email']").text(texts[lang].emailLabel);
-          $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLink + "'>" + texts[lang].createAccount + "</a>");
+          $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLinkNew + "'>" + texts[lang].createAccount + "</a>");
 
           // Update placeholders
           $("input[type='email']").attr("placeholder", texts[lang].emailPlaceholder);
