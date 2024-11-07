@@ -584,7 +584,7 @@
     </script>
     <script>
       $(document).ready(function () {
-        var lang = document.documentElement.lang;
+        var lang = document.documentElement.lang ?? 'de';
         if (lang === "de" || lang === "fr") {
           var textMap = {
             "de": {
@@ -641,18 +641,18 @@
           var createAccountMainLink = $("#createAccount").attr("href");
           var createAccountLink = createAccountMainLink + '&ui_locales=' + lang;
           
-          $(".localAccount .intro").find("h2[aria-level='1']").text(texts.loginHeading);
-          $(".localAccount .entry .entry-item label[for='email']").text(texts.emailLabel);
-          $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLink + "'>" + texts.createAccount + "</a>");
+          $(".localAccount .intro").find("h2[aria-level='1']").text(texts[lang].loginHeading);
+          $(".localAccount .entry .entry-item label[for='email']").text(texts[lang].emailLabel);
+          $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLink + "'>" + texts[lang].createAccount + "</a>");
 
           // Update placeholders
           $("input[type='email']").attr("placeholder", texts[lang].emailPlaceholder);
           $("input[type='password']").attr("placeholder", texts[lang].passwordPlaceholder);
 
           // Update other elements
-          $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts.forgotPassword);
+          $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts[lang].forgotPassword);
           $("#api .localAccount .entry .buttons #next").text(texts.loginButton);
-          $(".social .intro h2").html("<p>" + texts.socialIntro + "</p>").find("p").addClass("with-text");
+          $(".social .intro h2").html("<p>" + texts[lang].socialIntro + "</p>").find("p").addClass("with-text");
 
           function updateErrorMessages() {
             $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts[lang].emailError);
