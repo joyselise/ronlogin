@@ -585,7 +585,6 @@
     <script>
       $(document).ready(function () {
         var lang = document.documentElement.lang ?? 'de';
-        console.log('lang',lang)
         if (lang === "de" || lang === "fr") {
           var textMap = {
             "de": {
@@ -639,8 +638,6 @@
           };
 
           var texts = textMap[lang] || textMap["default"];
-          console.log('texts',texts)
-          console.log('loginHeading',texts.loginHeading)
           var createAccountMainLinkNew = $("#createAccount").attr("href");
           var createAccountLinkNew = createAccountMainLinkNew + '&ui_locales=' + lang;
           
@@ -653,8 +650,8 @@
           $("input[type='password']").attr("placeholder", texts.passwordPlaceholder);
 
           // Update other elements
-          ("#forgotPassword").text(texts.forgotPassword);
-          $("#next").text(texts.loginButton);
+          $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts.forgotPassword);
+          $("#api .localAccount .entry .buttons #next").text(texts.loginButton);
           $(".social .intro h2").html("<p>" + texts.socialIntro + "</p>").find("p").addClass("with-text");
 
           function updateErrorMessages() {
@@ -678,18 +675,18 @@
           observer.observe(targetNode, config);
 
           updateErrorMessages();
+
         }else{
           $(".localAccount .intro").find("h2[aria-level='1']").text("Log In");
           $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text("Forgot Password?");
           $("#api .localAccount .entry .buttons #next").text("Login");
           $(".social .intro h2").html("<p>" + "Or log in / sign up with" + "</p>").find("p").addClass("with-text");
 
-          var createAccountMainLink = $("#createAccount").attr("href");
-          var createAccountLink = createAccountMainLink + '&ui_locales=' + lang;
-          $("#createAccount").attr("href", createAccountLink);
         }
-
-        var forgotPasswordMainLink = $("#forgotPassword").attr("href"); 
+        var createAccountMainLink = $("#createAccount").attr("href");
+        var createAccountLink = createAccountMainLink + '&ui_locales=' + lang;
+        $("#createAccount").attr("href", createAccountLink);
+        var forgotPasswordMainLink = $("#forgotPassword").attr("href");
         var forgotPasswordLink = forgotPasswordMainLink + '&ui_locales=' + lang;
         $("#forgotPassword").attr("href", forgotPasswordLink);
 
