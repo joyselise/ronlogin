@@ -641,25 +641,25 @@
           var createAccountMainLinkNew = $("#createAccount").attr("href");
           var createAccountLinkNew = createAccountMainLinkNew + '&ui_locales=' + lang;
           
-          $(".localAccount .intro").find("h2[aria-level='1']").text(texts[lang].loginHeading);
-          $(".localAccount .entry .entry-item label[for='email']").text(texts[lang].emailLabel);
-          $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLinkNew + "'>" + texts[lang].createAccount + "</a>");
+          $(".localAccount .intro").find("h2[aria-level='1']").text(texts.loginHeading);
+          $(".localAccount .entry .entry-item label[for='email']").text(texts.emailLabel);
+          $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLinkNew + "'>" + texts.createAccount + "</a>");
 
           // Update placeholders
-          $("input[type='email']").attr("placeholder", texts[lang].emailPlaceholder);
-          $("input[type='password']").attr("placeholder", texts[lang].passwordPlaceholder);
+          $("input[type='email']").attr("placeholder", texts.emailPlaceholder);
+          $("input[type='password']").attr("placeholder", texts.passwordPlaceholder);
 
           // Update other elements
-          ("#forgotPassword").text(texts[lang].forgotPassword);
+          ("#forgotPassword").text(texts.forgotPassword);
           $("#next").text(texts.loginButton);
-          $(".social .intro h2").html("<p>" + texts[lang].socialIntro + "</p>").find("p").addClass("with-text");
+          $(".social .intro h2").html("<p>" + texts.socialIntro + "</p>").find("p").addClass("with-text");
 
           function updateErrorMessages() {
-            $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts[lang].emailError);
-            $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts[lang].validEmailError);
-            $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts[lang].passwordError);
-            $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts[lang].accountNotFound);
-            $(".error.pageLevel p:contains('Your password is incorrect')").text(texts[lang].incorrectPassword);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts.validEmailError);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
+            $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts.accountNotFound);
+            $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
           }
 
           // MutationObserver to watch for changes
