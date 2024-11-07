@@ -722,42 +722,83 @@
     if (lang === "de" || lang === "fr") {
       var texts = {
         "de": {
-          "continueButton": "Setzen Sie das neue Passwort",
+          "continueButton": "Neues Passwort festlegen",
           "introHeading": "Passwort vergessen?",
-          "introParagraph": "Keine Sorge, wir senden Ihnen einen Bestätigungscode, um Ihr Passwort zurückzusetzen.",
-          "backButton": "Zurück zur Anmeldung",
+          "introParagraph": "Kein Problem! Der Bestätigungscode ist unterwegs, um dein Passwort zurückzusetzen.",
+          "backButton": "Zurück zum Login",
           "resendCode": "Code erneut senden",
-          "newCodeText": "Haben Sie noch keinen Code erhalten?",
+          "newCodeText": "Noch keinen Code erhalten?",
           "claimVerificationServerError": "Es konnte keine Konto für die angegebene Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
-          'verificationCodeText': "Bitte geben Sie den Bestätigungscode ein, der an Ihre E-Mail-Adresse gesendet wurde.",
+          'verificationCodeText': "Der Bestätigungscode wurde an den Posteingang gesendet. Bitte in das untenstehende Feld kopieren.",
           'updateAccountHeading': "Aktualisieren Sie Ihr Konto mit einem neuen Passwort",
           'accountLocked': "Ihr Konto ist gesperrt. Wenden Sie sich an Ihre Support-Person, um es zu entsperren, und versuchen Sie es dann erneut.",
           'informationRequired': "Diese Information ist erforderlich.",
-          'updateAccountHeader': "Neues Passwort festlegen"
+          'updateAccountHeader': "Neues Passwort festlegen",
+          "emailError": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+          "validEmailError": "Bitte eine gültige E-Mail-Adresse eingeben.",
+          "passwordError": "Bitte das Passwort eingeben.",
+          "accountNotFound": "Konto konnte nicht gefunden werden.",
+          "incorrectPassword": "Das Passwort ist falsch.",
+          "createAccountPrompt": "Noch kein Konto? Konto erstellen",
+          "createAccount": "Konto erstellen",
+          "emailPlaceholder": "E-Mail-Adresse",
+          "passwordPlaceholder": "Passwort"
         },
         "fr": {
-          "continueButton": "Réinitialiser votre mot de passe",
+          "continueButton": "Définir un nouveau mot de passe",
           "introHeading": "Mot de passe oublié ?",
-          "introParagraph": "Pas de soucis, nous vous enverrons un code de vérification pour réinitialiser votre mot de passe.",
-          "backButton": "Retour à l'inscription",
-          "resendCode": "Code erneut senden",
-          "newCodeText": "Haben Sie noch keinen Code erhalten?",
+          "introParagraph": "Pas de souci, nous vous enverrons un code de vérification pour réinitialiser votre mot de passe.",
+          "backButton": "Retour à la connexion",
+          "resendCode": "Renvoyer le code",
+          "newCodeText": "Vous n'avez pas encore reçu de code ?",
           "claimVerificationServerError": "Vous avez un compte pour les différents Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
-          "verificationCodeText": "Veuillez noter que le meilleur code vous a été envoyé à l'adresse e-mail suivante.",
+          "verificationCodeText": "Le code de vérification a été envoyé dans votre boîte de réception. Veuillez le copier dans le champ ci-dessous.",
           "updateAccountHeading": "Actualisez votre compte avec un nouveau mot de passe",
           "accountLocked": "Votre compte est utilisé. Lorsque vous êtes avec votre personne de soutien, pour vous aider, et pour que vous puissiez l'utiliser",
-          "informationRequired": "Cette information est requise.",
-          "updateAccountHeader": "Définir un nouveau mot de passe"
+          "informationRequired": "Ces informations sont obligatoires.",
+          "updateAccountHeader": "Définir un nouveau mot de passe",
+          "emailError": "Veuillez entrer votre adresse e-mail",
+          "validEmailError": "Veuillez entrer une adresse e-mail valide.",
+          "passwordError": "Veuillez entrer votre mot de passe.",
+          "accountNotFound": "Nous ne trouvons pas votre compte.",
+          "incorrectPassword": "Votre mot de passe est incorrect.",
+          "createAccountPrompt": "Vous n'avez pas de compte ? Créez un compte",
+          "createAccount": "Créer un compte",
+          "emailPlaceholder": "Adresse e-mail",
+          "passwordPlaceholder": "Mot de passe"
+        },
+        "en": {
+          "continueButton": "Set New Password",
+          "introHeading": "Forgot Password?",
+          "introParagraph": "No worries, we’ll send you a verification code to reset your password.",
+          "backButton": "Back to Log in",
+          "resendCode": "Resend Code",
+          "newCodeText": "Have not received any code yet?",
+          "claimVerificationServerError": "An account could not be found for the provided user ID. Try logging with your Social Accounts",
+          "verificationCodeText": "Verification code has been sent to your inbox. Please copy it to the input box below.",
+          "updateAccountHeading": "Update your account with new password",
+          "accountLocked": "Your account is used. When you are with your support person, to help you, and for you to use it",
+          "informationRequired": "This information is required.",
+          "updateAccountHeader": "Set a new password",
+          "emailError": "Please enter your Email Address",
+          "validEmailError": "Please enter a valid email address",
+          "passwordError": "Please enter your password",
+          "accountNotFound": "We can't seem to find your account",
+          "incorrectPassword": "Your password is incorrect",
+          "createAccountPrompt": "Don't have an account?",
+          "createAccount": "Create an account",
+          "emailPlaceholder": "Email Address",
+          "passwordPlaceholder": "Password"
         }
       };
       // error messages
       function updateErrorMessages() {
-        $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
-        $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts.validEmailError);
-        $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
-        $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts.accountNotFound);
-        $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
-        $(".error.pageLevel p:contains('This information is required.')").text(texts.informationRequired);
+        $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts[lang].emailError);
+        $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts[lang].validEmailError);
+        $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts[lang].passwordError);
+        $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts[lang].accountNotFound);
+        $(".error.pageLevel p:contains('Your password is incorrect')").text(texts[lang].incorrectPassword);
+        $(".error.pageLevel p:contains('This information is required.')").text(texts[lang].informationRequired);
         // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
 
       }
@@ -779,6 +820,7 @@
       $("#continue").text(texts[lang].continueButton);
       $(".intro").prepend("<h1>"+texts[lang].introHeading+"</h1>");
       $(".intro p").text(texts[lang].introParagraph);
+      $("#email").attr("placeholder", texts[lang].emailPlaceholder);
 
       var backBtnDiv = $(
         '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'

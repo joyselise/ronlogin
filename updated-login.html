@@ -590,15 +590,15 @@
             "de": {
               "loginHeading": "Einloggen",
               "forgotPassword": "Passwort vergessen?",
-              "loginButton": "Einloggen",
-              "socialIntro": "Oder einloggen / anmelden mit",
+              "loginButton": "Anmelden",
+              "socialIntro": "Oder einloggen / registrieren mit",
               "emailLabel": "E-Mail-Adresse",
               "emailError": "Bitte geben Sie Ihre E-Mail-Adresse ein",
-              "validEmailError": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
-              "passwordError": "Bitte geben Sie Ihr Passwort ein",
-              "accountNotFound": "Wir können Ihr Konto nicht finden",
-              "incorrectPassword": "Ihr Passwort ist falsch",
-              "createAccountPrompt": "Kein Konto?",
+              "validEmailError": "Bitte eine gültige E-Mail-Adresse eingeben.",
+              "passwordError": "Bitte das Passwort eingeben.",
+              "accountNotFound": "Konto konnte nicht gefunden werden.",
+              "incorrectPassword": "Das Passwort ist falsch.",
+              "createAccountPrompt": "Noch kein Konto? Konto erstellen",
               "createAccount": "Konto erstellen",
               "emailPlaceholder": "E-Mail-Adresse",
               "passwordPlaceholder": "Passwort"
@@ -610,11 +610,11 @@
               "socialIntro": "Ou connectez-vous / inscrivez-vous avec",
               "emailLabel": "Adresse e-mail",
               "emailError": "Veuillez entrer votre adresse e-mail",
-              "validEmailError": "Veuillez entrer une adresse e-mail valide",
-              "passwordError": "Veuillez entrer votre mot de passe",
-              "accountNotFound": "Nous ne pouvons pas trouver votre compte",
-              "incorrectPassword": "Votre mot de passe est incorrect",
-              "createAccountPrompt": "Pas de compte?",
+              "validEmailError": "Veuillez entrer une adresse e-mail valide.",
+              "passwordError": "Veuillez entrer votre mot de passe.",
+              "accountNotFound": "Nous ne trouvons pas votre compte.",
+              "incorrectPassword": "Votre mot de passe est incorrect.",
+              "createAccountPrompt": "Vous n'avez pas de compte ? Créez un compte",
               "createAccount": "Créer un compte",
               "emailPlaceholder": "Adresse e-mail",
               "passwordPlaceholder": "Mot de passe"
@@ -646,8 +646,8 @@
           $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLink + "'>" + texts.createAccount + "</a>");
 
           // Update placeholders
-          $("input[type='email']").attr("placeholder", texts.emailPlaceholder);
-          $("input[type='password']").attr("placeholder", texts.passwordPlaceholder);
+          $("input[type='email']").attr("placeholder", texts[lang].emailPlaceholder);
+          $("input[type='password']").attr("placeholder", texts[lang].passwordPlaceholder);
 
           // Update other elements
           $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts.forgotPassword);
@@ -655,11 +655,11 @@
           $(".social .intro h2").html("<p>" + texts.socialIntro + "</p>").find("p").addClass("with-text");
 
           function updateErrorMessages() {
-            $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
-            $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts.validEmailError);
-            $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
-            $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts.accountNotFound);
-            $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts[lang].emailError);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts[lang].validEmailError);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts[lang].passwordError);
+            $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts[lang].accountNotFound);
+            $(".error.pageLevel p:contains('Your password is incorrect')").text(texts[lang].incorrectPassword);
           }
 
           // MutationObserver to watch for changes

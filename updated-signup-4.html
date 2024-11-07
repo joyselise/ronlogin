@@ -617,16 +617,16 @@
     <div class="box-center" role="presentation">
       <div id="api" class="bg-white" role="main"></div>
       <div id="loginPrompt">
-        Already have an account?
+        <span id="alreadyHaveAccount">Already have an account?</span>
         <a class="loginPromptBtn" href="https://ron-backend.selisestage.com/login/azure" onclick="history.back()">Log
           in</a>
       </div>
     </div>
     <!--========= Join section start =========-->
     <div class="join">
-      <p>
+      <p id="number-of-member">
         The Ron Community already has 350,000 members.
-        <strong>Join In!</strong>
+        <strong id="join-in">Join In!</strong>
       </p>
       <div class="community-img d-flex">
         <img src="https://joyselise.github.io/ronlogin/images/pimage.png" alt="community" />
@@ -643,44 +643,165 @@
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    var lang = document.documentElement.lang;
+    var lang = document.documentElement.lang ?? 'de';
     if (lang === "de" || lang === "fr") {
       var texts = {
         "de": {
           "welcomeHeading": "Willkommen bei Ron",
-          "createAccountHeading": "Erstellen Sie ein Konto",
-          'emailLabel': 'E-Mail-Adresse eingeben, um Ihre Profile zu verifizieren',
-          'emailVerificationCodeLabel': 'Bitte geben Sie den Bestätigungscode ein, der an Ihre E-Mail-Adresse gesendet wurde.',
-          'resendCodeButton': 'Code erneut senden'
+          "createAccountHeading": "Konto erstellen",
+          'emailLabel': 'E-Mail-Adresse eingeben, um das Profil zu verifizieren.',
+          'emailVerificationCodeLabel': 'Der Bestätigungscode wurde an den Posteingang gesendet. Bitte in das untenstehende Feld kopieren.',
+          'resendCodeButton': 'Code erneut senden',
+          'emailPlaceholder' : 'E-Mail-Adresse',
+          'joinIn' : 'Dazu kommen!',
+          'numberOfMember' : 'Die Ron Community hat bereits 350.000 Mitglieder.',
+          'alreadyHaveAccount' : 'Schon ein Konto?',
+          "loginHeading": "Anmelden",
+          "informationRequired": "Diese Information ist erforderlich.",
+          "haveReceived": "Noch keinen Code erhalten?",
+          "verifyCode": "Code bestätigen",
+          "codeExpired": "Der Code ist abgelaufen.",
+          "successVerifications": "Ihre E-Mail wurde bestätigt. Bitte richten Sie Ihr Passwort und Ihre Stadt ein",
+          "newPassword": "Neues Passwort",
+          "reenterPassword": "Neues Passwort bestätigen",
+          "city": "Stadt",
+          "acceptThe": "Ich akzeptiere die ",
+          "termsAndConditions": "Geschäftsbedingungen.",
+          "signUp": "Melden Sie sich an",
+          "newsSignUpchecked": "Registriere dich für unseren Newsletter.",
+          "requiredFieldMissing": "Ein Pflichtfeld fehlt. Bitte füllen Sie alle Pflichtfelder aus und versuchen Sie es erneut.",
+          "threeRules": "Das Passwort muss mindestens 3 der folgenden Elemente enthalten:",
+          "lowerCase": "einen Kleinbuchstaben",
+          "upperCase": "einen Großbuchstaben",
+          "aDigit": "eine Ziffer",
+          "aSymbol": "ein Symbol",
+          "passwordEntryMismatch": "Die Passworteingaben stimmen nicht überein. Bitte in beiden Feldern dasselbe Passwort eingeben und erneut versuchen.",
+          "SendVerificationCode": "Bestätigungscode senden",
         },
         "fr": {
           "welcomeHeading": "Bienvenue chez Ron",
           "createAccountHeading": "Créer un compte",
-          'emailLabel': 'Entrez votre e-mail pour vérifier votre profil',
-          'emailVerificationCodeLabel': 'Veuillez entrer le code de vérification envoyé à votre boîte de réception.',
-          'resendCodeButton': 'Renvoyer le code'
+          'emailLabel': 'Entrez votre e-mail pour vérifier votre profil.',
+          'emailVerificationCodeLabel': 'Le code de vérification a été envoyé dans votre boîte de réception. Veuillez le copier dans le champ ci-dessous.',
+          'resendCodeButton': 'Renvoyer le code',
+          'emailPlaceholder' : 'Adresse email',
+          'joinIn' : 'Se joindre à!',
+          'numberOfMember' : 'La communauté Ron compte déjà 350 000 membres.',
+          'alreadyHaveAccount' : 'Vous avez déjà un compte ?',
+          "loginHeading": "Connectez-vous",
+          "informationRequired": "Ces informations sont obligatoires.",
+          "haveReceived": "Vous n'avez pas encore reçu de code ?",
+          "verifyCode": "Vérifier le code",
+          "codeExpired": "Le code a expiré.",
+          "successVerifications": "Votre email a été vérifié. Veuillez définir votre mot de passe et votre ville",
+          "newPassword": "Nouveau mot de passe",
+          "reenterPassword": "Confirmez le nouveau mot de passe",
+          "city": "Ville",
+          "acceptThe": "J'accepte le ",
+          "termsAndConditions": "Termes et conditions.",
+          "signUp": "S'inscrire",
+          "newsSignUpchecked": "Inscrivez-vous à notre newsletter.",
+          "requiredFieldMissing": "Un champ obligatoire est manquant. Veuillez remplir tous les champs obligatoires et réessayer.",
+          "threeRules": "Le mot de passe doit comporter au moins 3 des éléments suivants :",
+          "lowerCase": " une lettre minuscule",
+          "upperCase": "une lettre majuscule",
+          "aDigit": "un chiffre",
+          "aSymbol": "un symbole",
+          "passwordEntryMismatch": "Les champs de saisie du mot de passe ne correspondent pas. Veuillez entrer le même mot de passe dans les deux champs et réessayer.",
+          "SendVerificationCode": "Envoyer le code de vérification",
+        },
+        "en": {
+          "welcomeHeading": "Welcome to Ron",
+          "createAccountHeading": "Create an account",
+          'emailLabel': 'Enter your email to verify your profile',
+          'emailVerificationCodeLabel': 'Verification code has been sent to your inbox. Please copy it to the input box below.',
+          'resendCodeButton': 'Resend Code',
+          'emailPlaceholder' : 'Email Address',
+          'joinIn' : 'Join in!',
+          'numberOfMember' : 'The Ron Community already has 350,000 members.',
+          'alreadyHaveAccount' : 'Already have an account?',
+          "loginHeading": "Log In",
+          "informationRequired": "This information is required.",
+          "haveReceived": "Have not received any code yet?",
+          "verifyCode": "Verify Code",
+          "codeExpired": "The code has expired.",
+          "successVerifications": "You email has been verified. Please set-up your Password and City",
+          "newPassword": "New Password",
+          "reenterPassword": "Confirm New Password",
+          "city": "City",
+          "acceptThe": "I accept the ",
+          "termsAndConditions": "Terms and conditions.",
+          "signUp": "Sign Up",
+          "newsSignUpchecked": "Sign up to our newsletter.",
+          "requiredFieldMissing": "A required field is missing. Please fill out all required fields and try again.",
+          "threeRules": "The password must have at least 3 of the following:",
+          "lowerCase": "  - a lowercase letter",
+          "upperCase": "  - a uppercase letter",
+          "aDigit": "  - a digit",
+          "aSymbol": "  - a symbol",
+          "passwordEntryMismatch": "The password entry fields do not match. Please enter the same password in both fields and try again.",
+          "SendVerificationCode": "Send verification code",
         }
       };
       var heading = $("<h1>" + texts[lang].welcomeHeading + "</h1>");
       $(".intro").find("p").before(heading);
       $(".intro p").text(texts[lang].createAccountHeading);
       $("#email_label").text(texts[lang].emailLabel);
+      $("#join-in").text(texts[lang].joinIn);
+      $("#number-of-member").text(texts[lang].numberOfMember);
+      $("#alreadyHaveAccount").text(texts[lang].alreadyHaveAccount);
+      $(".loginPromptBtn").text(texts[lang].loginHeading);
+      $("#email").attr("placeholder", texts[lang].emailPlaceholder);
       $("#emailVerificationCode_label").text(texts[lang].emailVerificationCodeLabel);
+      $("#continue").text(texts[lang].signUp);
       $("#emailVerificationControl_but_send_new_code").text(texts[lang].resendCodeButton);
+      $("#emailVerificationControl_but_send_code").text(texts[lang].SendVerificationCode);
+      $("#emailVerificationControl_but_verify_code").text(texts[lang].verifyCode);
+      $("#emailVerificationControl_error_message").text(texts[lang].codeExpired);
+      $("#newPassword").attr("placeholder", texts[lang].newPassword);
+      $("#reenterPassword").attr("placeholder", texts[lang].reenterPassword);
+      $("#city option[value='0']").val(texts[lang].city);
+      $("#newssignupchecked").val(texts[lang].newsSignUpchecked);
+      $("#requiredFieldMissing").val(texts[lang].requiredFieldMissing);
+      $("#passwordEntryMismatch").val(texts[lang].passwordEntryMismatch);
+      $(".successVerifications").text(texts[lang].successVerifications);
+      $(".form-check .termschecked:contains('I accept the ')").text(texts[lang].acceptThe);
+      $(".form-check .termschecked:contains('Terms and conditions.')").text(texts[lang].termsAndConditions);
+      $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
+      $(".error .itemLevel .show:contains('  - a lowercase letter')").text(texts[lang].lowerCase);
+      $(".error .itemLevel .show:contains('  - a uppercase letter')").text(texts[lang].upperCase);
+      $(".error .itemLevel .show:contains('   - a digit')").text(texts[lang].aDigit);
+      $(".error .itemLevel .show:contains('  - a symbol')").text(texts[lang].aSymbol);
+
+      $(".newcodeText").text(texts[lang].haveReceived);
     }
 
     var loginPromptBtn = $(".loginPromptBtn");
     var loginPromptBtnLink = loginPromptBtn.attr("href") + '?ui_locales=' + lang;
     loginPromptBtn.attr("href", loginPromptBtnLink);
 
+    function updateErrorMessages() {
+      $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
+    }
+
+    var observe = new MutationObserver(function(mutationsList, observer) {
+      // when the DOM changes
+      updateErrorMessages();
+    });
+
+    // observe
+    observe.observe(targetNode, config);
+
+    updateErrorMessages();
+
 
     if (lang === "en") {
-      var heading = $("<h1>Welcome to Ron</h1>");
-      $(".intro").find("p").before(heading);
+      var head = $("<h1>Welcome to Ron</h1>");
+      $(".intro").find("p").before(head);
       $(".intro p").text("Create an account");
       $("#email_label").text("Enter your email to verify your profile");
       $("#emailVerificationCode_label").text(
-        "Please enter the verification code that has been sent to your inbox."
+        "Verification code has been sent to your inbox. Please copy it to the input box below."
       );
       $("#emailVerificationControl_but_send_new_code").text("Resend Code");
     }
@@ -689,7 +810,7 @@
     
     
     $(".city_li").after(
-      '<div class="form-check pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href="https://ronreload.selisestage.com/gtc" target="_blank"><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked"checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
+      '<div class="form-check pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href="https://ronreload.selisestage.com/gtc" target="_blank"><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked" checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
     );
     $("#newssignupchecked").on("change", function () {
       conditionalContinueBtn();
