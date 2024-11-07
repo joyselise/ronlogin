@@ -650,8 +650,8 @@
           $("input[type='password']").attr("placeholder", texts[lang].passwordPlaceholder);
 
           // Update other elements
-          $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts[lang].forgotPassword);
-          $("#api .localAccount .entry .buttons #next").text(texts.loginButton);
+          ("#forgotPassword").text(texts[lang].forgotPassword);
+          $("#next").text(texts.loginButton);
           $(".social .intro h2").html("<p>" + texts[lang].socialIntro + "</p>").find("p").addClass("with-text");
 
           function updateErrorMessages() {
