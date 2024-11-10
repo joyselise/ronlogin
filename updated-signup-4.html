@@ -784,14 +784,16 @@
       $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
     }
 
-    var observe = new MutationObserver(function(mutationsList, observer) {
+    let targetNode = document.getElementById('api');
+    let config = { childList: true, subtree: true };
+
+    let observer = new MutationObserver(function(mutationsList, observer) {
       // when the DOM changes
       updateErrorMessages();
     });
 
     // observe
-    let targetNode = document.getElementById("#api");
-    observe.observe(targetNode, config);
+    observer.observe(targetNode, config);
 
     updateErrorMessages();
 
