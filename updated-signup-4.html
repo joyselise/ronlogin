@@ -772,6 +772,8 @@
       $(".error .itemLevel .show:contains('  - a uppercase letter')").text(texts[lang].upperCase);
       $(".error .itemLevel .show:contains('   - a digit')").text(texts[lang].aDigit);
       $(".error .itemLevel .show:contains('  - a symbol')").text(texts[lang].aSymbol);
+      $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
+      // $(".emailVerificationCode_li .error.itemLevel.show:contains('This information is required.')").text(texts[lang].informationRequired);
 
       $(".newcodeText").text(texts[lang].haveReceived);
     }
@@ -780,22 +782,6 @@
     var loginPromptBtnLink = loginPromptBtn.attr("href") + '?ui_locales=' + lang;
     loginPromptBtn.attr("href", loginPromptBtnLink);
 
-    function updateErrorMessages() {
-      $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
-    }
-
-    let targetNode = document.getElementById('api');
-    let config = { childList: true, subtree: true };
-
-    let observer = new MutationObserver(function(mutationsList, observer) {
-      // when the DOM changes
-      updateErrorMessages();
-    });
-
-    // observe
-    observer.observe(targetNode, config);
-
-    updateErrorMessages();
 
 
     if (lang === "en") {
