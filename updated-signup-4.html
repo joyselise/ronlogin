@@ -683,7 +683,8 @@
           "charactersError" : "Das Passwort muss zwischen 8 und 64 Zeichen lang sein.",
           "verificationAttempts": "Sie haben die maximale Anzahl an Verifizierungsversuchen überschritten.",
           "verificationFailed": "Die Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
-
+          "alreadyExist": "Es existiert bereits ein Benutzer mit der angegebenen ID. Bitte wählen Sie einen anderen.",
+          "processInfo": "Bitte warten Sie, während wir Ihre Informationen verarbeiten.",
         },
         "fr": {
           "welcomeHeading": "Bienvenue chez Ron",
@@ -722,7 +723,8 @@
           "charactersError" : "Le mot de passe doit comporter entre 8 et 64 caractères.",
           "verificationAttempts": "Vous avez dépassé le nombre maximal de tentatives de vérification.",
           "verificationFailed": "La vérification a échoué, veuillez réessayer.",
-
+          "alreadyExist": "Un utilisateur avec l'ID spécifié existe déjà. Veuillez en choisir un autre.",
+          "processInfo": "Veuillez patienter pendant que nous traitons vos informations.",
         },
         "en": {
           "welcomeHeading": "Welcome to Ron",
@@ -761,6 +763,9 @@
           "charactersError" : "The password must be between 8 and 64 characters.",
           "verificationAttempts": "You have exceeded maximum number of verification attempts.",
           "verificationFailed": "The verification has failed, please try again.",
+          "alreadyExist": "A user with the specified ID already exists. Please choose a different one.",
+          "processInfo": "Please wait while we process your information.",
+
         }
       };
       setTimeout(function () {
@@ -779,13 +784,14 @@
       $("#emailVerificationCode").attr("placeholder", texts[lang].verificationCode);
       $("#emailVerificationCode_label").text(texts[lang].emailVerificationCodeLabel);
 
-      $("#newssignupcheckedText").val(texts[lang].newsSignUpchecked);
+      // $("#newssignupcheckedText").val(texts[lang].newsSignUpchecked);
       $("#newPassword").attr("placeholder", texts[lang].newPassword);
       $("#reenterPassword").attr("placeholder", texts[lang].reenterPassword);
 
 
       changeErrorText('.form-check-label','I accept the ',texts[lang].acceptThe);
       changeErrorText('.form-check-label','Terms and conditions.',texts[lang].termsAndConditions);
+      changeErrorText('.form-check-label','Sign up to our newsletter.',texts[lang].texts[lang].newsSignUpchecked);
       $("#city option[disabled='disabled']").text(texts[lang].city);
 
       },500)
@@ -812,7 +818,9 @@
         $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
         $("#emailVerificationControl_error_message:contains('The verification has failed, please try again.')").text(texts[lang].verificationAttempts);
         $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
+        $("#claimVerificationServerError:contains('A user with the specified ID already exists. Please choose a different one.')").text(texts[lang].alreadyExist);
         $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
+        $("#verifying_blurb:contains(' Please wait while we process your information.')").text(texts[lang].processInfo);
         $("#requiredFieldMissing").text(texts[lang].requiredFieldMissing);
         $("#passwordEntryMismatch").text(texts[lang].passwordEntryMismatch);
         $(".successVerifications").text(texts[lang].successVerifications);
