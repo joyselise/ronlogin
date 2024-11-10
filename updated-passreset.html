@@ -727,6 +727,7 @@
           "introParagraph": "Kein Problem! Der Bestätigungscode ist unterwegs, um dein Passwort zurückzusetzen.",
           "backButton": "Zurück zum Login",
           "resendCode": "Code erneut senden",
+
           "newCodeText": "Noch keinen Code erhalten?",
           "claimVerificationServerError": "Es konnte keine Konto für die angegebene Benutzer-ID gefunden werden. Versuchen Sie, sich mit Ihren Social-Konten anzumelden",
           'verificationCodeText': "Der Bestätigungscode wurde an den Posteingang gesendet. Bitte in das untenstehende Feld kopieren.",
@@ -742,7 +743,12 @@
           "createAccountPrompt": "Noch kein Konto? Konto erstellen",
           "createAccount": "Konto erstellen",
           "emailPlaceholder": "E-Mail-Adresse",
-          "passwordPlaceholder": "Passwort"
+          "passwordPlaceholder": "Passwort",
+          "SendVerificationCode": "Bestätigungscode senden",
+          "verifyCode": "Code bestätigen",
+          "verificationCode": "Bestätigungscode",
+          "codeExpired": "Der Code ist abgelaufen.",
+          "verificationAttempts": "Sie haben die maximale Anzahl an Verifizierungsversuchen überschritten.",
         },
         "fr": {
           "continueButton": "Définir un nouveau mot de passe",
@@ -765,7 +771,12 @@
           "createAccountPrompt": "Vous n'avez pas de compte ? Créez un compte",
           "createAccount": "Créer un compte",
           "emailPlaceholder": "Adresse e-mail",
-          "passwordPlaceholder": "Mot de passe"
+          "passwordPlaceholder": "Mot de passe",
+          "SendVerificationCode": "Envoyer le code de vérification",
+          "verifyCode": "Vérifier le code",
+          "verificationCode": "Code de vérification",
+          "codeExpired": "Le code a expiré.",
+          "verificationAttempts": "Vous avez dépassé le nombre maximal de tentatives de vérification.",
         },
         "en": {
           "continueButton": "Set New Password",
@@ -788,7 +799,12 @@
           "createAccountPrompt": "Don't have an account?",
           "createAccount": "Create an account",
           "emailPlaceholder": "Email Address",
-          "passwordPlaceholder": "Password"
+          "passwordPlaceholder": "Password",
+          "SendVerificationCode": "Send verification code",
+          "verifyCode": "Verify Code",
+          "verificationCode": "Verification Code",
+          "codeExpired": "The code has expired.",
+          "verificationAttempts": "You have exceeded maximum number of verification attempts.",
         }
       };
       // error messages
@@ -799,8 +815,11 @@
         $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts[lang].accountNotFound);
         $(".error.pageLevel p:contains('Your password is incorrect')").text(texts[lang].incorrectPassword);
         $(".error.pageLevel p:contains('This information is required.')").text(texts[lang].informationRequired);
+        $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
+        $("#emailVerificationControl_error_message:contains('The code has expired.')").text(texts[lang].codeExpired);
+        $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
         // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
-
+        emailVerificationControl_error_message
       }
 
       // MutationObserver to watch for changes
@@ -821,6 +840,9 @@
       $(".intro").prepend("<h1>"+texts[lang].introHeading+"</h1>");
       $(".intro p").text(texts[lang].introParagraph);
       $("#email").attr("placeholder", texts[lang].emailPlaceholder);
+      $("#emailVerificationCode").attr("placeholder", texts[lang].verificationCode);
+      $("#emailVerificationControl_but_send_code").text(texts[lang].SendVerificationCode);
+      $(".verifyCode").text(texts[lang].verifyCode);
 
       var backBtnDiv = $(
         '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'
