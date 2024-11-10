@@ -779,7 +779,7 @@
       $("#newPassword").attr("placeholder", texts[lang].newPassword);
       $("#reenterPassword").attr("placeholder", texts[lang].reenterPassword);
       $("#city option[value='']").val(texts[lang].city);
-      $("#newssignupcheckedText").val(texts[lang].newsSignUpchecked);
+      $("#newssignupcheckedText").text(texts[lang].newsSignUpchecked);
       $("#requiredFieldMissing").val(texts[lang].requiredFieldMissing);
       $("#passwordEntryMismatch").val(texts[lang].passwordEntryMismatch);
       $(".successVerifications").text(texts[lang].successVerifications);
@@ -808,7 +808,7 @@
         $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
         $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
         changeErrorText('.form-check-label','I accept the ',texts[lang].acceptThe);
-        changeErrorText('.form-check-label','I accept the ',texts[lang].acceptThe);
+        changeErrorText('.form-check-label','Terms and conditions.',texts[lang].termsAndConditions);
         changeErrorText('.error.itemLevel.show','This information is required.',texts[lang].informationRequired);
         changeErrorText('.error.itemLevel.show','The password must be between 8 and 64 characters.', texts[lang].charactersError)
         changeErrorText('.error.itemLevel.show','The password must have at least 3 of the following:', texts[lang].threeRules)
@@ -817,7 +817,6 @@
         changeErrorText('.error.itemLevel.show','- a digit', texts[lang].aDigit)
         changeErrorText('.error.itemLevel.show','- a symbol', texts[lang].aSymbol)
       // }
-
       function changeErrorText(_class, key, text){
         $(`${_class}:contains(${key})`)
                 .html(function(_, html) {
