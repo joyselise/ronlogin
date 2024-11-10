@@ -797,7 +797,7 @@
 
 
 
-      function updateErrorMessages() {
+      // function updateErrorMessages() {
         $("#continue").text(texts[lang].signUp);
         $("#emailVerificationControl_but_send_new_code").text(texts[lang].resendCodeButton);
         $("#emailVerificationControl_but_send_code").text(texts[lang].SendVerificationCode);
@@ -816,7 +816,7 @@
         changeErrorText('.error.itemLevel.show','- a uppercase letter', texts[lang].upperCase)
         changeErrorText('.error.itemLevel.show','- a digit', texts[lang].aDigit)
         changeErrorText('.error.itemLevel.show','- a symbol', texts[lang].aSymbol)
-      }
+      // }
 
       function changeErrorText(_class, key, text){
         $(`${_class}:contains(${key})`)
@@ -826,18 +826,18 @@
       }
 
       // MutationObserver to watch for changes
-      let targetNode = document.getElementById('api');
-      let config = { childList: true, subtree: true };
-
-      let observe = new MutationObserver(function(mutationsList, observer) {
-        // when the DOM changes
-        updateErrorMessages();
-      });
-
-      // observe
-      observe.observe(targetNode, config);
-
-      updateErrorMessages();
+      // let targetNode = document.getElementById('api');
+      // let config = { childList: true, subtree: true };
+      //
+      // let observe = new MutationObserver(function(mutationsList, observer) {
+      //   // when the DOM changes
+      //   updateErrorMessages();
+      // });
+      //
+      // // observe
+      // observe.observe(targetNode, config);
+      //
+      // updateErrorMessages();
     }
 
 
