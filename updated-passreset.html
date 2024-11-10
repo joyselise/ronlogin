@@ -760,7 +760,8 @@
           "aDigit": "eine Ziffer",
           "aSymbol": "ein Symbol",
           "passwordEntryMismatch": "Die Passworteingaben stimmen nicht überein. Bitte in beiden Feldern dasselbe Passwort eingeben und erneut versuchen.",
-
+          "accountCouldNotFound" : "Für die angegebene Benutzer-ID konnte kein Konto gefunden werden.",
+          "oneOrMore" : "Ein oder mehrere Felder sind falsch ausgefüllt. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
         },
         "fr": {
           "continueButton": "Définir un nouveau mot de passe",
@@ -800,7 +801,8 @@
           "aDigit": "un chiffre",
           "aSymbol": "un symbole",
           "passwordEntryMismatch": "Les champs de saisie du mot de passe ne correspondent pas. Veuillez entrer le même mot de passe dans les deux champs et réessayer.",
-
+          "accountCouldNotFound" : "Aucun compte n'a pu être trouvé pour l'ID utilisateur fourni.",
+          "oneOrMore" : "Un ou plusieurs champs sont mal renseignés. Veuillez vérifier vos saisies et réessayer.",
         },
         "en": {
           "continueButton": "Set New Password",
@@ -840,6 +842,8 @@
           "aDigit": "  - a digit",
           "aSymbol": "  - a symbol",
           "passwordEntryMismatch": "The password entry fields do not match. Please enter the same password in both fields and try again.",
+          "accountCouldNotFound" : "An account could not be found for the provided user ID.",
+          "oneOrMore" : "One or more fields are filled out incorrectly. Please check your entries and try again.",
         }
       };
       // error messages
@@ -851,16 +855,32 @@
         $(".error.pageLevel p:contains('Your password is incorrect')").text(texts[lang].incorrectPassword);
         // $(".error.pageLevel p:contains('This information is required.')").text(texts[lang].informationRequired);
         $(".emailVerificationCode_li .error.itemLevel.show:contains('This information is required.')").text(texts[lang].informationRequired);
+        $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
         $("#emailVerificationControl_error_message:contains('The code has expired.')").text(texts[lang].codeExpired);
         $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
         $("#emailVerificationControl_error_message:contains('The verification has failed, please try again.')").text(texts[lang].verificationAttempts);
+        $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
+        $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
         $(".intro :contains('Please provide the following details.')").text(texts[lang].followingDetails);
         // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
-        $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
-        $(".error .itemLevel .show:contains('  - a lowercase letter')").text(texts[lang].lowerCase);
-        $(".error .itemLevel .show:contains('  - a uppercase letter')").text(texts[lang].upperCase);
-        $(".error .itemLevel .show:contains('   - a digit')").text(texts[lang].aDigit);
-        $(".error .itemLevel .show:contains('  - a symbol')").text(texts[lang].aSymbol);
+        // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
+        // $(".error .itemLevel .show:contains('- a lowercase letter')").text(texts[lang].lowerCase);
+        // $(".error .itemLevel .show:contains('- a uppercase letter')").text(texts[lang].upperCase);
+        // $(".error .itemLevel .show:contains('- a digit')").text(texts[lang].aDigit);
+        // $(".error .itemLevel .show:contains('- a symbol')").text(texts[lang].aSymbol);
+
+        changeErrorText('The password must have at least 3 of the following:', texts[lang].threeRules)
+        changeErrorText('- a lowercase letter', texts[lang].lowerCase)
+        changeErrorText('- a uppercase letter', texts[lang].upperCase)
+        changeErrorText('- a digit', texts[lang].aDigit)
+        changeErrorText('- a symbol', texts[lang].aSymbol)
+      }
+
+      function changeErrorText(key, text){
+        $(`.error.itemLevel.show:contains(${key})`)
+                .html(function(_, html) {
+                  return html.replace(key, text);
+                });
       }
 
       // MutationObserver to watch for changes
@@ -884,8 +904,8 @@
       $("#emailVerificationCode").attr("placeholder", texts[lang].verificationCode);
       $("#emailVerificationControl_but_send_code").text(texts[lang].SendVerificationCode);
       $(".verifyCode").text(texts[lang].verifyCode);
-      $("#newPassword").text(texts[lang].newPassword);
-      $("#reenterPassword").text(texts[lang].reenterPassword);
+      $("#newPassword").attr("placeholder", texts[lang].newPassword);
+      $("#reenterPassword").attr("placeholder", texts[lang].reenterPassword);
       $("#passwordEntryMismatch").text(texts[lang].passwordEntryMismatch);
 
       var backBtnDiv = $(
