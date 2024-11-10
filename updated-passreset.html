@@ -762,6 +762,7 @@
           "passwordEntryMismatch": "Die Passworteingaben stimmen nicht überein. Bitte in beiden Feldern dasselbe Passwort eingeben und erneut versuchen.",
           "accountCouldNotFound" : "Für die angegebene Benutzer-ID konnte kein Konto gefunden werden.",
           "oneOrMore" : "Ein oder mehrere Felder sind falsch ausgefüllt. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
+          "charactersError" : "Das Passwort muss zwischen 8 und 64 Zeichen lang sein.",
         },
         "fr": {
           "continueButton": "Définir un nouveau mot de passe",
@@ -803,6 +804,7 @@
           "passwordEntryMismatch": "Les champs de saisie du mot de passe ne correspondent pas. Veuillez entrer le même mot de passe dans les deux champs et réessayer.",
           "accountCouldNotFound" : "Aucun compte n'a pu être trouvé pour l'ID utilisateur fourni.",
           "oneOrMore" : "Un ou plusieurs champs sont mal renseignés. Veuillez vérifier vos saisies et réessayer.",
+          "charactersError" : "Le mot de passe doit comporter entre 8 et 64 caractères.",
         },
         "en": {
           "continueButton": "Set New Password",
@@ -844,6 +846,7 @@
           "passwordEntryMismatch": "The password entry fields do not match. Please enter the same password in both fields and try again.",
           "accountCouldNotFound" : "An account could not be found for the provided user ID.",
           "oneOrMore" : "One or more fields are filled out incorrectly. Please check your entries and try again.",
+          "charactersError" : "The password must be between 8 and 64 characters.",
         }
       };
       // error messages
@@ -855,7 +858,7 @@
         $(".error.pageLevel p:contains('Your password is incorrect')").text(texts[lang].incorrectPassword);
         // $(".error.pageLevel p:contains('This information is required.')").text(texts[lang].informationRequired);
         $(".emailVerificationCode_li .error.itemLevel.show:contains('This information is required.')").text(texts[lang].informationRequired);
-        $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
+
         $("#emailVerificationControl_error_message:contains('The code has expired.')").text(texts[lang].codeExpired);
         $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
         $("#emailVerificationControl_error_message:contains('The verification has failed, please try again.')").text(texts[lang].verificationAttempts);
@@ -868,7 +871,8 @@
         // $(".error .itemLevel .show:contains('- a uppercase letter')").text(texts[lang].upperCase);
         // $(".error .itemLevel .show:contains('- a digit')").text(texts[lang].aDigit);
         // $(".error .itemLevel .show:contains('- a symbol')").text(texts[lang].aSymbol);
-
+        changeErrorText('This information is required.',texts[lang].informationRequired);
+        changeErrorText('The password must be between 8 and 64 characters.', texts[lang].charactersError)
         changeErrorText('The password must have at least 3 of the following:', texts[lang].threeRules)
         changeErrorText('- a lowercase letter', texts[lang].lowerCase)
         changeErrorText('- a uppercase letter', texts[lang].upperCase)

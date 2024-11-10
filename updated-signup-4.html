@@ -674,9 +674,16 @@
           "lowerCase": "einen Kleinbuchstaben",
           "upperCase": "einen Großbuchstaben",
           "aDigit": "eine Ziffer",
+          "verificationCode": "Bestätigungscode",
           "aSymbol": "ein Symbol",
           "passwordEntryMismatch": "Die Passworteingaben stimmen nicht überein. Bitte in beiden Feldern dasselbe Passwort eingeben und erneut versuchen.",
           "SendVerificationCode": "Bestätigungscode senden",
+          "accountCouldNotFound" : "Für die angegebene Benutzer-ID konnte kein Konto gefunden werden.",
+          "oneOrMore" : "Ein oder mehrere Felder sind falsch ausgefüllt. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
+          "charactersError" : "Das Passwort muss zwischen 8 und 64 Zeichen lang sein.",
+          "verificationAttempts": "Sie haben die maximale Anzahl an Verifizierungsversuchen überschritten.",
+          "verificationFailed": "Die Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+
         },
         "fr": {
           "welcomeHeading": "Bienvenue chez Ron",
@@ -700,6 +707,7 @@
           "acceptThe": "J'accepte le ",
           "termsAndConditions": "Termes et conditions.",
           "signUp": "S'inscrire",
+          "verificationCode": "Code de vérification",
           "newsSignUpchecked": "Inscrivez-vous à notre newsletter.",
           "requiredFieldMissing": "Un champ obligatoire est manquant. Veuillez remplir tous les champs obligatoires et réessayer.",
           "threeRules": "Le mot de passe doit comporter au moins 3 des éléments suivants :",
@@ -709,6 +717,12 @@
           "aSymbol": "un symbole",
           "passwordEntryMismatch": "Les champs de saisie du mot de passe ne correspondent pas. Veuillez entrer le même mot de passe dans les deux champs et réessayer.",
           "SendVerificationCode": "Envoyer le code de vérification",
+          "accountCouldNotFound" : "Aucun compte n'a pu être trouvé pour l'ID utilisateur fourni.",
+          "oneOrMore" : "Un ou plusieurs champs sont mal renseignés. Veuillez vérifier vos saisies et réessayer.",
+          "charactersError" : "Le mot de passe doit comporter entre 8 et 64 caractères.",
+          "verificationAttempts": "Vous avez dépassé le nombre maximal de tentatives de vérification.",
+          "verificationFailed": "La vérification a échoué, veuillez réessayer.",
+
         },
         "en": {
           "welcomeHeading": "Welcome to Ron",
@@ -732,6 +746,7 @@
           "acceptThe": "I accept the ",
           "termsAndConditions": "Terms and conditions.",
           "signUp": "Sign Up",
+          "verificationCode": "Verification Code",
           "newsSignUpchecked": "Sign up to our newsletter.",
           "requiredFieldMissing": "A required field is missing. Please fill out all required fields and try again.",
           "threeRules": "The password must have at least 3 of the following:",
@@ -741,6 +756,11 @@
           "aSymbol": "  - a symbol",
           "passwordEntryMismatch": "The password entry fields do not match. Please enter the same password in both fields and try again.",
           "SendVerificationCode": "Send verification code",
+          "accountCouldNotFound" : "An account could not be found for the provided user ID.",
+          "oneOrMore" : "One or more fields are filled out incorrectly. Please check your entries and try again.",
+          "charactersError" : "The password must be between 8 and 64 characters.",
+          "verificationAttempts": "You have exceeded maximum number of verification attempts.",
+          "verificationFailed": "The verification has failed, please try again.",
         }
       };
       var heading = $("<h1>" + texts[lang].welcomeHeading + "</h1>");
@@ -751,32 +771,76 @@
       $("#number-of-member").text(texts[lang].numberOfMember);
       $("#alreadyHaveAccount").text(texts[lang].alreadyHaveAccount);
       $(".loginPromptBtn").text(texts[lang].loginHeading);
+      $(".newcodeText").text(texts[lang].haveReceived);
       $("#email").attr("placeholder", texts[lang].emailPlaceholder);
+      $("#emailVerificationCode").attr("placeholder", texts[lang].verificationCode);
       $("#emailVerificationCode_label").text(texts[lang].emailVerificationCodeLabel);
-      $("#continue").text(texts[lang].signUp);
-      $("#emailVerificationControl_but_send_new_code").text(texts[lang].resendCodeButton);
-      $("#emailVerificationControl_but_send_code").text(texts[lang].SendVerificationCode);
-      $("#emailVerificationControl_but_verify_code").text(texts[lang].verifyCode);
-      $("#emailVerificationControl_error_message").text(texts[lang].codeExpired);
+
       $("#newPassword").attr("placeholder", texts[lang].newPassword);
       $("#reenterPassword").attr("placeholder", texts[lang].reenterPassword);
-      $("#city option[value='0']").val(texts[lang].city);
-      $("#newssignupchecked").val(texts[lang].newsSignUpchecked);
+      $("#city option[value='']").val(texts[lang].city);
+      $("#newssignupcheckedText").val(texts[lang].newsSignUpchecked);
       $("#requiredFieldMissing").val(texts[lang].requiredFieldMissing);
       $("#passwordEntryMismatch").val(texts[lang].passwordEntryMismatch);
       $(".successVerifications").text(texts[lang].successVerifications);
-      $(".form-check .termschecked:contains('I accept the ')").text(texts[lang].acceptThe);
-      $(".form-check .termschecked:contains('Terms and conditions.')").text(texts[lang].termsAndConditions);
-      $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
-      $(".error .itemLevel .show:contains('  - a lowercase letter')").text(texts[lang].lowerCase);
-      $(".error .itemLevel .show:contains('  - a uppercase letter')").text(texts[lang].upperCase);
-      $(".error .itemLevel .show:contains('   - a digit')").text(texts[lang].aDigit);
-      $(".error .itemLevel .show:contains('  - a symbol')").text(texts[lang].aSymbol);
-      $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
+      // $(".form-check .termschecked:contains('I accept the ')").text(texts[lang].acceptThe);
+      // $(".form-check .termschecked:contains('Terms and conditions.')").text(texts[lang].termsAndConditions);
+      // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
+      // $(".error .itemLevel .show:contains('  - a lowercase letter')").text(texts[lang].lowerCase);
+      // $(".error .itemLevel .show:contains('  - a uppercase letter')").text(texts[lang].upperCase);
+      // $(".error .itemLevel .show:contains('   - a digit')").text(texts[lang].aDigit);
+      // $(".error .itemLevel .show:contains('  - a symbol')").text(texts[lang].aSymbol);
+      // $(".error .itemLevel .show:contains('This information is required.')").text(texts[lang].informationRequired);
       // $(".emailVerificationCode_li .error.itemLevel.show:contains('This information is required.')").text(texts[lang].informationRequired);
 
-      $(".newcodeText").text(texts[lang].haveReceived);
+
+
+
+
+      function updateErrorMessages() {
+        $("#continue").text(texts[lang].signUp);
+        $("#emailVerificationControl_but_send_new_code").text(texts[lang].resendCodeButton);
+        $("#emailVerificationControl_but_send_code").text(texts[lang].SendVerificationCode);
+        $("#emailVerificationControl_but_verify_code").text(texts[lang].verifyCode);
+        $("#emailVerificationControl_error_message:contains('The code has expired.')").text(texts[lang].codeExpired);
+        $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
+        $("#emailVerificationControl_error_message:contains('The verification has failed, please try again.')").text(texts[lang].verificationAttempts);
+        $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
+        $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
+        changeErrorText('.form-check-label','I accept the ',texts[lang].acceptThe);
+        changeErrorText('.form-check-label','I accept the ',texts[lang].acceptThe);
+        changeErrorText('.error.itemLevel.show','This information is required.',texts[lang].informationRequired);
+        changeErrorText('.error.itemLevel.show','The password must be between 8 and 64 characters.', texts[lang].charactersError)
+        changeErrorText('.error.itemLevel.show','The password must have at least 3 of the following:', texts[lang].threeRules)
+        changeErrorText('.error.itemLevel.show','- a lowercase letter', texts[lang].lowerCase)
+        changeErrorText('.error.itemLevel.show','- a uppercase letter', texts[lang].upperCase)
+        changeErrorText('.error.itemLevel.show','- a digit', texts[lang].aDigit)
+        changeErrorText('.error.itemLevel.show','- a symbol', texts[lang].aSymbol)
+      }
+
+      function changeErrorText(_class, key, text){
+        $(`${_class}:contains(${key})`)
+                .html(function(_, html) {
+                  return html.replace(key, text);
+                });
+      }
+
+      // MutationObserver to watch for changes
+      let targetNode = document.getElementById('api');
+      let config = { childList: true, subtree: true };
+
+      let observe = new MutationObserver(function(mutationsList, observer) {
+        // when the DOM changes
+        updateErrorMessages();
+      });
+
+      // observe
+      observe.observe(targetNode, config);
+
+      updateErrorMessages();
     }
+
+
 
     var loginPromptBtn = $(".loginPromptBtn");
     var loginPromptBtnLink = loginPromptBtn.attr("href") + '?ui_locales=' + lang;
@@ -799,7 +863,7 @@
     
     
     $(".city_li").after(
-      '<div class="form-check pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href="https://ronreload.selisestage.com/gtc" target="_blank"><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked" checked><label class="form-check-label" for="newssignupchecked">Sign up to our newsletter.</label></div>'
+      '<div class="form-check pb-1 termschecked"><input class="form-check-input" type="checkbox" value="termsncondition" id="termschecked"><label class="form-check-label" for="termschecked">I accept the <a href="https://ronreload.selisestage.com/gtc" target="_blank"><b>Terms and conditions.</b></a></label></div><div class="form-check newssignupchecked"><input class="form-check-input" type="checkbox" value="newslettersignup" id="newssignupchecked" checked><label class="form-check-label" id="newssignupcheckedText" for="newssignupchecked">Sign up to our newsletter.</label></div>'
     );
     $("#newssignupchecked").on("change", function () {
       conditionalContinueBtn();
