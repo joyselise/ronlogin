@@ -685,6 +685,7 @@
           "verificationFailed": "Die Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
           "alreadyExist": "Es existiert bereits ein Benutzer mit der angegebenen ID. Bitte wählen Sie einen anderen.",
           "processInfo": "Bitte warten Sie, während wir Ihre Informationen verarbeiten.",
+          "validEmailError": "Bitte eine gültige E-Mail-Adresse eingeben.",
         },
         "fr": {
           "welcomeHeading": "Bienvenue chez Ron",
@@ -725,6 +726,7 @@
           "verificationFailed": "La vérification a échoué, veuillez réessayer.",
           "alreadyExist": "Un utilisateur avec l'ID spécifié existe déjà. Veuillez en choisir un autre.",
           "processInfo": "Veuillez patienter pendant que nous traitons vos informations.",
+          "validEmailError": "Veuillez entrer une adresse e-mail valide.",
         },
         "en": {
           "welcomeHeading": "Welcome to Ron",
@@ -765,6 +767,7 @@
           "verificationFailed": "The verification has failed, please try again.",
           "alreadyExist": "A user with the specified ID already exists. Please choose a different one.",
           "processInfo": "Please wait while we process your information.",
+          "validEmailError": "Please enter a valid email address",
 
         }
       };
@@ -791,7 +794,7 @@
 
       changeErrorText('.form-check-label','I accept the ',texts[lang].acceptThe);
       changeErrorText('.form-check-label','Terms and conditions.',texts[lang].termsAndConditions);
-      changeErrorText('.form-check-label','Sign up to our newsletter.',texts[lang].texts[lang].newsSignUpchecked);
+      changeErrorText('.form-check-label','Sign up to our newsletter.',texts[lang].newsSignUpchecked);
       $("#city option[disabled='disabled']").text(texts[lang].city);
 
       },500)
@@ -824,6 +827,7 @@
         $("#requiredFieldMissing").text(texts[lang].requiredFieldMissing);
         $("#passwordEntryMismatch").text(texts[lang].passwordEntryMismatch);
         $(".successVerifications").text(texts[lang].successVerifications);
+        changeErrorText('.error.itemLevel.show','Please enter a valid email address',texts[lang].validEmailError);
         changeErrorText('.error.itemLevel.show','This information is required.',texts[lang].informationRequired);
         changeErrorText('.error.itemLevel.show','The password must be between 8 and 64 characters.', texts[lang].charactersError)
         changeErrorText('.error.itemLevel.show','The password must have at least 3 of the following:', texts[lang].threeRules)
