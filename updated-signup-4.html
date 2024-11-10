@@ -763,6 +763,9 @@
           "verificationFailed": "The verification has failed, please try again.",
         }
       };
+      setTimeout(function () {
+
+
       var heading = $("<h1>" + texts[lang].welcomeHeading + "</h1>");
       $(".intro").find("p").before(heading);
       $(".intro p").text(texts[lang].createAccountHeading);
@@ -771,12 +774,12 @@
       $("#number-of-member").text(texts[lang].numberOfMember);
       $("#alreadyHaveAccount").text(texts[lang].alreadyHaveAccount);
       $(".loginPromptBtn").text(texts[lang].loginHeading);
-      $(".newcodeText").text(texts[lang].haveReceived);
+      $(".newcodeText:contains('Have not received any code yet')").text(texts[lang].haveReceived);
       $("#email").attr("placeholder", texts[lang].emailPlaceholder);
       $("#emailVerificationCode").attr("placeholder", texts[lang].verificationCode);
       $("#emailVerificationCode_label").text(texts[lang].emailVerificationCodeLabel);
 
-      $("#newssignupcheckedText").text(texts[lang].newsSignUpchecked);
+      $("#newssignupcheckedText").val(texts[lang].newsSignUpchecked);
       $("#newPassword").attr("placeholder", texts[lang].newPassword);
       $("#reenterPassword").attr("placeholder", texts[lang].reenterPassword);
 
@@ -784,6 +787,8 @@
       changeErrorText('.form-check-label','I accept the ',texts[lang].acceptThe);
       changeErrorText('.form-check-label','Terms and conditions.',texts[lang].termsAndConditions);
       $("#city option[disabled='disabled']").text(texts[lang].city);
+
+      },500)
       // $(".form-check .termschecked:contains('I accept the ')").text(texts[lang].acceptThe);
       // $(".form-check .termschecked:contains('Terms and conditions.')").text(texts[lang].termsAndConditions);
       // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
