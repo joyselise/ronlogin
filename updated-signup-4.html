@@ -823,7 +823,7 @@
         $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
         $("#claimVerificationServerError:contains('A user with the specified ID already exists. Please choose a different one.')").text(texts[lang].alreadyExist);
         $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
-        $("#verifying_blurb:contains(' Please wait while we process your information.')").text(texts[lang].processInfo);
+        $("#verifying_blurb").text(texts[lang].processInfo);
         $("#requiredFieldMissing").text(texts[lang].requiredFieldMissing);
         $("#passwordEntryMismatch").text(texts[lang].passwordEntryMismatch);
         $(".successVerifications").text(texts[lang].successVerifications);
