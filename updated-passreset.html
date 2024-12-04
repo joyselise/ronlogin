@@ -865,6 +865,7 @@
         $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
         $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
         $(".intro :contains('Please provide the following details.')").text(texts[lang].followingDetails);
+        $("#verifying_blurb").hide();
         // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
         // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
         // $(".error .itemLevel .show:contains('- a lowercase letter')").text(texts[lang].lowerCase);
@@ -911,6 +912,7 @@
       $("#newPassword").attr("placeholder", texts[lang].newPassword);
       $("#reenterPassword").attr("placeholder", texts[lang].reenterPassword);
       $("#passwordEntryMismatch").text(texts[lang].passwordEntryMismatch);
+      $("#verifying_blurb").hide();
 
       var backBtnDiv = $(
         '<a href="https://ron-backend.selisestage.com/login/azure?lang='+lang+'" class="back-btn-wrapper"></a>'
@@ -1036,6 +1038,7 @@
       $("#claimVerificationServerError").text(
         "An account could not be found for the provided user ID. Try loging with your Social Accounts"
       );
+      $("#verifying_blurb").hide();
 
       $(document).ready(function () {
         var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
@@ -1045,6 +1048,7 @@
           var emailVerificationCodeDisplayed = $(".emailVerificationCode_li").css("display") === "inline";
           var emailVerificationCodeBlockDisplayed = $(".emailVerificationCode_li").css("display") === "block";
           var verificationCodeTextDisplayed = false;
+          $("#verifying_blurb").hide();
           var continueButton = $("#continue");
           if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
             verificationCodeTextDisplayed = true;
