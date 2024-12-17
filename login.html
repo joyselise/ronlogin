@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ron ORP Sign up or sign in</title>
-
+    <title>Ron ORP Login</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,1616 +19,282 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="https://joyselise.github.io/ronlogin/img/favicon.ico"
+      href="https://ronreload.blob.core.windows.net/auth-pages/images/fav-icon.svg"
     />
-    <!--============ Source sans 3 fonts start ============-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <!--============ Source sans 3 fonts end ============-->
-    <style id="common">
-      @font-face {
-        font-family: "SegoeUI";
-        src: url(https://devronorp.b2clogin.com/static/tenant/templates/fonts/segoeui.WOFF);
-        font-weight: normal;
-      }
-      @font-face {
-        font-family: "SegoeUI";
-        src: url(https://devronorp.b2clogin.com/static/tenant/templates/fonts/segoeui_bold.WOFF);
-        font-weight: bold;
-      }
-      #AmazonExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/amazon.svg);
-      }
-      #AmazonExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/amazon.svg);
-      }
-      #FacebookExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/facebook.svg);
-      }
-      #FacebookExchange:focus-visible {
-        outline: #d5d5d5;
-      }
-      #FacebookExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/facebook.svg);
-      }
-      #GitHubExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg);
-      }
-      #GitHubExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/github.svg);
-      }
-      #AppleExchange,
-      #AppleManagedExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/apple.svg);
-      }
-      #AppleExchange:hover,
-      #AppleManagedExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/apple.svg);
-      }
-      #GoogleExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/google.svg);
-      }
-      #GoogleExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/google.svg);
-      }
-      #LinkedInExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/linkedin.svg);
-      }
-      #LinkedInExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/linkedin.svg);
-      }
-      #MicrosoftAccountExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/microsoft.svg);
-      }
-      #MicrosoftAccountExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/microsoft.svg);
-      }
-      #QQExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/qq.svg);
-      }
-      #QQExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/qq.svg);
-      }
-      #TwitterExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/twitter.svg);
-      }
-      #TwitterExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/twitter.svg);
-      }
-      #WeChatExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/wechat.svg);
-      }
-      #WeChatExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/wechat.svg);
-      }
-      #WeiboExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/weibo.svg);
-      }
-      #WeiboExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/weibo.svg);
-      }
-      .buttons #cancel:before {
-        content: url(https://devronorp.b2clogin.com/static/tenant/templates/images/left-arrow.svg);
-      }
-    </style>
-    <style id="idpselector">
-      #SignInWithLogonNameExchange,
-      #SignUpWithLogonEmailExchange,
-      #SignUpWithLogonNameExchange {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/colored/local.svg);
-      }
-      #SignInWithLogonNameExchange:hover,
-      #SignUpWithLogonEmailExchange:hover,
-      #SignUpWithLogonNameExchange:hover {
-        background-image: url(https://devronorp.b2clogin.com/static/tenant/templates/idp_logos/white/local.svg);
-      }
-      #SignUpWithLogonEmailExchange.text-link {
-        background-image: none;
-        background-color: transparent !important;
-      }
-      #SignUpWithLogonEmailExchange.text-link:hover {
-        background-image: none;
-        background-color: transparent !important;
-      }
-      body {
-        font-family: "Source Sans Pro", sans-serif;
-        background-color: #f5f7f6;
-      }
-    </style>
+    <!--============= Common CSS start ============-->
     <style>
-      /* Following are generated styles via gulp. */
-      /* inject: css */
-      html {
-        background: 0 0;
-      }
       body {
-        font-family: Segoe UI, SegoeUI, "Helvetica Neue", Helvetica, Arial,
-          sans-serif;
-        background-attachment: fixed;
+        font-family: "Source Sans 3", sans-serif;
         background-color: #f5f7f6;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        text-align: left;
-        font: -apple-system-body;
-      }
-      p {
-        margin: 0;
-      }
-      a:focus {
-        outline: 0;
-      }
-      input,
-      select {
-        border: 1px solid #605e5c;
-      }
-      input::placeholder {
-        color: #6a6a6a;
-        opacity: 1;
-      }
-      img[data-tenant-branding-background="true"] {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 0;
-        position: fixed;
-        left: 0;
         overflow: hidden;
-        top: 0;
       }
-      div[data-tenant-branding-background-color="true"] {
+      .header-container {
+        max-width: 1440px;
         width: 100%;
-        height: 100%;
-        position: fixed;
-        z-index: 0;
-      }
-      .container {
-        text-align: center;
-        width: 100%;
-        display: table;
-        height: 100vh;
-        padding: 0;
-      }
-      #api {
+        padding: 32px 15px;
         margin: 0 auto;
       }
-      .heading h1 {
-        margin-bottom: 20px;
+      .logo-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
       }
-      .col-lg-6 {
-        max-width: 470px;
-        width: 100%;
-        float: none;
+      .btn-box {
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
+      }
+      .login-btn,
+      .login-btn:hover,
+      .login-btn:focus {
         display: inline-block;
-        vertical-align: top;
-        padding: 0;
-      }
-      .row {
-        width: 100%;
-        margin: 0;
-        display: table-cell;
-        vertical-align: middle;
-      }
-      ul {
-        padding: 0;
-      }
-      #simplemodal-container .simplemodal-data {
-        padding: 5px 8px;
-        overflow: hidden;
-        background-color: #fff;
-        border-radius: 3px;
-        font-style: italic;
-      }
-      #LocalAccountSigninEmailExchange,
-      #LocalAccountSigninUsernameExchange,
-      #SignInWithLogonEmailExchange,
-      #SignInWithLogonNameExchange,
-      #SignUpWithLogonEmailExchange,
-      #SignUpWithLogonNameExchange {
-        background-color: #0c0c0c;
-        background-image: url(none);
-        background-size: 10%;
-        background-position-x: 95%;
-        background-position-y: 50%;
-        background-repeat: no-repeat;
-        border-radius: 0.5rem;
-        width: 100%;
-        width: 100%;
-        font-size: 1em;
-        margin-left: auto;
-      }
-      #LocalAccountSigninEmailExchange:hover,
-      #LocalAccountSigninUsernameExchange:hover,
-      #SignInWithLogonEmailExchange:hover,
-      #SignInWithLogonNameExchange:hover,
-      #SignUpWithLogonEmailExchange:hover,
-      #SignUpWithLogonNameExchange:hover {
-        background-color: #0c0c0c !important;
-      }
-      #AmazonExchange:hover {
-        background-color: #36474f !important;
-      }
-      #FacebookExchange:hover {
-        background-color: #3b5595 !important;
-      }
-      #GitHubExchange:hover {
-        background-color: #0f0f0f !important;
-      }
-      #AppleExchange:hover,
-      #AppleManagedExchange:hover {
-        background-color: #0f0f0f !important;
-      }
-      #GoogleExchange:hover {
-        background-color: #c64a29 !important;
-      }
-      #LinkedInExchange:hover {
-        background-color: #0c0c0c !important;
-      }
-      #MicrosoftAccountExchange:hover {
-        background-color: #0c0c0c !important;
-      }
-      #QQExchange:hover {
-        background-color: #0c0c0c !important;
-      }
-      #TwitterExchange:hover {
-        background-color: #0c0c0c !important;
-      }
-      #WeChatExchange:hover {
-        background-color: #4cc522 !important;
-      }
-      #WeiboExchange:hover {
-        background-color: #e81123 !important;
-      }
-      .buttons button {
-        margin: 0 auto;
-        width: 60%;
-        height: 50px;
-        background-color: #0c0c0c;
-        border-radius: 0.5rem;
-        border: none;
-        color: #fff;
-        font-size: 1em;
-        margin-top: 10px;
-      }
-      .buttons button:hover {
-        background-color: #0c0c0c;
-        border-color: #204d74;
-      }
-      .buttons button[aria-disabled="true"] {
-        opacity: 0.3;
-      }
-      .buttons button:not([aria-disabled="true"]) {
-        opacity: 1;
-      }
-      .buttons #cancel {
-        padding: 0;
-        margin-left: auto;
-        background: 0 0;
-        border: 0;
-        width: inherit;
-        position: absolute;
-        background-color: transparent;
-        top: 2px;
-        left: 15px;
-        font-size: 1em;
-        color: #505050;
-        box-shadow: none;
-        text-align: left;
-      }
-      .buttons #cancel:hover {
-        color: #000 !important;
-      }
-      .buttons #cancel:before {
-        padding: 10px;
-        vertical-align: sub;
-        zoom: 90%;
-        display: inline-block;
-      }
-      #attributeList ul {
-        padding: 0;
-      }
-      #attributeList ul li {
-        list-style: none;
-        margin: 1rem 0;
-      }
-      legend {
-        font-weight: 600;
-      }
-      #attributeList ul li legend {
-        display: block;
-        text-align: left;
-        float: none;
-        border: none;
+        text-decoration: none;
+        color: #1a171b;
         font-size: 14px;
-        margin-bottom: 0;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        text-transform: capitalize;
       }
-      #attributeList ul li fieldset {
-        border: none;
-      }
-      label {
-        font-weight: 600;
-      }
-      #attributeList ul li label {
-        display: block;
-        text-align: left;
-        float: none;
-      }
-      #attributeList ul li.EmailBox label,
-      #attributeList ul li.Password label,
-      #attributeList ul li.TextBox label {
-        display: none !important;
-      }
-      #attributeList ul li label[for="country"] {
-        float: left;
-        display: inline-block !important;
-        margin-bottom: 0.5rem;
-      }
-      #attributeList ul li label[for="cpiminternal_legalCountry"] {
-        float: none;
-        display: block !important;
-        text-align: left;
-        margin-bottom: 0.5rem;
-      }
-      #attributeList ul li label[for="cpiminternal_dateOfBirth"] {
-        float: none;
-        text-align: left;
-        display: block !important;
-        margin-bottom: 0.5rem;
-      }
-      #attributeList ul li input {
-        height: 50px;
-        width: 70%;
-        border-radius: 0.5rem;
-        text-indent: 20px;
-      }
-      #attributeList ul li input::-webkit-input-placeholder {
-        text-indent: 20px;
-      }
-      #attributeList ul li .attrEntry.validate input.invalid,
-      #attributeList ul li .attrEntry.validate input:invalid {
-        border: 1px solid #b00;
-      }
-      #attributeList ul li .attrEntry .verify {
-        margin-top: 2rem;
-        padding-bottom: 10px;
-        position: relative;
-      }
-      #attributeList ul li .attrEntry .verificationControlContent .buttons {
-        margin-top: 2rem;
-        padding-bottom: 10px;
-        position: relative;
-      }
-      #attributeList ul li .attrEntry .verify .sendButton[id$="ver_but_send"] {
-        width: 60%;
-        height: 50px;
-        background-color: #0c0c0c;
-        color: #fff;
-        border-radius: 0.5rem;
-      }
-      #attributeList ul li .attrEntry .verificationControlContent .sendCode {
-        width: 60%;
-        height: 50px;
-        background-color: #0c0c0c;
-        color: #fff;
-        border-radius: 0.5rem;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verify
-        .sendButton[id$="ver_but_send"]:hover {
-        background-color: #0c0c0c;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verificationControlContent
-        .sendCode:hover {
-        background-color: #0c0c0c;
-      }
-      @media screen and (-ms-high-contrast: active) {
-        #attributeList ul li .attrEntry .verify button,
-        .buttons #continue {
-          border: 1px dashed #fff !important;
-        }
-        #attributeList ul li .attrEntry .verify button:hover,
-        .buttons #continue:hover {
-          border: 1px solid #fff !important;
-        }
-      }
-      #attributeList ul li .attrEntry .verify .verifyButton {
-        width: inherit;
-        padding: 0 20px;
-        height: 50px;
-        background-color: #0c0c0c;
-        color: #fff;
-        margin-right: 5px;
-        border-radius: 0.5rem;
-      }
-      #attributeList ul li .attrEntry .verificationControlContent .verifyCode {
-        width: inherit;
-        padding: 0 20px;
-        height: 50px;
-        background-color: #0c0c0c;
-        color: #fff;
-        margin-right: 5px;
-        border-radius: 0.5rem;
-      }
-      #attributeList ul li .attrEntry .verify .verifyButton:hover {
-        background-color: #0c0c0c;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verificationControlContent
-        .verifyCode:hover {
-        background-color: #0c0c0c;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verify
-        .sendButton[id$="ver_but_resend"] {
-        width: inherit;
-        padding: 0 20px;
-        border: 0;
-        font-size: 1em;
-        height: 50px;
-        right: 0;
-        bottom: -38px;
-        background-color: #0c0c0c;
-        color: #fff;
-        border-radius: 0.5rem;
-      }
-      #attributeList ul li .attrEntry .verificationControlContent .sendNewCode {
-        width: inherit;
-        padding: 0 20px;
-        border: 0;
-        font-size: 1em;
-        height: 50px;
-        right: 0;
-        bottom: -38px;
-        background-color: #0c0c0c;
-        color: #fff;
-        border-radius: 0.5rem;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verify
-        .sendButton[id$="ver_but_resend"]:hover {
-        background-color: #0c0c0c;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verificationControlContent
-        .sendNewCode:hover {
-        background-color: #0c0c0c;
-      }
-      #attributeList ul li .attrEntry .verify .editButton {
-        border: none;
-        color: #fff;
-        background-color: #0c0c0c;
-        width: 60%;
-        height: 50px;
-        border-radius: 0.5rem;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verificationControlContent
-        .changeClaims {
-        border: none;
-        color: #fff;
-        background-color: #0c0c0c;
-        width: 60%;
-        height: 50px;
-        border-radius: 0.5rem;
-      }
-      #attributeList ul li .attrEntry .verify .editButton:hover {
-        background-color: #0c0c0c;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        .verificationControlContent
-        .changeClaims:hover {
-        background-color: #0c0c0c;
-      }
-      #attributeList ul li .attrEntry .verify #email_ver_input_label {
-        display: none !important;
-      }
-      #api .working {
-        background: url(data:image/gif;base64,R0lGODlhbgAKAPMAALy6vNze3PTy9MTCxOTm5Pz6/Ly+vNTS1Pz+/Ozq7MzKzP///wAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCQAJACwTAAIABgAGAAAEE7AcM0iaIAuaQRidR4RIIgREGQEAIfkECQkACQAsJwACAAYABgAABBOwHDNImiALmkEYnUeESCIERBkBACH5BAkJAAkALDYAAgAGAAYAAAQTsBwzSJogC5pBGJ1HhEgiBEQZAQAh+QQJCQAJACxFAAIABgAGAAAEE7AcM0iaIAuaQRidR4RIIgREGQEAIfkECQkACgAsCwACAEAABgAABDdQpWFOUTjrzbv/HkFZAmACB6iuLFeeR3CabW138izOd3/vJwTFRPAZWUIDUUIICI5QFSLgVEQAACH5BAkJAAoALB8AAgAtAAYAAAQyUKVhTlE46837LkdFSEAJHF6qcqEpBGa5zmp8Ejatc0ZfEgjKb0fE4FwSQkBQbL6AiggAIfkECQkACgAsOAACABUABgAABCpQpWFOUTjnciqRQAgcWtmJQiCGpbaOxNtmRh0SCHXPWIxKhICAtxEiFBEAIfkECQkACgAsPQACABAABgAABCdQpWFOURgTagX4wJFJBngE4Dei6ZauqYFQHzHOZSgRgTBiiEBPEQEAIfkECQkACwAsAwACAEsABgAABEVwpWFOWTjrzbv/XnFUxCaSEqACB+i+cDeugjarQrCqce97O5bGsAsQgr9kkkgbFhEUnHIaOzYzVimCYKR6XzkCghMeRwAAIfkECQkACwAsJgACACkABgAABDxwpWFOWTjrrcupxOaBEmACB6dy3ylorSkEp7neWI1qRh0QOtyt5+L5EBSZcAUsZppKBOG3vM0ICM41GwEAIfkECQkACgAsMAACAB8ABgAABDdQpWFOUThrQq2WXSEAJHB8m1Ge2bgGJYlmcJzGnD2DOpaXCAqJsOMNNUGVSUIICIoYRMCJklIjACH5BAkJAAsALDUAAgAbAAYAAAQ3cKVhTlkYl1NJ1tyQSEAJHN8SlsK3AkJglul8fsYcEHadszgdggJ0/URG0wVB2KVABMQzFpBGAAAh+QQJCQALACwPAAIAQgAGAAAEU3ClYU5ZOOvNOyeUtRVHRYzlkEhACxxeLH+GC2tpK+AuIAQ9w2woA/Y2wYCmZgMdidCN04Vk+pY9AoKii3oxW+aJ50KQuwhCYPf9ptedn/YTgEcAACH5BAkJAAsALB4AAgAzAAYAAARMcKVhTlk4663LqQQ3VZdGUJYArMDBvdzHCp3Bupl6B+wK/5heyyQk9k494M82M7KcKwRlFVK+kNFaMzcdIggBmhUmCCNEYHEnEF5EAAAh+QQJCQALACwoAAIAKgAGAAAER3ClYU5ZOGtCrZZHRXxFOCQgoB7fZqgA68LCrAoBrLZZrn+6mOYFC3B+PEkQSBRmmjEE5ZZMUW0n7AVBMFYxXG8LR0CMjeYIACH5BAkJAAsALC4AAgApAAYAAARHsBwzyLo4DVrwlZTljRo3AajgCRR6jGc6Zi0Qu16A7uOOzwudb7MTXQjDns9IGiJ3iBXR1oQCFyCZIECIkriq2bZ7/RC4iwgAIfkECQkACwAsLgACADMABgAABExwpWFOWRiXU0nOU3V9ZAlSlgCswEFyrPCprGvemlEH7Er2rQ+vh8MNd8SPLiYEFm8EIIKy8jSZJ+yTNF16EISArCQQI8jh8RYtXkQAACH5BAkJAAsALC8AAgA/AAYAAAROsBwzyLo4DVrwlZTljWRpZtsErIInUOsxquxp3x+sA4EXrMARMIYrln5DoOhCSAqHS6O0yRoiXJsaFniVekGAhSBA6LrILdK47G2LCYEIACH5BAkJAAoALDAAAgAfAAYAAAQ6sBwziLo4DVqwz9shASQgeAJFHh+qAlMJe4EMtKAtW3mJXwRbsIRwqXg4xGalEAQIxQ/iefpdpk9FBAAh+QQJCQALACwwAAIAKQAGAAAEPnClYU5ZGJdTSf5gqFGWAJzAAXKoIL6ZiR4BeoJ2CsO1TeQ4Q2v3+tkQlJPnYzwhiKLNEEEIuEIC6xMarboiACH5BAkJAAoALDEAAgA3AAYAAARCsBwziLo4DVqw/2AoKsR2SEAKCJ5Apccoz9kLTOrtBTlA/yJeL2ep5YDIXa+kQrQ2sKQUAdUJAgTnB4FlSacErCICACH5BAkJAAsALDIAAgAVAAYAAAQpsBwzyLo4S5rWBKCQjV9IgUAwZicYDGi6Ym1KxMh83WixCAFCTrcL+iIAIfkECQkACgAsMgACAB8ABgAABC5QpWFOUTjrrcuphASMwMGd3EcKATmiMOaWxBzDRj4SCLXfqNpKQggIgDAWTxEBACH5BAkJAAsALDMAAgAtAAYAAAQysBwzyLo46823pMkyAaTQneg2lhQJBGmMtmQwuK+sb/RL4Iid8PJzFRaCACE4HCaXiwgAIfkECQkACgAsOAACAAYABgAABBNQpWFOESCDE3QmnoFQn0QEghIBACH5BAkJAAoALEIAAgAGAAYAAAQTUKVhThEggxN0Jp6BUJ9EBIISAQAh+QQJCQAKACxRAAIABgAGAAAEE1ClYU4RIIMTdCaegVCfRASCEgEAOw==)
-          no-repeat;
-        height: 30px;
-        width: auto;
-        background-position: center bottom;
-      }
-      #attributeList ul li .attrEntry .itemLevel {
-        display: none;
-      }
-      input[type="email"],
-      input[type="password"],
-      input[type="text"] {
-        -webkit-appearance: none;
-      }
-      #attributeList ul li .attrEntry .dropdown_single {
-        height: 45px;
-        border-radius: 0.5rem;
-        width: 100%;
-        padding-left: 15px;
-      }
-      #attributeList ul li .attrEntry div#cpiminternal_dateOfBirth.date {
-        display: table;
-        width: 100%;
-      }
-      #attributeList ul li .attrEntry div#cpiminternal_dateOfBirth.date select {
-        border-radius: 0.5rem;
+      .signup-btn,
+      .signup-btn:hover,
+      .signup-btn:focus {
         display: inline-block;
-        height: 50px;
-        padding-left: 15px;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        div#cpiminternal_dateOfBirth
-        select#cpiminternal_dateOfBirth_day.day {
-        margin-right: 3%;
-        width: 23%;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        div#cpiminternal_dateOfBirth
-        select#cpiminternal_dateOfBirth_month.month {
-        margin-right: 3%;
-        width: 38%;
-      }
-      #attributeList
-        ul
-        li
-        .attrEntry
-        div#cpiminternal_dateOfBirth
-        select#cpiminternal_dateOfBirth_year.year {
-        width: 33%;
-      }
-      #attributeList ul li .helpLink {
-        display: none;
-      }
-      #attributeVerification .buttons {
-        margin-top: 30px;
-      }
-      @media screen and (max-width: 100%) {
-        .row .panel-default .panel-body {
-          margin-top: 40px;
-        }
-        .row .panel-default .panel-body .branding img {
-          display: block;
-          height: 80px;
-          width: auto;
-          margin: 0 auto;
-        }
-        .row .panel-default .panel-body .branding h1 {
-          display: none;
-        }
-        .row .panel-default .panel-body h3 {
-          font-size: 1.5em;
-          margin-top: 15px;
-        }
-        #attributeVerification #attributeList ul li input {
-          width: 60%;
-          height: 40px;
-          border-radius: 0.5rem;
-          border: 1px solid #605e5c;
-          text-indent: 10px;
-        }
-        #attributeVerification
-          #attributeList
-          ul
-          li
-          input::-webkit-input-placeholder {
-          text-indent: 10px;
-        }
-        #attributeVerification #attributeList ul li #email {
-          width: 65%;
-          float: left;
-          position: relative;
-          z-index: 2;
-        }
-        #attributeVerification #attributeList ul li #email_ver_but_verify {
-          background: 0 0;
-          border: 0;
-          color: #496ad8;
-          font-size: 1em;
-          position: relative;
-          right: 0;
-          top: 60px;
-          font-size: 1.1em;
-          width: auto;
-          z-index: 1;
-          height: 20px;
-        }
-        #attributeVerification #attributeList ul li #email_ver_input {
-          min-width: 50%;
-          width: 60%;
-          float: left;
-        }
-        #attributeVerification #attributeList ul li #email_ver_but_resend {
-          top: 10px;
-          font-size: 1.1em;
-          height: 20px;
-        }
-        #attributeVerification #attributeList ul li .attrEntry #email {
-          height: 40px;
-        }
-        #attributeVerification
-          #attributeList
-          ul
-          li
-          .attrEntry
-          .verify
-          #email_ver_but_send:after {
-          content: " Verify";
-          font-size: 1.1em;
-          font-style: bold;
-          margin-left: 40%;
-        }
-        #attributeVerification
-          #attributeList
-          ul
-          li
-          .attrEntry
-          .verify
-          #email_ver_but_send {
-          height: 40px;
-          width: auto;
-          float: right;
-          overflow: hidden;
-          text-indent: -200px;
-        }
-        #attributeVerification
-          #attributeList
-          ul
-          li
-          .attrEntry
-          .verify
-          #email_ver_but_edit {
-          margin-bottom: 15px;
-          border: none;
-          color: #fff;
-          background-color: #496ad8;
-          border-radius: 0.5rem;
-          font-size: 1em;
-          box-shadow: 0 0 40px 2px #dae1f7;
-          width: 30%;
-          height: 40px;
-          overflow: hidden;
-          padding-top: 6px;
-          margin-left: 40%;
-        }
-        #attributeVerification #attributeList ul li .attrEntry .verify:after {
-          content: " ";
-          display: block;
-          clear: both;
-        }
-        #attributeVerification #attributeList #verifying_blurb {
-          margin-top: 15px;
-        }
-        #attributeVerification .buttons #continue {
-          height: 40px;
-        }
-        #attributeVerification .buttons #cancel {
-          font-size: 1em;
-          left: 40%;
-        }
-      }
-      .panel,
-      .panel_layout,
-      .panel_layout_row,
-      body,
-      html {
-        height: 100%;
-      }
-      @media only screen and (max-width: 600px) {
-        img[data-tenant-branding-background="true"] {
-          display: none;
-        }
-        .container {
-          background-color: #fff;
-        }
-        .container .row .panel-default {
-          border-radius: 0;
-          border: none;
-          box-shadow: none;
-        }
-      }
-      /* endinject */
-    </style>
-    <style>
-      /* Following are generated styles via gulp. */
-      /* inject: css */
-      .panel {
-        padding-top: 100px !important;
-        position: relative;
-      }
-      .create {
-        position: absolute;
-        top: 70px;
-      }
-      #rememberMe {
-        accent-color: #000;
-      }
-      .rememberMe label {
-        font-weight: 400;
-      }
-      .appendText {
-        position: absolute;
-        bottom: -15px;
-        right: 0;
-        clear: right;
-        cursor: pointer;
-        text-decoration: unset;
-        text-align: right;
-        font-weight: 600;
-        letter-spacing: 0.2px;
+        text-decoration: none;
+        padding: 11px 45px;
+        background-color: #1a171b;
+        color: #ffffff;
+        border: 1px solid #1a171b;
+        border-radius: 100px;
         font-size: 14px;
-        line-height: 19px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        text-transform: capitalize;
       }
-      #forgotPassword {
-        display: none !important;
-      }
-      button#cancel {
-        display: none;
-      }
-      div#claimVerificationServerError {
-        color: red;
-      }
-      /* .unified_container .row .panel-default {
-        padding: 0px 30px;
-        box-shadow: 0 10px 30px 0 rgb(0 0 0 / 10%);
-        margin-top: auto;
-        margin-bottom: auto;
+      #login-box.whole-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
         height: 100%;
-        background-color: #fff;
-      } */
-      /* .unified_container .row .panel-default .panel-body {
-        max-width: 380px;
-        width: auto;
-        margin: 0 auto;
-        padding: 0;
-      } */
-      .unified_container .row .panel-default .panel-body .companyName {
-        font-size: 1.5em;
-        margin-bottom: 45px;
       }
-      .unified_container .row .panel-default .panel-body .companyLogo {
-        display: block;
-      }
-      .unified_container .row .panel-default .panel-body img {
-        max-width: 100%;
-        width: auto;
-        height: 70px;
-        margin: 0 auto;
-        display: block;
-      }
-      .unified_container .row .panel-default .panel-body h3 {
-        font-size: 1.5em;
-        display: none;
-      }
-      .unified_container .row .panel-default #api {
-        display: table;
-        margin: 0;
+      .box-center {
+        max-width: 456px;
         width: 100%;
-      }
-      .unified_container .row .panel-default #api .intro {
-        display: block;
-        text-align: left;
-        margin-top: 10px;
-      }
-      .unified_container .row .panel-default #api .intro h2 {
-        font-size: 18px;
-      }
-      .unified_container .row .panel-default #api .divider {
-        display: none;
-      }
-      .unified_container .row .panel-default #api .localAccount {
-        top: 10px;
-        width: 100%;
-      }
-      .unified_container .row .panel-default #api .localAccount .error {
-        color: #b00;
-        text-align: left;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .buttons {
-        margin: 0 0 23px 0;
-        text-align: left;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .buttons
-        button {
-        background-image: none;
-        background-color: #0c0c0c;
-        border: none;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 1em;
-        font-weight: 400;
-        height: inherit;
-        line-height: 1.3333333;
-        margin-top: 2rem;
-        margin-right: 0;
-        margin-bottom: 1.2rem;
-        margin-left: 0;
-        padding: 10px 16px;
-        text-align: center;
-        touch-action: manipulation;
-        user-select: none;
-        vertical-align: middle;
-        white-space: nowrap;
-        width: inherit;
-        -moz-user-select: none;
-        -ms-touch-action: manipulation;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-        color: #fff;
-        width: 63%;
-        box-shadow: 0 0 30px 0 #dae1f7;
-      }
-      @media screen and (-ms-high-contrast: active) {
-        .unified_container .row .panel-default #api .accountButton,
-        .unified_container
-          .row
-          .panel-default
-          #api
-          .localAccount
-          .entry
-          .buttons
-          button {
-          border: 1px dashed #fff;
-        }
-        .unified_container .row .panel-default #api .accountButton:hover,
-        .unified_container
-          .row
-          .panel-default
-          #api
-          .localAccount
-          .entry
-          .buttons
-          button:hover {
-          border: 1px solid #fff;
-        }
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .buttons
-        button:focus,
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .buttons
-        button:hover {
-        -moz-box-shadow: none;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        background-color: #0c0c0c;
-        color: #fff;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item {
-        position: relative;
-        width: 100%;
-        padding-top: 6px;
-        margin-bottom: 10px;
-        display: block;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        label[for="email"] {
-        display: none !important;
+        padding: 40px;
+        background-color: #ffffff;
+        border: 1px solid #ebebeb;
       }
 
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        input:focus {
-        border: 1px solid #9f9f9f;
+      /*=============== Dropdown scrollbar CSS start ==============*/
+      /*======= width =======*/
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
       }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        input {
-        outline: 0;
-        background-image: none !important;
-        background: #f9f9f9;
-        border: 1px solid #ebebeb;
-        border-radius: 12px;
-        color: #2c2c2c;
-        display: inline-block;
-        font-size: 1em;
-        height: 48px;
-        line-height: 48px;
-        padding: 13px 16px;
-        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
-        width: 100% !important;
-        -o-transition: border-color ease-in-out 0.15s,
-          box-shadow ease-in-out 0.15s !important;
-        -webkit-transition: border-color ease-in-out 0.15s,
-          -webkit-box-shadow ease-in-out 0.15s !important;
+      /*===== Track =====*/
+      ::-webkit-scrollbar-track {
+        border-radius: 10px;
       }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        #password {
-        margin-bottom: 20px;
+      /*====== Handle =======*/
+      ::-webkit-scrollbar-thumb {
+        background: #e5e5e5;
+        border-radius: 10px;
       }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        .password-label {
-        text-align: left;
-        height: 0;
-        left: 0;
+      /*======= Handle on hover =======*/
+      ::-webkit-scrollbar-thumb:hover {
+        background: #dddddd;
+      }
+      /*=============== Dropdown scrollbar CSS end ==============*/
+
+      @media only screen and (max-width: 1366px) {
+        #login-box.whole-box {
+          min-height: 87vh;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        .mobile-logo {
+          width: 100px;
+        }
+        .signup-btn {
+          padding: 11px 25px;
+        }
+        #login-box.whole-box {
+          padding: 15px 15px 50px 15px;
+          height: 70vh;
+          overflow-y: auto;
+        }
+      }
+      @media (max-width: 600px) and (max-height: 700px) {
+        #login-box.whole-box {
+          padding-top: 40%;
+        }
+      }
+    </style>
+    <!--============= Common CSS end ============-->
+
+    <!--========== Tanim's style for login card CSS start ===========-->
+    <style>
+      #login-box.whole-box .box-center #api .heading {
+        display: none;
+      }
+      #login-box.whole-box .box-center #api .divider {
+        display: none;
+      }
+      #login-box.whole-box .box-center #api .localAccount .intro h2 {
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 35px;
+        color: #212121;
+        margin-bottom: 10px;
+      }
+      #login-box.whole-box .box-center #api .localAccount .error {
+        /* background-color: #fae5e5;
+        border: 1px solid #fae5e5;
+        border-radius: 4px;
+        padding: 20px; */
+        margin-bottom: 16px;
+      }
+      #login-box.whole-box .box-center #api .localAccount .error p {
+        color: #cc0000;
+        /* background-color: #fae5e5;
+        border: 1px solid #fae5e5;
+        border-radius: 4px;
+        padding: 16px; */
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        margin-bottom: 0;
+      }
+      #login-box.whole-box .box-center #api .localAccount .entry {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* gap: 16px; */
+      }
+      #login-box.whole-box .box-center #api .localAccount .entry .entry-item {
+        display: block;
         width: 100%;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        margin-top: 16px;
       }
-      .forgot-password {
-        text-align: left;
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset !important;
       }
-      .forgot-password.center-height {
-        position: absolute;
-        bottom: 0;
-        clear: right;
-        cursor: pointer;
-        text-align: right;
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        label {
+        display: none;
       }
-      @keyframes slideInFromRight {
-        0% {
-          opacity: 0;
-          transform: translateX(50%);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
         .entry-item
         .password-label
-        #forgotPassword {
-        position: absolute;
-        bottom: 0;
-        clear: right;
-        cursor: pointer;
-        text-align: right;
-      }
-      .unified_container .row .panel-default #api .localAccount .rememberMe {
-        margin-top: 0;
-        text-align: left;
-        margin-left: 0;
-        position: initial;
-        width: 160px;
-        margin-top: -15px;
-        font-size: 14px;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .rememberMe.align-to-left {
-        margin-top: 0.5rem;
-        text-align: left;
-        margin-left: 0;
-        width: 100%;
-      }
-      .working {
+        a.appendText {
         display: none;
       }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .claims-provider-list-text-links
-        p,
-      .unified_container .row .panel-default #api .localAccount .create p {
-        text-align: left;
-        margin-top: -3rem;
-        margin-bottom: 3rem;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .create
-        #createAccount {
-        border-radius: 0.5rem;
-        display: inline-block;
-        font-size: 1em;
-        font-weight: 400;
-        height: inherit;
-        line-height: 1.3333333;
-        padding: 10px 16px;
-        text-align: center;
-        touch-action: manipulation;
-        user-select: none;
-        white-space: nowrap;
-        -moz-user-select: none;
-        -ms-touch-action: manipulation;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-        width: 100%;
-        margin-top: -3rem;
-        cursor: pointer;
-        color: #fff !important;
-        background: #000;
-        text-decoration: none;
-        margin: 10px 0;
-      }
-      .unified_container .row .panel-default #api .social {
-        display: block;
-        position: relative;
-        top: 1px;
-        width: auto;
-      }
-
-      .unified_container .row .panel-default #api .accountButton:hover {
-        color: #fff;
-        background-color: #0c0c0c;
-      }
-      .claims-provider-list-text-links-bottom-under-form {
-        text-align: left;
-      }
-      @media (max-width: 100%) {
-        .unified_container .row .panel-default {
-          margin-top: auto;
-          margin-bottom: auto;
-          height: 550px;
-        }
-        .unified_container .row .panel-default .panel-body {
-          padding: 5rem 3rem;
-          margin-top: 20px;
-        }
-        .unified_container .row .panel-default .panel-body .companyName {
-          display: none;
-        }
-        .unified_container .row .panel-default .panel-body .companyLogo {
-          display: block;
-        }
-        .unified_container .row .panel-default .panel-body h3 {
-          display: block;
-        }
-        .unified_container .row .panel-default .panel-body #api {
-          width: auto;
-        }
-        .unified_container .row .panel-default .panel-body #api .social {
-          top: 370px;
-          width: auto;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .social
-          .options
-          .accountButton {
-          height: 40px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .social
-          .options
-          #FacebookExchange {
-          background-size: 12px;
-          background-position: 50% 75%;
-          margin-bottom: 10px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .social
-          .options
-          #GoogleExchange {
-          background-size: 20px;
-          background-position: 50% 75%;
-          margin-bottom: 10px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .social
-          .options
-          #TwitterExchange {
-          background-size: 20px;
-          background-position-x: 56px;
-          background-position-y: 14px;
-          margin-bottom: 10px;
-        }
-        .unified_container .row .panel-default .panel-body #api .localAccount {
-          top: 20px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .localAccount
-          .entry
-          .entry-item {
-          display: block;
-          width: 100%;
-          margin-bottom: 10px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .localAccount
-          .entry
-          .entry-item
-          .password-label {
-          top: 145px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .localAccount
-          .entry
-          .entry-item
-          #logonIdentifier {
-          height: 40px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .localAccount
-          .entry
-          .entry-item
-          #password {
-          height: 40px;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .localAccount
-          .entry
-          .entry-item:nth-child(2) {
-          width: auto;
-          float: left;
-        }
-        .unified_container
-          .row
-          .panel-default
-          .panel-body
-          #api
-          .localAccount
-          .entry
-          .buttons
-          #next {
-          width: auto;
-          text-indent: -4px;
-          height: 40px;
-          line-height: 0;
-          position: relative;
-          bottom: 5px;
-          left: 8px;
-        }
-      }
-      @media screen and (max-width: 320) {
-        #createAccount {
-          width: 90%;
-        }
-      }
-      @media only screen and (min-width: 320px) and (max-width: 375px) {
-        .unified_container
-          .row
-          .panel-default
-          #api
-          .localAccount
-          .create
-          #createAccount {
-          width: 95%;
-        }
-      }
-      @media only screen and (min-width: 376px) and (max-width: 400px) {
-        .unified_container
-          .row
-          .panel-default
-          #api
-          .localAccount
-          .create
-          #createAccount {
-          width: 100%;
-        }
-      }
-      @media only screen and (min-width: 401px) and (max-width: 425px) {
-        .unified_container
-          .row
-          .panel-default
-          #api
-          .localAccount
-          .create
-          #createAccount {
-          width: 111%;
-        }
-      }
-      @media only screen and (min-width: 426px) and (max-width: 2560px) {
-        .unified_container
-          .row
-          .panel-default
-          #api
-          .localAccount
-          .create
-          #createAccount {
-          width: 115%;
-        }
-      }
-      @media screen and (max-width: 320px) {
-        .unified_container .row .panel-default #api .localAccount .rememberMe {
-          margin-top: 1.75rem;
-          text-align: left;
-          margin-left: 0;
-          width: 100%;
-        }
-        #createAccount {
-          width: 90%;
-        }
-        .unified_container
-          .row
-          .panel-default
-          #api
-          .localAccount
-          .entry
-          .entry-item
-          .password-label
-          #forgotPassword {
-          bottom: -1rem;
-        }
-        .forgot-password.center-height {
-          top: 0;
-          right: 12rem;
-          position: relative;
-        }
-      }
-      /* endinject */
-      .header {
-        background-color: #fff;
-        text-align: left;
-      }
-
-      header {
-        height: 120px;
-        background-color: #fff;
-        display: flex;
-        align-items: center;
-      }
-      .heading {
-        text-align: left;
-        display: none;
-      }
-      /* .intro {
-        display: none !important;
-      } */
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .buttons
-        button {
-        background-image: none;
-        background-color: #000000;
-        border: none;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 1em;
-        font-weight: 400;
-        height: inherit;
-        line-height: 1.3333333;
-        margin-top: 1rem;
-        margin-right: 0;
-        margin-bottom: 2.2rem;
-        margin-left: 0;
-        padding: 10px 16px;
-        text-align: center;
-        touch-action: manipulation;
-        user-select: none;
-        vertical-align: middle;
-        white-space: nowrap;
-        width: inherit;
-        -moz-user-select: none;
-        -ms-touch-action: manipulation;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-        color: #fff;
-        width: 100%;
-        box-shadow: 0 0 0px 0 #ffffff;
-      }
-      a {
-        color: #000000 !important;
-      }
-      .options {
-        display: flex;
-        gap: 10px;
-      }
-
-      .unified_container .row .panel-default #api .localAccount .create p {
-        text-align: left;
-        margin-bottom: 0 !important;
-      }
-      .unified_container .row .panel-default #api .accountButton {
-        background-size: 50% 50%;
-        background-position-x: 44%;
-        background-position-y: 50%;
-        background-repeat: no-repeat;
-        display: block;
-        overflow: hidden;
-        border: 1px solid #d5d5d5;
-        background-color: #fff;
-        border-radius: 50px;
-        margin-top: 10px;
-        padding: 18px;
-        width: 35px;
-        height: 35px;
-      }
-      input#passwordtoggler {
+      .visibility-off.material-symbols-outlined {
         position: absolute;
-        left: -184px;
-        height: 13px !important;
-        top: 72px;
+        right: 0px;
+        top: 0px;
+        padding: 13px;
+        cursor: pointer;
       }
-      label[for="passwordtoggler"] {
-        position: absolute !important;
-        top: 66px !important;
-        left: 22px !important;
-        font-weight: 400 !important;
-        font-size: 15px !important;
-      }
-      img.hidenpass {
-        position: absolute;
-        right: -3px;
-        top: 6px;
-        width: 47px !important;
-        height: 47px !important;
-        padding: 15px 12px;
-      }
-    </style>
-
-    <!--============== Tanim's style for login card start ===============-->
-    <style>
-      .unified_container .row .panel-default {
-        padding: 40px;
-        max-width: 456px;
-        width: 100%;
-        background-color: #ffffff;
-        border: 1px solid #ebebeb;
-      }
-      .unified_container .row .panel-default #api .localAccount .intro h2 {
-        font-family: "Source Sans 3", sans-serif;
-        font-size: 28px;
-        font-weight: 600;
-        line-height: 35px;
-        color: #212121;
-      }
-      .unified_container .row .panel-default #api .localAccount .entry {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item {
-        display: block;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-      }
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
         .entry-item
         input,
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
         .entry-item
         input:hover,
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
         .entry-item
         input:focus {
+        display: block;
+        width: 100%;
         padding: 13px 16px;
         background-color: #f9f9f9;
         border: 1px solid #dbd9d9;
         border-radius: 2px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: #212121;
+        letter-spacing: 0.08px;
+        outline: 0;
+        box-shadow: none;
       }
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
         .entry-item
         input::placeholder {
-        font-family: "Source Sans 3", sans-serif;
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
         color: #212121;
         letter-spacing: 0.08px;
       }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        #password,
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        #password:hover,
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        #password:focus {
-        padding: 13px 16px;
-        background-color: #f9f9f9;
-        border: 1px solid #dbd9d9;
-        border-radius: 2px;
+      .passcode {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        width: 20px;
+        height: 20px;
+        padding: 14px;
+        background-color: transparent;
       }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .entry-item
-        #password::placeholder {
-        font-family: "Source Sans 3", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 22px;
-        color: #212121;
-        letter-spacing: 0.08px;
-      }
-      .unified_container
-        .row
-        .panel-default
-        #api
-        .localAccount
-        .entry
-        .buttons {
+      #login-box.whole-box .box-center #api .localAccount .entry .buttons {
         display: block;
         width: 100%;
         text-align: center;
         margin: 8px 0 0 0;
       }
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
         .buttons
         button,
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
         .buttons
         button:hover,
-      .unified_container
-        .row
-        .panel-default
+      #login-box.whole-box
+        .box-center
         #api
         .localAccount
         .entry
@@ -1631,7 +302,6 @@
         button:focus {
         display: block;
         width: 100%;
-        font-family: "Source Sans 3", sans-serif;
         font-size: 14px;
         font-weight: 700;
         line-height: 22px;
@@ -1642,109 +312,268 @@
         border: 1px solid #1a171b;
         background-color: #1a171b;
         border-radius: 100px;
+        outline: 0;
+        box-shadow: none;
+        margin-top: 15px;
+      }
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        .password-label
+        #forgotPassword,
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        .password-label
+        #forgotPassword:hover,
+      #login-box.whole-box
+        .box-center
+        #api
+        .localAccount
+        .entry
+        .entry-item
+        .password-label
+        #forgotPassword:focus {
+        display: block;
+        width: 100%;
+        text-align: right;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 22px;
+        color: #1a171b;
+        letter-spacing: 1px;
+        margin-top: 16px;
+      }
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        padding: 32px 0 24px 0;
+      }
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social
+        .intro
+        h2 {
+        margin-bottom: 0;
+      }
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social
+        .options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+      }
+      .with-text {
+        color: #000000;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.07px;
+        margin-bottom: 0;
+      }
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social
+        .options
+        .accountButton,
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social
+        .options
+        .accountButton:hover,
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social
+        .options
+        .accountButton:focus {
+        background: none;
+        border: 0;
+        outline: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      #login-box.whole-box
+        .box-center
+        #api
+        .claims-provider-list-buttons.social
+        .options
+        .accountButton
+        img {
+        width: 32px;
+        height: 32px;
+      }
+      #login-box.whole-box .box-center #api .create {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 3px;
+        padding-top: 24px;
+        border-top: 2px solid #f9f9f9;
+      }
+      #login-box.whole-box .box-center #api .create p {
+        color: #212121;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 25px;
+        letter-spacing: 0.08px;
+        margin-bottom: 0;
+      }
+      #login-box.whole-box .box-center #api .create p a,
+      #login-box.whole-box .box-center #api .create p a:hover,
+      #login-box.whole-box .box-center #api .create p a:focus {
+        color: #212121;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 25px;
+        letter-spacing: 1px;
+        text-decoration: underline;
+        margin-left: 5px;
+      }
+      .password-label{
+        position: relative;
+      }
+      img.hidenpass {
+        position: absolute;
+        right: -3px;
+        top: -64px;
+        width: 47px !important;
+        height: 47px !important;
+        padding: 15px 12px;
+        cursor: pointer;
       }
     </style>
-    <!--============== Tanim's style for login card end ===============-->
+    <!--============== Tanim's style for login card CSS end ===============-->
+    <style>
+      input::-ms-reveal,
+      input::-ms-clear {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <div class="cotaniner-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="logo-wrapper">
-              <a
-                class="navbar-brand fs-1 fw-semibold"
-                href="https://ronreload.selisestage.com/"
-              >
+    <header class="bg-white">
+      <div class="cotaniner header-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="logo-box">
+            <a href="https://www.ronorp.net/">
+              <figure class="mb-0">
                 <img
-                  src="https://joyselise.github.io/ronlogin/img/ron_logo.svg"
-                  alt="ron-logo"
-                  style="width: 140px"
+                  src="https://ronreload.blob.core.windows.net/auth-pages/images/logo.svg"
+                  class="img-fluid mobile-logo"
+                  alt="logo"
                 />
-              </a>
-            </div>
+              </figure>
+            </a>
+          </div>
+          <div class="btn-box">
+            <a href="#" class="login-btn">Log in</a>
+            <a href="#" class="signup-btn">Sign up</a>
           </div>
         </div>
       </div>
     </header>
-    <section class="login-section">
-      <div class="container unified_container" role="presentation">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div id="api" role="main"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <section class="whole-box" id="login-box">
+      <div class="box-center" role="presentation">
+        <div id="api" class="bg-white" role="main"></div>
       </div>
     </section>
 
-    <script data-container="true" nonce>
-      document.getElementById("FacebookExchange").innerText = "";
-      document.getElementById("GoogleExchange").innerText = "";
-    </script>
+    <!--================ All scripts ===============-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
-      $(
-        '<a href="https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_pass_reset&client_id=6c8924a1-d842-49eb-b1d2-e8857b26dfbc&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fron-backend.selisestage.com%2Flogin%2Fazureadb2c%2Fcallback&scope=openid&response_type=code&prompt=login" class="appendText">Forgot Password?</a>'
-      ).appendTo(".password-label");
-      $(document).ajaxComplete(function () {
-        if ($(".error").is(":visible") && $(".error p").text().length > 0) {
-          $(".error p").text(
-            "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
-          );
-        }
-      });
-      $(".social .intro h2").html(
-        "<b>Sign in Or Sign up</b> with your social account"
-      );
-      $("#createAccount").text("Sign up with Email");
+      // $(document).ajaxComplete(function () {
+      //   if ($(".error").is(":visible") && $(".error p").text().length > 0) {
+      //     $(".error p").text(
+      //       "We can't seem to find your account. Try login with your Social Account, If you have Signed up with Social Account or Sign Up"
+      //     );
+      //   }
+      // });
+      // $(".error p").text(
+      //   "We can't seem to find your account. Try logging in with your social account or sign up."
+      // );
+      $("#createAccount").text("Create an account");
       $(".rememberMe label").text("Remember Me");
 
+      // function makePwdToggler(pwd) {
+      //   // Create the password visibility toggle
+      //   var visibility = $("<div>")
+      //     .addClass("visibility-off")
+      //     .html("<span>visibility_off</span>")
+      //     .addClass("material-symbols-outlined");
+      //   visibility.insertAfter(pwd);
+
+      //   // Add toggle password callback
+      //   function toggle() {
+      //     if (pwd.type === "password") {
+      //       pwd.type = "text";
+      //       visibility
+      //         .html("<span>visibility</span>")
+      //         .addClass("material-symbols-outlined");
+      //     } else {
+      //       pwd.type = "password";
+      //       visibility
+      //         .html("<span>visibility_off</span>")
+      //         .addClass("material-symbols-outlined")
+      //         .addClass("notranslate");
+      //     }
+      //   }
+      //   $(visibility).on("click keydown", toggle);
+      // }
+
       function makePwdToggler(pwd) {
-        // Create show-password checkbox
-        // var checkbox = document.createElement('input');
-        // checkbox.setAttribute('type', 'checkbox');
-        // var id = pwd.id + 'toggler';
-        // checkbox.setAttribute('id', id);
-
-        // var label = document.createElement('label');
-        // label.setAttribute('for', id);
-        // label.appendChild(document.createTextNode('show password'));
-
-        // var div = document.createElement('div');
-        // div.appendChild(checkbox);
-        // div.appendChild(label);
-
-        // Add show-password checkbox under password input
-        // pwd.insertAdjacentElement('afterend', div);
-
         var showpassImage = document.createElement("img");
-        showpassImage.setAttribute(
-          "src",
-          "https://joyselise.github.io/ronlogin/img/hidenpass.png"
-        );
+        showpassImage.setAttribute("src", "https://ronreload.blob.core.windows.net/auth-pages/images/visibility-off.svg");
         showpassImage.setAttribute("class", "hidenpass");
-        pwd.insertAdjacentElement("afterend", showpassImage);
+        // pwd.insertAdjacentElement("afterend", showpassImage);
 
+        var forgotPasswordElement = document.getElementById("forgotPassword");
+        if (forgotPasswordElement) {
+            forgotPasswordElement.insertAdjacentElement("afterend", showpassImage);
+        } else {
+            pwd.insertAdjacentElement("afterend", showpassImage);
+        }
+ 
         // Add toggle password callback
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
-            showpassImage.src =
-              "https://joyselise.github.io/ronlogin/img/openpass.png";
+            showpassImage.src = "https://ronreload.blob.core.windows.net/auth-pages/images/visibility-on.svg";
           } else {
             pwd.type = "password";
-            showpassImage.src =
-              "https://joyselise.github.io/ronlogin/img/hidenpass.png";
+            showpassImage.src = "https://ronreload.blob.core.windows.net/auth-pages/images/visibility-off.svg";
           }
         }
         showpassImage.onclick = toggle;
         // For non-mouse usage
         showpassImage.onkeydown = toggle;
       }
-
+ 
       function setupPwdTogglers() {
         var pwdInputs = document.querySelectorAll("input[type=password]");
         for (var i = 0; i < pwdInputs.length; i++) {
@@ -1753,13 +582,120 @@
       }
       setupPwdTogglers();
     </script>
-
-    <!--=============== Tanim's written scripts start ==============-->
     <script>
       $(document).ready(function () {
-        $("h2[aria-level='1']").text("Log in");
+        var lang = document.documentElement.lang ?? 'de';
+        if (lang === "de" || lang === "fr") {
+          var textMap = {
+            "de": {
+              "loginHeading": "Einloggen",
+              "forgotPassword": "Passwort vergessen?",
+              "loginButton": "Anmelden",
+              "socialIntro": "Oder einloggen / registrieren mit",
+              "emailLabel": "E-Mail-Adresse",
+              "emailError": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+              "validEmailError": "Bitte eine gültige E-Mail-Adresse eingeben.",
+              "passwordError": "Bitte das Passwort eingeben.",
+              "accountNotFound": "Konto konnte nicht gefunden werden.",
+              "incorrectPassword": "Das Passwort ist falsch.",
+              "createAccountPrompt": "Noch kein Konto? Konto erstellen",
+              "createAccount": "Konto erstellen",
+              "emailPlaceholder": "E-Mail-Adresse",
+              "passwordPlaceholder": "Passwort"
+            },
+            "fr": {
+              "loginHeading": "Se connecter",
+              "forgotPassword": "Mot de passe oublié?",
+              "loginButton": "Connexion",
+              "socialIntro": "Ou connectez-vous / inscrivez-vous avec",
+              "emailLabel": "Adresse e-mail",
+              "emailError": "Veuillez entrer votre adresse e-mail",
+              "validEmailError": "Veuillez entrer une adresse e-mail valide.",
+              "passwordError": "Veuillez entrer votre mot de passe.",
+              "accountNotFound": "Nous ne trouvons pas votre compte.",
+              "incorrectPassword": "Votre mot de passe est incorrect.",
+              "createAccountPrompt": "Vous n'avez pas de compte ? Créez un compte",
+              "createAccount": "Créer un compte",
+              "emailPlaceholder": "Adresse e-mail",
+              "passwordPlaceholder": "Mot de passe"
+            },
+            "default": {
+              "loginHeading": "Log In",
+              "forgotPassword": "Forgot Password?",
+              "loginButton": "Login",
+              "socialIntro": "Or log in / sign up with",
+              "emailLabel": "Email Address",
+              "emailError": "Please enter your Email Address",
+              "validEmailError": "Please enter a valid email address",
+              "passwordError": "Please enter your password",
+              "accountNotFound": "We can't seem to find your account",
+              "incorrectPassword": "Your password is incorrect",
+              "createAccountPrompt": "Don't have an account?",
+              "createAccount": "Create an account",
+              "emailPlaceholder": "Email Address",
+              "passwordPlaceholder": "Password"
+            }
+          };
+
+          var texts = textMap[lang] || textMap["default"];
+          var createAccountMainLinkNew = $("#createAccount").attr("href");
+          var createAccountLinkNew = createAccountMainLinkNew + '&ui_locales=' + lang;
+          
+          $(".localAccount .intro").find("h2[aria-level='1']").text(texts.loginHeading);
+          $(".localAccount .entry .entry-item label[for='email']").text(texts.emailLabel);
+          $(".create p").html(texts.createAccountPrompt + "<a id='createAccount' href='" + createAccountLinkNew + "'>" + texts.createAccount + "</a>");
+
+          // Update placeholders
+          $("input[type='email']").attr("placeholder", texts.emailPlaceholder);
+          $("input[type='password']").attr("placeholder", texts.passwordPlaceholder);
+
+          // Update other elements
+          $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts.forgotPassword);
+          $("#api .localAccount .entry .buttons #next").text(texts.loginButton);
+          $(".social .intro h2").html("<p>" + texts.socialIntro + "</p>").find("p").addClass("with-text");
+
+          function updateErrorMessages() {
+            $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts.emailError);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts.validEmailError);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts.passwordError);
+            $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts.accountNotFound);
+            $(".error.pageLevel p:contains('Your password is incorrect')").text(texts.incorrectPassword);
+          }
+
+          // MutationObserver to watch for changes
+          var targetNode = document.getElementById('api');
+          var config = { childList: true, subtree: true };
+
+          var observer = new MutationObserver(function(mutationsList, observer) {
+              // when the DOM changes
+              updateErrorMessages();
+          });
+
+          // observe
+          observer.observe(targetNode, config);
+
+          updateErrorMessages();
+
+        }else{
+          $(".localAccount .intro").find("h2[aria-level='1']").text("Log In");
+          $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text("Forgot Password?");
+          $("#api .localAccount .entry .buttons #next").text("Login");
+          $(".social .intro h2").html("<p>" + "Or log in / sign up with" + "</p>").find("p").addClass("with-text");
+
+        }
+        var createAccountMainLink = $("#createAccount").attr("href");
+        var createAccountLink = createAccountMainLink + '&ui_locales=' + lang;
+        $("#createAccount").attr("href", createAccountLink);
+        var forgotPasswordMainLink = $("#forgotPassword").attr("href");
+        var forgotPasswordLink = forgotPasswordMainLink + '&ui_locales=' + lang;
+        $("#forgotPassword").attr("href", forgotPasswordLink);
+
+        $(".localAccount .entry .entry-item .password-label").insertAfter("#password");
+        $("#api .social").insertAfter("#localAccountForm");
+        $("#api .create").insertAfter("#api .social");
+        $(".social .options div #GoogleExchange").html("<img />").find("img").attr("src", "https://ronreload.blob.core.windows.net/auth-pages/images/google.svg");
+        // $(".social .options div #FacebookExchange").html("<img />").find("img").attr("src", "https://ronreload.blob.core.windows.net/auth-pages/images/facebook.svg");
       });
     </script>
-    <!--=============== Tanim's written scripts end ==============-->
   </body>
 </html>
