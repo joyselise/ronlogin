@@ -500,7 +500,7 @@
       <div class="notice-box">
         <div class="notice-box-content">
           <p id="welcomeRonLoginText" class="notice-text">Welcome to the new Ron Orp!</p>
-          <p id="welcomeRonLoginPasswordText" class="notice-text">To access your account for the first time, please reset your password using the <span class="notice-text-bold" id="loginForgotPassword">"Forgot Password"</span> option.</p>
+          <p id="welcomeRonLoginPasswordText" class="notice-text">To access your account for the first time, please reset your password using the <span class="notice-text-bold" id="loginForgotPassword">"Forgot Password"</span> <span id="loginWelcomeOption">option.</span></p>
         </div>
       </div>
       <div class="cotaniner header-container">
@@ -633,8 +633,9 @@
               "emailPlaceholder": "E-Mail-Adresse",
               "passwordPlaceholder": "Passwort",
               "welcomeRonText": "Willkommen bei dem neuen Ron Orp!",
-              "welcomeRonPasswordText": "Um auf Ihr Konto zuzugreifen, setzen Sie bitte Ihr Passwort zurück, indem Sie die Option verwenden.",
-              "forgotPasswordText": "'Passwort vergessen'"
+              "welcomeRonPasswordText": "Um auf Ihr Konto zuzugreifen, setzen Sie bitte Ihr Passwort zurück, indem Sie die",
+              "forgotPasswordText": "\"Passwort vergessen\"",
+              "welcomeOption": "Option verwenden."
             },
             "fr": {
               "loginHeading": "Se connecter",
@@ -652,8 +653,9 @@
               "emailPlaceholder": "Adresse e-mail",
               "passwordPlaceholder": "Mot de passe",
               "welcomeRonText": "Bienvenue sur le nouveau Ron Orp!",
-              "welcomeRonPasswordText": "Pour accéder à votre compte pour la première fois, veuillez réinitialiser votre mot de passe en utilisant l'option",
-              "forgotPasswordText": "'Mot de passe oublié'"
+              "welcomeRonPasswordText": "Pour accéder à votre compte pour la première fois, veuillez réinitialiser votre mot de passe en utilisant",
+              "forgotPasswordText": "\"Mot de passe oublié\"",
+              "welcomeOption": "l'option"
             },
             "default": {
               "loginHeading": "Log In",
@@ -671,8 +673,9 @@
               "emailPlaceholder": "Email Address",
               "passwordPlaceholder": "Password",
               "welcomeRonText": "Welcome to the new Ron Orp!",
-              "welcomeRonPasswordText": "To access your account for the first time, please reset your password using the option.",
-              "forgotPasswordText": "'Forgot Password'"
+              "welcomeRonPasswordText": "To access your account for the first time, please reset your password using",
+              "forgotPasswordText": "\"Forgot Password\"",
+              "welcomeOption": "option."
             }
           };
 
@@ -692,6 +695,7 @@
           $("#welcomeRonLoginText").text(textMap[lang].welcomeRonText);
           $("#welcomeRonLoginPasswordText").text(textMap[lang].welcomeRonText);
           $("#loginForgotPassword").text(textMap[lang].welcomeRonText);
+          $("#loginWelcomeOption").text(textMap[lang].welcomeOption);
 
           // Update other elements
           $(".localAccount .entry .entry-item .password-label").find("#forgotPassword").text(texts.forgotPassword);
