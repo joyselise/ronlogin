@@ -620,7 +620,7 @@
   <header class="bg-white">
     <div class="notice-box">
       <div class="notice-box-content">
-        <p class="notice-text">Welcome to the new Ron Orp!</p>
+        <p class="notice-text" id="welcomeSignUpText">Welcome to the new Ron Orp!</p>
       </div>
     </div>
     <div class="cotaniner header-container">
@@ -716,6 +716,7 @@
           "alreadyExist": "Es existiert bereits ein Benutzer mit der angegebenen ID. Bitte wählen Sie einen anderen.",
           "processInfo": "Bitte warten Sie, während wir Ihre Informationen verarbeiten.",
           "validEmailError": "Bitte eine gültige E-Mail-Adresse eingeben.",
+          "welcomeRonText": "Willkommen bei dem neuen Ron Orp!",
         },
         "fr": {
           "welcomeHeading": "Bienvenue chez Ron",
@@ -757,6 +758,7 @@
           "alreadyExist": "Un utilisateur avec l'ID spécifié existe déjà. Veuillez en choisir un autre.",
           "processInfo": "Veuillez patienter pendant que nous traitons vos informations.",
           "validEmailError": "Veuillez entrer une adresse e-mail valide.",
+          "welcomeRonText": "Bienvenue sur le nouveau Ron Orp!",
         },
         "en": {
           "welcomeHeading": "Welcome to Ron",
@@ -798,7 +800,7 @@
           "alreadyExist": "A user with the specified ID already exists. Please choose a different one.",
           "processInfo": "Please wait while we process your information.",
           "validEmailError": "Please enter a valid email address",
-
+          "welcomeRonText": "Welcome to the new Ron Orp!",
         }
       };
       setTimeout(function () {
@@ -816,6 +818,7 @@
       $("#email").attr("placeholder", texts[lang].emailPlaceholder);
       $("#emailVerificationCode").attr("placeholder", texts[lang].verificationCode);
       $("#emailVerificationCode_label").text(texts[lang].emailVerificationCodeLabel);
+      $("#welcomeSignUpText").text(texts[lang].welcomeRonText);
 
       // $("#newssignupcheckedText").val(texts[lang].newsSignUpchecked);
       $("#newPassword").attr("placeholder", texts[lang].newPassword);
