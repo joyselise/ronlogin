@@ -30,6 +30,26 @@
       margin: 0 auto;
     }
 
+    .notice-box {
+      background-color: #212121;
+      padding: 16px;
+    }
+
+    .notice-box-content {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .notice-text {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 30px;
+      color: #ffffff;
+      margin: 0;
+    }
+
     .logo-box {
       display: flex;
       justify-content: flex-start;
@@ -152,6 +172,11 @@
     @media only screen and (max-width: 600px) {
       .mobile-logo {
         width: 100px;
+      }
+
+      .notice-text {
+        font-size: 14px;
+        line-height: 24px;
       }
 
       .signup-btn {
@@ -593,6 +618,11 @@
 <body>
   <!--====== Header section start =======-->
   <header class="bg-white">
+    <div class="notice-box">
+      <div class="notice-box-content">
+        <p class="notice-text" id="welcomeSignUpText">Welcome to the new Ron Orp!</p>
+      </div>
+    </div>
     <div class="cotaniner header-container">
       <div class="d-flex justify-content-between align-items-center">
         <div class="logo-box">
@@ -686,6 +716,7 @@
           "alreadyExist": "Entschuldigung, es scheint, als wärst du mit dieser E-Mail bereits registriert – was mich natürlich sehr ehrt! Klicke einfach auf „Anmelden“ und dort auf „Passwort vergessen“",
           "processInfo": "Du erhältst eine E-Mail von Microsoft mit einem 6-stelligen Code – bitte gib diesen hier ein.",
           "validEmailError": "Bitte eine gültige E-Mail-Adresse eingeben.",
+          "welcomeRonText": "Willkommen bei dem neuen Ron Orp!",
         },
         "fr": {
           "welcomeHeading": "Bienvenue chez Ron Orp",
@@ -727,6 +758,7 @@
           "alreadyExist": "Désolé, il semble que tu sois déjà inscrit avec cette adresse e-mail – ce qui, bien sûr, me flatte beaucoup ! Clique simplement sur « Connexion » puis sur « Mot de passe oublié ».",
           "processInfo": "Veuillez patienter pendant que nous traitons vos informations.",
           "validEmailError": "Veuillez entrer une adresse e-mail valide.",
+          "welcomeRonText": "Bienvenue sur le nouveau Ron Orp!",
         },
         "en": {
           "welcomeHeading": "Welcome to Ron Orp",
@@ -768,7 +800,7 @@
           "alreadyExist": "Sorry, it seems you’re already registered with this email – which, of course, is very flattering! Just click on “Login” and then on “Forgot Password.”",
           "processInfo": "Please wait while we process your information.",
           "validEmailError": "Please enter a valid email address",
-
+          "welcomeRonText": "Welcome to the new Ron Orp!",
         }
       };
       setTimeout(function () {
@@ -786,6 +818,7 @@
       $("#email").attr("placeholder", texts[lang].emailPlaceholder);
       $("#emailVerificationCode").attr("placeholder", texts[lang].verificationCode);
       $("#emailVerificationCode_label").text(texts[lang].emailVerificationCodeLabel);
+      $("#welcomeSignUpText").text(texts[lang].welcomeRonText);
 
       // $("#newssignupcheckedText").val(texts[lang].newsSignUpchecked);
       $("#newPassword").attr("placeholder", texts[lang].newPassword);
