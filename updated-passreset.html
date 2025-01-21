@@ -896,11 +896,13 @@
         $("#emailVerificationControl_error_message:contains('The code has expired.')").text(texts[lang].codeExpired);
         $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
         $("#emailVerificationControl_error_message:contains('The verification has failed, please try again.')").text(texts[lang].verificationAttempts);
-        $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
+        // $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
         $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
         $(".intro :contains('Please provide the following details.')").text(texts[lang].followingDetails);
         $("#welcomePassResetText").text(texts[lang].welcomeRonText);
         $("#verifying_blurb").hide();
+
+        $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").html("This email is logged in using Google account or SSO. To reset your password, please click the link " +  "<a id='createAccount' href='https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/B2C_1_RonSigning/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=RFNZRUpQeGJXaEVpd05XR0RBTjI1VjRwUE1ZVldiRjlCVFV0QUd4ZG8ramUyMHk0ZUo4UVFrZlhpK2R0dUpVcGhCV1RBc1dieWdndTJDRmFKMWNYQ3c9PTsyMDI1LTAxLTE2VDEyOjM2OjExLjk0MzAyNjVaOy96VVBCMkVZSEZ3ZHdTZ0lVZG9VMUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJmMmNlMmJjMy04ZWUxLTQ1ODYtYWE2ZC0yMGY3NTMzNDZjYWUifQ&p=B2C_1_RonSigning&ui_locales=en'> Link</a>")
         // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
         // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
         // $(".error .itemLevel .show:contains('- a lowercase letter')").text(texts[lang].lowerCase);
@@ -976,7 +978,7 @@
           if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
             verificationCodeTextDisplayed = true;
           }
-          $('#claimVerificationServerError').html("This email is logged in using Google account or SSO. To reset your password, please click the link " +  "<a id='createAccount' href='https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/B2C_1_RonSigning/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=RFNZRUpQeGJXaEVpd05XR0RBTjI1VjRwUE1ZVldiRjlCVFV0QUd4ZG8ramUyMHk0ZUo4UVFrZlhpK2R0dUpVcGhCV1RBc1dieWdndTJDRmFKMWNYQ3c9PTsyMDI1LTAxLTE2VDEyOjM2OjExLjk0MzAyNjVaOy96VVBCMkVZSEZ3ZHdTZ0lVZG9VMUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJmMmNlMmJjMy04ZWUxLTQ1ODYtYWE2ZC0yMGY3NTMzNDZjYWUifQ&p=B2C_1_RonSigning&ui_locales=en'> Link</a>")
+          // $('#claimVerificationServerError').html("This email is logged in using Google account or SSO. To reset your password, please click the link " +  "<a id='createAccount' href='https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/B2C_1_RonSigning/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=RFNZRUpQeGJXaEVpd05XR0RBTjI1VjRwUE1ZVldiRjlCVFV0QUd4ZG8ramUyMHk0ZUo4UVFrZlhpK2R0dUpVcGhCV1RBc1dieWdndTJDRmFKMWNYQ3c9PTsyMDI1LTAxLTE2VDEyOjM2OjExLjk0MzAyNjVaOy96VVBCMkVZSEZ3ZHdTZ0lVZG9VMUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJmMmNlMmJjMy04ZWUxLTQ1ODYtYWE2ZC0yMGY3NTMzNDZjYWUifQ&p=B2C_1_RonSigning&ui_locales=en'> Link</a>")
 
 
           if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
