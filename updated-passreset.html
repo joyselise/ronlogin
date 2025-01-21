@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Ron ORP Password Reset update 2</title>
+    <title>Ron ORP Password Reset update 3</title>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -1308,13 +1308,15 @@
                 $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
 
                 // Replace the error message
+            setTimeout(function () {
                 $("#claimVerificationServerError").html(
                     "This email is logged in using Google account or SSO. To reset your password, please click the link " +
                     "<a id='createAccount' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
                 );
+            },1000)
 
-                $('#emailVerificationControl').hide()
-                $('#continue').hide()
+                // $('#emailVerificationControl').hide()
+                // $('#continue').hide()
 
 
                 // Disconnect the observer after handling the change
