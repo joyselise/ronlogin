@@ -960,7 +960,38 @@
       observer.observe(targetNode, config);
 
       updateErrorMessages();
-        
+
+      // Wait until the error message is inserted into the DOM
+      let loginUrl = $('#createAccount').attr('href');
+
+      let observerSSO = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if ($(mutation.target).is("#claimVerificationServerError") &&
+                  $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
+
+            // Replace the error message
+            $("#claimVerificationServerError").html(
+                    "This email is logged in using Google account or SSO. To reset your password, please click the link " +
+                    "<a id='createAccount' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
+            );
+
+            $('#emailVerificationControl').hide()
+            $('#continue').hide()
+
+            console.log('aita')
+            // Disconnect the observer after handling the change
+            observerSSO.disconnect();
+          }
+        });
+      });
+
+// Observe changes to the DOM
+      observerSSO.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+
+
       $("#continue").text(texts[lang].continueButton);
       $(".intro").prepend("<h1>"+texts[lang].introHeading+"</h1>");
       $(".intro p").text(texts[lang].introParagraph);
