@@ -722,7 +722,7 @@
   <header class="bg-white">
     <div class="notice-box">
       <div class="notice-box-content">
-        <p class="notice-text" id="welcomePassResetText">Welcome to the new Ron Orp page</p>
+        <p class="notice-text" id="welcomePassResetText">Welcome to the new Ron Orp</p>
       </div>
     </div>
     <div class="cotaniner header-container">
@@ -880,7 +880,7 @@
           "accountCouldNotFound" : "An account could not be found for the provided user ID.",
           "oneOrMore" : "One or more fields are filled out incorrectly. Please check your entries and try again.",
           "charactersError" : "The password must be between 8 and 64 characters.",
-          "welcomeRonText": "Welcome to the new Ron Orp page",
+          "welcomeRonText": "Welcome to the new Ron Orp",
         }
       };
       // error messages
@@ -915,6 +915,17 @@
         changeErrorText('- a uppercase letter', texts[lang].upperCase)
         changeErrorText('- a digit', texts[lang].aDigit)
         changeErrorText('- a symbol', texts[lang].aSymbol)
+
+        let loginUrl = $('#createAccount').attr('href');
+
+        // Replace the error message content
+        $("#claimVerificationServerError").html(
+                "This email is logged in using Google account or SSO. To reset your password, please click the link " +
+                "<a id='createAccount' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
+        );
+
+        $('#emailVerificationControl').hide()
+        $('#continue').hide()
       }
 
       function changeErrorText(key, text){
