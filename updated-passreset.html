@@ -754,7 +754,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     var lang = document.documentElement.lang;
-    var texts =  texts = {
+    var texts = texts = {
         "de": {
             "continueButton": "Neues Passwort festlegen",
             "introHeading": "Passwort vergessen?",
@@ -798,7 +798,7 @@
             "oneOrMore": "Ein oder mehrere Felder sind falsch ausgefüllt. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
             "charactersError": "Das Passwort muss zwischen 8 und 64 Zeichen lang sein.",
             "welcomeRonText": "Willkommen auf der neuen Ron Orp Seite",
-            "userIdNotFound" : "Wir konnten kein Konto mit dieser E-Mail-Adresse finden. Es ist möglich, dass Sie kein registrierter Benutzer sind oder sich über einen Single Sign-On (SSO)-Anbieter angemeldet haben. Wenn Sie sich als neuer Benutzer registrieren möchten, besuchen Sie bitte diesen Link.",
+            "userIdNotFound": "Wir konnten kein Konto mit dieser E-Mail-Adresse finden. Es ist möglich, dass Sie kein registrierter Benutzer sind oder sich über einen Single Sign-On (SSO)-Anbieter angemeldet haben. Wenn Sie sich als neuer Benutzer registrieren möchten, besuchen Sie bitte diesen Link.",
         },
         "fr": {
             "continueButton": "Définir un nouveau mot de passe",
@@ -842,7 +842,7 @@
             "oneOrMore": "Un ou plusieurs champs sont mal renseignés. Veuillez vérifier vos saisies et réessayer.",
             "charactersError": "Le mot de passe doit comporter entre 8 et 64 caractères.",
             "welcomeRonText": "Bienvenue sur le nouveau site de Ron Orp",
-            "userIdNotFound" : "Nous n'avons pas pu trouver de compte associé à cette adresse e-mail. Il est possible que vous ne soyez pas un utilisateur enregistré ou que vous vous soyez inscrit via un fournisseur de connexion unique (SSO). Si vous souhaitez vous inscrire en tant que nouvel utilisateur, veuillez visiter ce lien.",
+            "userIdNotFound": "Nous n'avons pas pu trouver de compte associé à cette adresse e-mail. Il est possible que vous ne soyez pas un utilisateur enregistré ou que vous vous soyez inscrit via un fournisseur de connexion unique (SSO). Si vous souhaitez vous inscrire en tant que nouvel utilisateur, veuillez visiter ce lien.",
         },
         "en": {
             "continueButton": "Set New Password",
@@ -886,7 +886,7 @@
             "oneOrMore": "One or more fields are filled out incorrectly. Please check your entries and try again.",
             "charactersError": "The password must be between 8 and 64 characters.",
             "welcomeRonText": "Welcome to the new Ron Orp page",
-            "userIdNotFound" : "We couldn't find an account with this email address. It's possible that you're not a registered user or that you signed up using a single sign-on (SSO) provider. If you'd like to register as a new user, please visit this link.",
+            "userIdNotFound": "We couldn't find an account with this email address. It's possible that you're not a registered user or that you signed up using a single sign-on (SSO) provider. If you'd like to register as a new user, please visit this link.",
         }
     };
     if (lang === "de" || lang === "fr") {
@@ -1305,37 +1305,41 @@
     }
 
 
+    $(document).ready(function () {
+        // let loginUrl = "https://ronorpauth.b2clogin.com/ronorpauth.onmicrosoft.com/B2C_1_RonSignin_Signup/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=MXB5UTJPOGNHUGpGOWhTYkFocUxCclFmMlgrcDNVUUtad3FwREZOMVlOY3pFWjQya0t5YlFIbE94MnpuVlBGN0dWdWoyQ3BORzlSL2RKcG84dWlieEE9PTsyMDI1LTAxLTIxVDA4OjExOjM4LjE5MTA1MjRaO2hja3RYWDYrRE84Qlg0WW5VRE4vc1E9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiIzM2M4OTYwMy0xOTdkLTQwNGQtOThkNi0zZDFiY2U5M2Y0NDkifQ&p=B2C_1_RonSignin_Signup&ui_locales=" + lang;
+        // if (window.location.host == 'ronbro.b2clogin.com') {
+        //     loginUrl = "https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/B2C_1_RonSigning/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=aHk2ZHFVeVBkSGxsY0F6b1ZDOWdLZ0ZnYU1ZUUxHNk5PSlMvV21USE9SQitjVzJOaGNJWVhmbGU0VWxJcWloSGlsTlRtV25LWnA3Nk1GQWowZS9acEE9PTsyMDI1LTAxLTIxVDA4OjE3OjQwLjc2MTM5NDlaO2MxT0xDSXduUU9WWm8raE43cFJYdVE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJhYjdmOTkxMS1mNTAzLTRlNjEtYjc5ZS00ZTUxYzE5OWY2ZjUifQ&p=B2C_1_RonSigning&ui_locales=" + lang;
+        // }
 
-    let loginUrl = "https://ronorpauth.b2clogin.com/ronorpauth.onmicrosoft.com/B2C_1_RonSignin_Signup/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=MXB5UTJPOGNHUGpGOWhTYkFocUxCclFmMlgrcDNVUUtad3FwREZOMVlOY3pFWjQya0t5YlFIbE94MnpuVlBGN0dWdWoyQ3BORzlSL2RKcG84dWlieEE9PTsyMDI1LTAxLTIxVDA4OjExOjM4LjE5MTA1MjRaO2hja3RYWDYrRE84Qlg0WW5VRE4vc1E9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiIzM2M4OTYwMy0xOTdkLTQwNGQtOThkNi0zZDFiY2U5M2Y0NDkifQ&p=B2C_1_RonSignin_Signup&ui_locales="+ lang;
-    if(window.location.host == 'ronbro.b2clogin.com'){
-         loginUrl = "https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/B2C_1_RonSigning/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=aHk2ZHFVeVBkSGxsY0F6b1ZDOWdLZ0ZnYU1ZUUxHNk5PSlMvV21USE9SQitjVzJOaGNJWVhmbGU0VWxJcWloSGlsTlRtV25LWnA3Nk1GQWowZS9acEE9PTsyMDI1LTAxLTIxVDA4OjE3OjQwLjc2MTM5NDlaO2MxT0xDSXduUU9WWm8raE43cFJYdVE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJhYjdmOTkxMS1mNTAzLTRlNjEtYjc5ZS00ZTUxYzE5OWY2ZjUifQ&p=B2C_1_RonSigning&ui_locales="+ lang;
-    }
-    let observerSSO = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-            if ($(mutation.target).is("#claimVerificationServerError") &&
-                $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
+        let loginUrl = localStorage.getItem('createAccountLink')
+        let observerSSO = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if ($(mutation.target).is("#claimVerificationServerError") &&
+                    $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
 
-                // Replace the error message
-            setTimeout(function () {
-                $("#claimVerificationServerError").html(
-                    texts[lang].userIdNotFound +
-                    " <a id='createAccountNew' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
-                );
-            },300)
+                    // Replace the error message
+                    setTimeout(function () {
+                        $("#claimVerificationServerError").html(
+                            texts[lang].userIdNotFound +
+                            " <a id='createAccountNew' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
+                        );
+                    }, 300)
 
-                $('#emailVerificationControl').hide()
-                $('#continue').hide()
+                    $('#emailVerificationControl').hide()
+                    $('#continue').hide()
 
-                // Disconnect the observer after handling the change
-                observerSSO.disconnect();
-            }
+                    // Disconnect the observer after handling the change
+                    observerSSO.disconnect();
+                }
+            });
         });
-    });
 
-    // Observe changes to the DOM
-    observerSSO.observe(document.body, {
-        childList: true,
-        subtree: true
+        // Observe changes to the DOM
+        observerSSO.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
     });
 
 
