@@ -934,6 +934,7 @@
 
         mutationsList.forEach(function(mutation) {
           // Check if the specific error message exists
+          console.log('change occuer')
           if ($("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").length) {
             // Get the login URL
             let loginUrl = $('#createAccount').attr('href');
@@ -966,6 +967,7 @@
 
       let observerSSO = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
+          console.log('what happenig')
           if ($(mutation.target).is("#claimVerificationServerError") &&
                   $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
 
