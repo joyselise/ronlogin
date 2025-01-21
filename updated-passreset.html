@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Ron ORP Password Reset update 3</title>
+    <title>Ron ORP Password Reset</title>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -725,7 +725,7 @@
 <header class="bg-white">
     <div class="notice-box">
         <div class="notice-box-content">
-            <p class="notice-text" id="welcomePassResetText">Welcome to the new Ron Orp</p>
+            <p class="notice-text" id="welcomePassResetText">Welcome to the new Ron Orp page</p>
         </div>
     </div>
     <div class="cotaniner header-container">
@@ -798,6 +798,7 @@
             "oneOrMore": "Ein oder mehrere Felder sind falsch ausgefüllt. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
             "charactersError": "Das Passwort muss zwischen 8 und 64 Zeichen lang sein.",
             "welcomeRonText": "Willkommen auf der neuen Ron Orp Seite",
+            "userIdNotFound" : "Wir konnten kein Konto mit dieser E-Mail-Adresse finden. Es ist möglich, dass Sie kein registrierter Benutzer sind oder sich über einen Single Sign-On (SSO)-Anbieter angemeldet haben. Wenn Sie sich als neuer Benutzer registrieren möchten, besuchen Sie bitte diesen Link.",
         },
         "fr": {
             "continueButton": "Définir un nouveau mot de passe",
@@ -841,6 +842,7 @@
             "oneOrMore": "Un ou plusieurs champs sont mal renseignés. Veuillez vérifier vos saisies et réessayer.",
             "charactersError": "Le mot de passe doit comporter entre 8 et 64 caractères.",
             "welcomeRonText": "Bienvenue sur le nouveau site de Ron Orp",
+            "userIdNotFound" : "Nous n'avons pas pu trouver de compte associé à cette adresse e-mail. Il est possible que vous ne soyez pas un utilisateur enregistré ou que vous vous soyez inscrit via un fournisseur de connexion unique (SSO). Si vous souhaitez vous inscrire en tant que nouvel utilisateur, veuillez visiter ce lien.",
         },
         "en": {
             "continueButton": "Set New Password",
@@ -883,7 +885,8 @@
             "accountCouldNotFound": "An account could not be found for the provided user ID.",
             "oneOrMore": "One or more fields are filled out incorrectly. Please check your entries and try again.",
             "charactersError": "The password must be between 8 and 64 characters.",
-            "welcomeRonText": "Welcome to the new Ron Orp",
+            "welcomeRonText": "Welcome to the new Ron Orp page",
+            "userIdNotFound" : "We couldn't find an account with this email address. It's possible that you're not a registered user or that you signed up using a single sign-on (SSO) provider. If you'd like to register as a new user, please visit this link.",
         }
     };
     if (lang === "de" || lang === "fr") {
@@ -1301,7 +1304,12 @@
         observer.observe(button, {attributes: true});
     }
 
-    let loginUrl = $('#createAccount').attr('href');
+
+    let createAccount = $('#createAccount');
+    let domainPrefix = (createAccount && createAccount.prop('hostname') == 'ronbro.b2clogin.com') ? "ronbro" : "ronorpauth";
+
+    let loginUrl = "https://"+ domainPrefix +".b2clogin.com/"+ domainPrefix +".onmicrosoft.com/B2C_1_RonSignin_Signup/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=Y3FodlVhb2lWOXlaTmUwM000ZVQwQlloM1FCRlJRRWpnemQ0eEdiN1gxVXN0bjV3N1NUQ0dTTDZCdFlJbWM0ajdBNWhoSTJxNndqZVlDdWtOc1NJV2c9PTsyMDI1LTAxLTIxVDA3OjMxOjQ3Ljg2NjYxODRaO2p4a0xkWnZqRGtZeFBSQVpra2owbmc9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJjZDQyY2IxMS1kOGM5LTQxNDktOWJmMC1kNDliZDJmOGVjY2EifQ&p=B2C_1_RonSignin_Signup&ui_locales=de&ui_locales=`"+ lang;
+
     let observerSSO = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
             if ($(mutation.target).is("#claimVerificationServerError") &&
@@ -1310,14 +1318,13 @@
                 // Replace the error message
             setTimeout(function () {
                 $("#claimVerificationServerError").html(
-                    "This email is logged in using Google account or SSO. To reset your password, please click the link " +
-                    "<a id='createAccount' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
+                    texts[lang].userIdNotFound+
+                    "<a id='createAccount1' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
                 );
-            },1000)
+            },500)
 
-                // $('#emailVerificationControl').hide()
-                // $('#continue').hide()
-
+                $('#emailVerificationControl').hide()
+                $('#continue').hide()
 
                 // Disconnect the observer after handling the change
                 observerSSO.disconnect();
