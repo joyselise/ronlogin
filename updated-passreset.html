@@ -902,8 +902,7 @@
         $("#welcomePassResetText").text(texts[lang].welcomeRonText);
         $("#verifying_blurb").hide();
 
-        $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").html("This email is logged in using Google account or SSO. To reset your password, please click the link " +  "<a id='createAccount' href='https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/B2C_1_RonSigning/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=RFNZRUpQeGJXaEVpd05XR0RBTjI1VjRwUE1ZVldiRjlCVFV0QUd4ZG8ramUyMHk0ZUo4UVFrZlhpK2R0dUpVcGhCV1RBc1dieWdndTJDRmFKMWNYQ3c9PTsyMDI1LTAxLTE2VDEyOjM2OjExLjk0MzAyNjVaOy96VVBCMkVZSEZ3ZHdTZ0lVZG9VMUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJmMmNlMmJjMy04ZWUxLTQ1ODYtYWE2ZC0yMGY3NTMzNDZjYWUifQ&p=B2C_1_RonSigning&ui_locales=en'> Link</a>")
-        // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
+       // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
         // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
         // $(".error .itemLevel .show:contains('- a lowercase letter')").text(texts[lang].lowerCase);
         // $(".error .itemLevel .show:contains('- a uppercase letter')").text(texts[lang].upperCase);
@@ -932,6 +931,13 @@
       var observer = new MutationObserver(function(mutationsList, observer) {
           // when the DOM changes
           updateErrorMessages();
+
+        let loginUrl = $('#createAccount').attr('href');
+
+        $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").html("This email is logged in using Google account or SSO. To reset your password, please click the link " +
+                "<a id='createAccount' href='"+loginUrl+"'>"+ texts[lang].createAccount +"</a>")
+
+
       });
 
       // observe
