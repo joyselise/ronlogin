@@ -1318,18 +1318,21 @@
                     $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
 
                     // Replace the error message
-                    setTimeout(function () {
+                    // setTimeout(function () {
                         $("#claimVerificationServerError").html(
                             texts[lang].userIdNotFound +
                             " <a id='createAccountNew' href='" + loginUrl + "'>" + texts[lang].createAccount + "</a>"
                         );
-                    }, 1000)
+                    // }, 1000)
 
                     $('#emailVerificationControl').hide()
                     $('#continue').hide()
 
                     // Disconnect the observer after handling the change
-                    observerSSO.disconnect();
+                    if($('#createAccountNew') && $('#createAccountNew').length){
+                        observerSSO.disconnect();
+                    }
+
                 }
             });
         });
