@@ -931,11 +931,13 @@
       var observer = new MutationObserver(function(mutationsList, observer) {
           // when the DOM changes
           updateErrorMessages();
+        console.log('calling')
+       setTimeout(function () {
+         let loginUrl = $('#createAccount').attr('href');
 
-        let loginUrl = $('#createAccount').attr('href');
-
-        $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").html("This email is logged in using Google account or SSO. To reset your password, please click the link " +
-                "<a id='createAccount' href='"+loginUrl+"'>"+ texts[lang].createAccount +"</a>")
+         $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").html("This email is logged in using Google account or SSO. To reset your password, please click the link " +
+                 "<a id='createAccount' href='"+loginUrl+"'>"+ texts[lang].createAccount +"</a>")
+       },1000)
 
 
       });
