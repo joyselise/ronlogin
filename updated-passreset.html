@@ -753,6 +753,7 @@
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  console.log('ssss')
     var lang = document.documentElement.lang;
     var texts = texts = {
         "de": {
@@ -1208,21 +1209,21 @@
             let reenterPasswordField = $("#reenterPassword");
             let continueButton = $("#continue");
 
-            // if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
-            //     sendCodeButton.click();
-            // }
-            //
-            // if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
-            //     verifyCodeButton.click();
-            // }
-            //
-            // if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
-            //     continueButton.click();
-            // }
-            //
-            // if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
-            //     continueButton.click();
-            // }
+            if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
+                sendCodeButton.click();
+            }
+
+            if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+                verifyCodeButton.click();
+            }
+
+            if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
+                continueButton.click();
+            }
+
+            if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
+                continueButton.click();
+            }
         }
     });
 
