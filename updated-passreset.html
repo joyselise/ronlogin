@@ -1036,12 +1036,12 @@
                 var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
 
                 if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
-                    $("#continue").show();
-                    $("#emailVerificationControl_but_change_claims").hide();
+                    // $("#continue").show();
+                    // $("#emailVerificationControl_but_change_claims").hide();
                     $(".intro p").text(texts[lang].updateAccountHeading);
                     $(".intro h1").text(texts[lang].updateAccountHeader);
                 } else {
-                    $("#continue").hide();
+                    // $("#continue").hide();
                 }
             }
 
