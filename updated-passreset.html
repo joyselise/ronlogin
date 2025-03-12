@@ -20,7 +20,7 @@
           href="https://raw.githubusercontent.com/kowsertanim/common-images/main/fav-icon.svg"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <!--============= Common CSS start ============-->
-<!--    <style>
+    <style>
         body {
             font-family: "Source Sans 3", sans-serif;
             background-color: #f5f7f6;
@@ -165,9 +165,9 @@
             }
         }
     </style>
-    &lt;!&ndash;============= Common CSS end ============&ndash;&gt;
+    <!--============= Common CSS end ============-->
 
-    &lt;!&ndash;========== Tanim's style for login card CSS start ===========&ndash;&gt;
+    <!--========== Tanim's style for login card CSS start ===========-->
     <style>
         #passcode-reset-box .intro h1 {
             color: #212121;
@@ -245,7 +245,7 @@
         }
 
         #passcode-reset-box .box-center #api #attributeVerification .buttons #cancel {
-            display: none;
+            /*display: none;*/
         }
 
         #passcode-reset-box .box-center #api #attributeVerification .error {
@@ -718,7 +718,7 @@
             display: none;
         }
     </style>
-    &lt;!&ndash;============== Tanim's style for login card CSS end ===============&ndash;&gt;-->
+    <!--============== Tanim's style for login card CSS end ===============-->
 </head>
 
 <body>
@@ -753,7 +753,7 @@
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  console.log('testg')
+  console.log('test')
     var lang = document.documentElement.lang;
     var texts = texts = {
         "de": {
@@ -1149,6 +1149,7 @@
                 var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
                 var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
 
+              console.log('newAriaLabel=>', newAriaLabel,'isDisplayed=>',isDisplayed,'passwordFieldsExist=>',passwordFieldsExist)
                 if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
                     $("#continue").show();
                     $("#emailVerificationControl_but_change_claims").hide();
