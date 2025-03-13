@@ -1324,8 +1324,8 @@
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || (newPasswordField.length && reenterPasswordField.length)) {
           $("#continue").show();
           $("#emailVerificationControl_but_change_claims").hide();
-          $(".intro p")?.text(texts[lang].updateAccountHeading);
-          $(".intro h1")?.text(texts[lang].updateAccountHeader);
+          if ($(".intro p")) $(".intro p")?.text(texts[lang].updateAccountHeading);
+          if($(".intro h1")) $(".intro h1").text(texts[lang].updateAccountHeader);
         } else {
           $("#continue").hide();
         }
