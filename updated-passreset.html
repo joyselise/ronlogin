@@ -1353,8 +1353,8 @@
     $(document).ready(function ()  {
       let newPasswordField = $("#newPassword");
       let reenterPasswordField = $("#reenterPassword");
-      if(newPasswordField && reenterPasswordField){
-        $('continue').show()
+      if(newPasswordField.length && reenterPasswordField.length){
+        $('#continue').show()
       }
         let loginUrl = localStorage.getItem('createAccountLink')
         let observerSSO = new MutationObserver(function (mutations) {
