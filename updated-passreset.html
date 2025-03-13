@@ -753,7 +753,6 @@
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  console.log('new abad new')
     var lang = document.documentElement.lang;
     var texts = texts = {
         "de": {
@@ -1058,7 +1057,7 @@
         $("#verifying_blurb").hide();
 
         $(document).ready(function () {
-            var firstStepSuccessMessage = document.getElementById("emailVerificationControl_success_message");
+            var firstStepSuccessMessage = $('#api').find('#emailVerificationControl_success_message');
 
             function updateFirstStepUI() {
                 var firstStepAriaLabel = firstStepSuccessMessage ? $(firstStepSuccessMessage).attr("aria-label") : null;
@@ -1158,80 +1157,41 @@
 
 
     // Handle Enter key press
-    // $(document).keydown(function (event) {
-    //     if (event.key === 'Enter') {
-    //         event.preventDefault(); // Prevent default Enter key behavior
-    //
-    //         let verificationSuccessMessage = $('#api').find('#emailVerificationControl_success_message');
-    //         let verificationSuccessAriaLabel = verificationSuccessMessage ? $(verificationSuccessMessage).attr("aria-label") : null;
-    //         let verificationSuccessDisplayed = verificationSuccessAriaLabel ? $(verificationSuccessMessage).css("display") === "inline" : false;
-    //         let sendCodeButton = $("#emailVerificationControl_but_send_code");
-    //         let sendCodeButtonDisplayed = sendCodeButton ? sendCodeButton.css("display") === "inline" || sendCodeButton.css("display") === "block" : false;
-    //         let verifyCodeButton = $("#emailVerificationControl_but_verify_code");
-    //         let newPasswordField = $("#newPassword");
-    //         let reenterPasswordField = $("#reenterPassword");
-    //         let continueButton = $("#continue");
-    //
-    //
-    //         setTimeout(function () {
-    //           if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
-    //             console.log(10)
-    //             continueButton.click();
-    //           }
-    //
-    //           if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
-    //             console.log(11)
-    //             sendCodeButton.click();
-    //           }
-    //
-    //           if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
-    //             console.log(12)
-    //             verifyCodeButton.click();
-    //           }
-    //
-    //
-    //           if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
-    //             console.log(13)
-    //             continueButton.click();
-    //           }
-    //         },1000)
-    //     }
-    // });
+    $(document).keydown(function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default Enter key behavior
 
-    // $('#emailVerificationControl_but_verify_code').click(function () {
-    //
-    //   setTimeout(function () {
-    //     let verificationSuccessMessage = $('#api').find('#emailVerificationControl_success_message');
-    //     let verificationSuccessAriaLabel = verificationSuccessMessage ? $(verificationSuccessMessage).attr("aria-label") : null;
-    //     let verificationSuccessDisplayed = verificationSuccessAriaLabel ? $(verificationSuccessMessage).css("display") === "inline" : false;
-    //     let sendCodeButton = $("#emailVerificationControl_but_send_code");
-    //     let sendCodeButtonDisplayed = sendCodeButton ? sendCodeButton.css("display") === "inline" || sendCodeButton.css("display") === "block" : false;
-    //     let verifyCodeButton = $("#emailVerificationControl_but_verify_code");
-    //     let newPasswordField = $("#newPassword");
-    //     let reenterPasswordField = $("#reenterPassword");
-    //     let continueButton = $("#continue");
-    //     if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
-    //       console.log(1)
-    //       continueButton.click();
-    //     }
-    //
-    //     if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
-    //       console.log(2)
-    //       sendCodeButton.click();
-    //     }
-    //
-    //     if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
-    //       console.log(3)
-    //       continueButton.click();
-    //     }
-    //
-    //
-    //     if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
-    //       console.log(4)
-    //       continueButton.click();
-    //     }
-    //   },1000)
-    // })
+            let verificationSuccessMessage = $('#api').find('#emailVerificationControl_success_message');
+            let verificationSuccessAriaLabel = verificationSuccessMessage ? $(verificationSuccessMessage).attr("aria-label") : null;
+            let verificationSuccessDisplayed = verificationSuccessAriaLabel ? $(verificationSuccessMessage).css("display") === "inline" : false;
+            let sendCodeButton = $("#emailVerificationControl_but_send_code");
+            let sendCodeButtonDisplayed = sendCodeButton ? sendCodeButton.css("display") === "inline" || sendCodeButton.css("display") === "block" : false;
+            let verifyCodeButton = $("#emailVerificationControl_but_verify_code");
+            let newPasswordField = $("#newPassword");
+            let reenterPasswordField = $("#reenterPassword");
+            let continueButton = $("#continue");
+
+              if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
+                continueButton.click();
+              }
+
+              if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
+                sendCodeButton.click();
+              }
+
+              if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+                verifyCodeButton.click();
+              }
+
+
+              if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
+                continueButton.click();
+              }
+
+        }
+    });
+
+
 
 
     function makePwdToggler(pwdField) {
@@ -1324,7 +1284,7 @@
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || (newPasswordField.length && reenterPasswordField.length)) {
           $("#continue").show();
           $("#emailVerificationControl_but_change_claims").hide();
-          if ($(".intro p")) $(".intro p")?.text(texts[lang].updateAccountHeading);
+          if($(".intro p")) $(".intro p")?.text(texts[lang].updateAccountHeading);
           if($(".intro h1")) $(".intro h1").text(texts[lang].updateAccountHeader);
         } else {
           $("#continue").hide();
