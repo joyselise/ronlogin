@@ -1212,19 +1212,23 @@
 
             setTimeout(function () {
               if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
+                console.log(10)
                 continueButton.click();
               }
 
               if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
+                console.log(11)
                 sendCodeButton.click();
               }
 
               if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+                console.log(12)
                 verifyCodeButton.click();
               }
 
 
               if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
+                console.log(13)
                 continueButton.click();
               }
             },1000)
@@ -1245,19 +1249,23 @@
 
       setTimeout(function () {
         if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
+          console.log(1)
           continueButton.click();
         }
 
         if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
+          console.log(2)
           sendCodeButton.click();
         }
 
         if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+          console.log(3)
           verifyCodeButton.click();
         }
 
 
         if (newPasswordField.length > 0 && reenterPasswordField.length > 0) {
+          console.log(4)
           continueButton.click();
         }
       },1000)
