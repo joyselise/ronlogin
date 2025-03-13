@@ -245,7 +245,7 @@
         }
 
         #passcode-reset-box .box-center #api #attributeVerification .buttons #cancel {
-            /*display: none;*/
+            display: none;
         }
 
         #passcode-reset-box .box-center #api #attributeVerification .error {
@@ -753,7 +753,6 @@
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  console.log('test')
     var lang = document.documentElement.lang;
     var texts = texts = {
         "de": {
@@ -1037,12 +1036,12 @@
                 var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
 
                 if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
-                    // $("#continue").show();
-                    // $("#emailVerificationControl_but_change_claims").hide();
+                    $("#continue").show();
+                    $("#emailVerificationControl_but_change_claims").hide();
                     $(".intro p").text(texts[lang].updateAccountHeading);
                     $(".intro h1").text(texts[lang].updateAccountHeader);
                 } else {
-                    // $("#continue").hide();
+                    $("#continue").hide();
                 }
             }
 
@@ -1149,7 +1148,6 @@
                 var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
                 var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
 
-              console.log('newAriaLabel=>', newAriaLabel,'isDisplayed=>',isDisplayed,'passwordFieldsExist=>',passwordFieldsExist)
                 if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
                     $("#continue").show();
                     $("#emailVerificationControl_but_change_claims").hide();
@@ -1209,6 +1207,8 @@
             let newPasswordField = $("#newPassword");
             let reenterPasswordField = $("#reenterPassword");
             let continueButton = $("#continue");
+
+          console.log('enter button',verificationSuccessMessage, verificationSuccessDisplayed ,verificationSuccessAriaLabel,sendCodeButtonDisplayed)
 
             if (verificationSuccessMessage && verificationSuccessMessage.css("display") === "none" && sendCodeButtonDisplayed) {
                 sendCodeButton.click();
@@ -1307,7 +1307,7 @@
     }
 
 
-    $(document).ready(function () {
+    $(document).ready(function ()  {
         let loginUrl = localStorage.getItem('createAccountLink')
         let observerSSO = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
