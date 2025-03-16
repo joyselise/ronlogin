@@ -1280,6 +1280,7 @@
         let newPasswordField = $("#newPassword");
         let reenterPasswordField = $("#reenterPassword");
 
+        console.log(emailVerificationMessageNode,newAriaLabel, newAriaLabel === "E-mail address verified. You can now continue.")
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue.") || (newPasswordField.length && reenterPasswordField.length)) {
           $("#continue").show();
           $("#emailVerificationControl_but_change_claims").hide();
@@ -1288,6 +1289,7 @@
         } else {
           $("#continue").hide();
         }
+        observerSSO.disconnect();
       }
 
 
