@@ -1103,44 +1103,44 @@
         });
 
         // ================ Submit button display on condition start ===========
-        $(document).ready(function () {
-            // Function to update UI based on conditions
-            function updateUI() {
-                let emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message');
-                var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
-                var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
-                var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
-
-                if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
-                    $("#continue").show();
-                    $("#emailVerificationControl_but_change_claims").hide();
-                    $(".intro p").text("Update your account with new password");
-                    $(".intro h1").text("Set new password");
-                } else {
-                    $("#continue").hide();
-                }
-            }
-
-            let emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message');
-
-            // Check if the node exists, set up observer if it does
-            if (emailVerificationMessageNode) {
-                var observer = new MutationObserver(function (mutationsList) {
-                    for (var mutation of mutationsList) {
-                        if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
-                            updateUI();
-                        }
-                    }
-                });
-
-                observer.observe(emailVerificationMessageNode, {
-                    attributes: true,
-                    attributeFilter: ["aria-label", "style"]
-                });
-            }
-            // Call updateUI either way
-            updateUI();
-        });
+        // $(document).ready(function () {
+        //     // Function to update UI based on conditions
+        //     function updateUI() {
+        //         let emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message');
+        //         var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
+        //         var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
+        //         var passwordFieldsExist = $(".reenterPassword_li").length > 0 || $(".newPassword_li").length > 0;
+        //
+        //         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || passwordFieldsExist) {
+        //             $("#continue").show();
+        //             $("#emailVerificationControl_but_change_claims").hide();
+        //             $(".intro p").text("Update your account with new password");
+        //             $(".intro h1").text("Set new password");
+        //         } else {
+        //             $("#continue").hide();
+        //         }
+        //     }
+        //
+        //     let emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message');
+        //
+        //     // Check if the node exists, set up observer if it does
+        //     if (emailVerificationMessageNode) {
+        //         var observer = new MutationObserver(function (mutationsList) {
+        //             for (var mutation of mutationsList) {
+        //                 if (mutation.type === "attributes" && (mutation.attributeName === "aria-label" || mutation.attributeName === "style")) {
+        //                     updateUI();
+        //                 }
+        //             }
+        //         });
+        //
+        //         observer.observe(emailVerificationMessageNode, {
+        //             attributes: true,
+        //             attributeFilter: ["aria-label", "style"]
+        //         });
+        //     }
+        //     // Call updateUI either way
+        //     updateUI();
+        // });
 
         // ================ Submit button display on condition end ===========
     }
@@ -1313,11 +1313,10 @@
                     // Disconnect the observer after handling the change
                     observerSSO.disconnect();
                 }
+              if($('#api').find('#emailVerificationControl_success_message')){
+                updateUI();
+              }
             });
-
-            if($('#api').find('#emailVerificationControl_success_message')){
-              updateUI();
-            }
         });
 
         // Observe changes to the DOM
