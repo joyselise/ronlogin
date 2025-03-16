@@ -939,6 +939,8 @@
             // when the DOM changes
             updateErrorMessages();
 
+            console.log('change')
+
         });
 
         // observe
@@ -1274,23 +1276,6 @@
   // ================ Submit button display on condition start ===========
     $(document).ready(function ()  {
 
-      function updateUI() {
-        const emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message')
-        const newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
-        const newPasswordField = $("#newPassword");
-        const reenterPasswordField = $("#reenterPassword");
-
-        if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue.") || (newPasswordField.length && reenterPasswordField.length)) {
-          newPasswordField.length ?  $("#continue").show() : $("#continue").click();
-          $("#emailVerificationControl_but_change_claims").hide();
-          $('#api').find(".intro p h1").hide()
-          observerSSO.disconnect();
-        } else {
-          $("#continue").hide();
-        }
-      }
-
-
        updateUI();
         let loginUrl = localStorage.getItem('createAccountLink')
         let observerSSO = new MutationObserver(function (mutations) {
@@ -1324,6 +1309,22 @@
             childList: true,
             subtree: true
         });
+
+        function updateUI() {
+            const emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message')
+            const newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
+            const newPasswordField = $("#newPassword");
+            const reenterPasswordField = $("#reenterPassword");
+
+            if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue.") || (newPasswordField.length && reenterPasswordField.length)) {
+                newPasswordField.length ?  $("#continue").show() : $("#continue").click();
+                $("#emailVerificationControl_but_change_claims").hide();
+                $('#api').find(".intro p h1").hide()
+                observerSSO.disconnect();
+            } else {
+                $("#continue").hide();
+            }
+        }
 
     });
 
