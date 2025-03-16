@@ -1291,10 +1291,15 @@
       }
 
 
+      console.log('start')
        updateUI();
         let loginUrl = localStorage.getItem('createAccountLink')
         let observerSSO = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
+              if($('#api').find('#emailVerificationControl_success_message')){
+                console.log('calling')
+                updateUI();
+              }
                 if ($(mutation.target).is("#claimVerificationServerError") &&
                     $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
 
@@ -1312,10 +1317,7 @@
                     // Disconnect the observer after handling the change
                     observerSSO.disconnect();
                 }
-              if($('#api').find('#emailVerificationControl_success_message')){
-                 updateUI();
-                observerSSO.disconnect();
-              }
+
             });
         });
 
