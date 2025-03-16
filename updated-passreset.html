@@ -1286,14 +1286,15 @@
           $("#emailVerificationControl_but_change_claims").hide();
           if($(".intro p")) $(".intro p")?.text(texts[lang].updateAccountHeading);
           if($(".intro h1")) $(".intro h1").text(texts[lang].updateAccountHeader);
+          observerSSO.disconnect();
         } else {
           $("#continue").hide();
         }
-        observerSSO.disconnect();
+
       }
 
 
-      console.log('start')
+      console.log('start 2')
        updateUI();
         let loginUrl = localStorage.getItem('createAccountLink')
         let observerSSO = new MutationObserver(function (mutations) {
