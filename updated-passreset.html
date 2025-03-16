@@ -1277,11 +1277,10 @@
       function updateUI() {
         let emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message')
         var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
-        var isDisplayed = emailVerificationMessageNode ? $(emailVerificationMessageNode).css("display") === "inline" : false;
         let newPasswordField = $("#newPassword");
         let reenterPasswordField = $("#reenterPassword");
 
-        if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue." && isDisplayed) || (newPasswordField.length && reenterPasswordField.length)) {
+        if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue.") || (newPasswordField.length && reenterPasswordField.length)) {
           $("#continue").show();
           $("#emailVerificationControl_but_change_claims").hide();
           if($(".intro p")) $(".intro p")?.text(texts[lang].updateAccountHeading);
