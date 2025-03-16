@@ -1275,32 +1275,27 @@
     $(document).ready(function ()  {
 
       function updateUI() {
-        let emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message')
-        var newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
-        let newPasswordField = $("#newPassword");
-        let reenterPasswordField = $("#reenterPassword");
+        const emailVerificationMessageNode = $('#api').find('#emailVerificationControl_success_message')
+        const newAriaLabel = emailVerificationMessageNode ? $(emailVerificationMessageNode).attr("aria-label") : null;
+        const newPasswordField = $("#newPassword");
+        const reenterPasswordField = $("#reenterPassword");
 
-        console.log(emailVerificationMessageNode,newAriaLabel, newAriaLabel === "E-mail address verified. You can now continue.")
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue.") || (newPasswordField.length && reenterPasswordField.length)) {
           $("#continue").show();
           $("#emailVerificationControl_but_change_claims").hide();
-          if($(".intro p")) $(".intro p")?.text(texts[lang].updateAccountHeading);
-          if($(".intro h1")) $(".intro h1").text(texts[lang].updateAccountHeader);
+          $('#api').find(".intro p h1").hide()
           observerSSO.disconnect();
         } else {
           $("#continue").hide();
         }
-
       }
 
 
-      console.log('start 2')
        updateUI();
         let loginUrl = localStorage.getItem('createAccountLink')
         let observerSSO = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
               if($('#api').find('#emailVerificationControl_success_message')){
-                console.log('calling')
                 updateUI();
               }
                 if ($(mutation.target).is("#claimVerificationServerError") &&
