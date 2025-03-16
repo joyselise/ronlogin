@@ -1292,7 +1292,7 @@
       }
 
 
-      updateUI();
+      // updateUI();
         let loginUrl = localStorage.getItem('createAccountLink')
         let observerSSO = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
@@ -1314,7 +1314,7 @@
                     observerSSO.disconnect();
                 }
               if($('#api').find('#emailVerificationControl_success_message')){
-                updateUI();
+                // updateUI();
               }
             });
         });
