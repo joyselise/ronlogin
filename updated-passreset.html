@@ -1281,7 +1281,7 @@
         const reenterPasswordField = $("#reenterPassword");
 
         if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue.") || (newPasswordField.length && reenterPasswordField.length)) {
-          $("#continue").show();
+          $("#continue").click();
           $("#emailVerificationControl_but_change_claims").hide();
           $('#api').find(".intro p h1").hide()
           observerSSO.disconnect();
