@@ -799,6 +799,9 @@
             "charactersError": "Das Passwort muss zwischen 8 und 64 Zeichen lang sein.",
             "welcomeRonText": "Willkommen auf der neuen Ron Orp Seite",
             "userIdNotFound": "Wir konnten kein Konto mit dieser E-Mail-Adresse finden. Es ist möglich, dass Sie kein registrierter Benutzer sind oder sich über einen Single Sign-On (SSO)-Anbieter angemeldet haben. Wenn Sie sich als neuer Benutzer registrieren möchten, besuchen Sie bitte diesen Link.",
+            "verificationCodeSent": "Der Bestätigungscode wurde an Ihren Posteingang gesendet. Bitte kopieren Sie ihn in das Eingabefeld unten.",
+            "emailVerified" : "E-Mail-Adresse verifiziert. Sie können jetzt fortfahren.",
+            "verificationNotMatch" : "Der von Ihnen eingegebene Bestätigungscode stimmt nicht mit unseren Daten überein. Bitte versuchen Sie es erneut oder fordern Sie einen neuen Code an.",
         },
         "fr": {
             "continueButton": "Définir un nouveau mot de passe",
@@ -843,6 +846,9 @@
             "charactersError": "Le mot de passe doit comporter entre 8 et 64 caractères.",
             "welcomeRonText": "Bienvenue sur le nouveau site de Ron Orp",
             "userIdNotFound": "Nous n'avons pas pu trouver de compte associé à cette adresse e-mail. Il est possible que vous ne soyez pas un utilisateur enregistré ou que vous vous soyez inscrit via un fournisseur de connexion unique (SSO). Si vous souhaitez vous inscrire en tant que nouvel utilisateur, veuillez visiter ce lien.",
+            "verificationCodeSent": "Un code de vérification vous a été envoyé. Veuillez le copier dans le champ ci-dessous.",
+            "emailVerified" : "Adresse e-mail vérifiée. Vous pouvez continuer.",
+            "verificationNotMatch" : "Le code de vérification que vous avez saisi ne correspond pas à nos données. Veuillez réessayer ou demander un nouveau code.",
         },
         "en": {
             "continueButton": "Set New Password",
@@ -887,6 +893,9 @@
             "charactersError": "The password must be between 8 and 64 characters.",
             "welcomeRonText": "Welcome to the new Ron Orp page",
             "userIdNotFound": "We couldn't find an account with this email address. It's possible that you're not a registered user or that you signed up using a single sign-on (SSO) provider. If you'd like to register as a new user, please visit this link.",
+            "verificationCodeSent": "Verification code has been sent to your inbox. Please copy it to the input box below.",
+            "emailVerified" : "E-mail address verified. You can now continue.",
+            "verificationNotMatch" : "The verification code you have entered does not match our records. Please try again, or request a new code.",
         }
     };
     if (lang === "de" || lang === "fr") {
@@ -903,11 +912,15 @@
             $("#emailVerificationControl_error_message:contains('The code has expired.')").text(texts[lang].codeExpired);
             $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
             $("#emailVerificationControl_error_message:contains('The verification has failed, please try again.')").text(texts[lang].verificationAttempts);
-            // $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
+            $("#claimVerificationServerError:contains('An account could not be found for the provided user ID.')").text(texts[lang].accountCouldNotFound);
+            $("#claimVerificationServerError:contains('The verification code you have entered does not match our records. Please try again, or request a new code.')").text(texts[lang].verificationNotMatch);
             $("#fieldIncorrect:contains('One or more fields are filled out incorrectly. Please check your entries and try again.')").text(texts[lang].oneOrMore);
             $(".intro :contains('Please provide the following details.')").text(texts[lang].followingDetails);
             // $("#welcomePassResetText").text(texts[lang].welcomeRonText);
-            $("#verifying_blurb").hide();
+            $("#verifying_blurb").hide()
+
+            $("#emailVerificationControl_success_message:contains('Verification code has been sent to your inbox. Please copy it to the input box below.')").text(texts[lang].verificationCodeSent);
+            $("#emailVerificationControl_success_message:contains('E-mail address verified. You can now continue.')").text(texts[lang].emailVerified);
 
             // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
             // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
@@ -994,14 +1007,14 @@
                 // $('#claimVerificationServerError').html("This email is logged in using Google account or SSO. To reset your password, please click the link " +  "<a id='createAccount' href='https://ronbro.b2clogin.com/ronbro.onmicrosoft.com/B2C_1_RonSigning/api/CombinedSigninAndSignup/unified?local=signup&csrf_token=RFNZRUpQeGJXaEVpd05XR0RBTjI1VjRwUE1ZVldiRjlCVFV0QUd4ZG8ramUyMHk0ZUo4UVFrZlhpK2R0dUpVcGhCV1RBc1dieWdndTJDRmFKMWNYQ3c9PTsyMDI1LTAxLTE2VDEyOjM2OjExLjk0MzAyNjVaOy96VVBCMkVZSEZ3ZHdTZ0lVZG9VMUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&tx=StateProperties=eyJUSUQiOiJmMmNlMmJjMy04ZWUxLTQ1ODYtYWE2ZC0yMGY3NTMzNDZjYWUifQ&p=B2C_1_RonSigning&ui_locales=en'> Link</a>")
 
 
-                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === texts[lang].verificationCodeSent) {
                     $(".intro p").hide();
                     $(".verificationSuccessText").hide();
                     if (verificationCodeTextDisplayed && $(".verificationCodeText").length === 0) {
                         $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>" + texts[lang].verificationCodeText + "</p>");
                     }
                 }
-                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
+                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === texts[lang].emailVerified) {
                     $(".verificationCodeText").hide();
                     continueButton.click();
                     $(".verificationSuccessText").show();
@@ -1070,14 +1083,14 @@
                 if (emailVerificationCodeDisplayed || emailVerificationCodeBlockDisplayed) {
                     verificationCodeTextDisplayed = true;
                 }
-                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "Verification code has been sent to your inbox. Please copy it to the input box below.") {
+                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === texts[lang].verificationCodeSent) {
                     $(".intro p").hide();
                     $(".verificationSuccessText").hide();
                     if (verificationCodeTextDisplayed && $(".verificationCodeText").length === 0) {
                         $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
                     }
                 }
-                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === "E-mail address verified. You can now continue.") {
+                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === texts[lang].emailVerified) {
                     $(".verificationCodeText").hide();
                     continueButton.click();
                     $(".verificationSuccessText").show();
@@ -1171,7 +1184,7 @@
             let reenterPasswordField = $("#reenterPassword");
             let continueButton = $("#continue");
 
-              if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === "E-mail address verified. You can now continue.") {
+              if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === texts[lang].emailVerified) {
                 continueButton.click();
               }
 
@@ -1280,7 +1293,7 @@
         const newPasswordField = $("#newPassword");
         const reenterPasswordField = $("#reenterPassword");
 
-        if ((emailVerificationMessageNode && newAriaLabel === "E-mail address verified. You can now continue.") || (newPasswordField.length && reenterPasswordField.length)) {
+        if ((emailVerificationMessageNode && newAriaLabel === texts[lang].emailVerified) || (newPasswordField.length && reenterPasswordField.length)) {
           newPasswordField.length ?  $("#continue").show() : $("#continue").click();
           $("#emailVerificationControl_but_change_claims").hide();
           $('#api').find(".intro p h1").hide()
@@ -1299,7 +1312,7 @@
                 updateUI();
               }
                 if ($(mutation.target).is("#claimVerificationServerError") &&
-                    $(mutation.target).text().includes("An account could not be found for the provided user ID.")) {
+                    $(mutation.target).text().includes(texts[lang].accountCouldNotFound)) {
 
                     // Replace the error message
                     setTimeout(function () {
