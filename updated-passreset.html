@@ -901,7 +901,6 @@
     if (lang === "de" || lang === "fr") {
         // error messages
         function updateErrorMessages() {
-            console.log("call hoise")
             $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts[lang].emailError);
             $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts[lang].validEmailError);
             $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts[lang].passwordError);
@@ -923,7 +922,7 @@
             $("#emailVerificationControl_success_message:contains('Verification code has been sent to your inbox. Please copy it to the input box below.')").text(texts[lang].verificationCodeSent);
             $("#emailVerificationControl_success_message:contains('E-mail address verified. You can now continue.')").text(texts[lang].emailVerified);
 
-            // $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts.informationRequired);
+            $(".error.itemLevel.show p:contains('Please enter a valid email address.')").text(texts[lang].validEmailError);
             // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
             // $(".error .itemLevel .show:contains('- a lowercase letter')").text(texts[lang].lowerCase);
             // $(".error .itemLevel .show:contains('- a uppercase letter')").text(texts[lang].upperCase);
