@@ -902,7 +902,7 @@
         // error messages
         function updateErrorMessages() {
             $(".localAccount .entry .entry-item .error p:contains('Please enter your Email Address')").text(texts[lang].emailError);
-            $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address')").text(texts[lang].validEmailError);
+            $(".localAccount .entry .entry-item .error p:contains('Please enter a valid email address.')").text(texts[lang].validEmailError);
             $(".localAccount .entry .entry-item .error p:contains('Please enter your password')").text(texts[lang].passwordError);
             $(".error.pageLevel p:contains(\"We can't seem to find your account\")").text(texts[lang].accountNotFound);
             $(".error.pageLevel p:contains('Your password is incorrect')").text(texts[lang].incorrectPassword);
@@ -923,7 +923,7 @@
             $("#emailVerificationControl_success_message:contains('E-mail address verified. You can now continue.')").text(texts[lang].emailVerified);
             $("#requiredFieldMissing:contains('A required field is missing. Please fill out all required fields and try again.')").text(texts[lang].requiredFieldMissing);
 
-            // $("#emailVerificationControl:contains('Please enter a valid email address.')").text(texts[lang].validEmailError);
+            $(".error.itemLevel.show:contains('Please enter a valid email address.')").text(texts[lang].validEmailError);
             // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
             // $(".error .itemLevel .show:contains('- a lowercase letter')").text(texts[lang].lowerCase);
             // $(".error .itemLevel .show:contains('- a uppercase letter')").text(texts[lang].upperCase);
