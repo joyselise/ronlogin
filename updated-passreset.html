@@ -753,7 +753,7 @@
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    console.log("update 1")
+    console.log("update 4")
     var lang = document.documentElement.lang;
     var texts = texts = {
         "de": {
@@ -1294,8 +1294,8 @@
         const newPasswordField = $("#newPassword");
         const reenterPasswordField = $("#reenterPassword");
 
-          console.log(newAriaLabel , texts[lang].emailVerified)
-        if ((emailVerificationMessageNode && newAriaLabel === texts[lang].emailVerified) || (newPasswordField.length && reenterPasswordField.length)) {
+          console.log("main :"+newAriaLabel , "update : "+texts[lang].emailVerified)
+        if ((emailVerificationMessageNode && newAriaLabel === 'E-mail address verified. You can now continue.') || (newPasswordField.length && reenterPasswordField.length)) {
           newPasswordField.length ?  $("#continue").show() : $("#continue").click();
           $("#emailVerificationControl_but_change_claims").hide();
           $('#api').find(".intro p h1").hide()
