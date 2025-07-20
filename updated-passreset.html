@@ -923,7 +923,7 @@
             $("#emailVerificationControl_success_message:contains('E-mail address verified. You can now continue.')").text(texts[lang].emailVerified);
             $("#requiredFieldMissing:contains('A required field is missing. Please fill out all required fields and try again.')").text(texts[lang].requiredFieldMissing);
 
-            $("#emailVerificationControl:contains('Please enter a valid email address.')").text(texts[lang].validEmailError);
+            // $("#emailVerificationControl:contains('Please enter a valid email address.')").text(texts[lang].validEmailError);
             // $(".error .itemLevel .show:contains('The password must have at least 3 of the following:')").text(texts[lang].threeRules);
             // $(".error .itemLevel .show:contains('- a lowercase letter')").text(texts[lang].lowerCase);
             // $(".error .itemLevel .show:contains('- a uppercase letter')").text(texts[lang].upperCase);
@@ -1015,7 +1015,7 @@
                         $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>" + texts[lang].verificationCodeText + "</p>");
                     }
                 }
-                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === texts[lang].emailVerified) {
+                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === 'E-mail address verified. You can now continue.') {
                     $(".verificationCodeText").hide();
                     continueButton.click();
                     $(".verificationSuccessText").show();
@@ -1091,7 +1091,7 @@
                         $(".EmailBox.email_li.email").after("<p class='verificationCodeText'>Please enter the verification code that has been sent to your inbox.</p>");
                     }
                 }
-                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === texts[lang].emailVerified) {
+                if (firstStepSuccessMessage && firstStepDisplayed && firstStepAriaLabel === 'E-mail address verified. You can now continue.') {
                     $(".verificationCodeText").hide();
                     continueButton.click();
                     $(".verificationSuccessText").show();
@@ -1185,7 +1185,7 @@
             let reenterPasswordField = $("#reenterPassword");
             let continueButton = $("#continue");
 
-              if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === texts[lang].emailVerified) {
+              if (verificationSuccessMessage && verificationSuccessDisplayed && verificationSuccessAriaLabel === 'E-mail address verified. You can now continue.') {
                 continueButton.click();
               }
 
@@ -1294,7 +1294,7 @@
         const newPasswordField = $("#newPassword");
         const reenterPasswordField = $("#reenterPassword");
 
-          console.log("mains :"+newAriaLabel , "update : "+texts[lang].emailVerified)
+          console.log("main :"+newAriaLabel , "update : "+texts[lang].emailVerified)
         if ((emailVerificationMessageNode && newAriaLabel === 'E-mail address verified. You can now continue.') || (newPasswordField.length && reenterPasswordField.length)) {
           newPasswordField.length ?  $("#continue").show() : $("#continue").click();
           $("#emailVerificationControl_but_change_claims").hide();
