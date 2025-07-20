@@ -1294,7 +1294,7 @@
         const newPasswordField = $("#newPassword");
         const reenterPasswordField = $("#reenterPassword");
 
-          console.log("main :"+newAriaLabel , "update : "+texts[lang].emailVerified)
+
         if ((emailVerificationMessageNode && newAriaLabel === 'E-mail address verified. You can now continue.') || (newPasswordField.length && reenterPasswordField.length)) {
           newPasswordField.length ?  $("#continue").show() : $("#continue").click();
           $("#emailVerificationControl_but_change_claims").hide();
