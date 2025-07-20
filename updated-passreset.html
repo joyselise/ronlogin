@@ -1293,6 +1293,7 @@
         const newPasswordField = $("#newPassword");
         const reenterPasswordField = $("#reenterPassword");
 
+          console.log(newAriaLabel , texts[lang].emailVerified)
         if ((emailVerificationMessageNode && newAriaLabel === texts[lang].emailVerified) || (newPasswordField.length && reenterPasswordField.length)) {
           newPasswordField.length ?  $("#continue").show() : $("#continue").click();
           $("#emailVerificationControl_but_change_claims").hide();
