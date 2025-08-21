@@ -678,6 +678,7 @@
   <script>
     var lang = document.documentElement.lang ?? 'de';
     if (lang === "de" || lang === "fr") {
+      console.log('shuvo')
       var texts = {
         "de": {
           "welcomeHeading": "Willkommen bei Ron Orp!",
@@ -872,6 +873,8 @@
         // changeErrorText('.error.itemLevel.show','- a uppercase letter', texts[lang].upperCase)
         // changeErrorText('.error.itemLevel.show','- a digit', texts[lang].aDigit)
         // changeErrorText('.error.itemLevel.show','- a symbol', texts[lang].aSymbol)
+
+        console.log("Test :",$("#emailVerificationControl_but_send_code").is(":visible") , $("#emailVerificationControl_but_verify_code").is(":visible") )
 
         if($("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible") ){
           $('#termschecked').attr("disabled", true);
