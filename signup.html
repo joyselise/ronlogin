@@ -872,6 +872,13 @@
         // changeErrorText('.error.itemLevel.show','- a uppercase letter', texts[lang].upperCase)
         // changeErrorText('.error.itemLevel.show','- a digit', texts[lang].aDigit)
         // changeErrorText('.error.itemLevel.show','- a symbol', texts[lang].aSymbol)
+
+        if($("#emailVerificationControl_but_send_code").is(":visible")){
+          $('#termschecked').attr("disabled", true);
+
+        }else {
+          $('#termschecked').attr("disabled", false);
+        }
       }
 
 
