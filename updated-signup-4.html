@@ -845,7 +845,10 @@
     // $(".emailVerificationCode_li .error.itemLevel.show:contains('This information is required.')").text(texts[lang].informationRequired);
 
 
-
+    function toggleTermsAndConditionDisable() {
+      const is_visible = $("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible")
+      $('#termschecked').attr("disabled", is_visible);
+    }
 
 
     function updateErrorMessages() {
@@ -897,10 +900,7 @@
 
 
 
-    function toggleTermsAndConditionDisable() {
-      const is_visible = $("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible")
-        $('#termschecked').attr("disabled", is_visible);
-    }
+
 
     // observe
     if (targetNode) {
