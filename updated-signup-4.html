@@ -676,7 +676,6 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  console.log('hasan shuvo')
   var lang = document.documentElement.lang ?? 'de';
   if (lang === "de" || lang === "fr") {
     var texts = {
@@ -846,10 +845,7 @@
     // $(".emailVerificationCode_li .error.itemLevel.show:contains('This information is required.')").text(texts[lang].informationRequired);
 
 
-    function toggleTermsAndConditionDisable() {
-      const is_visible = $("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible")
-      $('#termschecked').attr("disabled", is_visible);
-    }
+
 
 
     function updateErrorMessages() {
@@ -895,9 +891,6 @@
     var observer = new MutationObserver(function(mutationsList, observer) {
       // when the DOM changes
       setTimeout(updateErrorMessages, 100);
-      const is_visible = $("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible")
-      $('#termschecked').attr("disabled", is_visible);
-      console.log('shuvo')
     });
 
 
@@ -912,7 +905,21 @@
     updateErrorMessages();
   }
 
+  function toggleTermsAndConditionDisable() {
+    const is_visible = $("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible")
+    $('#termschecked').attr("disabled", is_visible);
+  }
 
+  var signUpTargetNode = document.getElementById('signup-box');
+
+  var signUpObserver = new MutationObserver(function(mutationsList, observer) {
+    toggleTermsAndConditionDisable()
+  });
+
+  // observe
+  if (signUpTargetNode) {
+    signUpObserver.observe(signUpTargetNode,  { childList: true, subtree: true });
+  }
 
   var loginPromptBtn = $(".loginPromptBtn");
   var loginPromptBtnLink = loginPromptBtn.attr("href") + '?ui_locales=' + lang;
