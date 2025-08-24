@@ -905,6 +905,7 @@
   function toggleTermsAndConditionDisable() {
     const is_visible = $("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible")
     $('#termschecked').attr("disabled", is_visible);
+    $('#newssignupchecked').attr("disabled", is_visible);
   }
 
   var signUpTargetNode = document.getElementById('signup-box');
