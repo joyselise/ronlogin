@@ -873,11 +873,7 @@
       // changeErrorText('.error.itemLevel.show','- a digit', texts[lang].aDigit)
       // changeErrorText('.error.itemLevel.show','- a symbol', texts[lang].aSymbol)
 
-      if($("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible") ){
-        $('#termschecked').attr("disabled", true);
-      }else {
-        $('#termschecked').attr("disabled", false);
-      }
+      toggleTermsAndConditionDisable()
     }
 
 
@@ -895,7 +891,15 @@
     var observer = new MutationObserver(function(mutationsList, observer) {
       // when the DOM changes
       setTimeout(updateErrorMessages, 100);
+      toggleTermsAndConditionDisable();
     });
+
+    toggleTermsAndConditionDisable()
+
+    function toggleTermsAndConditionDisable() {
+      const is_visible = $("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible")
+        $('#termschecked').attr("disabled", is_visible);
+    }
 
     // observe
     if (targetNode) {
@@ -1092,11 +1096,6 @@
               mutation.attributeName === "aria-label"
       ) {
         updateElementDisplay();
-        if($("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible") ){
-          $('#termschecked').attr("disabled", true);
-        }else {
-          $('#termschecked').attr("disabled", false);
-        }
       }
     });
   });
