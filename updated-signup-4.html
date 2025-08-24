@@ -678,7 +678,6 @@
 <script>
   var lang = document.documentElement.lang ?? 'de';
   if (lang === "de" || lang === "fr") {
-    console.log('shuvo')
     var texts = {
       "de": {
         "welcomeHeading": "Willkommen bei Ron Orp!",
@@ -874,8 +873,6 @@
       // changeErrorText('.error.itemLevel.show','- a digit', texts[lang].aDigit)
       // changeErrorText('.error.itemLevel.show','- a symbol', texts[lang].aSymbol)
 
-      console.log("Test :",$("#emailVerificationControl_but_send_code").is(":visible") , $("#emailVerificationControl_but_verify_code").is(":visible") )
-
       if($("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible") ){
         $('#termschecked').attr("disabled", true);
       }else {
@@ -925,6 +922,7 @@
             "Verification code has been sent to your inbox. Please copy it to the input box below."
     );
     $("#emailVerificationControl_but_send_new_code").text("Resend Code");
+
   }
 
 
@@ -1094,6 +1092,11 @@
               mutation.attributeName === "aria-label"
       ) {
         updateElementDisplay();
+        if($("#emailVerificationControl_but_send_code").is(":visible") || $("#emailVerificationControl_but_verify_code").is(":visible") ){
+          $('#termschecked').attr("disabled", true);
+        }else {
+          $('#termschecked').attr("disabled", false);
+        }
       }
     });
   });
