@@ -694,6 +694,7 @@
         "haveReceived": "Noch keinen Code erhalten?",
         "verifyCode": "Code bestätigen",
         "codeExpired": "Der Code ist abgelaufen.",
+        "codeMissMass": "Der eingegebene Bestätigungscode stimmt nicht mit unseren Aufzeichnungen überein. Bitte versuchen Sie es erneut oder fordern Sie einen neuen Code an.",
         "successVerifications": "Grossartig – wähle jetzt deine Stadt, die du liebst, und erstelle ein ausgeklügeltes, sicheres Passwort. Nutze dafür eine Kombination aus Klein- und Großbuchstaben, Zahlen und Sonderzeichen. Das Passwort sollte mindestens 8 Zeichen lang sein.",
         "newPassword": "Neues Passwort",
         "reenterPassword": "Neues Passwort bestätigen",
@@ -736,6 +737,7 @@
         "haveReceived": "Vous n'avez pas encore reçu de code ?",
         "verifyCode": "Vérifier le code",
         "codeExpired": "Le code a expiré.",
+        "codeMissMass": "Le code de vérification que vous avez saisi ne correspond pas à nos enregistrements. Veuillez réessayer ou demander un nouveau code.",
         "successVerifications": "Génial – choisis maintenant ta ville préférée et crée un mot de passe sophistiqué et sécurisé. Utilise une combinaison de lettres minuscules et majuscules, de chiffres et de caractères spéciaux. Le mot de passe doit comporter au moins 8 caractères.",
         "newPassword": "Nouveau mot de passe",
         "reenterPassword": "Confirmez le nouveau mot de passe",
@@ -778,6 +780,7 @@
         "haveReceived": "Have not received any code yet?",
         "verifyCode": "Verify Code",
         "codeExpired": "The code has expired.",
+        "codeMissMass": "The verification code you have entered does not match our records. Please try again, or request a new code.",
         "successVerifications": "Great – now choose your favorite city and create a sophisticated, secure password. Use a combination of lowercase and uppercase letters, numbers, and special characters. The password should be at least 8 characters long.",
         "newPassword": "New Password",
         "reenterPassword": "Confirm New Password",
@@ -853,6 +856,7 @@
       $("#emailVerificationControl_but_send_new_code").text(texts[lang].resendCodeButton);
       $("#emailVerificationControl_but_send_code").text(texts[lang].SendVerificationCode);
       $("#emailVerificationControl_but_verify_code").text(texts[lang].verifyCode);
+      $("#emailVerificationControl_error_message:contains('The verification code you have entered does not match our records. Please try again, or request a new code.')").text(texts[lang].codeMissMass);
       $("#emailVerificationControl_error_message:contains('The code has expired.')").text(texts[lang].codeExpired);
       $("#emailVerificationControl_error_message:contains('You have exceeded maximum number of verification attempts.')").text(texts[lang].verificationAttempts);
       $("#emailVerificationControl_error_message:contains('The verification has failed, please try again.')").text(texts[lang].verificationAttempts);
