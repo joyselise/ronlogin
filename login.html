@@ -458,7 +458,7 @@
     #login-box.whole-box .box-center #api .create p {
       display: block;
       width: 100%;
-      background-color: #fdf0f5;
+      background-color: #fdf0f6;
       border: 1px solid #f7c5da;
       border-radius: 12px;
       color: #ab5487;
@@ -469,6 +469,12 @@
       padding: 14px 20px;
       text-align: center;
       margin-bottom: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    #login-box.whole-box .box-center #api .create:hover p {
+      background-color: #f9e4ed;
+      border-color: #e5a8c4;
+      cursor: pointer;
     }
     #login-box.whole-box .box-center #api .create p a,
     #login-box.whole-box .box-center #api .create p a:hover,
@@ -482,6 +488,9 @@
       margin-left: 5px;
       outline: 0;
       box-shadow: none;
+    }
+    #login-box.whole-box .box-center #api .create:hover p a {
+      color: #944572;
     }
     .password-label{
       position: relative;
