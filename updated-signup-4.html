@@ -658,7 +658,7 @@
   <!--========= Join section start =========-->
   <div class="join">
     <p id="number-of-member">
-      The Ron Community already has 350,000 members.
+      The Ron Community already has <span id="member-count">350,000</span> members.
       <strong id="join-in">Join In!</strong>
     </p>
     <div class="community-img d-flex">
@@ -666,7 +666,7 @@
       <img class="community-ml" src="https://joyselise.github.io/ronlogin/images/pimage4.png" alt="community" />
       <img class="community-ml" src="https://joyselise.github.io/ronlogin/images/pimage2.png" alt="community" />
       <img class="community-ml" src="https://joyselise.github.io/ronlogin/images/pimage3.png" alt="community" />
-      <p class="text-light">401k</p>
+      <p class="text-light" id="member-count-short">401k</p>
     </div>
   </div>
   <!--========= Join section end =========-->
@@ -677,6 +677,69 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   var lang = document.documentElement.lang ?? 'de';
+  var memberCountValue = null;
+
+  function formatMemberCount(count, language) {
+    var n = Number(count) || 0;
+    if (language === 'fr') {
+      return n.toLocaleString('fr-CH');
+    }
+    if (language === 'de') {
+      return n.toLocaleString('de-CH');
+    }
+    return n.toLocaleString('en-US');
+  }
+
+  function formatMemberCountShort(count) {
+    var n = Number(count) || 0;
+    if (n >= 1000) {
+      return Math.floor(n / 1000) + 'k';
+    }
+    return String(n);
+  }
+
+  function updateMemberCountDisplay(count) {
+    if (count == null) return;
+    memberCountValue = count;
+    var language = (lang === 'de' || lang === 'fr') ? lang : 'en';
+    var formatted = formatMemberCount(count, language);
+    var short = formatMemberCountShort(count);
+    var templates = {
+      de: 'Die Ron Community hat bereits {count} Mitglieder.',
+      fr: 'La communauté Ron compte déjà {count} membres.',
+      en: 'The Ron Community already has {count} members.'
+    };
+    var joinInDefaults = {
+      de: 'Dazu kommen!',
+      fr: 'Se joindre à!',
+      en: 'Join In!'
+    };
+    var template = (typeof texts !== 'undefined' && texts && texts[language] && texts[language].numberOfMember)
+      ? texts[language].numberOfMember
+      : templates[language];
+    var joinInText = (typeof texts !== 'undefined' && texts && texts[language] && texts[language].joinIn)
+      ? texts[language].joinIn
+      : joinInDefaults[language];
+    var memberEl = document.getElementById('number-of-member');
+    if (memberEl) {
+      memberEl.innerHTML = template.replace('{count}', formatted) +
+        ' <strong id="join-in">' + joinInText + '</strong>';
+    }
+    var shortEl = document.getElementById('member-count-short');
+    if (shortEl) {
+      shortEl.textContent = short;
+    }
+  }
+
+  fetch('https://ron-backend.seliselocal.com/api/get-register-users')
+    .then(function (response) { return response.json(); })
+    .then(function (data) {
+      if (data && data.total_users != null) {
+        updateMemberCountDisplay(data.total_users);
+      }
+    })
+    .catch(function () {});
+
   if (lang === "de" || lang === "fr") {
     var texts = {
       "de": {
@@ -687,7 +750,7 @@
         'resendCodeButton': 'Code erneut senden',
         'emailPlaceholder' : 'E-Mail-Adresse',
         'joinIn' : 'Dazu kommen!',
-        'numberOfMember' : 'Die Ron Community hat bereits 350,000 Mitglieder.',
+        'numberOfMember' : 'Die Ron Community hat bereits {count} Mitglieder.',
         'alreadyHaveAccount' : 'Schon ein Konto?',
         "loginHeading": "Anmelden",
         "informationRequired": "Diese Information ist erforderlich.",
@@ -730,7 +793,7 @@
         'resendCodeButton': 'Renvoyer le code',
         'emailPlaceholder' : 'Adresse email',
         'joinIn' : 'Se joindre à!',
-        'numberOfMember' : 'La communauté Ron compte déjà 350 000 membres.',
+        'numberOfMember' : 'La communauté Ron compte déjà {count} membres.',
         'alreadyHaveAccount' : 'Vous avez déjà un compte ?',
         "loginHeading": "Connectez-vous",
         "informationRequired": "Ces informations sont obligatoires.",
@@ -773,7 +836,7 @@
         'resendCodeButton': 'Resend Code',
         'emailPlaceholder' : 'Email Address',
         'joinIn' : 'Join in!',
-        'numberOfMember' : 'The Ron Community already has 350,000 members.',
+        'numberOfMember' : 'The Ron Community already has {count} members.',
         'alreadyHaveAccount' : 'Already have an account?',
         "loginHeading": "Log In",
         "informationRequired": "This information is required.",
@@ -817,7 +880,9 @@
       $(".intro p").text(texts[lang].createAccountHeading);
       $("#email_label").text(texts[lang].emailLabel);
       $("#join-in").text(texts[lang].joinIn);
-      $("#number-of-member").text(texts[lang].numberOfMember);
+      if (memberCountValue != null) {
+        updateMemberCountDisplay(memberCountValue);
+      }
       $("#alreadyHaveAccount").text(texts[lang].alreadyHaveAccount);
       $(".loginPromptBtn").text(texts[lang].loginHeading);
       $(".newcodeText:contains('Have not received any code yet')").text(texts[lang].haveReceived);
