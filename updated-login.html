@@ -19,7 +19,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="https://joyselise.github.io/ronlogin/images/fav-icon.svg"
+      href="https://storage-ronorp.net/auth-pages/images/fav-icon.svg"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -527,7 +527,7 @@
             <a href="https://ronreload.seliselocal.com">
               <figure class="mb-0">
                 <img
-                  src="https://joyselise.github.io/ronlogin/images/logo.svg"
+                  src="https://storage-ronorp.net/auth-pages/images/logo.svg"
                   class="img-fluid mobile-logo"
                   alt="logo"
                 />
@@ -596,7 +596,7 @@
 
       function makePwdToggler(pwd) {
         var showpassImage = document.createElement("img");
-        showpassImage.setAttribute("src", "https://joyselise.github.io/ronlogin/images/visibility-off.svg");
+        showpassImage.setAttribute("src", "https://storage-ronorp.net/auth-pages/images/visibility-off.svg");
         showpassImage.setAttribute("class", "hidenpass");
         // pwd.insertAdjacentElement("afterend", showpassImage);
 
@@ -611,10 +611,10 @@
         function toggle() {
           if (pwd.type === "password") {
             pwd.type = "text";
-            showpassImage.src = "https://joyselise.github.io/ronlogin/images/visibility-on.svg";
+            showpassImage.src = "https://storage-ronorp.net/auth-pages/images/visibility-on.svg";
           } else {
             pwd.type = "password";
-            showpassImage.src = "https://joyselise.github.io/ronlogin/images/visibility-off.svg";
+            showpassImage.src = "https://storage-ronorp.net/auth-pages/images/visibility-off.svg";
           }
         }
         showpassImage.onclick = toggle;
@@ -751,8 +751,8 @@
         $(".localAccount .entry .entry-item .password-label").insertAfter("#password");
         $("#api .social").insertAfter("#localAccountForm");
         $("#api .create").insertAfter("#api .social");
-        $(".social .options div #GoogleExchange").html("<img />").find("img").attr("src", "https://joyselise.github.io/ronlogin/images/google.svg");
-        // $(".social .options div #FacebookExchange").html("<img />").find("img").attr("src", "https://joyselise.github.io/ronlogin/images/facebook.svg");
+        $(".social .options div #GoogleExchange").html("<img />").find("img").attr("src", "https://storage-ronorp.net/auth-pages/images/google.svg");
+        // $(".social .options div #FacebookExchange").html("<img />").find("img").attr("src", "https://storage-ronorp.net/auth-pages/images/facebook.svg");
         localStorage.setItem('createAccountLink', createAccountLink)
       });
 
