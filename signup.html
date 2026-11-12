@@ -731,7 +731,7 @@
     }
   }
 
-  fetch('https://ron-backend.seliselocal.com/api/get-register-users')
+  fetch('https://cockpit.ronorp.net/api/get-register-users')
     .then(function (response) { return response.json(); })
     .then(function (data) {
       if (data && data.total_users != null) {
